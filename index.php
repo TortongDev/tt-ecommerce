@@ -1,5 +1,5 @@
 <?php
-require_once "./backend_shop_tt/authen/check_authen.php";
+// require_once "./backend_shop_tt/authen/check_authen.php";
 
 ?>
 <!DOCTYPE html>
@@ -10,75 +10,20 @@ require_once "./backend_shop_tt/authen/check_authen.php";
     <title>TT - E-Commerce</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div id="wrapper">
-    <header>
-
-        <div class="container-header">
-            <div class="header-title">
-                <img src="https://www.ptgenergy.co.th/images/logo.png" width="120px" height="120px" alt="">
-            </div>
-
-            <div class="header-menu">
-                <div class="menu-section1">
-                    <ul class="user">
-                        <li>
-                            <i class="fa-solid fa-user"></i> <?php echo $_SESSION['FIST_NAME']; ?> 
-                            <ul class="ul-list" >
-                                <li>แก้ไขข้อมูลส่วนตัว</li>
-                                <li>ข้อความส่วนตัว</li>
-                            </ul>
-                        </li>
-                        <li><i class="fa-regular fa-rectangle-list"></i> รายการสั่งซื้อสินค้า</li>
-                        <li><i class="fa-solid fa-bag-shopping"></i> ประวัติการสั่งซื้อสินค้า</li>
-                        <li><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</li>
-                        <li><i class="fa-solid fa-right-from-bracket"></i><?php if(!empty($_SESSION['AUTHEN_PERMISSION'])): echo "ออกจากระบบ"; else: endif;?></li>
-                    </ul>
-                </div>
-                <div class="menu-section2">
-                    <ul class="menu">
-                        <li><a class="main-text" href="#intro">รู้จักกับร้าน</a></li>
-                        <li><a href="#product">แนะนำสินค้า</a></li>
-                        <li><a href="#partner">ร้านค้า Partner</a></li>
-                        <li>รีวิวจากลูกค้า</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="header-menu-responsive">
-                <ul>
-                    <li><i class="fa-solid fa-bars"></i></li>
-                </ul>
-            </div>
-            <div class="menu-slide">
-                <ul class="sub-menu-slide">
-                    <li>Function Shopping</li>
-                    <li><a href=""><i class="fa-regular fa-rectangle-list"></i> รายการสั่งซื้อสินค้า</a></li>
-                    <li><a href=""><i class="fa-solid fa-bag-shopping"></i> ประวัติการสั่งซื้อสินค้า</a></li>
-                    <li><a href=""><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
-                    <li><a href=""><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
-                    <li>Function Shopping</li>
-                    <li><a href=""><a class="main-text" href="#intro">รู้จักกับร้าน</a></a></li>
-                    <li><a href=""><a href="#product">แนะนำสินค้า</a></a></li>
-                    <li><a href=""><a href="#partner">ร้านค้า Partner</a></a></li>
-                    <li><a href="">รีวิวจากลูกค้า</a></li>
-                </ul>
-            </div>
-
-
-        </div>
-
-    </header>
+   <?php include ('./header-template.php'); ?>
     <div class="container">
         <!-- รู้จักกับร้าน -->
         <article class="intro" id="intro">
-            <section class="background-shop-promote">
-                <img src="https://asv-ptgenergy-backoffice-api-prod.azurewebsites.net/images/banner-pd.jpg" width="100%" height="300px" alt="">
+            <section class="background-shop-promote header-img" style="overflow: hidden;">
+                <!-- <img src="./kanji_farm.jpg" class="img-action header-img"  alt=""> -->
             </section>
             <br>
-            <center><h1 class="main-text">Kaoyei Cafe Shop </h1></center>
+            <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>
             <center><h3 class="sub-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam necessitatibus sint maxime error voluptatum eveniet fugit repellat quas possimus, cupiditate dolor rerum nobis expedita? Rerum cumque quae in, ipsum corrupti, minima impedit nisi tenetur, quaerat tempora aperiam cupiditate voluptates nostrum nobis? Porro, at id, ad ipsam aliquid expedita pariatur ullam reprehenderit itaque eligendi voluptas tempora, debitis aut totam exercitationem cum dignissimos quidem est? Alias laboriosam animi modi. Distinctio cumque quo, nemo velit, ex dicta maiores voluptatum excepturi autem amet optio. Laboriosam cupiditate dolorum expedita consequuntur totam, hic esse placeat unde blanditiis est inventore accusamus! Quos laborum optio est magnam doloremque.</h3></center>
             <center>
                 
@@ -120,51 +65,57 @@ require_once "./backend_shop_tt/authen/check_authen.php";
           
             <section class="container-product">
                 <div class="box-product">
+                    <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxU78QjI5Vp1ClGps28BVcr_nKWMM-q-I8fyFJWvd3k4Q9MUyayYuqFBwWFrFiEve48&usqp=CAU" alt="">
+                        <img class="img-action" src="./img-shop/Cos-Lettuce.jpg" alt="">
                     </div>
-                    <h3><a href="./shop_product.html">ลาเต้เย็น ขนาด ( 16ออนซ์ )</a></h3>
-                    <h4 class="sub-text short-text">สินค้าประเภทกาแฟ และเป็นสินค้าขายดีเป็นที่นิยม อันดับที่#1 จากทางร้าน ttcafe </h4>
+                    <h3><a href="./shop_product.php">Cos Lettuce or Romaine Lettuce (กรีนคอส)</a></h3>
+                    <h4 class="sub-text short-text">ผักสลัดคอส (Cos Lettuce) หรือผักกาดโรเมน (Romaine Lettuce) จุดเด่นคือความกรอบ ใบเรียวยาวสีเขียวตลอดทั้งใบ ไม่มีกลิ่นเหม็นเขียว นิยมรับประทานเป็นอันดับต้น ๆ </h4>
                     <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
                 </div>
                 <div class="box-product">
+                <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxU78QjI5Vp1ClGps28BVcr_nKWMM-q-I8fyFJWvd3k4Q9MUyayYuqFBwWFrFiEve48&usqp=CAU" alt="">
+                        <img class="img-action" src="./img-shop/Frillice_Ice_Berg.jpg" alt="">
                     </div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <h4 class="sub-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis inventore animi </h4>
+                    <h3>Frillice Ice Berg Lettuce (ฟิลเลย์ไอซ์เบิร์ก)</h3>
+                    <h4 class="sub-text short-text">ฟิลเลย์ไอซ์เบิร์ก (Frillice Ice Berg Lettuce) คือ ผักสลัดชนิดหนึ่ง ใบมีสีเขียวอ่อนถึงสีเขียวเข้ม เรียวยาวเป็นทรงพุ่ม ปลายใบหยิกงอเป็นฝอย ๆ เรียงชิดติดกัน โคนต้นมีความชุ่มน้ำ ทำให้ดูอวบ</h4>
                     <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
                 </div>
                 <div class="box-product">
+                <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxU78QjI5Vp1ClGps28BVcr_nKWMM-q-I8fyFJWvd3k4Q9MUyayYuqFBwWFrFiEve48&usqp=CAU" alt="">
+                        <img class="img-action" src="./img-shop/green-oak-1.jpg" alt="">
                     </div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <h4 class="sub-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis inventore animi </h4>
+                    <h3>Green Oak Lettuce (กรีนโอ๊ค ) </h3>
+                    <h4 class="sub-text short-text">Green Oak Lettuce (กรีนโอ๊ค ) · ช่วยในเรื่องของระบบการย่อยอาหาร · วิตามินบีสูง · วิตามินซีสูง · ไฟเบอร์สูงช่วยเบาเทาอาการท้องผูก · บำรุงสายตา · บำรุงเส้นผม  </h4>
                     <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
                 </div>
                 <div class="box-product">
+                <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxU78QjI5Vp1ClGps28BVcr_nKWMM-q-I8fyFJWvd3k4Q9MUyayYuqFBwWFrFiEve48&usqp=CAU" alt="">
+                        <img class="img-action" src="./img-shop/MG_0293-Selected.jpg" alt="">
                     </div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <h4 class="sub-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis inventore animi </h4>
+                    <h3>MINI COS ORGANIC (มินิคอส ออร์แกนิค).</h3>
+                    <h4 class="sub-text short-text">MINI COS ORGANIC ราคากิโลกรัมละ 100 บาท. กากใยสูงช่วยในเรื่องของระบบขับถ่าย มีโพรแทสเซียม และกรดโฟเลตสูง มีสารต้านอนุมูลอิสระเพื่อช่วยลดความเสื่อมของจอประสาทตาในผู้สูงอายุ </h4>
                     <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
                 </div>
                 <div class="box-product">
+                <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxU78QjI5Vp1ClGps28BVcr_nKWMM-q-I8fyFJWvd3k4Q9MUyayYuqFBwWFrFiEve48&usqp=CAU" alt="">
+                        <img class="img-action" src="./img-shop/original-1634632690275.jpg" alt="">
                     </div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <h4 class="sub-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis inventore animi </h4>
+                    <h3>ผักชี (ชื่อวิทยาศาสตร์: Coriandrum sativum)</h3>
+                    <h4 class="sub-text short-text">ผักชีเป็นผักที่ปลูกง่าย และไม่ค่อยพบโรคหรือแมลงศัตรูพืชมากนัก เนื่องจากมีกลิ่นน้ำมันหอมระเหยที่ช่วยไล่แมลงได้ มีหลักฐานการปลูกในประเทศอียิปต์นานกว่า 3500 ปี. </h4>
                     <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
                 </div>
                 <div class="box-product">
+                <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIfxU78QjI5Vp1ClGps28BVcr_nKWMM-q-I8fyFJWvd3k4Q9MUyayYuqFBwWFrFiEve48&usqp=CAU" alt="">
+                        <img class="img-action" src="./img-shop/เรดโอ๊ค.jpg" alt="">
                     </div>
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <h4 class="sub-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis inventore animi </h4>
+                    <h3>Red Oak Lettuce (เรดโอ๊ค) </h3>
+                    <h4 class="sub-text short-text">เป็นผักสลัดใบ ปลายใบหยิกเป็นแฉกชัดเจนกว่ากรีนโอ๊ค ใบสีแดงเข้มถึงน้ำตาลแดง ก้านสีเขียว เป็นผักสลัดใบชนิดที่เป็นที่นิยมมากที่สุดชนิดหนึ่ง. </h4>
                     <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
                 </div>
                
@@ -235,10 +186,54 @@ require_once "./backend_shop_tt/authen/check_authen.php";
     </div>
     <footer>
         <div class="container-footer">
-            <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
-            <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
+            <section></section>
+            <section class="flex-center">
+                <center>
+                    <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
+                    <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
+                </center>
+            </section>
+           <div class="container-contact-footer">
+                <div class="contact-footer">
+                    <div class="facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
+                    <div class="line">
+                        <i class="fa-brands fa-line"></i>
+                    </div>
+                    <div class="intragram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="tiktok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                </div>
+                <div class="contact-footer-address">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eligendi.
+                </div>
+           </div>
         </div>
     </footer>
 </div>
 </body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                showBox1:false,
+                showBox2:false,
+                showBox3:false,
+                showBox4:false,
+                showBox5:false,
+                showBox6:false,
+            }
+        },methods: {
+          
+            
+        },mounted() {
+            
+        },
+    })
+    app.mount('#wrapper')
+</script>
 </html>

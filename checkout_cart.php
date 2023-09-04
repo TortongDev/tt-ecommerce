@@ -12,33 +12,7 @@
 </head>
 <body>
 <div id="wrapper">
-    <header>
-        <div class="container-header">
-            <div class="header-title">
-                <img src="https://www.ptgenergy.co.th/images/logo.png" width="120px" height="120px" alt="">
-            </div>
-            <div class="header-menu">
-                <div class="menu-section1">
-                    <ul class="user">
-                        <li><span class="material-symbols-outlined">shield_person</span> admin </li>
-                        <li><span class="material-symbols-outlined">list_alt</span>รายการสั่งซื้อสินค้า</li>
-                        <li><span class="material-symbols-outlined">history_edu</span>ประวัติการสั่งซื้อสินค้า</li>
-                        <li><span class="material-symbols-outlined">shopping_cart</span>ตะกร้าสินค้า</li>
-                        <li><span class="material-symbols-outlined">logout </span>ออกจากระบบ</li>
-                    </ul>
-                </div>
-                <div class="menu-section2">
-                    <ul class="menu">
-                        <li><a class="main-text" href="#intro">รู้จักกับร้าน</a></li>
-                        <li><a href="#product">แนะนำสินค้า</a></li>
-                        <li><a href="#partner">ร้านค้า Partner</a></li>
-                        <li>รีวิวจากลูกค้า</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </header>
+    <?php include ('./header-template.php'); ?>
     <div class="tabbar-checkout">
         <h2 class="">ตะกร้าสินค้า</h2>
     </div>
