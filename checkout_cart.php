@@ -6,6 +6,7 @@
     <title>TT - E-Commerce</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
  
     <link rel="stylesheet" href="./style.css">
     
@@ -19,21 +20,21 @@
     <div class="containers">
         <article class="container-checkout-cart">
             
-            <section class="list-cart">
+            <section class="list-cart" style="overflow: auto;">
                 <table class="table">
-                    <thead>
+                    <thead style="overflow: auto;">
                         <tr>
                             <th>#</th>
-                            <th style="width: 400px;">รายการสินค้า</th>
+                            <th >รายการสินค้า</th>
                             <th>ราคา</th>
                             <th>จำนวน</th>
                             <th>รวม</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="overflow: auto;">
                         <tr>
                             <?php
-                                $cart_count = 0;
+                                $cart_count = 1;
                             ?>
 
                             <?php if($cart_count < 1):?>
@@ -133,27 +134,22 @@
             </section>
         </article>
     </div>
-    <footer>
-        <div class="container-footer">
-            <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
-            <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
-        </div>
-    </footer>
+    <?php include ('./footer-template.php'); ?>
 </div>
 </body>
+<script  src="./base_function.js"></script>
+
 <script>
+
     
-    document.addEventListener('DOMContentloaded',function(){
-        const amount = document.querySelector('#amount')
-        alert(2)
+    const app = Vue.createApp(BaseControllers,{
+        data() {
+            return {
+                
+            }
+        },
+
     })
-    amount.addEventListener('change',()=>{
-        
-        if(amount.value < 1){
-            amount.value = 1
-            alert('Not < 1');
-    }
-    })
-    
+    app.mount('#wrapper')
 </script>
 </html>

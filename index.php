@@ -10,7 +10,8 @@
     <title>TT - E-Commerce</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -184,52 +185,26 @@
         </article>
         
     </div>
-    <footer>
-        <div class="container-footer">
-            <section></section>
-            <section class="flex-center">
-                <center>
-                    <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
-                    <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
-                </center>
-            </section>
-           <div class="container-contact-footer">
-                <div class="contact-footer">
-                    <div class="facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </div>
-                    <div class="line">
-                        <i class="fa-brands fa-line"></i>
-                    </div>
-                    <div class="intragram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </div>
-                    <div class="tiktok">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </div>
-                </div>
-                <div class="contact-footer-address">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eligendi.
-                </div>
-           </div>
-        </div>
-    </footer>
+    <?php include('./footer-template.php') ?>
+    
 </div>
 </body>
+<!-- นำเข้าไฟล์ Base Controller -->
+<script  src="./base_function.js"></script>
 <script>
-    const app = Vue.createApp({
+    const app = Vue.createApp(BaseControllers,{
         data() {
             return {
-                showBox1:false,
-                showBox2:false,
-                showBox3:false,
-                showBox4:false,
-                showBox5:false,
-                showBox6:false,
+                showBox1: false,
+                showBox2: false,
+                showBox3: false,
+                showBox4: false,
+                showBox5: false,
+                showBox6: false,
+                menuSlide: 0
             }
         },methods: {
-          
-            
+
         },mounted() {
             
         },

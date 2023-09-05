@@ -88,18 +88,14 @@
             </section>
         </article>
     </div>
-    <footer>
-        <div class="container-footer">
-            <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
-            <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
-        </div>
-    </footer>
+    <?php include ('./footer-template.php'); ?>
 </div>
 </body>
+<script  src="./base_function.js"></script>
 <script>
-    
+    const amount = document.querySelector('#product_amount')
     document.addEventListener('DOMContentloaded',function(){
-        const amount = document.querySelector('#amount')
+        
         alert(2)
     })
     amount.addEventListener('change',()=>{
@@ -110,32 +106,7 @@
     }
     })
     
-    const app = Vue.createApp({
-        data() {
-            return {
-                detailStatus1: true,
-                detailStatus2: false,
-                detailStatus3: false
-            }
-        },methods: {
-            showDetail(id) {
-                
-                if(id == 2){
-                    this.detailStatus1 = false
-                    this.detailStatus2 = true
-                    this.detailStatus3 = false
-                }else if(id == 3){
-                    this.detailStatus1 = false
-                    this.detailStatus2 = false
-                    this.detailStatus3 = true
-                }else{
-                    this.detailStatus1 = true
-                    this.detailStatus2 = false
-                    this.detailStatus3 = false
-                }
-            }
-        },
-    })
+    const app = Vue.createApp(BaseControllers)
     app.mount('#wrapper')
 </script>
 </html>
