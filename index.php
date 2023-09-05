@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TT - E-Commerce</title>
+    <title>Kanji Farm Korat</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -61,7 +61,8 @@
         <!-- แนะนำสินค้า -->
         <article class="product">
             <center><h1 class="main-text" style="margin-block-end: 0 !important;">แนะนำสินค้า</h1></center>
-            <center><h3 class="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่ <a style="color: blue;" href="#">ไปที่ร้านค้า</a></h3></center>
+            <center><h3 class="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่  
+            <a style="color: blue;" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h3></center>
             <br>
           
             <section class="container-product">

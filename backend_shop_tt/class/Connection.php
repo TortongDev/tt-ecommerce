@@ -4,7 +4,8 @@ class Connection {
 		public $hostname 	= 'localhost';
 		public $username 	= 'root';
 		public $password	= '';
-		public $dbname 		= 'shopping_kaoyai';
+		// public $dbname 		= 'shopping_kaoyai';
+		public $dbname 		= 'db_atsamat';
 		public $pdo;
 		public function __construct($status = false){
 

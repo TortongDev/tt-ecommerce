@@ -249,6 +249,14 @@ grid-gap: 30px;
 grid-template-columns:  1fr 1fr 1fr;
 margin: auto;
 }
+.container-product-shop {
+width: 90%;
+min-height: 90vh;
+display: grid;
+grid-gap: 30px;
+grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
+margin: auto;
+}
 .box-product {
 width: 100%;
 height: 100%;
@@ -268,6 +276,22 @@ width: 100%;
 height: 300px;
 object-fit: cover;
 } 
+.box-product > .img-profile-shop > img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+} 
+
+.price {
+    padding: 3px;
+    color: rgb(209, 31, 31);
+    font-weight: bold;
+}
+.center {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
 .box-product > h3 {
 text-align: center ;
 margin-block-start: 0 !important;
@@ -282,9 +306,6 @@ margin-block-end: 0 !important;
 margin-inline-start: 0px;
 margin-inline-end: 0px;
 font-weight: bold;
-}
-.price {
-color: red;
 }
 .short-text {
 display: -webkit-box;
@@ -647,7 +668,45 @@ ul.ul-list li {
     object-fit: cover;
     
 }
-
+button {
+    margin-inline-end: 5px;
+}
+section.shop-filter {
+    grid-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+    border-bottom: 1px;
+    box-shadow: 1px 1px 10px rgb(218, 218, 218);
+    width: 90%;
+    margin: auto;
+}
+.btn-filter-blue {
+    color: white;
+    background-color: blue;
+}
+.btn-filter-skyblue {
+    color: black;
+    background-color: skyblue;
+}
+.btn-filter-orange {
+    color: black;
+    background-color: orange;
+}
+.btn-filter-green {
+    color: white;
+    background-color: green;
+}
+.btn-filter-black {
+    color: white;
+    background-color: black;
+}
 @media only screen and (max-width: 700px) {
     header {
         height: 50px;
@@ -683,6 +742,9 @@ ul.ul-list li {
     }
     .container-product {
         grid-template-columns: 1fr;
+    }
+    .container-product-shop {
+        grid-template-columns: 1fr 1fr;
     }
     .table {
         width: 500px !important;
@@ -733,5 +795,8 @@ ul.ul-list li {
     }
     .article.container-checkout-cart > .list-cart {
         height: fit-content !important;
+    }
+    section.shop-filter {
+        grid-template-columns: 1fr;
     }
   }
