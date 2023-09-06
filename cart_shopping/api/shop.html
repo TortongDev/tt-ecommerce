@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper"></div>
+    <script>
+        fetch('./get.php')
+        .then(response => response.json())
+        .then(function(data){
+            let fetchData = "";
+            
+            for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                fetchData =  `
+                <section>
+                    ${element.product_id}<br>
+                    ${element.product_name}<br>
+                    ${element.product_price}<br>
+                    <a href="../post.php?product_id=${element.product_id}&product_name=${element.product_name}&product_price=${element.product_price}
+                    &product_amount=1
+                    ">cart</a>
+                </section>            
+            `;
+            document.querySelector('#wrapper').innerHTML += fetchData
+            }
+         
+        })
+        .catch(error => console.log(error));
+    </script>
+
+
+</body>
+</html>

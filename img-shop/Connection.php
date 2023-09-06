@@ -22,7 +22,7 @@ class Connection {
 		public function openConnection(){
 			try{
 				$server = @$_SERVER['SERVER_NAME'];
-				if($server == 'localhost'):
+				if($server === 'localhost'):
 					$conn = new PDO("mysql:host=$this->hostname;dbname=$this->dbname;",$this->username,$this->password);
 					$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 					// echo json_encode(array('status'=>'connection is successfully.'));
@@ -30,7 +30,6 @@ class Connection {
 					$conn = new PDO("mysql:host=$this->hostname;dbname=atsamatd_atsamatd;","atsamatd_root","atsamatd");
 					$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 				endif;
-				
 				return $this->pdo = $conn;
 				
 			}catch(PDOException $err){
@@ -41,5 +40,8 @@ class Connection {
 			$this->pdo 	= null;
 		}
 }
+
+
+
 
 ?>

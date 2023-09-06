@@ -10,17 +10,14 @@ $db = new Connection(true);
 session_start();
 
 $client = new Google_Client();
-$client->setClientId('969098766658-cs0dea0r4pru6hdiea0g409d9o3dmher.apps.googleusercontent.com');
-$client->setClientSecret("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");
-$client->setRedirectUri('https://kanjikorat.000webhostapp.com'); // ระบุ URI ที่คุณได้กำหนด
+$client->setClientId('999373250345-9ac27ol5dh8o9msslhrhlu2quhgv7sdq.apps.googleusercontent.com');
+$client->setClientSecret("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");
+$client->setRedirectUri('https://atsamat101dev.pw/project_tranning_1/login.php'); // ระบุ URI ที่คุณได้กำหนด
 $client->addScope('email'); // ระบุสิทธิ์ที่คุณต้องการ
 
 
 $authUrl = $client->createAuthUrl(); // สร้าง URL สำหรับการเข้าสู่ระบบผ่าน Google
-echo $authUrl;
-echo "<a href='$authUrl'>เข้าสู่ระบบผ่าน Google</a>";
 
-exit;
 if (isset($_GET['code'])) {
     $client->fetchAccessTokenWithAuthCode($_GET['code']); // รับโทเคนจากรหัสอนุญาต
 
