@@ -49,11 +49,11 @@
                     <input type="number" name="product_amount" value="1" id="product_amount" class="form-control">
                     <div class="form-group">
                         <!-- <form action="./post_cart.php"> -->
-                            <input type="hidden" name="product_id">
-                            <input type="hidden" name="product_name">
-                            <input type="hidden" name="product_type">
-                            <input type="hidden" name="product_price">
-                            <input type="hidden" name="user_id">
+                            <input type="hidden" name="product_id" value="">
+                            <input type="hidden" name="product_name" value="">
+                            <input type="hidden" name="product_type" value="">
+                            <input type="hidden" name="product_price" value="">
+                            <input type="hidden" name="user_id" value="">
                             <button type="submit" class="btn btn-checkout">
                                 <i class="fa-solid fa-cart-plus"></i> <a href="./checkout_cart.php">เพิ่มลงตะกร้า</a>
                             </button>
