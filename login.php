@@ -1,7 +1,8 @@
 <?php
-    require_once "./backend_shop_tt/class/Connection.php";
-    session_start();
+    require_once "./services/class/Connection.php";
     $ndb    = new Connection(true);
+    
+    $ndb->authenUsers();
 
     $users = array();
     
@@ -11,25 +12,23 @@
 
     $user = $users['username'];
     $pass = $users['password'];
-    if(@$_SERVER['SERVER_NAME']!='localhost'){
+    // if(@$_SERVER['SERVER_NAME']!='localhost'){
         $stmt   = $ndb->pdo->query("SELECT * FROM `authen_users` WHERE 1=1 AND authen_username = '{$user}' AND authen_password = '{$pass}' ");
         $countAll = $stmt->rowCount();
         $r = $stmt->fetch(PDO::FETCH_ASSOC);
         if($countAll > 0 ):
-            $_SESSION['username'] = $r['authen_username'];
-            $_SESSION['password'] = $r['authen_password'];
+            $_SESSION['AUTHEN_USER_ID'] = $r['authen_user_id'];
+            $_SESSION['AUTHEN_USERNAME'] = $r['authen_username'];
+            $_SESSION['AUTHEN_PASSWORD'] = $r['authen_password'];
+            $_SESSION['LOGIN_STATUS'] = 1;
         endif;
         
     if($check == 'login'):
         if(isset($countAll) > 0 ):
-            if(!empty($users['username'])):
-                if($users['username'] == $_SESSION['username'] && $users['password'] == $_SESSION['password'] ):
-                    // header('location: index.php');?
-                    echo $users['username'];
-                    echo "<br>";
-                    echo $_SESSION['username'];
+            if(!empty( $user ) && !empty($pass )):
+                if($user  == @$_SESSION['AUTHEN_USERNAME'] && $pass == @$_SESSION['AUTHEN_PASSWORD'] ):
+                    header("Location: index.php");
                     exit;
-
                 else:
                     echo "ไม่สำเร็จ";
                 endif;
@@ -40,7 +39,7 @@
     else:
 
     endif;
-}
+// }
 ?>
 
 <!DOCTYPE html>

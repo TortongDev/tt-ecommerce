@@ -1,3 +1,9 @@
+<?php
+    require_once "./services/class/Connection.php";
+    $checkAuthen = new Connection();
+    $checkAuthen->authenPermission();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

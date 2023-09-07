@@ -1,3 +1,4 @@
+
 <header>
 
 <div class="container-header">
@@ -9,7 +10,7 @@
         <div class="menu-section1">
             <ul class="user">
                 <li>
-                    <i class="fa-solid fa-user"></i>KITTTIHAT101
+                    <i class="fa-solid fa-user"></i> <?php echo @$_SESSION['AUTHEN_USERNAME'].'AS'.@$_SESSION['AUTHEN_USER_ID']; ?>
                     <ul class="ul-list" >
                         <li>แก้ไขข้อมูลส่วนตัว</li>
                         <li>ข้อความส่วนตัว</li>

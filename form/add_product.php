@@ -11,20 +11,11 @@
         $product_img        = isset($_POST['product_img'])      ? htmlspecialchars(trim($_POST['product_img'])) : '';
         $product_detail     = isset($_POST['product_amount'])   ? htmlspecialchars(trim($_POST['product_amount'])) : '';
         $product_sub_detail = isset($_POST['product_price'])    ? htmlspecialchars(trim($_POST['product_price'])) : '';
-
         $product_type_name    = isset($_POST['product_sub_detail']) ? htmlspecialchars(trim($_POST['product_sub_detail'])) : '';
         $product_shop_name        = isset($_POST['product_img'])      ? htmlspecialchars(trim($_POST['product_img'])) : '';
         $product_type_id     = isset($_POST['product_amount'])   ? htmlspecialchars(trim($_POST['product_amount'])) : '';
         $product_shop_id = isset($_POST['product_price'])    ? htmlspecialchars(trim($_POST['product_price'])) : '';
-        // if(!empty($product_amount)): 
-            
-        //     $updateStmtProduct = $db->pdo->prepare("");
-        //     $updateStmtProduct->execute(array());    
-
-
-
-        // endif;
-
+       
         $insertStmtProduct = $db->pdo->prepare(
             "INSERT INTO `kanji_products`(
                 `product_name`, 
@@ -75,9 +66,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="wrapper">
+    <div id="wrapper" class="container">
         <form action="" method="post">
             <div class="form-group">
+                    
                 <input type="text" name="product_name"  class="form-control">
             </div>
             <div class="form-group">
@@ -99,10 +91,12 @@
                 <input type="text" name="product_sub_detail" class="form-control">
             </div>
 
-            <button type="submit" name="process" value="insert_product">
+            <button class="btn btn-primary" type="submit" name="process" value="insert_product">
                 บันทึก
             </button>
-
+            <button class="btn btn-warning" type="reset" name="reset" value="reset">
+                ล้างฟอร์ม
+            </button>
         </form>
     </div> 
     

@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Connection {
 		public $hostname 	= 'localhost';
 		public $username 	= 'root';
@@ -10,7 +11,6 @@ class Connection {
             if($status == true):
                 $this->openConnection();
             else:
-                echo "fasle";
             endif;
 		}
         public function __destruct()
@@ -37,6 +37,32 @@ class Connection {
 		}
 		public function closeConnection(){
 			$this->pdo 	= null;
+		}
+		public function authenUsers(){
+			$login_status = isset($_SESSION['LOGIN_STATUS']) ? $_SESSION['LOGIN_STATUS'] : '';
+			if($login_status === 1):
+
+				header("Location: index.php");
+				exit;
+			else:
+
+			endif;
+		}
+		public function authenPermission(){
+			$login_status 	= isset($_SESSION['LOGIN_STATUS']) 		? $_SESSION['LOGIN_STATUS'] : '';
+			$username 		= isset($_SESSION['AUTHEN_USERNAME']) 	? $_SESSION['AUTHEN_USERNAME'] : '';
+			$password 		= isset($_SESSION['AUTHEN_PASSWORD']) 	? $_SESSION['AUTHEN_PASSWORD'] : '';
+
+			if($login_status !== 1):
+				if(empty($username) && empty($password)):
+					header("Location: login.php");
+					exit;
+				else:
+
+				endif;
+			else:
+
+			endif;
 		}
 }
 

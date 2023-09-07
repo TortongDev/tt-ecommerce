@@ -1,5 +1,7 @@
 <?php
-// require_once "./backend_shop_tt/authen/check_authen.php";
+require_once "./services/class/Connection.php";
+$checkAuthen = new Connection();
+$checkAuthen->authenPermission();
 
 ?>
 <!DOCTYPE html>
