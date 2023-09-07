@@ -64,45 +64,47 @@
     endif;
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <div id="wrapper">
+        <form action="" method="post">
+            <div class="form-group">
+                <input type="text" name="product_name"  class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="product_price" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="product_amount" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="product_user_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="product_img" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="product_detail" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="product_sub_detail" class="form-control">
+            </div>
 
-        <div class="form-group">
-            <input type="text" name="product_name"  class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="text" name="product_price" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="text" name="product_amount" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="text" name="product_user_id" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="text" name="product_img" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="text" name="product_detail" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="text" name="product_sub_detail" class="form-control">
-        </div>
-       
+            <button type="submit" name="process" value="insert_product">
+                บันทึก
+            </button>
 
-        <button type="submit" name="process" value="insert_product">
-            บันทึก
-        </button>
-
-    </form>
+        </form>
+    </div> 
+    
 </body>
 </html>
