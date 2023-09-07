@@ -1,5 +1,6 @@
 <?php
-    require_once "../class/Connection.php";
+
+    require_once "../services/class/Connection.php";
     $db = new Connection(true);
     $product_id         = isset($_POST['product_id']) ? htmlspecialchars(trim($_POST['product_id'])) : '';
     $product_name       = isset($_POST['product_name']) ? htmlspecialchars(trim($_POST['product_name'])) : '';
