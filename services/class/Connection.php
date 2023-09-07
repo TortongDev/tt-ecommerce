@@ -5,7 +5,7 @@ class Connection {
 		public $username 	= 'root';
 		public $password	= '';
 		// public $dbname 		= 'shopping_kaoyai';
-		public $dbname 		= 'db_atsamat';
+		public $dbname 		= 'atsamatd_atsamatd';
 		public $pdo;
 		public function __construct($status = false){
 
