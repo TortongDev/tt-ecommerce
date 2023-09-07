@@ -61,7 +61,7 @@ if(isset($_POST['process']) == 'insert_product'):
     $product_name       = isset($_POST['product_name'])     ? htmlspecialchars(trim($_POST['product_name'])) : '';
     $product_price      = isset($_POST['product_price'])     ? htmlspecialchars(trim($_POST['product_price'])) : '';
     $product_amount     = isset($_POST['product_amount'])   ? htmlspecialchars(trim($_POST['product_amount'])) : '';
-    $product_user_id    = $_SESSION['AUTHEN_USERNAME'];
+    $product_user_id    = $_SESSION['AUTHEN_USER_ID'];
     $product_img        = isset($_POST['product_img'])      ? htmlspecialchars(trim($_POST['product_img'])) : '';
     $product_detail     = isset($_POST['product_detail'])   ? htmlspecialchars(trim($_POST['product_detail'])) : '';
     $product_sub_detail = isset($_POST['product_sub_detail'])    ? htmlspecialchars(trim($_POST['product_sub_detail'])) : '';
@@ -78,10 +78,11 @@ if(isset($_POST['process']) == 'insert_product'):
             `product_amount`, 
             `product_type_name`, 
             `product_shop_name`, 
+            product_user_id,
             product_img,
             `product_detail`, 
             `product_sub_detail`
-            ) VALUES (?,?,?,?,?,?,?,?)
+            ) VALUES (?,?,?,?,?,?,?,?,?)
     ");
 
     $insertStmtProduct->execute(
@@ -91,6 +92,7 @@ if(isset($_POST['process']) == 'insert_product'):
             $product_amount,
             $product_type_name,
             $product_shop_name,
+            $product_user_id,
             $target_file,
             $product_detail,
             $product_sub_detail

@@ -98,42 +98,42 @@
             <div id="page-inner">
                 <form role="form" action="./post_product.php" enctype="multipart/form-data" method="post">
                     <div class="form-group">
-                        <label>product_name</label>
+                        <label>ชื่อสินค้า</label>
                         <input class="form-control" name="product_name" type="text">
-                        <p class="help-block">Help text here.</p>
+                        <p class="help-block">กรอกชื่อสินค้า.</p>
                     </div>
                     <div class="form-group">
-                        <label>product_price</label>
+                        <label>ราคา/หน่วย</label>
                         <input class="form-control" name="product_price" type="text">
-                        <p class="help-block">Help text here.</p>
+                        <p class="help-block">ราคา/หน่วย กรัม กิโลกรัม ชิ้น</p>
                     </div>
                     <div class="form-group">
-                        <label>product_amount</label>
+                        <label>จำนวน/หน่วย</label>
                         <input class="form-control" name="product_amount" type="text">
-                        <p class="help-block">Help text here.</p>
+                        <p class="help-block">จำนวน/หน่วย กรัม กิโลกรัม ชิ้น</p>
                     </div>
                     <!-- <input type="hidden" name="product_user_id" value="<?php @$_SESSION['product_user_id'];?>"> -->
                     <div class="form-group">
-                        <label>product_detail</label>
+                        <label>รายละเอียดสินค้า</label>
                         <input class="form-control" name="product_detail" type="text">
-                        <p class="help-block">Help text here.</p>
+                        <p class="help-block">รายละเอียดคร่าวๆ ของสินค้า</p>
                     </div>
                     <div class="form-group">
-                        <label>product_type_name</label>
+                        <label>ประเภทของสินค้า</label>
                         <input class="form-control" name="product_type_name" type="text">
-                    <p class="help-block">Help text here.</p>
+                    <p class="help-block">เลือกประเภทของสินค้า</p>
                     </div>
                     <div class="form-group">
-                        <label>product_shop_name</label>
+                        <label>ชื่อร้านค้า</label>
                         <input class="form-control" name="product_shop_name" type="text">
-                    <p class="help-block">Help text here.</p>
+                    <p class="help-block">สินค้านี้มาจากร้านไหน</p>
                     </div>
                    <div class="form-group">
                         <label for="">Picture</label>
                         <input type="file" name="fileToUpload" id="fileToUpload">
                     </div>
                     <div class="form-group">
-                        <label>product_sub_detail</label>
+                        <label>รายละเอียดสินค้าในหน้าสินค้า</label>
                         <textarea class="form-control" name="product_sub_detail" rows="3"></textarea>
                     </div>
               
