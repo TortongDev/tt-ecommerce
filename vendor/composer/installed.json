@@ -20,7 +20,11 @@
             },
             "time": "2015-07-22T18:31:08+00:00",
             "type": "library",
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-4": {
                     "Firebase\\JWT\\": "src"
@@ -92,7 +96,11 @@
                     "dev-master": "2.x-dev"
                 }
             },
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-0": {
                     "Google_": "src/"
@@ -139,7 +147,11 @@
             },
             "time": "2023-09-03T01:04:12+00:00",
             "type": "library",
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "files": [
                     "autoload.php"
@@ -192,7 +204,11 @@
             },
             "time": "2016-05-11T16:56:35+00:00",
             "type": "library",
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-4": {
                     "Google\\Auth\\": "src"
@@ -250,7 +266,11 @@
                     "dev-master": "6.2-dev"
                 }
             },
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -310,7 +330,11 @@
             },
             "time": "2023-05-21T12:31:43+00:00",
             "type": "library",
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -401,7 +425,11 @@
                     "dev-master": "1.0-dev"
                 }
             },
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -483,7 +511,11 @@
             },
             "time": "2022-06-09T08:53:42+00:00",
             "type": "library",
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-4": {
                     "Monolog\\": "src/Monolog"
@@ -555,7 +587,11 @@
             },
             "time": "2023-06-13T08:41:47+00:00",
             "type": "library",
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "files": [
                     "phpseclib/bootstrap.php"
@@ -661,7 +697,11 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-4": {
                     "Psr\\Cache\\": "src/"
@@ -713,7 +753,11 @@
                     "dev-master": "1.1.x-dev"
                 }
             },
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -769,7 +813,11 @@
                     "dev-master": "1.1.x-dev"
                 }
             },
+<<<<<<< HEAD
             "installation-source": "dist",
+=======
+            "installation-source": "source",
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             "autoload": {
                 "psr-4": {
                     "Psr\\Log\\": "Psr/Log/"

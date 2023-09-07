@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TT - E-Commerce</title>
+    <title>Kanji Farm Korat</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
@@ -49,11 +49,11 @@
                     <input type="number" name="product_amount" value="1" id="product_amount" class="form-control">
                     <div class="form-group">
                         <!-- <form action="./post_cart.php"> -->
-                            <input type="hidden" name="product_id">
-                            <input type="hidden" name="product_name">
-                            <input type="hidden" name="product_type">
-                            <input type="hidden" name="product_price">
-                            <input type="hidden" name="user_id">
+                            <input type="hidden" name="product_id" value="">
+                            <input type="hidden" name="product_name" value="">
+                            <input type="hidden" name="product_type" value="">
+                            <input type="hidden" name="product_price" value="">
+                            <input type="hidden" name="user_id" value="">
                             <button type="submit" class="btn btn-checkout">
                                 <i class="fa-solid fa-cart-plus"></i> <a href="./checkout_cart.php">เพิ่มลงตะกร้า</a>
                             </button>
@@ -88,18 +88,14 @@
             </section>
         </article>
     </div>
-    <footer>
-        <div class="container-footer">
-            <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
-            <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
-        </div>
-    </footer>
+    <?php include ('./footer-template.php'); ?>
 </div>
 </body>
+<script  src="./base_function.js"></script>
 <script>
-    
+    const amount = document.querySelector('#product_amount')
     document.addEventListener('DOMContentloaded',function(){
-        const amount = document.querySelector('#amount')
+        
         alert(2)
     })
     amount.addEventListener('change',()=>{
@@ -110,32 +106,7 @@
     }
     })
     
-    const app = Vue.createApp({
-        data() {
-            return {
-                detailStatus1: true,
-                detailStatus2: false,
-                detailStatus3: false
-            }
-        },methods: {
-            showDetail(id) {
-                
-                if(id == 2){
-                    this.detailStatus1 = false
-                    this.detailStatus2 = true
-                    this.detailStatus3 = false
-                }else if(id == 3){
-                    this.detailStatus1 = false
-                    this.detailStatus2 = false
-                    this.detailStatus3 = true
-                }else{
-                    this.detailStatus1 = true
-                    this.detailStatus2 = false
-                    this.detailStatus3 = false
-                }
-            }
-        },
-    })
+    const app = Vue.createApp(BaseControllers)
     app.mount('#wrapper')
 </script>
 </html>

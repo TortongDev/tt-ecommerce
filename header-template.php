@@ -44,17 +44,17 @@
 
     <div class="header-menu-responsive">
         <ul>
-            <li><i class="fa-solid fa-bars"></i></li>
+            <li><i class="fa-solid fa-bars" id="btnSlide" @click="btnSlide"></i></li>
         </ul>
     </div>
-    <div class="menu-slide">
+    <div class="menu-slide" >
         <ul class="sub-menu-slide">
-            <li>Function Shopping</li>
+            <li>เมนูคำสั่งซื้อ</li>
             <li><a href=""><i class="fa-regular fa-rectangle-list"></i> รายการสั่งซื้อสินค้า</a></li>
             <li><a href=""><i class="fa-solid fa-bag-shopping"></i> ประวัติการสั่งซื้อสินค้า</a></li>
             <li><a href=""><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
             <li><a href=""><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
-            <li>Function Shopping</li>
+            <li>เมนูทั่วไป</li>
             <li><a href=""><a class="main-text" href="#intro">รู้จักกับร้าน</a></a></li>
             <li><a href=""><a href="#product">แนะนำสินค้า</a></a></li>
             <li><a href=""><a href="#partner">ร้านค้า Partner</a></a></li>
