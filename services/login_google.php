@@ -3,8 +3,6 @@
 require_once "../vendor/autoload.php";
 require_once "./class/Connection.php";
 
-
-
 $db = new Connection(true);
 
 session_start();
