@@ -11,7 +11,6 @@ $product_id     = isset($_GET['product_id'])    ? $_GET['product_id'] : '';
 $product_name   = isset($_GET['product_name'])  ? $_GET['product_name'] : '';
 $product_price  = isset($_GET['product_price']) ? $_GET['product_price'] : '';
 
-
 if(!empty($_SESSION['cart'][$product_id])):
     $_SESSION['cart'][$product_id]['product_price'] += $product_price;
 else:
