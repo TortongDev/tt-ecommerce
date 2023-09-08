@@ -25,31 +25,39 @@ $checkAuthen->authenPermission();
                 Home > shopping > Coffee
             </h3>
         </div>
+        <?php 
+            $checkAuthen->openConnection();
+            $id = isset($_GET['product_id']) ? htmlspecialchars(trim($_GET['product_id'])) : '';
+            $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? AND product_id = ?");
+            $stmt_product->execute(array('1=1',$checkAuthen->id_decrypt($id)));
+            while($read =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
+        ?>
         <div class="container-shopping-product">
             
             <div class="col-shopping-1">
+                <!-- <div class="list-preview"></div>
                 <div class="list-preview"></div>
                 <div class="list-preview"></div>
                 <div class="list-preview"></div>
                 <div class="list-preview"></div>
                 <div class="list-preview"></div>
                 <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div>
+                <div class="list-preview"></div> -->
             </div>
             <div class="col-shopping-1">
                 <div class="img-preview">
-                    <img src="https://f.ptcdn.info/923/033/000/1438186017-P1170303JP-o.jpg" alt="">
+                    <img src="./backend_disc/bs-advance-admin/advance-admin/<?php echo $read['product_img'] ?>" alt="">
                 </div>
             </div>
             <div class="col-shopping-1">
+                
                 <div class="shopping-detail">
-                    <h2 class="main-text margin-block-0">ผักกาดขาว กรอบๆปลูกระบบ ไฮโดโปรนิกส์ จากดินภูเขา เขาใหญ่</h2>
-                    <h3 class="sub-text">ประเภท : ผักไฮโดโปรนิกส์  </h3>
-                    <h3 class="main-text">รหัสสินค้า : C10001</h3>
-                    <h3 class="main-text">สถานะของสินค้า : สินค้าพร้อมส่ง</h3>
+                    <h2 class="main-text margin-block-0"><?php echo $read['product_name'] ?></h2>
+                    <h3 class="sub-text">ประเภท :  <?php echo $read['product_type_name'] ?></h3>
+                    <h3 class="main-text">รหัสสินค้า : <?php echo $read['product_member_id'] ?><?php echo $read['product_id'] ?></h3>
+                    <h3 class="main-text">สถานะของสินค้า : <?php if($read['product_status'] === 1 ): echo "พร้อมส่ง"; else: echo "รอสินค้า"; endif; ?></h3>
                     <br><hr>
-                    <h1 class="main-text text-orange margin-block-0">100 THB</h1>
+                    <h1 class="main-text text-orange margin-block-0"> <?php echo $read['product_price'] ?> THB</h1>
                     <br>
                     <label for="amount" class="sub-text">เลือกจำนวน</label>
                     <input type="number" name="product_amount" value="1" id="product_amount" class="form-control">
@@ -69,6 +77,7 @@ $checkAuthen->authenPermission();
                 </div>
             </div>
         </div>
+
         <article class="shopping">
             <div class="tabbar-detail">
                 <div class="grid-3"> 
@@ -93,6 +102,7 @@ $checkAuthen->authenPermission();
                 </div>
             </section>
         </article>
+        <?php endwhile; ?>
     </div>
     <?php include ('./footer-template.php'); ?>
 </div>

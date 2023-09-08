@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿<?php
+   
+    require_once "../../../autoload_class.php";
+    $connection = new Connection(true);
+    require_once "./checkAdmin.php";
+    $checkadmin = new checkAdmin;
+    $checkadmin->checkAdmin();
+    // $connection
+    $stmt_select = $connection->pdo->prepare("SELECT * FROM kanji_product_type WHERE ?");
+    $stmt_select->execute(array('1=1'));
+?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -24,7 +35,7 @@
         <div id="page-wrapper">
             <div id="page-inner">
                 <h2>ข้อมูลประเภทสินค้า</h2>
-                <form role="form" action="./post_product.php" enctype="multipart/form-data" method="post">
+                <form role="form" action="./post_product_type.php" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                         <label>รหัสประเภท</label>
                         <input class="form-control" name="product_type_id" type="text">
@@ -61,10 +72,29 @@
                                     <th>ประเภท</th>
                                     <th>รายละเอียด</th>
                                     <th>สถานะการใช้งาน</th>
-                                    <th>เพิ่ม / ลบ / แก้ไข</th>
+                                    <th/</th>
                                    
                                 </tr>
                             </thead>
+                            <tbody>
+                                <?php
+                                    $i = 1;  
+                                    while($r = $stmt_select->fetch(PDO::FETCH_ASSOC)): 
+                                ?>
+                                <tr>
+                                    <td><?php echo $i++ ?></td>
+                                    <td><?php echo $r['product_type_id'].$r['type_id'];; ?></td>
+                                    <td><?php echo $r['product_type_name']; ?></td>
+                                    <td><?php echo $r['product_type_detail']; ?></td>
+                                    <td><?php echo $r['product_type_status']; ?></td>
+                                    
+                                    <td>
+                                        <button class="btn btn-warning">แก้ไข</button>
+                                        <button class="btn btn-danger">ลบ</button>
+                                    </td>
+                                </tr>                                
+                                <?php endwhile; ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>

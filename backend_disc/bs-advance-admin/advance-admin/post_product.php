@@ -1,5 +1,4 @@
 <?php
-
 require_once "../../../services/class/Connection.php";
 
 if(isset($_POST['process']) == 'insert_product'):    
@@ -57,22 +56,26 @@ if(isset($_POST['process']) == 'insert_product'):
 
 
 
-
+    $product_member_id    = "PROKJ-";
+   
     $product_name       = isset($_POST['product_name'])     ? htmlspecialchars(trim($_POST['product_name'])) : '';
     $product_price      = isset($_POST['product_price'])     ? htmlspecialchars(trim($_POST['product_price'])) : '';
     $product_amount     = isset($_POST['product_amount'])   ? htmlspecialchars(trim($_POST['product_amount'])) : '';
+    $option_price     = isset($_POST['option_price'])   ? htmlspecialchars(trim($_POST['option_price'])) : '';
+    $option_amount     = isset($_POST['option_amount'])   ? htmlspecialchars(trim($_POST['option_amount'])) : '';
     $product_user_id    = $_SESSION['AUTHEN_USER_ID'];
     $product_img        = isset($_POST['product_img'])      ? htmlspecialchars(trim($_POST['product_img'])) : '';
     $product_detail     = isset($_POST['product_detail'])   ? htmlspecialchars(trim($_POST['product_detail'])) : '';
     $product_sub_detail = isset($_POST['product_sub_detail'])    ? htmlspecialchars(trim($_POST['product_sub_detail'])) : '';
     $product_type_name  = isset($_POST['product_type_name']) ? htmlspecialchars(trim($_POST['product_type_name'])) : '';
-    $product_shop_name  = isset($_POST['product_shop_name'])      ? htmlspecialchars(trim($_POST['product_shop_name'])) : '';
+    $product_shop_name  = isset($_POST['product_shop_name'])      ? htmlspecialchars(trim($_POST['partner_name'])) : '';
     $product_type_id    = isset($_POST['product_type_id'])   ? htmlspecialchars(trim($_POST['product_type_id'])) : '';
     $product_shop_id    = isset($_POST['product_shop_id'])    ? htmlspecialchars(trim($_POST['product_shop_id'])) : '';
    
     $insertStmtProduct = $db->pdo->prepare(
         "
         INSERT INTO `kanji_products`(
+            product_member_id,
             `product_name`, 
             `product_price`, 
             `product_amount`, 
@@ -81,12 +84,15 @@ if(isset($_POST['process']) == 'insert_product'):
             product_user_id,
             product_img,
             `product_detail`, 
-            `product_sub_detail`
-            ) VALUES (?,?,?,?,?,?,?,?,?)
+            `product_sub_detail`,
+            option_price,
+            option_amount
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
     ");
 
     $insertStmtProduct->execute(
         array(
+            $product_member_id,
             $product_name,
             $product_price,
             $product_amount,
@@ -95,7 +101,9 @@ if(isset($_POST['process']) == 'insert_product'):
             $product_user_id,
             $target_file,
             $product_detail,
-            $product_sub_detail
+            $product_sub_detail,
+            $option_price, 
+            $option_amount    
         )
     );
     echo "success";
