@@ -98,7 +98,11 @@ class InstalledVersions
     {
         foreach (self::getInstalled() as $installed) {
             if (isset($installed['versions'][$packageName])) {
+<<<<<<< HEAD
+                return $includeDevRequirements || !isset($installed['versions'][$packageName]['dev_requirement']) || $installed['versions'][$packageName]['dev_requirement'] === false;
+=======
                 return $includeDevRequirements || empty($installed['versions'][$packageName]['dev_requirement']);
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             }
         }
 
@@ -119,7 +123,11 @@ class InstalledVersions
      */
     public static function satisfies(VersionParser $parser, $packageName, $constraint)
     {
+<<<<<<< HEAD
+        $constraint = $parser->parseConstraints((string) $constraint);
+=======
         $constraint = $parser->parseConstraints($constraint);
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
         $provided = $parser->parseConstraints(self::getVersionRanges($packageName));
 
         return $provided->matches($constraint);
@@ -328,7 +336,13 @@ class InstalledVersions
                 if (isset(self::$installedByVendor[$vendorDir])) {
                     $installed[] = self::$installedByVendor[$vendorDir];
                 } elseif (is_file($vendorDir.'/composer/installed.php')) {
+<<<<<<< HEAD
+                    /** @var array{root: array{name: string, pretty_version: string, version: string, reference: string|null, type: string, install_path: string, aliases: string[], dev: bool}, versions: array<string, array{pretty_version?: string, version?: string, reference?: string|null, type?: string, install_path?: string, aliases?: string[], dev_requirement: bool, replaced?: string[], provided?: string[]}>} $required */
+                    $required = require $vendorDir.'/composer/installed.php';
+                    $installed[] = self::$installedByVendor[$vendorDir] = $required;
+=======
                     $installed[] = self::$installedByVendor[$vendorDir] = require $vendorDir.'/composer/installed.php';
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
                     if (null === self::$installed && strtr($vendorDir.'/composer', '\\', '/') === strtr(__DIR__, '\\', '/')) {
                         self::$installed = $installed[count($installed) - 1];
                     }
@@ -340,12 +354,25 @@ class InstalledVersions
             // only require the installed.php file if this file is loaded from its dumped location,
             // and not from its source location in the composer/composer package, see https://github.com/composer/composer/issues/9937
             if (substr(__DIR__, -8, 1) !== 'C') {
+<<<<<<< HEAD
+                /** @var array{root: array{name: string, pretty_version: string, version: string, reference: string|null, type: string, install_path: string, aliases: string[], dev: bool}, versions: array<string, array{pretty_version?: string, version?: string, reference?: string|null, type?: string, install_path?: string, aliases?: string[], dev_requirement: bool, replaced?: string[], provided?: string[]}>} $required */
+                $required = require __DIR__ . '/installed.php';
+                self::$installed = $required;
+=======
                 self::$installed = require __DIR__ . '/installed.php';
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             } else {
                 self::$installed = array();
             }
         }
+<<<<<<< HEAD
+
+        if (self::$installed !== array()) {
+            $installed[] = self::$installed;
+        }
+=======
         $installed[] = self::$installed;
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
 
         return $installed;
     }

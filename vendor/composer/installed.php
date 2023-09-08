@@ -1,9 +1,15 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
+<<<<<<< HEAD
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'f29449f21faa978e5fb720538ba4f243f4d22e6e',
+=======
         'pretty_version' => 'dev-ttshop',
         'version' => 'dev-ttshop',
         'reference' => '33931484f7593861245cfb31850fb297a76de4be',
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +17,15 @@
     ),
     'versions' => array(
         '__root__' => array(
+<<<<<<< HEAD
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'f29449f21faa978e5fb720538ba4f243f4d22e6e',
+=======
             'pretty_version' => 'dev-ttshop',
             'version' => 'dev-ttshop',
             'reference' => '33931484f7593861245cfb31850fb297a76de4be',
+>>>>>>> 72e4bda61cd6a5a9c616ee597cf32af00031cd17
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

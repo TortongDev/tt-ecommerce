@@ -1,3 +1,9 @@
+<?php
+    require_once "./services/class/Connection.php";
+    $checkAuthen = new Connection();
+    $checkAuthen->authenPermission();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +63,7 @@
                                 <td>100 <i class="fa-solid fa-baht-sign"></i></td>
                             </tr>
                             <tr>
+                                
                                 <td>3</td>
                                 <td>ผักบุ้ง</td>
                                 <td>50 THB/ชิ้น</td>
