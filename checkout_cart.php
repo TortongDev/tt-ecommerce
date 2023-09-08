@@ -3,6 +3,13 @@
     $checkAuthen = new Connection();
     $checkAuthen->authenPermission();
 
+
+    $product_id     = isset($_GET['product_id'])            ? htmlspecialchars(trim($_GET['product_id'])) : '';
+    $product_member_id = isset($_GET['product_member_id'])  ? htmlspecialchars(trim($_GET['product_member_id'])) : '';;
+    $product_name   = isset($_GET['product_name'])          ? htmlspecialchars(trim($_GET['product_name'])) : '';;
+    $product_type   = isset($_GET['product_type'])          ? htmlspecialchars(trim($_GET['product_type'])) : '';;
+    $product_price  = isset($_GET['product_price'])         ? htmlspecialchars(trim($_GET['product_price'])) : '';;
+    $user_id        = isset($_GET['user_id'])               ? htmlspecialchars(trim($_GET['user_id'])) : '';;
 ?>
 <!DOCTYPE html>
 <html lang="en">
