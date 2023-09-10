@@ -5,10 +5,15 @@ const BaseControllers = {
         return {
             detailStatus1: true,
             detailStatus2: false,
-            detailStatus3: false
+            detailStatus3: false,
+            amount: '',
+            price:'',
+            total_price:'',
+            value1:''
         }
     },
     methods: {
+      
         showDetail(id) {
             if(id == 2){
                 this.detailStatus1 = false
@@ -35,8 +40,12 @@ const BaseControllers = {
             }else{
                 this.menuSlide = 1
             }
-      },
+      },input1(){
+        console.log(1);
+      }
         
-    }
+    },mounted() {
+      
+    },
   }
   

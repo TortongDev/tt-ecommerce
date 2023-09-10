@@ -103,3 +103,4 @@
     app.mount('#wrapper')
 </script>
 </html>
+<?php exit; ?>

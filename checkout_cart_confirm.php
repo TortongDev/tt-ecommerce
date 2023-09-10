@@ -45,6 +45,9 @@
             margin: auto;
             text-align: center;
         }
+        .list-payment  {
+            list-style: auto;
+        }
     </style>
     
 </head>
@@ -57,38 +60,18 @@
     <div class="containers">
         <article class="container-checkout-cart">
             
-            <section class="list-cart" style="overflow: auto;">
-                <table class="table">
-                    <thead style="overflow: auto;">
-                        <tr>
-                            <th>#</th>
-                            <th>รหัสสินค้า</th>
-                            <th >รายการสินค้า</th>
-                            <th>จำนวน</th>
-                            <th>ราคา</th>
-                            <th>ลบ</th>
-                        </tr>
-                    </thead>
-                    <tbody style="overflow: auto;">
-                        <?php 
-                            $countID = 1;
-                            foreach($_SESSION['CART'] as $key => $value):  
-                             
-                        ?>
-                        <form method="get">
-                        <tr>
-                            <td><?php echo $countID++; ?></td>
-                            <td><?php echo $key; ?></td>
-                            <td><?php echo $value['product_name']; ?></td>
-                            <td><input type="number" id="<?php echo $key ?>" value="<?php echo $value['product_amount']; ?>" name="p_amount" class="form-control"></td>
-                            <td><?php echo $value['product_price1']; ?></td>
-                            <td><a href="./delete_cart.php?id=<?php echo $key;?>" class="btn" style="margin:5px !important">Delete</a></td>
-                        </tr>
-                        </form>
-                        <?php endforeach; ?>
-                     
-                    </tbody>
-                </table>
+            <section class="list-address" style="overflow: auto;">
+                <div class="fname">ชื่อ</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">นามสกุล</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">เบอร์โทรศัพท์</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+
             </section>
             <section class="checkout-form">
                 <table class="table" style="">
@@ -117,7 +100,7 @@
                           
                         <tr>
                             <td>รวมราคาสินค้า</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"> <div id="priceAll"></div><i class="fa-solid fa-baht-sign"></i></td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><?php echo $_SESSION['total'];?><i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
 
                         <tr>
@@ -126,16 +109,23 @@
                         </tr>
                         <tr>
                             <td>รวมราคาทั้งหมด</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><div id="totalAll"></div><i class="fa-solid fa-baht-sign"></i></td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><?php echo $_SESSION['sumtotal'];?><i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                      
                         <?php endif; ?>
                     </tbody>
                 </table>
+                <div class="payment-de">
+                    <h3 class="main-text">รายละเอียดการชำระเงิน</h3>
+                    <ul class="list-payment">
+                        <li style="font-size: 12pt">โอนเงินที่พร้อมเพย์ : 0887778854</li>
+                        <li style="font-size: 12pt">โอนเงินเสร็จ ทำการแจ้งโอนเงินได้ที่ <a href="">แจ้งโอนเงิน</a></li>
+                    </ul>
+                </div>
                 <div class="checkout-footer">
                     <button class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
                     <button class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button>
-                    <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ชำระเงิน</a>
+                    <button class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ชำระเงิน</button>
 
                 </div>
             </section>
