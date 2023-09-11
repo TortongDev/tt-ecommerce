@@ -55,22 +55,22 @@
 <div id="wrapper">
     <?php include ('./header-template.php'); ?>
     <div class="tabbar-checkout">
-        <h2 class="">ตะกร้าสินค้า</h2>
+        <h2 class="">ที่อยู่จัดส่ง</h2>
     </div>
     <div class="containers">
         <article class="container-checkout-cart">
             
             <section class="list-address" style="overflow: auto;">
-                <div class="fname">ชื่อ</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">นามสกุล</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
-                <div class="fname">เบอร์โทรศัพท์</div><div class="fname-form"><input type="text" name="fname" class="form-control"></div>
+                <div class="fname">ชื่อ</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อจริง"></div>
+                <div class="fname">นามสกุล</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="นามสกุลจริง"></div>
+                <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="บ้านเลขที่"></div>
+                <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="หมู่ที่"></div>
+                <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อหมู่บ้าน"></div>
+                <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อตำบล"></div>
+                <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่ออำเภอ"></div>
+                <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อจังหวัด"></div>
+                <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="รหัสไปรษณี"></div>
+                <div class="fname">เบอร์โทร</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="เบอร์โทรศัพท์"></div>
 
             </section>
             <section class="checkout-form">
@@ -100,23 +100,29 @@
                           
                         <tr>
                             <td>รวมราคาสินค้า</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><?php echo $_SESSION['total'];?><i class="fa-solid fa-baht-sign"></i></td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><?php echo $_SESSION['total'];?> &nbsp; <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
 
                         <tr>
-                            <td>ค่าจัดส่ง</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;">40.00 <i class="fa-solid fa-baht-sign"></i></td>
+                            <td><u style="color:red;">หัก</u> ค่าจัดส่ง</td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;">40.00 &nbsp; <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                         <tr>
-                            <td>รวมราคาทั้งหมด</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><?php echo $_SESSION['sumtotal'];?><i class="fa-solid fa-baht-sign"></i></td>
+                            <td>รวมราคา + ค่าจัดส่ง</td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"> <u><?php echo $_SESSION['sumtotal'];?> </u> &nbsp; <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                      
                         <?php endif; ?>
                     </tbody>
                 </table>
                 <div class="payment-de">
-                    <h3 class="main-text">รายละเอียดการชำระเงิน</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th colspan="2">ขั้นตอนชำระเงิน</th>
+                        </tr>
+                    </thead>
+                    </table>
                     <ul class="list-payment">
                         <li style="font-size: 12pt">โอนเงินที่พร้อมเพย์ : 0887778854</li>
                         <li style="font-size: 12pt">โอนเงินเสร็จ ทำการแจ้งโอนเงินได้ที่ <a href="">แจ้งโอนเงิน</a></li>

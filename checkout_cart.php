@@ -58,7 +58,7 @@
         <article class="container-checkout-cart">
             
             <section class="list-cart" style="overflow: auto;">
-                <table class="table">
+                <table class="table" id="table">
                     <thead style="overflow: auto;">
                         <tr>
                             <th>#</th>
@@ -72,20 +72,28 @@
                     <tbody style="overflow: auto;">
                         <?php 
                             $countID = 1;
-                            foreach($_SESSION['CART'] as $key => $value):  
-                             
+                            $cart = @$_SESSION['CART'];
+                            if(!empty($cart)):
+                            foreach($cart  as $key => $value):  
                         ?>
                         <form method="get">
                         <tr>
                             <td><?php echo $countID++; ?></td>
                             <td><?php echo $key; ?></td>
                             <td><?php echo $value['product_name']; ?></td>
-                            <td><input type="number" id="<?php echo $key ?>" value="<?php echo $value['product_amount']; ?>" name="p_amount" class="form-control"></td>
-                            <td><?php echo $value['product_price1']; ?></td>
-                            <td><a href="./delete_cart.php?id=<?php echo $key;?>" class="btn" style="margin:5px !important">Delete</a></td>
+                            <td><input type="number" style="width:50px" id="<?php echo $key ?>" value="<?php echo $value['product_amount']; ?>" name="p_amount" class="form-control"></td>
+                            <td><?php echo $value['product_price']; ?></td>
+                            <td>
+                                <a style="padding:3px;color:red" href="./delete_cart.php?id=<?php echo $key;?>" class="btn" style="margin:5px !important">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
                         </tr>
                         </form>
-                        <?php endforeach; ?>
+                        <?php
+                            endforeach; 
+                            endif;
+                        ?>
                      
                     </tbody>
                 </table>
@@ -117,25 +125,39 @@
                           
                         <tr>
                             <td>รวมราคาสินค้า</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"> <div id="priceAll"></div><i class="fa-solid fa-baht-sign"></i></td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"> <div id="priceAll"></div>&nbsp; <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
 
                         <tr>
-                            <td>ค่าจัดส่ง</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;">40.00 <i class="fa-solid fa-baht-sign"></i></td>
+                            <td><u style="color:red;">หัก</u> ค่าจัดส่ง</td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;">40.00 &nbsp;<i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                         <tr>
-                            <td>รวมราคาทั้งหมด</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><div id="totalAll"></div><i class="fa-solid fa-baht-sign"></i></td>
+                            <td>รวมราคาสินค้า + ค่าจัดส่ง</td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;"><u><div id="totalAll"></div></u> &nbsp; <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                      
                         <?php endif; ?>
                     </tbody>
                 </table>
+                <div class="code">
+                    <table class="">
+                            <tr>
+                                <th colspan="2">โค้ดส่วนลด (ถ้ามี)</th>
+                            </tr>
+                           
+                    </table>
+                    <div class="grid-2">
+                    <input type="text" name="code" id="code" min="8" max="10" class="form-control">
+                        <a href="" class="btn-xs btn-code"><i class="fa-solid fa-tag"></i>ใช้โค้ด</a>
+                    </div>
+                <!-- <td></td> -->
+                    
+                </div>
                 <div class="checkout-footer">
-                    <button class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
-                    <button class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button>
-                    <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ชำระเงิน</a>
+                    <a href="./shopping_online.php" class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </a>
+                    <a href="./clear_cart.php?cls=1" class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</a>
+                    <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
 
                 </div>
             </section>

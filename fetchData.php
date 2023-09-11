@@ -6,8 +6,7 @@ $valueID = $_GET['valueID'];
 
 
     $_SESSION['CART'][$id]['product_amount'] = $valueID;
-    $price = $_SESSION['CART'][$id]['product_price1'];
-    $_SESSION['CART'][$id]['product_price'] = $valueID * $_SESSION['CART'][$id]['product_price1'];
+    $_SESSION['CART'][$id]['product_total_price'] = $valueID * $_SESSION['CART'][$id]['product_price'];
 
 
     $totalAmount = 0; // เริ่มต้นจากผลรวมเป็น 0
@@ -15,7 +14,7 @@ $valueID = $_GET['valueID'];
     foreach ($_SESSION['CART'] as $item) {
         // var_dump($item);
             $totalAmount += $item['product_amount'];
-            $total_price +=  $item['product_price'];
+            $total_price +=  $item['product_total_price'];
     }
     $total      =  $total_price;
     $sumtotal   =  $total_price + 40;

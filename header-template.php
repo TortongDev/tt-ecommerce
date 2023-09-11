@@ -18,7 +18,7 @@
                 </li>
                 <li><i class="fa-regular fa-rectangle-list"></i> รายการสั่งซื้อสินค้า</li>
                 <li><i class="fa-solid fa-bag-shopping"></i> ประวัติการสั่งซื้อสินค้า</li>
-                <li><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</li>
+                <li> <a href="./checkout_cart.php"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a> </li>
                 <li><a href="./logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
             </ul>
         </div>

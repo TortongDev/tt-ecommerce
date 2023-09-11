@@ -13,8 +13,59 @@ $checkAuthen->authenPermission();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     
     <link rel="stylesheet" href="./style.css">
+    <style>
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .autoplay-progress {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            z-index: 10;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--swiper-theme-color);
+        }
+        .autoplay-progress svg {
+            --progress: 0;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            stroke-width: 4px;
+            stroke: var(--swiper-theme-color);
+            fill: none;
+            stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+            stroke-dasharray: 125.6;
+            transform: rotate(-90deg);
+        }
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -22,14 +73,39 @@ $checkAuthen->authenPermission();
     <div class="container">
         <!-- รู้จักกับร้าน -->
         <article class="intro" id="intro">
-            <section class="background-shop-promote header-img" style="overflow: hidden;">
+            <!-- <section class="background-shop-promote header-img" style="overflow: hidden;"> -->
                 <!-- <img src="./kanji_farm.jpg" class="img-action header-img"  alt=""> -->
+            <!-- </section> -->
+            <section class="header-img" style="overflow: hidden;">
+                <img src="./img-shop/Fresh _ Healthy.jpg" class="img-action header-img"  alt="">
             </section>
             <br>
             <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>
             <center><h3 class="sub-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam necessitatibus sint maxime error voluptatum eveniet fugit repellat quas possimus, cupiditate dolor rerum nobis expedita? Rerum cumque quae in, ipsum corrupti, minima impedit nisi tenetur, quaerat tempora aperiam cupiditate voluptates nostrum nobis? Porro, at id, ad ipsam aliquid expedita pariatur ullam reprehenderit itaque eligendi voluptas tempora, debitis aut totam exercitationem cum dignissimos quidem est? Alias laboriosam animi modi. Distinctio cumque quo, nemo velit, ex dicta maiores voluptatum excepturi autem amet optio. Laboriosam cupiditate dolorum expedita consequuntur totam, hic esse placeat unde blanditiis est inventore accusamus! Quos laborum optio est magnam doloremque.</h3></center>
             <center>
-                
+                <br>
+                 <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./img-shop/Fresh _ Healthy.jpg" alt=""></div>
+                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./img-shop/Cos-Lettuce.jpg" alt=""></div>
+                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./img-shop/เรดโอ๊ค.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                    <div class="autoplay-progress">
+                    <svg viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20"></circle>
+                    </svg>
+                    <span></span>
+                    </div>
+                </div>
+                <br>
+                <div class="youtube">
+                    <iframe width="90%" height="500px" src="https://www.youtube.com/embed/lsvVtbm--Zw?si=RV2YQPSygOMu81-t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>            
                 <div class="container-shop-highlight">
                     <div class="shop-highlight">
                         <img src="https://asv-ptgenergy-backoffice-api-prod.azurewebsites.net/images/banner-pd.jpg" alt="" class="pic-highlight">
@@ -192,8 +268,39 @@ $checkAuthen->authenPermission();
     
 </div>
 </body>
+
+ <!-- Initialize Swiper -->
+ <script>
+   document.addEventListener('DOMContentLoaded',()=>{
+        const progressCircle = document.querySelector(".autoplay-progress svg");
+        const progressContent = document.querySelector(".autoplay-progress span");
+        var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        on: {
+            autoplayTimeLeft(s, time, progress) {
+            progressCircle.style.setProperty("--progress", 1 - progress);
+            progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+            }
+        }
+        });
+   })
+  </script>
 <!-- นำเข้าไฟล์ Base Controller -->
 <script  src="./base_function.js"></script>
+
 <script>
     const app = Vue.createApp(BaseControllers,{
         data() {

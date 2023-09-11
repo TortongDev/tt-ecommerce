@@ -50,32 +50,35 @@ $checkAuthen->authenPermission();
                 </div>
             </div>
             <div class="col-shopping-1">
-                
-                <div class="shopping-detail">
-                    <h2 class="main-text margin-block-0"><?php echo $read['product_name'] ?></h2>
-                    <h3 class="sub-text">ประเภท :  <?php echo $read['product_type_name'] ?></h3>
-                    <h3 class="main-text">รหัสสินค้า : <?php echo $read['product_member_id'] ?><?php echo $read['product_id'] ?></h3>
-                    <h3 class="main-text">สถานะของสินค้า : <?php if($read['product_status'] === 1 ): echo "พร้อมส่ง"; else: echo "รอสินค้า"; endif; ?></h3>
-                    <br><hr>
-                    <h1 class="main-text text-orange margin-block-0"> <?php echo $read['product_price'] ?> THB</h1>
-                    <br>
-                    <label for="amount" class="sub-text">เลือกจำนวน</label>
-                    <input type="number" name="product_amount" value="1" id="product_amount" class="form-control">
-                    <div class="form-group">
-                        <!-- <form action="./post_cart.php"> -->
-                            <input type="hidden" name="product_id" value="<?php echo $read['product_id'] ?>">
-                            <input type="hidden" name="product_member_id" value="<?php echo $read['product_member_id'].$read['product_id'] ?>">
-                            <input type="hidden" name="product_name" value="<?php echo $read['product_name'] ?>">
-                            <input type="hidden" name="product_type" value="<?php echo $read['product_type_name'] ?>">
-                            <input type="hidden" name="product_price" value="<?php echo $read['product_price'] ?>">
-                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['AUTHEN_USER_ID'] ?>">
-                            <button type="submit" class="btn btn-checkout">
-                                <i class="fa-solid fa-cart-plus"></i> <a href="./checkout_cart.php">เพิ่มลงตะกร้า</a>
-                            </button>
-                        <!-- </form> -->
+                <form action="./post_cart.php" method="POST">
+                    <div class="shopping-detail">
+                        <h2 class="main-text margin-block-0"><?php echo $read['product_name'] ?></h2>
+                        <h3 class="sub-text">ประเภท :  <?php echo $read['product_type_name'] ?></h3>
+                        <h3 class="main-text">รหัสสินค้า : <?php echo $read['product_member_id'] ?><?php echo $read['product_id'] ?></h3>
+                        <h3 class="main-text">สถานะของสินค้า : <?php if($read['product_status'] === 1 ): echo "พร้อมส่ง"; else: echo "รอสินค้า"; endif; ?></h3>
+                        <br><hr>
+
+                        <h1 class="main-text text-orange margin-block-0"> <?php echo $read['product_price'] ?> THB</h1>
+                        <br>
+                        <label for="amount" class="sub-text">เลือกจำนวน</label>
+                        <input type="number" name="product_amount" value="1" id="product_amount" class="form-control">
+                        <div class="form-group">
+                    
+                                <input type="hidden" name="product_id" value="<?php echo $read['product_id'] ?>">
+                                <input type="hidden" name="product_member_id" value="<?php echo $read['product_member_id'].$read['product_id'] ?>">
+                                <input type="hidden" name="product_name" value="<?php echo $read['product_name'] ?>">
+                                <input type="hidden" name="product_type" value="<?php echo $read['product_type_name'] ?>">
+                                <input type="hidden" name="product_price" value="<?php echo $read['product_price'] ?>">
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['AUTHEN_USER_ID'] ?>">
                         
+                                <button type="submit" class="btn btn-checkout">
+                                    <i class="fa-solid fa-cart-plus"></i> เพิ่มลงตะกร้า
+                                </button>
+                            
+                            
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -110,18 +113,15 @@ $checkAuthen->authenPermission();
 </body>
 <script  src="./base_function.js"></script>
 <script>
+   document.addEventListener('DOMContentLoaded',()=>{
     const amount = document.querySelector('#product_amount')
-    document.addEventListener('DOMContentloaded',function(){
-        
-        alert(2)
-    })
     amount.addEventListener('change',()=>{
-        
         if(amount.value < 1){
             amount.value = 1
-            alert('Not < 1');
+            alert('ไม่สามารถเลือกจำนวนน้อยกว่า 1 ชิ้นได้');
     }
     })
+   })
     
     const app = Vue.createApp(BaseControllers)
     app.mount('#wrapper')
