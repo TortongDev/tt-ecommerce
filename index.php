@@ -142,62 +142,28 @@ $checkAuthen->authenPermission();
             <center><h3 class="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่  
             <a style="color: blue;" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h3></center>
             <br>
-          
+            
             <section class="container-product">
+                <?php
+                        $checkAuthen->openConnection();
+                        $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT 6");
+                        $stmt_product->execute(array('1=1'));
+                        while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
+                ?>
                 <div class="box-product">
                     <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                        <img class="img-action" src="./img-shop/Cos-Lettuce.jpg" alt="">
+                    <img class="img-action" src="./backend_disc/bs-advance-admin/advance-admin/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
                     </div>
-                    <h3><a href="./shop_product.php">Cos Lettuce or Romaine Lettuce (กรีนคอส)</a></h3>
-                    <h4 class="sub-text short-text">ผักสลัดคอส (Cos Lettuce) หรือผักกาดโรเมน (Romaine Lettuce) จุดเด่นคือความกรอบ ใบเรียวยาวสีเขียวตลอดทั้งใบ ไม่มีกลิ่นเหม็นเขียว นิยมรับประทานเป็นอันดับต้น ๆ </h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
+                    <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
+                    <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>
+                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i> 
+                        <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
+                         / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
+                    </center></h4>
                 </div>
-                <div class="box-product">
-                <!-- <div class="shadow-box"></div> -->
-                    <div class="img-profile">
-                        <img class="img-action" src="./img-shop/Frillice_Ice_Berg.jpg" alt="">
-                    </div>
-                    <h3>Frillice Ice Berg Lettuce (ฟิลเลย์ไอซ์เบิร์ก)</h3>
-                    <h4 class="sub-text short-text">ฟิลเลย์ไอซ์เบิร์ก (Frillice Ice Berg Lettuce) คือ ผักสลัดชนิดหนึ่ง ใบมีสีเขียวอ่อนถึงสีเขียวเข้ม เรียวยาวเป็นทรงพุ่ม ปลายใบหยิกงอเป็นฝอย ๆ เรียงชิดติดกัน โคนต้นมีความชุ่มน้ำ ทำให้ดูอวบ</h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
-                </div>
-                <div class="box-product">
-                <!-- <div class="shadow-box"></div> -->
-                    <div class="img-profile">
-                        <img class="img-action" src="./img-shop/green-oak-1.jpg" alt="">
-                    </div>
-                    <h3>Green Oak Lettuce (กรีนโอ๊ค ) </h3>
-                    <h4 class="sub-text short-text">Green Oak Lettuce (กรีนโอ๊ค ) · ช่วยในเรื่องของระบบการย่อยอาหาร · วิตามินบีสูง · วิตามินซีสูง · ไฟเบอร์สูงช่วยเบาเทาอาการท้องผูก · บำรุงสายตา · บำรุงเส้นผม  </h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
-                </div>
-                <div class="box-product">
-                <!-- <div class="shadow-box"></div> -->
-                    <div class="img-profile">
-                        <img class="img-action" src="./img-shop/MG_0293-Selected.jpg" alt="">
-                    </div>
-                    <h3>MINI COS ORGANIC (มินิคอส ออร์แกนิค).</h3>
-                    <h4 class="sub-text short-text">MINI COS ORGANIC ราคากิโลกรัมละ 100 บาท. กากใยสูงช่วยในเรื่องของระบบขับถ่าย มีโพรแทสเซียม และกรดโฟเลตสูง มีสารต้านอนุมูลอิสระเพื่อช่วยลดความเสื่อมของจอประสาทตาในผู้สูงอายุ </h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
-                </div>
-                <div class="box-product">
-                <!-- <div class="shadow-box"></div> -->
-                    <div class="img-profile">
-                        <img class="img-action" src="./img-shop/original-1634632690275.jpg" alt="">
-                    </div>
-                    <h3>ผักชี (ชื่อวิทยาศาสตร์: Coriandrum sativum)</h3>
-                    <h4 class="sub-text short-text">ผักชีเป็นผักที่ปลูกง่าย และไม่ค่อยพบโรคหรือแมลงศัตรูพืชมากนัก เนื่องจากมีกลิ่นน้ำมันหอมระเหยที่ช่วยไล่แมลงได้ มีหลักฐานการปลูกในประเทศอียิปต์นานกว่า 3500 ปี. </h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
-                </div>
-                <div class="box-product">
-                <!-- <div class="shadow-box"></div> -->
-                    <div class="img-profile">
-                        <img class="img-action" src="./img-shop/เรดโอ๊ค.jpg" alt="">
-                    </div>
-                    <h3>Red Oak Lettuce (เรดโอ๊ค) </h3>
-                    <h4 class="sub-text short-text">เป็นผักสลัดใบ ปลายใบหยิกเป็นแฉกชัดเจนกว่ากรีนโอ๊ค ใบสีแดงเข้มถึงน้ำตาลแดง ก้านสีเขียว เป็นผักสลัดใบชนิดที่เป็นที่นิยมมากที่สุดชนิดหนึ่ง. </h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i>1,000.00</center></h4>
-                </div>
+                <?php endwhile; ?>
+             
                
             </section>
         </article>
@@ -272,6 +238,21 @@ $checkAuthen->authenPermission();
  <!-- Initialize Swiper -->
  <script>
    document.addEventListener('DOMContentLoaded',()=>{
+        const faUser = document.querySelector('#users');
+        const ulList = document.querySelector('.ul-list');
+        const ulListli = document.querySelector('#ul-list');
+        
+        faUser.addEventListener('mouseover',()=>{
+            ulList.style.display = "block"
+        });
+        
+        ulListli.addEventListener('mouseover',()=>{
+            ulList.style.display = "block"
+        });
+        faUser.addEventListener('mouseout',()=>{
+            ulList.style.display = "none"
+        });
+
         const progressCircle = document.querySelector(".autoplay-progress svg");
         const progressContent = document.querySelector(".autoplay-progress span");
         var swiper = new Swiper(".mySwiper", {
@@ -296,6 +277,12 @@ $checkAuthen->authenPermission();
             }
         }
         });
+
+
+
+       
+
+
    })
   </script>
 <!-- นำเข้าไฟล์ Base Controller -->

@@ -19,30 +19,30 @@
 <div id="wrapper">
    <?php include ('./header-template.php'); ?>
     <div class="container">
-        <br>
         <section class="shop-filter">
-            <div class="form-group">
+            <div class="form-group filter">
                 <label for="">ชื่อสินค้า</label>
                 <input type="text" name="produce_name" class="form-control" style="width: 90%">
             </div>
-            <div class="form-group">
+            <div class="form-group filter">
                 <label for="">ประเภทสินค้า</label>
                 <select  name="produce_type" class="form-control" style="width: 90%">
                     <option value="">-- กรุณาเลือก --</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group filter">
                 <label for="">สินค้าจากร้าน Partner</label>
                 <select name="produce_partner" class="form-control" style="width: 90%">
                     <option value="">-- กรุณาเลือก --</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group filter">
                 <button class="btn btn-filter-skyblue"> <i class="fa-solid fa-arrow-up-wide-short"></i> ใหม่ล่าสุด</button>
                 <button class="btn btn-filter-orange"> <i class="fa-solid fa-arrow-down-wide-short"></i> เก่าสุด</button>
             </div>
             <div class="form-group">
-               
+            <center><i class="fa-solid fa-circle-chevron-down" id="open-menu-filter" style="font-size: 2rem;"></i></center>
+            
             </div>
 
         </section>
@@ -66,7 +66,21 @@
                     </div>
                     <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                     <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>
-                    <h4 class="price"><div class="center"><i class="fa-solid fa-baht-sign"></i><?php echo $R_PRODUCT['product_price']; ?> / <?php echo '1 '.$R_PRODUCT['option_price'] ?></div></h4>
+                    <div class="detail-option">
+                        <div class="stock">มีในสต๊อก 100 กรัม</div>
+                        <div class="option-review">
+                        <i class="fa-solid fa-star orange"></i>
+                        <i class="fa-solid fa-star orange"></i>
+                        <i class="fa-solid fa-star orange"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <h4 class="price">
+                        <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
+                         / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
+                    
+                    </h4>
                 </div>
                 <?php 
                     endwhile; 
@@ -80,8 +94,58 @@
     
 </div>
 </body>
+<script>
+      
+    document.addEventListener('DOMContentLoaded', function(){
+        const openMenuFilter = document.querySelector('#open-menu-filter');
+        const filter         = document.querySelectorAll('.filter');
+        const shopFilter     = document.querySelector('.shop-filter');
+        let click_icon_slide = false
+        console.log(click_icon_slide);
+        function open_slide (){
+            openMenuFilter.addEventListener('click',()=>{  
+                if(click_icon_slide == false){
+                    filter.forEach(element => {
+                    element.style.display = "block"
+                    shopFilter.style.display = "grid"
+                    shopFilter.style.height = "450px"
+                    shopFilter.style.gridTemplateColumns  = "1fr"
+                    openMenuFilter.style.transform = "rotate(178deg)"
+                    });
+                    click_icon_slide = true
+                }else{
+                    filter.forEach(element => {
+                        element.style.display = ""
+                        shopFilter.style.display = ""
+                        shopFilter.style.height = ""
+                        shopFilter.style.gridTemplateColumns  = ""
+                        openMenuFilter.style.transform = ""
+                        click_icon_slide = false
+                    });
+                }
+            })
+
+        }   
+        open_slide ()
+        // function close_slide (){
+        //     openMenuFilter.addEventListener('click',()=>{  
+        //         filter.forEach(element => {
+        //             element.style.display = ""
+        //             shopFilter.style.display = ""
+        //             shopFilter.style.height = ""
+        //             shopFilter.style.gridTemplateColumns  = ""
+        //             openMenuFilter.style.transform = ""
+        //         });
+        //     })
+
+        // }   
+
+    })
+
+</script>
 <!-- นำเข้าไฟล์ Base Controller -->
 <script  src="./base_function.js"></script>
+
 <script>
     const app = Vue.createApp(BaseControllers,{
         data() {

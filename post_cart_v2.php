@@ -20,6 +20,7 @@ if(empty($_SESSION['CART'])){
     $_SESSION['CART'] = array();
 }
 $total = $product_amount * $product_price;
+
 if(!empty($_SESSION['CART'][$product_id])){
     if($product_amount == 1){
         $_SESSION['CART'][$product_id]['product_amount'] += $product_amount;

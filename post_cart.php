@@ -17,6 +17,7 @@ endif;
     if(empty($_SESSION['CART'])){
         $_SESSION['CART'] = array();
     }
+    $_SESSION['PRODUCT_ID'] = $product_member_id;
     $total = $product_amount * $product_price;
     if(!empty($_SESSION['CART'][$product_member_id])){
         if($product_amount == 1){
