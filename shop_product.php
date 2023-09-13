@@ -18,6 +18,11 @@ $checkAuthen->authenPermission();
 </head>
 <body>
 <div id="wrapper">
+    <div class="info-show">
+        <section>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit repellat, architecto asperiores fugit blanditiis eum. Sed, numquam! Non, vero laborum. Dignissimos quidem adipisci pariatur mollitia. Cumque optio illo labore harum distinctio repudiandae in minus eos dolorem. Debitis ea rerum sint, unde ipsum obcaecati accusamus voluptate corporis tenetur, eligendi molestiae soluta aliquid ipsa atque tempora odio delectus perferendis quibusdam necessitatibus dignissimos deleniti aut quam. Corporis, itaque tempora distinctio deleniti praesentium facere unde temporibus! Magni laboriosam repudiandae aut fugiat sequi! Voluptates, delectus labore pariatur blanditiis eum natus sit eveniet sint error porro, animi illo, veniam aperiam illum corporis. Doloremque natus provident voluptatem unde nam?
+        </section>
+    </div>
     <?php include ('./header-template.php'); ?>
     <div class="container">
         <div class="tabbar">
@@ -106,6 +111,11 @@ $checkAuthen->authenPermission();
                 </div>
             </section>
         </article>
+        <article class="shopping-mobile">
+            <section><i class="fa-solid fa-house"></i>&nbsp;หน้าแรก</section>    
+            <section id="onShow"><i class="fa-regular fa-file-lines"></i>&nbsp; รายละเอียด</section>
+            <section id="onShow"><i class="fa-solid fa-circle-info"></i> &nbsp;รีวิว</section>
+        </article>
         <?php endwhile; ?>
     </div>
     <?php include ('./footer-template.php'); ?>
@@ -114,7 +124,22 @@ $checkAuthen->authenPermission();
 <script  src="./base_function.js"></script>
 <script>
    document.addEventListener('DOMContentLoaded',()=>{
-    const amount = document.querySelector('#product_amount')
+    let status_info = false
+        const amount = document.querySelector('#product_amount')
+        const info_show = document.querySelector('.info-show')
+        const onShow = document.querySelector('#onShow')
+        onShow.addEventListener('click',function(){
+            if (status_info == false) {
+                info_show.style.height = '100%' 
+                status_info = true
+            }else{
+                info_show.style.height = ''
+                status_info = false
+            }
+
+        })
+    
+   
     amount.addEventListener('change',()=>{
         if(amount.value < 1){
             amount.value = 1
