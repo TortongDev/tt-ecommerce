@@ -230,6 +230,11 @@ $checkAuthen->authenPermission();
         </article>
         
     </div>
+    <div class="navbar-footer">
+        <section><a href="#intro"><i class="fa-solid fa-circle-info"></i></a></section>
+        <section class="main-navbar-footer" id="upBTN"><i class="fa-solid fa-shop"></i></section>
+        <section><a href="#partner"><i class="fa-regular fa-handshake"></i></a></section>
+    </div>
     <?php include('./footer-template.php') ?>
     
 </div>
@@ -238,10 +243,19 @@ $checkAuthen->authenPermission();
  <!-- Initialize Swiper -->
  <script>
    document.addEventListener('DOMContentLoaded',()=>{
+    
+       
         const faUser = document.querySelector('#users');
         const ulList = document.querySelector('.ul-list');
         const ulListli = document.querySelector('#ul-list');
-        
+        const mainNavbarFooter = document.querySelector('#upBTN')
+        mainNavbarFooter.addEventListener('click',()=>{
+            mainNavbarFooter.style.transform = "scale(1.1,1.1)"
+            setTimeout(function(){
+                location.href = "./shopping_online.php";
+            }, 1000)
+            
+        })
         faUser.addEventListener('mouseover',()=>{
             ulList.style.display = "block"
         });
@@ -278,6 +292,9 @@ $checkAuthen->authenPermission();
         }
         });
 
+        // const navbarFooter = document.querySelector('.navbar-footer')
+        // navbarFooter.style.height = '100%'
+
 
 
        
@@ -289,23 +306,7 @@ $checkAuthen->authenPermission();
 <script  src="./base_function.js"></script>
 
 <script>
-    const app = Vue.createApp(BaseControllers,{
-        data() {
-            return {
-                showBox1: false,
-                showBox2: false,
-                showBox3: false,
-                showBox4: false,
-                showBox5: false,
-                showBox6: false,
-                menuSlide: 0
-            }
-        },methods: {
-
-        },mounted() {
-            
-        },
-    })
+    const app = Vue.createApp(BaseControllers)
     app.mount('#wrapper')
 </script>
 </html>

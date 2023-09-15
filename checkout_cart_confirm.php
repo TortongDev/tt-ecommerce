@@ -128,14 +128,20 @@
                         <li style="font-size: 12pt">โอนเงินเสร็จ ทำการแจ้งโอนเงินได้ที่ <a href="">แจ้งโอนเงิน</a></li>
                     </ul>
                 </div>
-                <div class="checkout-footer">
+                <!-- <div class="checkout-footer">
                     <button class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
                     <button class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button>
                     <button class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ชำระเงิน</button>
 
-                </div>
+                </div> -->
             </section>
         </article>
+    </div>
+    
+    <div class="navbar-footer">
+        <section><a href="./checkout_cart.php"><i class="fa-solid fa-arrow-left"></i></a></section>
+        <section class="main-navbar-footer cart-confirm btn-cart" id="upBTN">ชำระเงิน</section>
+        <section><a href="./checkout_cart.php"><i class="fa-regular fa-rectangle-list"></i> </a> </section>
     </div>
     <?php include ('./footer-template.php'); ?>
 </div>
@@ -143,7 +149,17 @@
 <script  src="./base_function.js"></script>
 
 <script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const mainNavbarFooter = document.querySelector('#upBTN')
+        mainNavbarFooter.addEventListener('click',()=>{
+            mainNavbarFooter.style.transform = "scale(1.1,1.1)"
+            setTimeout(function(){
+                location.href = "./checkout_cart_confirm.php";
+            }, 1000)
+            
+        })
 
+   })
     const app = Vue.createApp(BaseControllers)
     const vm = app.mount('#wrapper')
     vm.amount = 0;

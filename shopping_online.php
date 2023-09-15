@@ -41,7 +41,7 @@
                 <button class="btn btn-filter-orange"> <i class="fa-solid fa-arrow-down-wide-short"></i> เก่าสุด</button>
             </div>
             <div class="form-group">
-            <center><i class="fa-solid fa-circle-chevron-down" id="open-menu-filter" style="font-size: 2rem;"></i></center>
+            <!-- <center><i class="fa-solid fa-circle-chevron-down" id="open-menu-filter" style="font-size: 2rem;"></i></center> -->
             
             </div>
 
@@ -90,6 +90,23 @@
             </section>
         </article>
     </div>
+    <div class="fillter-footer">
+        <section><a href="./index.php"><i class="fa-solid fa-house"></i></a></section>
+        <section class="main-navbar-footer" id="open-menu-filter-footer" ><i class="fa-solid fa-magnifying-glass"></i></section>
+        <section><a href="./checkout_cart.php">
+            <!-- <i class="fa-solid fa-cart-shopping"></i>  </a>  -->
+            <a href="./checkout_cart.php"><i class="fa-solid fa-cart-shopping"></i> </a> 
+                <span class="count-product-mobile">
+                    <?php 
+                        if(!empty($_SESSION['CART'])):
+                            echo count($_SESSION['CART']);
+                        else:
+                        echo '0';
+                        endif;
+                    ?>
+                </span>
+        </section>
+    </div>
     <?php include('./footer-template.php') ?>
     
 </div>
@@ -97,7 +114,7 @@
 <script>
       
     document.addEventListener('DOMContentLoaded', function(){
-        const openMenuFilter = document.querySelector('#open-menu-filter');
+        const openMenuFilter = document.querySelector('#open-menu-filter-footer');
         const filter         = document.querySelectorAll('.filter');
         const shopFilter     = document.querySelector('.shop-filter');
         let click_icon_slide = false
@@ -110,7 +127,8 @@
                     shopFilter.style.display = "grid"
                     shopFilter.style.height = "450px"
                     shopFilter.style.gridTemplateColumns  = "1fr"
-                    openMenuFilter.style.transform = "rotate(178deg)"
+                    // openMenuFilter.style.transform = "rotate(178deg)"
+                    openMenuFilter.style.transform = "scale(1.1,1.1)"
                     });
                     click_icon_slide = true
                 }else{

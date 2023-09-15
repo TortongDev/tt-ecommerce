@@ -1,7 +1,7 @@
 <header>
 <div class="container-header">
     <div class="header-title">
-        <img class="img-title" src="./kanji_farm.jpg" alt="">
+        <a href="./index.php"> <img class="img-title" src="./kanji_farm.jpg" alt=""></a>
         <div class="action-icon">
           
         </div>
