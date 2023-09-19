@@ -55,22 +55,59 @@
             width: 90%;
             margin: auto;
         }
+        html , body {
+            height: 100%;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .container-login {
+            width: 300px;
+        }
+        
+        .login-form {
+            width: 300px;
+        }
+        
+        .form {
+            width: 300px;
+        }
+        input {
+            width: 300px;
+            padding: 5px;
+        }
+     .btn {
+        background-color: #aedbaf;
+     }
+     .title-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+     .login-form-title {
+        text-align: center;
+     }
     </style>
 </head>
 <body>
     <div id="wrapper">
         <form action="" method="get">
             <div class="container-login">
+                <section class="title-img">
+                    <img src="./kanji_farm.jpg" style="margin: 0 auto; border-top-right-radius: 30px; border-bottom-left-radius: 30px;" width="200px" height="auto" alt="">
+                </section>
+                <section class="login-form-title"> <h3>Login | เข้าสู่ระบบ</h3></section>
                 <section class="login-form">
-                    <h3>Login | เข้าสู่ระบบ</h3>
+                   
                     <div class="form">
-                        <label for="">Username</label>
-                        <input type="text" name="username" class="form-control">
-                        <label for="">Password</label>
-                        <input type="text" name="password" class="form-control">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button class="btn" type="submit" name="act" value="login">Login</button>
+                        <button class="btn" type="submit" name="act" value="login">เข้าสู่ระบบ</button>
                     </div>
                     <div class="form-group">
                         <div><a href="#"><i class="fa-brands fa-google"></i> Login for Google Account</a></div>

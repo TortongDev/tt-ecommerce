@@ -1,7 +1,7 @@
 <?php
 require_once "./services/class/Connection.php";
 $checkAuthen = new Connection();
-$checkAuthen->authenPermission();
+// $checkAuthen->authenPermission();
 
 ?>
 <!DOCTYPE html>

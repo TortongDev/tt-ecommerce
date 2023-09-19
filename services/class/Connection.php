@@ -41,7 +41,6 @@ class Connection {
 		public function authenUsers(){
 			$login_status = isset($_SESSION['LOGIN_STATUS']) ? $_SESSION['LOGIN_STATUS'] : '';
 			if($login_status === 1):
-
 				header("Location: index.php");
 				exit;
 			else:
@@ -63,6 +62,14 @@ class Connection {
 			else:
 
 			endif;
+		}
+		public function authenMenu(){
+			$login_status 	= isset($_SESSION['LOGIN_STATUS']) ? $_SESSION['LOGIN_STATUS'] : '';
+			if($login_status === 1){
+				return $login_status;
+			}else{
+				return 0;
+			}
 		}
 		public function id_encrypt($id){
 			$privateKey = "id-123";
