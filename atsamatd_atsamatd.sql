@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 11, 2023 at 05:11 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: localhost
+-- Generation Time: Sep 18, 2023 at 01:09 PM
+-- Server version: 10.5.17-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `authen_admin` (
   `authen_user_id` int(10) NOT NULL,
-  `authen_username` varchar(225) NOT NULL,
-  `authen_password` varchar(225) NOT NULL,
-  `authen_status` varchar(10) NOT NULL DEFAULT '1',
+  `authen_username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_password` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   `authen_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -50,9 +50,9 @@ INSERT INTO `authen_admin` (`authen_user_id`, `authen_username`, `authen_passwor
 
 CREATE TABLE `authen_users` (
   `authen_user_id` int(10) NOT NULL,
-  `authen_username` varchar(225) NOT NULL,
-  `authen_password` varchar(225) NOT NULL,
-  `authen_status` varchar(10) NOT NULL DEFAULT '1',
+  `authen_username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_password` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   `authen_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -71,19 +71,21 @@ INSERT INTO `authen_users` (`authen_user_id`, `authen_username`, `authen_passwor
 
 CREATE TABLE `kanji_partners` (
   `partner_id` int(10) NOT NULL,
-  `partner_member_id` varchar(10) NOT NULL,
-  `partner_name` varchar(100) NOT NULL,
-  `partner_detail` varchar(500) NOT NULL,
-  `partner_status` char(1) NOT NULL DEFAULT current_timestamp()
+  `partner_member_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_status` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT current_timestamp(),
+  `partner_img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `kanji_partners`
 --
 
-INSERT INTO `kanji_partners` (`partner_id`, `partner_member_id`, `partner_name`, `partner_detail`, `partner_status`) VALUES
-(3, 'JJSHOP', 'ร้านJJSHOP', 'ร้านJJSHOP ขายผัก ขายปลา อุปกรณ์ตกปลา', '1'),
-(4, 'ASHOP', 'ร้านASHOP', 'ASHOP ขายผักสด ผลไม้สด', '1');
+INSERT INTO `kanji_partners` (`partner_id`, `partner_member_id`, `partner_name`, `partner_detail`, `partner_status`, `partner_img`, `timestamp`) VALUES
+(3, 'JJSHOP', 'ร้านJJSHOP', 'ร้านJJSHOP ขายผัก ขายปลา อุปกรณ์ตกปลา', '1', '', '2023-09-18 13:08:36'),
+(4, 'ASHOP', 'ร้านASHOP', 'ASHOP ขายผักสด ผลไม้สด', '1', '', '2023-09-18 13:08:36');
 
 -- --------------------------------------------------------
 
@@ -93,24 +95,24 @@ INSERT INTO `kanji_partners` (`partner_id`, `partner_member_id`, `partner_name`,
 
 CREATE TABLE `kanji_products` (
   `product_id` int(10) NOT NULL,
-  `product_member_id` varchar(10) NOT NULL,
-  `product_name` varchar(225) NOT NULL,
-  `product_price` varchar(20) NOT NULL,
-  `product_amount` varchar(20) NOT NULL,
-  `product_type_name` varchar(80) NOT NULL,
-  `product_shop_name` varchar(80) NOT NULL,
+  `product_member_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `product_name` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `product_price` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `product_amount` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `product_shop_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `product_type_id` int(10) NOT NULL,
   `product_user_id` int(10) NOT NULL,
   `product_status` int(10) NOT NULL DEFAULT 1,
   `product_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `product_img` varchar(300) NOT NULL,
-  `product_detail` text NOT NULL,
-  `product_sub_detail` varchar(500) NOT NULL,
+  `product_img` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `product_detail` text COLLATE utf8_unicode_ci NOT NULL,
+  `product_sub_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `comment_id` int(10) NOT NULL,
   `review_id` int(10) NOT NULL,
   `product_shop_id` int(10) NOT NULL,
-  `option_price` varchar(10) NOT NULL,
-  `option_amount` varchar(10) NOT NULL
+  `option_price` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `option_amount` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -119,7 +121,15 @@ CREATE TABLE `kanji_products` (
 
 INSERT INTO `kanji_products` (`product_id`, `product_member_id`, `product_name`, `product_price`, `product_amount`, `product_type_name`, `product_shop_name`, `product_type_id`, `product_user_id`, `product_status`, `product_timestamp`, `product_img`, `product_detail`, `product_sub_detail`, `comment_id`, `review_id`, `product_shop_id`, `option_price`, `option_amount`) VALUES
 (8, 'PROKJ-', 'Cos Lettuce or Romaine Lettuce (กรีนคอส)', '20', '20', 'ผัก', '', 0, 1, 1, '2023-09-08 04:48:39', 'uploads/Cos-Lettuce.jpg', 'ผักสลัดคอส (Cos Lettuce) หรือผักกาดโรเมน (Romaine Lettuce) จุดเด่นคือความกรอบ ใบเรียวยาวสีเขียวตลอดทั้งใบ ไม่มีกลิ่นเหม็นเขียว นิยมรับ', 'ผักสลัดคอส (Cos Lettuce) หรือผักกาดโรเมน (Romaine Lettuce) จุดเด่นคือความกรอบ ใบเรียวยาวสีเขียวตลอดทั้งใบ ไม่มีกลิ่นเหม็นเขียว นิยมรับทาน', 0, 0, 0, 'กรัม', 'กรัม'),
-(9, 'PROKJ-', 'ssss', '12', '12', 'ผัก', '', 0, 1, 1, '2023-09-08 07:56:09', 'uploads/Frillice_Ice_Berg.jpg', 'sdsdsdsdsds', 'sss', 0, 0, 0, 'กรัม', 'กรัม');
+(9, 'PROKJ-', 'ssss', '12', '12', 'ผัก', '', 0, 1, 1, '2023-09-08 07:56:09', 'uploads/Frillice_Ice_Berg.jpg', 'sdsdsdsdsds', 'sss', 0, 0, 0, 'กรัม', 'กรัม'),
+(10, 'PROKJ-', 'Frillice Ice Berg Lettuce (ฟิลเลย์ไอซ์เบิร์ก)', '100', '100', 'ผัก', '', 0, 2, 1, '2023-09-12 04:05:10', 'uploads/Frillice_Ice_Berg.jpg', 'ฟิลเลย์ไอซ์เบิร์ก (Frillice Ice Berg Lettuce) คือ ผักสลัดชนิดหนึ่ง ใบมีสีเขียวอ่อนถึงสีเขียวเข้ม เรียวยาวเป็นทรงพุ่ม ปลายdddddd', 'ฟิลเลย์ไอซ์เบิร์ก (Frillice Ice Berg Lettuce) คือ ผักสลัดชนิดหนึ่ง ใบมีสีเขียวอ่อนถึงสีเขียวเข้ม เรียวยาวเป็นทรงพุ่ม ปลายdddddd', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(11, 'PROKJ-', 'Green Oak Lettuce (กรีนโอ๊ค )', '110', '100', 'ผัก', '', 0, 2, 1, '2023-09-12 04:06:12', 'uploads/green-oak-1.jpg', 'Green Oak Lettuce (กรีนโอ๊ค ) · ช่วยในเรื่องของระบบการย่อยอาหาร · วิตามินบีสูง · วิตามินซีสูง · ไฟเบอร์สูงช่วยเบาเทาอาการท้องผูก · บำรุงสายตา · บำรุงเส้นผมsss', 'Green Oak Lettuce (กรีนโอ๊ค ) · ช่วยในเรื่องของระบบการย่อยอาหาร · วิตามินบีสูง · วิตามินซีสูง · ไฟเบอร์สูงช่วยเบาเทาอาการท้องผูก · บำรุงสายตา · บำรุงเส้นผม\r\ndddddd', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(12, 'PROKJ-', 'Green Oak Lettuce (กรีนโอ๊ค )', '110', '100', 'ผัก', '', 0, 2, 1, '2023-09-12 04:07:11', 'uploads/green-oak-1.jpg', 'Green Oak Lettuce (กรีนโอ๊ค ) · ช่วยในเรื่องของระบบการย่อยอาหาร · วิตามินบีสูง · วิตามินซีสูง · ไฟเบอร์สูงช่วยเบาเทาอาการท้องผูก · บำรุงสายตา · บำรุงเส้นผมsss', 'Green Oak Lettuce (กรีนโอ๊ค ) · ช่วยในเรื่องของระบบการย่อยอาหาร · วิตามินบีสูง · วิตามินซีสูง · ไฟเบอร์สูงช่วยเบาเทาอาการท้องผูก · บำรุงสายตา · บำรุงเส้นผม\r\ndddddd', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(13, 'PROKJ-', 'MINI COS ORGANIC (มินิคอส ออร์แกนิค).', '90', '100', 'ผัก', '', 0, 2, 1, '2023-09-12 04:07:33', 'uploads/MG_0293-Selected.jpg', 'MINI COS ORGANIC ราคากิโลกรัมละ 100 บาท. กากใยสูงช่วยในเรื่องของระบบขับถ่าย มีโพรแทสเซียม และกรดโฟเลตสูง มีสารต้านอนุมูลอิสระเพื่อช่วยลดความเสื่อมของจอประสาทตาในผู้สูงอายุ', 'MINI COS ORGANIC ราคากิโลกรัมละ 100 บาท. กากใยสูงช่วยในเรื่องของระบบขับถ่าย มีโพรแทสเซียม และกรดโฟเลตสูง มีสารต้านอนุมูลอิสระเพื่อช่วยลดความเสื่อมของจอประสาทตาในผู้สูงอายุ', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(14, 'PROKJ-', 'MINI COS ORGANIC (มินิคอส ออร์แกนิค).', '90', '100', 'ผัก', '', 0, 2, 1, '2023-09-12 04:07:57', 'uploads/MG_0293-Selected.jpg', 'MINI COS ORGANIC ราคากิโลกรัมละ 100 บาท. กากใยสูงช่วยในเรื่องของระบบขับถ่าย มีโพรแทสเซียม และกรดโฟเลตสูง มีสารต้านอนุมูลอิสระเพื่อช่วยลดความเสื่อมของจอประสาทตาในผู้สูงอายุ', 'MINI COS ORGANIC ราคากิโลกรัมละ 100 บาท. กากใยสูงช่วยในเรื่องของระบบขับถ่าย มีโพรแทสเซียม และกรดโฟเลตสูง มีสารต้านอนุมูลอิสระเพื่อช่วยลดความเสื่อมของจอประสาทตาในผู้สูงอายุ', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(15, 'PROKJ-', 'ผักชี (ชื่อวิทยาศาสตร์: Coriandrum sativum)', '40', '100', 'ผัก', '', 0, 2, 1, '2023-09-12 04:08:25', 'uploads/original-1634632690275.jpg', 'ผักชีเป็นผักที่ปลูกง่าย และไม่ค่อยพบโรคหรือแมลงศัตรูพืชมากนัก เนื่องจากมีกลิ่นน้ำมันหอมระเหยที่ช่วยไล่แมลงได้ มีหลักฐานการปลูกในประเทศอียิปต์นานกว่า 3500 ปี.', 'ผักชีเป็นผักที่ปลูกง่าย และไม่ค่อยพบโรคหรือแมลงศัตรูพืชมากนัก เนื่องจากมีกลิ่นน้ำมันหอมระเหยที่ช่วยไล่แมลงได้ มีหลักฐานการปลูกในประเทศอียิปต์นานกว่า 3500 ปี.', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(16, 'PROKJ-', 'Red Oak Lettuce (เรดโอ๊ค)', '150', '120', 'ผัก', '', 0, 2, 1, '2023-09-12 04:08:58', 'uploads/เรดโอ๊ค.jpg', 'เป็นผักสลัดใบ ปลายใบหยิกเป็นแฉกชัดเจนกว่ากรีนโอ๊ค ใบสีแดงเข้มถึงน้ำตาลแดง ก้านสีเขียว เป็นผักสลัดใบชนิดที่เป็นที่นิยมมากที่สุดชนิดหนึ่ง.', 'เป็นผักสลัดใบ ปลายใบหยิกเป็นแฉกชัดเจนกว่ากรีนโอ๊ค ใบสีแดงเข้มถึงน้ำตาลแดง ก้านสีเขียว เป็นผักสลัดใบชนิดที่เป็นที่นิยมมากที่สุดชนิดหนึ่ง.', 0, 0, 0, 'กิโลกรัม', 'กรัม'),
+(17, 'PROKJ-', 'Red Oak Lettuce (เรดโอ๊ค)', '150', '120', 'ผัก', '', 0, 2, 1, '2023-09-12 04:09:22', 'uploads/เรดโอ๊ค.jpg', 'เป็นผักสลัดใบ ปลายใบหยิกเป็นแฉกชัดเจนกว่ากรีนโอ๊ค ใบสีแดงเข้มถึงน้ำตาลแดง ก้านสีเขียว เป็นผักสลัดใบชนิดที่เป็นที่นิยมมากที่สุดชนิดหนึ่ง.', 'เป็นผักสลัดใบ ปลายใบหยิกเป็นแฉกชัดเจนกว่ากรีนโอ๊ค ใบสีแดงเข้มถึงน้ำตาลแดง ก้านสีเขียว เป็นผักสลัดใบชนิดที่เป็นที่นิยมมากที่สุดชนิดหนึ่ง.', 0, 0, 0, 'กิโลกรัม', 'กรัม');
 
 -- --------------------------------------------------------
 
@@ -129,11 +139,11 @@ INSERT INTO `kanji_products` (`product_id`, `product_member_id`, `product_name`,
 
 CREATE TABLE `kanji_product_type` (
   `type_id` int(10) NOT NULL,
-  `product_type_id` varchar(10) NOT NULL,
-  `product_type_name` varchar(100) NOT NULL,
-  `product_type_detail` varchar(500) NOT NULL,
+  `product_type_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `sys_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `product_type_status` char(10) NOT NULL DEFAULT '1'
+  `product_type_status` char(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -204,7 +214,7 @@ ALTER TABLE `kanji_partners`
 -- AUTO_INCREMENT for table `kanji_products`
 --
 ALTER TABLE `kanji_products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `kanji_product_type`

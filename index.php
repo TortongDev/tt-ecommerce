@@ -10,6 +10,7 @@ $checkAuthen->authenPermission();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Farm Korat</title>
+    <link rel="icon" type="image/x-icon" href="./kanji_farm.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -170,62 +171,27 @@ $checkAuthen->authenPermission();
        
         <div id="partner"></div>
         <br><br><br><br><br><br>
+     
         <article class="alliance">
             <center><h1 class="main-text" style="margin-block-end: 0 !important;">ร้านค้า Partner</h1></center>
             <center><h3 class="sub-text" style="margin-block-start: 0 !important;">ร้านค้าที่เป็น Partner กับร้านเรา</h3></center>
             <br>
             <section class="container-alliance">
+            <?php  
+                $checkAuthen->openConnection();
+                $stmt_partner = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_partners` WHERE ? ORDER BY timestamp DESC LIMIT 6");
+                $stmt_partner->execute(array('1=1'));
+                while($R_PARTNERs =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
+            ?>
                 <article class="logger-partner">
-                    <div class="partner img-action" style="background-image: url('https://f.ptcdn.info/923/033/000/1438186017-P1170303JP-o.jpg');background-size: cover;">
-                        <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                        <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                        <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                        <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                        <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
+                    <div class="partner img-action" style="background-image: url('./img-shop/<?php echo $R_PARTNERs['partner_img']; ?>');background-size: cover;">
+                        <h2 class="margin-block-0"><?php echo $R_PARTNERs['partner_name']; ?> </h2>
+                        <h4 class="sub-text margin-block-0"><?php echo $R_PARTNERs['partner_name']; ?></h4>
+                        <h4 class="main-text margin-block-0"><?php echo $R_PARTNERs['partner_detail']; ?></h4>
+                        <h4 class="main-text margin-block-0"><?php echo $R_PARTNERs['timestamp']; ?></h4>
                     </div>
                 </article>
-                <div class="partner">
-                    <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                    <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                    <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                    <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                    <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
-                </div>
-                <div class="partner">
-                    <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                    <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                    <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                    <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                    <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
-                </div>
-                <div class="partner">
-                    <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                    <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                    <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                    <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                    <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
-                </div>
-                <div class="partner">
-                    <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                    <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                    <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                    <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                    <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
-                </div>
-                <div class="partner">
-                    <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                    <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                    <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                    <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                    <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
-                </div>
-                <div class="partner">
-                    <h2 class="margin-block-0">Lorem ipsum dolor sit amet </h2>
-                    <h4 class="sub-text margin-block-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius!</h4>
-                    <h4 class="main-text margin-block-0">Tel. 000-000-0000</h4>
-                    <h4 class="main-text margin-block-0">Line. @asdf1</h4>
-                    <h4 class="main-text margin-block-0">Facebook. fbshop</h4>
-                </div>
+            <?php endwhile;?>
             </section>
         </article>
         
@@ -256,16 +222,8 @@ $checkAuthen->authenPermission();
             }, 1000)
             
         })
-        faUser.addEventListener('mouseover',()=>{
-            ulList.style.display = "block"
-        });
-        
-        ulListli.addEventListener('mouseover',()=>{
-            ulList.style.display = "block"
-        });
-        faUser.addEventListener('mouseout',()=>{
-            ulList.style.display = "none"
-        });
+       
+
 
         const progressCircle = document.querySelector(".autoplay-progress svg");
         const progressContent = document.querySelector(".autoplay-progress span");

@@ -56,9 +56,13 @@ $stmt_select->execute(array('1=1'));
                         <label>รายละเอียดเพิ่มเติม</label>
                         <textarea class="form-control" name="partner_detail" rows="3"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label>ภาพพื้นหลัง</label>
+                        <input  type="file" class="form-control" name="fileToUpload" id="fileToUpload">
+                    </div>
               
              
-                    <button type="submit" name="process" value="insert_product" class="btn btn-info">บันทึกลงฐานข้อมูลประเภทสินค้า</button>
+                    <button type="submit" name="process" value="insert_partners" class="btn btn-info">บันทึกลงฐานข้อมูลประเภทสินค้า</button>
 
                 </form>
                 <br>

@@ -132,7 +132,7 @@
                         <label>รายละเอียดการจัดสินค้าในหน้าสินค้า <i @mouseover="shopInfoSubDetail = true" @mouseout="shopInfoSubDetail = false" class="fa fa-info-circle" aria-hidden="true"></i></label>
                         <textarea class="form-control" name="product_sub_detail" rows="3" required></textarea>
                     </div>
-                    <button type="submit" name="process" value="insert_product" class="btn btn-info">บันทึกข้อมูลสินค้าลงฐานข้อมูล</button>
+                    <button type="submit" name="process" value="insert_partners" class="btn btn-info">บันทึกข้อมูลสินค้าลงฐานข้อมูล</button>
                 </form>
             </div>
             <!-- /. PAGE INNER  -->

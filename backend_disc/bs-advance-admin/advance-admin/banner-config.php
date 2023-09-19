@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    require_once "./checkAdmin.php";
+    $checkAdmin = new checkAdmin;
+    $checkAdmin->checkAdmin();
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

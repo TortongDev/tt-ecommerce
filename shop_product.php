@@ -14,6 +14,8 @@ $checkAuthen->authenPermission();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
+    
+    <link rel="icon" type="image/x-icon" href="./kanji_farm.ico">
     <style>
         .star-color-over {
             color: orange !important;
@@ -170,48 +172,57 @@ $checkAuthen->authenPermission();
 <script  src="./base_function.js"></script>
 <script>
    document.addEventListener('DOMContentLoaded',()=>{
+        
         const stars = document.querySelectorAll('#star');
-
         stars.forEach((star, index) => {
-            
-        const mouseStar = document.querySelectorAll('#mouseStar_'+index);
-        star.addEventListener('mouseover', () => {
-            for (let i = 0; i <= index; i++) {
-            stars[i].style.color = 'orange';
-            }
-        });
-
-        star.addEventListener('click', () => {
-            let formData = new FormData()
            
-            for (let i = 0; i <= index; i++) {
-                const countValue = index+1;
-            }
-            formData.append('count_star', countValue);
-        })
+            star.addEventListener('mouseover', () => {
+                for (let i = 0; i <= index; i++) {
+                    stars[i].style.color = 'orange';
+                }
+            });
+            
+            star.addEventListener('mouseout', () => {
+                stars.forEach((s, i) => {
+                    console.log(i+'>'+index);
+                    if (i > index) {
+                        s.style.color = '';
+                    }
+                });
+            });
 
-        console.log(formData);
-        document.querySelector('#send_star').addEventListener('click',function(){
-                fetch('./post_star.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.log(error));
+            // star.addEventListener('click', () => {
+            //     for (let i = 0; i <= index; i++) {
+            //         countValue = index+1;
+            //         formData.append('count_star', countValue);
+            //         console.log(formData);
+            //         fetch('./post_star.php', {
+            //             method: 'POST',
+            //             body: JSON.stringify(formData)
+            //         })
+            //             .then(response => response.json())
+            //             .then(data => console.log(data))
+            //             .catch(error => console.log(error));
+            //     }
+              
+            // })
         });
+      
+ 
+
+        // document.querySelector('#send_star').addEventListener('click',function(){
+        //         fetch('./post_star.php', {
+        //             method: 'POST',
+        //             body: formData
+        //         })
+        //         .then(response => response.json())
+        //         .then(data => console.log(data))
+        //         .catch(error => console.log(error));
+        // });
     
            
             
-        star.addEventListener('mouseout', () => {
-            stars.forEach((s, i) => {
-            if (i > index) {
-                s.style.color = '';
-            }
-            });
-        });
-        });
-
+    
       
         let status_info = false
         const amount = document.querySelector('#product_amount')

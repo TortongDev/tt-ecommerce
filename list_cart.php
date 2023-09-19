@@ -45,6 +45,9 @@
             margin: auto;
             text-align: center;
         }
+        .tabbar-checkout {
+            margin-block-start: 120px;
+        }
     </style>
     
 </head>
@@ -52,7 +55,7 @@
 
 <div id="wrapper">
     <?php include ('./header-template.php'); ?>
-    <br><br><br><br>
+
     <div class="tabbar-checkout">
         <h2 class="">รายการสั่งซื้อทั้งหมด</h2>
     </div>
