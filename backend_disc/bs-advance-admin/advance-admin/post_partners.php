@@ -46,7 +46,7 @@ if($_POST['process'] == "insert_partners"):
       }
   } 
 
-    $partner_member_id       = "PARTNER-";
+    $partner_member_id       = "PARTNER-". rand(100,1000);
     $partner_name      = isset($_POST['partner_name'])     ? htmlspecialchars(trim($_POST['partner_name'])) : '';
     $partner_detail     = isset($_POST['partner_detail'])   ? htmlspecialchars(trim($_POST['partner_detail'])) : '';
     $partner_status        = isset($_POST['partner_status'])      ? htmlspecialchars(trim($_POST['partner_status'])) : '';
@@ -71,7 +71,7 @@ if($_POST['process'] == "insert_partners"):
             $target_file
         )
     );
-    header('Location: form_shop_product.php');
+    header('Location: popup.php?status_post=success&pagename=form_shop_product&status=post');
     exit;
 else:
   echo $_POST['process'];

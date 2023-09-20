@@ -8,6 +8,9 @@ $checkAuthen = new Connection();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="เคนจิ ฟาร์ม | Kanji Farm ฟาร์มเพื่อสุขภาพจากชุมชนกลางดง">
+    <meta name="keywords" content="Farm , Green, ผัก, พืชผัก, kanji , kanji farm , เคนจื ฟาร์ม , ผักสวนครัว, ขายส่งออก,ออนไลน์ , online">
+    <meta name="author" content="คุณเต้ เคนจิฟาร์ม">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Farm Korat</title>
     <link rel="icon" type="image/x-icon" href="./kanji_farm.ico">

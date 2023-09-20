@@ -750,6 +750,13 @@ ul.ul-list {
     width: 300px;
     display: none;
     background-color: white;
+    transition: .5s;
+}
+.float-right {
+    float: right;
+}
+.margin-right-60 {
+    margin-inline-end: 60px;
 }
 ul.ul-list li {
     padding: 10px;
@@ -818,7 +825,7 @@ ul#menu-shop-sub {
     font-size: 12pt !important;
     padding-inline: 10px;
 }
-
+.desktop {}
 .sub-menu-slide li:nth-child(1) {
     margin-block-end: 20px;
     color: rgb(4, 83, 0);
@@ -1027,6 +1034,7 @@ section.shop-filter {
         width: 40px;
         height: 40px;
     }
+    .desktop { display: none; }
     .info-show {
         transition: 0.5s ease;
         display: block;
@@ -1247,8 +1255,9 @@ section.shop-filter {
     }
     section.shop-filter {
         margin-top: 20px;
-        position: sticky;
-        top: 50px;
+        position: fixed;
+        width: 100%;
+        margin: auto;
         height: 0px;
         padding: 0px;
         background-color: white;

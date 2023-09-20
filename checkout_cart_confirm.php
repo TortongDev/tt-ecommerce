@@ -130,12 +130,12 @@
                         <li style="font-size: 12pt">โอนเงินเสร็จ ทำการแจ้งโอนเงินได้ที่ <a href="">แจ้งโอนเงิน</a></li>
                     </ul>
                 </div>
-                <!-- <div class="checkout-footer">
+                <div class="checkout-footer desktop">
                     <button class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
                     <button class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button>
                     <button class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ชำระเงิน</button>
 
-                </div> -->
+                </div>
             </section>
         </article>
     </div>

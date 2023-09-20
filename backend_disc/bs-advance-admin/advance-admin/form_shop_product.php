@@ -36,11 +36,11 @@ $stmt_select->execute(array('1=1'));
             <div id="page-inner">
                 <h2>ลงชื่อร้าน Partner</h2>
                 <form role="form" action="./post_partners.php" enctype="multipart/form-data" method="post">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>รหัส Partner</label>
                         <input class="form-control" name="partner_member_id" type="text">
                         <p class="help-block">หมายเลขประจำตัวของร้านค้า Partner</p>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>ชื่อ Partner</label>
                         <input class="form-control" name="partner_name" type="text">

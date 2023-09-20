@@ -2,12 +2,6 @@
     require_once "./services/class/Connection.php";
     $checkAuthen = new Connection();
     $checkAuthen->authenPermission();
-
-
-    $product_name   = isset($_GET['product_name']) ? htmlspecialchars(trim($_GET['product_name'])): '';
-    $product_type   = isset($_GET['product_type']) ? htmlspecialchars(trim($_GET['product_type'])): '';
-    $product_partner   = isset($_GET['product_partner']) ? htmlspecialchars(trim($_GET['product_partner'])): '';
-    $fillter_search =  isset($_GET['filter_search']) ? htmlspecialchars(trim($_GET['filter_search'])):'';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,52 +24,24 @@
             <section class="shop-filter">
                 <div class="form-group filter">
                     <label for="">ชื่อสินค้า</label>
-                    <input type="text" name="product_name" value="<?php echo $product_name; ?>" class="form-control" style="width: 90%">
+                    <input type="text" name="produce_name" class="form-control" style="width: 90%">
                 </div>
                 <div class="form-group filter">
                     <label for="">ประเภทสินค้า</label>
-                    <select  name="product_type" class="form-control" style="width: 90%">
+                    <select  name="produce_type" class="form-control" style="width: 90%">
                         <option value="">-- กรุณาเลือก --</option>
-                        <?php
-                            $session_search_type_name   = isset($_GET['product_type']) ? htmlspecialchars(trim($_GET['product_type'])) : '';
-                        ?>
-                        <?php 
-                            $checkAuthen->openConnection();
-                            $stmt_type_product = $checkAuthen->pdo->prepare("SELECT `product_type_id`,`product_type_name` FROM `kanji_product_type` WHERE ?");
-                            $stmt_type_product->execute(array("1=1"));
-                            while($T_PRODUCT =  $stmt_type_product->fetch(PDO::FETCH_ASSOC)):
-                        ?>
-                        <option value="<?php echo $T_PRODUCT['product_type_name'];?>" <?php echo ($T_PRODUCT['product_type_name']==$session_search_type_name)? 'selected':'' ?>><?php echo $T_PRODUCT['product_type_name']; ?></option>
-                        <?php 
-                            endwhile;
-                            $checkAuthen->closeConnection();
-                        ?>
                     </select>
                 </div>
                 <div class="form-group filter">
                     <label for="">สินค้าจากร้าน Partner</label>
-                    <select name="product_partner" class="form-control" style="width: 90%">
-                        <?php
-                            $session_search_partner   = isset($_GET['product_partner']) ? htmlspecialchars(trim($_GET['product_partner'])) : '';
-                        ?>
+                    <select name="produce_partner" class="form-control" style="width: 90%">
                         <option value="">-- กรุณาเลือก --</option>
-                        <?php 
-                            $checkAuthen->openConnection();
-                            $stmt_partner = $checkAuthen->pdo->prepare("SELECT `partner_id`,`partner_member_id`,`partner_name` FROM `kanji_partners` WHERE ? ");
-                            $stmt_partner->execute(array("1=1"));
-                            while($P_PARTNER =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
-                        ?>
-                        <option value="<?php echo $P_PARTNER['partner_name']; ?>" <?php echo ($P_PARTNER['partner_name'] == $session_search_partner)? 'selected' : ''; ?>><?php echo $P_PARTNER['partner_name']; ?></option>
-                        <?php 
-                            endwhile;
-                            $checkAuthen->closeConnection();
-                        ?>
                     </select>
                 </div>
-                <div class="form-group desktop"></div>
-                <div class="form-group desktop"></div>
+                <div class="form-group"></div>
+                <div class="form-group"></div>
                 <div class="form-group filter">
-                    <button type="submit" value="key_search" name="filter_search" class="btn btn-filter-skyblue float-right margin-right-60"> <i class="fa-solid fa-arrow-up-wide-short"></i> ค้นหา</button>
+                    <button type="submit" value="key-search" name="filter-search" class="btn btn-filter-skyblue float-right margin-right-60"> <i class="fa-solid fa-arrow-up-wide-short"></i> ค้นหา</button>
                     <!-- <button class="btn btn-filter-orange"> <i class="fa-solid fa-arrow-down-wide-short"></i> เก่าสุด</button> -->
                 </div>
             </section>
@@ -88,27 +54,34 @@
           
             <section class="container-product-shop">
                 <?php
-                    $checkAuthen->openConnection();
-                    $fillter = "SELECT * FROM `kanji_products` WHERE 1=1 ";
-                    $value = array();
-
-                    if($fillter_search == 'key_search'):
-                        if(!empty($product_name)):
-                            $fillter .= " AND product_name LIKE ? ";
-                            $value[] = '%'.$product_name.'%';
-                        endif;
-                        if(!empty($product_type)):
-                            $fillter .= " AND product_type_name = ?";
-                            $value[] = $product_type;
-                        endif;
-                        if(!empty($product_partner)):
-                            $fillter .= " AND product_shop_name = ?";
-                            $value[] = $product_partner;
-                        endif;
+               
+                    $product_name   = isset($_GET['produce_name']) ? htmlspecialchars(trim($_GET['produce_name'])): '';
+                    $produce_type   = isset($_GET['produce_type']) ? htmlspecialchars(trim($_GET['produce_type'])): '';
+                    $produce_partner   = isset($_GET['produce_partner']) ? htmlspecialchars(trim($_GET['produce_partner'])): '';
+                    $fillter_search = isset($_GET['filter-search']) ? htmlspecialchars(trim($_GET['filter-search'])): '';
+                    $fillter = "";
+                    if(empty($fillter_search)):
+                        $fillter .= "1=1";
+                    elseif(!empty($fillter_search) && !empty($product_name)):
+                        $fillter .= "produce_name = $product_name"; 
+                    elseif(!empty($fillter_search) && !empty($produce_type)):
+                        $fillter .= "produce_name = $produce_type"; 
+                    elseif(!empty($fillter_search) && !empty($produce_partner)):
+                        $fillter .= "produce_name = $produce_partner"; 
+                    elseif(!empty($fillter_search) && !empty($product_name) && !empty($produce_type)):
+                        $fillter .= "produce_name = $product_name AND produce_type = $produce_type"; 
+                    elseif(!empty($fillter_search) && !empty($produce_partner) && !empty($product_name) && !empty($produce_type)):
+                        $fillter .= "produce_name = $produce_partner AND produce_name = $product_name AND produce_type = $produce_type"; 
+                    elseif(!empty($fillter_search) && !empty($produce_partner) && !empty($product_name)):
+                        $fillter .= "produce_name = $produce_partner AND produce_name = $product_name"; 
+                    elseif(!empty($fillter_search) && !empty($produce_partner) && !empty($produce_type)):
+                    $fillter .= "produce_name = $produce_partner AND produce_type = $produce_type"; 
                     else:
+
                     endif;
-                    $stmt_product = $checkAuthen->pdo->prepare($fillter);
-                    $stmt_product->execute($value);
+                    $checkAuthen->openConnection();
+                    $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ");
+                    $stmt_product->execute(array($fillter));
                     while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
                 ?>
                 <div class="box-product">
@@ -179,7 +152,7 @@
                     
                     element.style.padding = "10px"
                     shopFilter.style.display = "grid"
-                    shopFilter.style.height = " 490px "
+                    shopFilter.style.height = "450px"
                     shopFilter.style.gridTemplateColumns  = "1fr"
                     // openMenuFilter.style.transform = "rotate(178deg)"
                     openMenuFilter.style.transform = "scale(1.1,1.1)"

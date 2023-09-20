@@ -47,6 +47,9 @@
             margin: auto;
             text-align: center;
         }
+        #hidden-btn {
+            background-color: silver !important;
+        }
     </style>
     
 </head>
@@ -156,18 +159,22 @@
                 <!-- <td></td> -->
                     
                 </div>
-                <!-- <div class="checkout-footer">
+                <div class="checkout-footer desktop">
                     <a href="./shopping_online.php" class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </a>
                     <a href="./clear_cart.php?cls=1" class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</a>
-                    <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
-
-                </div> -->
+                    <?php if(!empty($_SESSION['CART'])):?>
+                        <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
+                    <?php else: ?>
+                        <a href="#" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
+                    <?php endif; ?>
+                </div>
             </section>
         </article>
     </div>
     <div class="navbar-footer">
         <section><a href="./shopping_online.php"><i class="fa-solid fa-arrow-left"></i></a></section>
-        <section class="main-navbar-footer cart-confirm btn-cart" id="upBTN">ถัดไป</section>
+        <section class="main-navbar-footer cart-confirm btn-cart" <?php if(!empty($_SESSION['CART'])):?> id="upBTN" <?php else: ?>id="hidden-btn"<?php endif; ?>>ถัดไป</section>
+        <!-- <section class="main-navbar-footer cart-confirm btn-cart" id="upBTN">ถัดไป</section> -->
         <section><a href="./checkout_cart.php"><i class="fa-regular fa-rectangle-list"></i> </a> </section>
     </div>
     <?php include ('./footer-template.php'); ?>
