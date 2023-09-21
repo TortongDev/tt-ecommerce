@@ -81,7 +81,15 @@ $checkAuthen = new Connection();
                 <!-- <img src="./kanji_farm.jpg" class="img-action header-img"  alt=""> -->
             <!-- </section> -->
             <section class="header-img" style="overflow: hidden;">
-                <img src="./img-shop/Fresh _ Healthy.jpg" class="img-action header-img"  alt="">
+                <?php
+                // $checkAuthen
+                $checkAuthen->openConnection();
+                $stmt_product = $checkAuthen->pdo->prepare("SELECT picture FROM `kanji_banners` WHERE ? ");
+                $stmt_product->execute(array('1=1'));
+                while($PICTURE =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
+                ?>
+                <img src="./backend_disc/bs-advance-admin/advance-admin/uploads/<?php echo $PICTURE['picture']; ?>" class="img-action header-img"  alt="">
+                <?php endwhile; ?>
             </section>
             <br>
             <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>

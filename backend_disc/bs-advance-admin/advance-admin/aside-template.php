@@ -23,13 +23,10 @@
                 <a href="#"><i class="fa fa-desktop "></i>ตั้งค่าเว็บ<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                     <li>
-                        <a href="./banner-config.php"><i class="fa fa-toggle-on"></i>เปลี่ยน Banner</a>
+                        <a href="./banner-config.php">เปลี่ยน Banner</a>
                     </li>
                     <li>
-                        <a href="./slide-config.php"><i class="fa fa-bell "></i>แก้ไข Slide</a>
-                    </li>
-                        <li>
-                        <a href="./partner-config.php"><i class="fa fa-circle-o "></i>เพิ่ม Partner</a>
+                        <a href="./slide-config.php">แก้ไข Slide</a>
                     </li>
                 </ul>
             
