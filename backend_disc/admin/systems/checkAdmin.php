@@ -12,6 +12,12 @@ class checkAdmin {
         endif;
 
     }
+    public function authenAPI ($url){
+        if(@$_SERVER['HTTP_HOST'] != $url):
+            echo "ไม่สามารถเข้าถึงได้";
+            exit;
+        endif;
+    }
     public function checkLoginAdmin()
     {
         if(!empty($_SESSION['AUTHEN_ADMIN_ID'] )):

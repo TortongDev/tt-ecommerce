@@ -17,6 +17,9 @@
         if($status == 'post'){
             $message = "บันทึกเสร็จเรียบร้อยครับ";
         }
+        if($status == 'delete'){
+            $message = "ลบข้อมูลเรียบร้อยครับ";
+        }
     ?>
     <script>
          let statusPost = '<?php echo $statusPost; ?>';

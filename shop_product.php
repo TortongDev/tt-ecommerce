@@ -56,7 +56,7 @@ $checkAuthen->authenPermission();
             </div>
             <div class="col-shopping-1">
                 <div class="img-preview">
-                    <img src="./backend_disc/bs-advance-admin/advance-admin/<?php echo $read['product_img'] ?>" alt="">
+                    <img src="./backend_disc/admin/systems/<?php echo $read['product_img'] ?>" alt="">
                 </div>
             </div>
             <div class="col-shopping-1">

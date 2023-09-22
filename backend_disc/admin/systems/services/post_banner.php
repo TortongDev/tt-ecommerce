@@ -50,7 +50,7 @@ $sql_insert = "UPDATE `kanji_banners` SET  `picture` = ? WHERE banner_id = ?";
 $stmt_insert = $insert->pdo->prepare($sql_insert);
 if($stmt_insert->execute(array($target_name,$id))):
 
-    header("Location: ../popup.php?status_post=success&pagename=../banner-config&status=post");
+    header("Location: ../popup.php?status_post=success&pagename=banner-config&status=post");
 else:
 
 endif;

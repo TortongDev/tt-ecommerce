@@ -99,10 +99,18 @@ $checkAuthen = new Connection();
                  <!-- Swiper -->
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
+                        <?php
+                            $checkAuthen->openConnection();
+                            $stmt_slide = $checkAuthen->pdo->prepare(
+                                "SELECT `slide_id`, `slide_picture`, `slide_header`, `slide_content`, `slide_status`, `slide_timestamp` 
+                                FROM `kanji_slide` WHERE  ? AND `slide_status` = '1'
+                                ");
+                            $stmt_slide->execute(array('1=1'));
+                            while($SPICTURE =  $stmt_slide->fetch(PDO::FETCH_ASSOC)):
+                        ?>
                         <!-- Slides -->
-                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./img-shop/Fresh _ Healthy.jpg" alt=""></div>
-                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./img-shop/Cos-Lettuce.jpg" alt=""></div>
-                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./img-shop/เรดโอ๊ค.jpg" alt=""></div>
+                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./backend_disc/admin/systems/uploads/<?php echo $SPICTURE['slide_picture'] ; ?>" alt=""></div>
+                            <?php endwhile; ?>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -165,7 +173,7 @@ $checkAuthen = new Connection();
                 <div class="box-product">
                     <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
-                    <img class="img-action" src="./backend_disc/bs-advance-admin/advance-admin/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
+                    <img class="img-action" src="./backend_disc/admin/systems/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
                     </div>
                     <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                     <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>

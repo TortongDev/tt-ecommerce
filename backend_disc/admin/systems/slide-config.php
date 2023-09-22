@@ -44,12 +44,12 @@
                     <form action="./services/post_slide.php" enctype="multipart/form-data"  method="post">
                         <div class="form-group">
                             <label for="">ชื่อสไลน์</label>
-                            <input type="text" class="form-control" name="slide_header" id="slide_header" >
+                            <input type="text" name="slide_header" id="slide_header" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="">เนื้อหาสไลน์</label>
-                            <input type="text" class="form-control" name="slide_content" id="slide_content" >
-                        </div>
+                            <input type="text" name="slide_content" id="slide_content" class="form-control">
+                        </div> -->
                         <div class="form-group">
                             <label for="">รูปภาพสไลน์</label>
                             <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" @change="fileToUpload">
@@ -70,24 +70,27 @@
                         </thead>
                         
                         <tbody>
+                            <form action="" method="post" @submit.prevent= "update_status">
                         <?php
-                           
+                           $status = "";
                             $checkadmin->checkAdmin();
                             $stmt = $db->pdo->query("SELECT `slide_id`,`slide_picture`,`slide_header`,`slide_content`,`slide_status` FROM `kanji_slide` WHERE 1");
                             $i = 0;
                             while($r = $stmt->fetch(PDO::FETCH_ASSOC)):
                         ?>
                             <tr>
-                                <td><?php echo $i++; ?></td>
+                                <td><?php echo $i=$i+1; ?></td>
                                 <td><?php echo $r['slide_picture']; ?></td>
                                 <td><?php echo $r['slide_header']; ?></td>
                                 <td><?php echo $r['slide_content']; ?></td>
                                 <td>
-                                    <!-- <input type="hidden" name="id"> -->
-                                <input type="checkbox" value="<?php echo $r['slide_id']; ?>" <?php echo  ($r['slide_status'] == 1) ? 'checked' : ''; ?> @change="update_status">
+                                <input type="checkbox" value="<?php echo $r['slide_id'].','.$r['slide_status']; ?>" <?php echo  ($r['slide_status'] == 1) ? 'checked' : ''; ?> @change="update_status()">
                                 </td>
+                                <td><a href="./services/delete.php?process=slide&option=delete&id=<?php echo $r['slide_id']; ?>" class="btn btn-danger">ลบ</a></td>
                             </tr>
-                        <?php endwhile; ?>
+                                
+                            <?php endwhile; ?>
+                            </form>
                         </tbody>
                     </table>
                 </div>
@@ -107,25 +110,27 @@
         data() {
             return {
                 id: '',
-                status: 1
+                status: '',
+                enable_status: false
             }
         },methods: {
                 update_status (){
-                const id = event.target.value;
-                this.id = id;
-                this.status = status;
+                const status_point = document.querySelector('#status_point');
+                this.id         = event.target.value;
+                console.log( this.id);
                 const appdata = new FormData()
                 appdata.append('id',this.id);
                 appdata.append('status',this.status);
                 fetch('./services/update_status_slide.php', {
                     method: 'POST',
-                    // body: JSON.stringify(appdata)
                     body: appdata
                 })
                     .then(response => response.json())
                     .then(data => console.log(data))
                     .catch(error => console.log(error));
             }
+        },mounted() {
+           
         },
     })
     app.mount('#app')

@@ -6,6 +6,8 @@ $chkAdmin = new checkAdmin;
 $chkAdmin->checkAdmin();
 
 
+    $slide_header   = isset($_POST['slide_header']) ? htmlspecialchars(trim($_POST['slide_header'])) : '';
+    $slide_content  = isset($_POST['slide_content']) ? htmlspecialchars(trim($_POST['slide_content'])) : '';
 
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -42,9 +44,8 @@ $chkAdmin->checkAdmin();
             echo "ขออภัย เกิดข้อผิดพลาดในการอัปโหลดไฟล์";
         }
     } 
+    
     $slide_picture  = $filename_img;
-    $slide_header   = isset($POST['slide_header']) ? htmlspecialchars(trim($POST['slide_header'])) : '';
-    $slide_content  = isset($POST['slide_content']) ? htmlspecialchars(trim($POST['slide_content'])) : '';
         
     $insert = new Connection(true);
     $sql_insert = "INSERT INTO `kanji_slide`(`slide_picture`, `slide_header`, `slide_content`) VALUES (?,?,?)";
