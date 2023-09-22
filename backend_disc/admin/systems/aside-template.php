@@ -19,9 +19,10 @@
             <li>
                 <a class="active-menu" href="index.php"><i class="fa fa-dashboard "></i>Dashboard</a>
             </li>
+
             <li>
                 <a href="#"><i class="fa fa-desktop "></i>ตั้งค่าเว็บ<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                    <ul class="nav nav-second-level">d
                     <li>
                         <a href="./banner-config.php">เปลี่ยน Banner</a>
                     </li>
