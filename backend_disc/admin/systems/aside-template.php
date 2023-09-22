@@ -35,18 +35,17 @@
                     <a href="#"><i class="fa fa-desktop "></i>เพิ่มข้อมูลสินค้า<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                         <li>
-                            <a href="./form_product_type.php"><i class="fa fa-toggle-on"></i>ประเภทสินค้า</a>
+                            <a href="./form_product_type.php">ประเภทสินค้า</a>
                         </li>
                         <li>
-                            <a href="./form_shop_product.php"><i class="fa fa-bell">เพิ่มร้านค้า</i></a>
+                            <a href="./form_shop_product.php">เพิ่มร้านค้า</a>
                         </li>
                         <li>
-                            <a href="./form_products.php"><i class="fa fa-circle-o "></i>สินค้า</a>
+                            <a href="./form_products.php">สินค้า</a>
                         </li>
                     </ul>
                 
                 <li>
-                <a href="login.html"><i class="fa fa-sign-in "></i>เข้าสู่ระบบ</a>
             </li>
         </ul>
     </div>
