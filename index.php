@@ -88,7 +88,7 @@ $checkAuthen = new Connection();
                 $stmt_product->execute(array('1=1'));
                 while($PICTURE =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
                 ?>
-                <img src="./backend_disc/bs-advance-admin/advance-admin/uploads/<?php echo $PICTURE['picture']; ?>" class="img-action header-img"  alt="">
+                <img src="./backend_disc/admin/systems/uploads/<?php echo $PICTURE['picture']; ?>" class="img-action header-img"  alt="">
                 <?php endwhile; ?>
             </section>
             <br>
