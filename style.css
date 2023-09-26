@@ -1097,6 +1097,7 @@ section.shop-filter {
         width: 100%;
         padding: 3px;
     }
+    
     .container-shopping-product > .col-shopping-1 > .list-preview {
         width: 50% !important;
         overflow: auto;
