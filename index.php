@@ -84,7 +84,7 @@ $checkAuthen = new Connection();
                 <?php
                 // $checkAuthen
                 $checkAuthen->openConnection();
-                $stmt_product = $checkAuthen->pdo->prepare("SELECT picture FROM `kanji_banners` WHERE ? ");
+                $stmt_product = $checkAuthen->pdo->prepare("SELECT banner_id , picture FROM `kanji_banners` WHERE ?  AND banner_status = '1' ");
                 $stmt_product->execute(array('1=1'));
                 while($PICTURE =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
                 ?>
@@ -109,8 +109,8 @@ $checkAuthen = new Connection();
                             while($SPICTURE =  $stmt_slide->fetch(PDO::FETCH_ASSOC)):
                         ?>
                         <!-- Slides -->
-                        <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./backend_disc/admin/systems/uploads/<?php echo $SPICTURE['slide_picture'] ; ?>" alt=""></div>
-                            <?php endwhile; ?>
+                    <div class="swiper-slide"><img style="width:90%;margin:auto;height:600px;object-fit: cover;" src="./backend_disc/admin/systems/uploads/<?php echo $SPICTURE['slide_picture'] ; ?>" alt=""></div>
+                        <?php endwhile; ?>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>

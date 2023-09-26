@@ -10,6 +10,9 @@
 
     $stmt_partner = $connection->pdo->prepare("SELECT * FROM kanji_partners WHERE ?");
     $stmt_partner->execute(array('1=1'));
+
+    $stmt_product = $connection->pdo->prepare('SELECT * FROM kanji_products WHERE ?');
+    $stmt_product->execute(array('1=1'));
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,6 +31,8 @@
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    
+    <link href="./assets/css/switch.css" rel="stylesheet" type="text/css">
     <style>
         #group {
             position: relative;
@@ -133,10 +138,54 @@
                     </div>
                     <button type="submit" name="process" value="insert_partners" class="btn btn-info">บันทึกข้อมูลสินค้าลงฐานข้อมูล</button>
                 </form>
+                
+                <br>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>รูปภาพ</th>
+                            <th>ชื่อสินค้า</th>
+                            <th>ราคา / หน่วย</th>
+                            <th>ประเภทสินค้า</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $i = 0;
+                            while($RP_PRODUCT = $stmt_product->fetch(PDO::FETCH_ASSOC)):
+                        ?>
+                        <tr>
+                            <td><?php echo $i=$i+1; ?></td>
+                            <td><img src="./<?php echo $RP_PRODUCT['product_img'];?>" width="200" height="100"></td>
+                            <td><?php echo $RP_PRODUCT['product_name'];?></td>
+                            <td><?php echo $RP_PRODUCT['product_price'];?></td>
+                            <td><?php echo $RP_PRODUCT['product_type_name'];?></td>
+                            <td>
+                                        <label class="switch">
+                                            <input 
+                                             type="checkbox" 
+                                             value="<?php echo $RP_PRODUCT['product_id'].','.$RP_PRODUCT['product_status']; ?>" 
+                                             <?php echo ($RP_PRODUCT['product_status'] == 1) ? 'checked' : ''; ?>
+                                              @change="update_status">
+                                            <span class="slider"></span>
+                                        </label> 
+                            </td>
+                            <td><a href="./services/delete.php?process=add_product&option=delete&id=<?php echo $RP_PRODUCT['product_id']; ?>" class="btn btn-danger">ลบ</a></td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+
             </div>
             <!-- /. PAGE INNER  -->
+            
         </div>
         <!-- /. PAGE WRAPPER  -->
+       
     </div>
     <!-- /. WRAPPER  -->
    <?php include "./footer-template.php"; ?>

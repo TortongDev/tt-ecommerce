@@ -2,7 +2,7 @@
 <header>
 <div class="container-header">
     <div class="header-title">
-        <a href="./index.php"> <img class="img-title" src="./kanji_farm.jpg" alt=""></a>
+        <a href="./index.php"> <img class="img-title" src="./img-shop/KaNji_8.png" alt=""></a>
         <div class="action-icon">
           
         </div>

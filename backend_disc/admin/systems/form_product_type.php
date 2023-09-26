@@ -6,7 +6,7 @@
     $checkadmin = new checkAdmin;
     $checkadmin->checkAdmin();
     // $connection
-    $stmt_select = $connection->pdo->prepare("SELECT * FROM kanji_product_type WHERE ?");
+    $stmt_select = $connection->pdo->prepare("SELECT * FROM kanji_product_type WHERE ? ORDER BY sys_timestamp DESC");
     $stmt_select->execute(array('1=1'));
 ?>
 <!DOCTYPE html>
@@ -26,6 +26,11 @@
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <link href="./assets/css/switch.css" rel="stylesheet" type="text/css">
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   
 </head>
 <body>
     <div id="wrapper">
@@ -36,11 +41,11 @@
             <div id="page-inner">
                 <h2>ข้อมูลประเภทสินค้า</h2>
                 <form role="form" action="./post_product_type.php" enctype="multipart/form-data" method="post">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>รหัสประเภท</label>
                         <input class="form-control" name="product_type_id" type="text">
                         <p class="help-block">หมายเลขประจำตัวของประเภทสินค้า</p>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>ชื่อประเภท</label>
                         <input class="form-control" name="product_type_name" type="text">
@@ -76,21 +81,30 @@
                                    
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="app">
                                 <?php
                                     $i = 1;  
                                     while($r = $stmt_select->fetch(PDO::FETCH_ASSOC)): 
                                 ?>
                                 <tr>
                                     <td><?php echo $i++ ?></td>
-                                    <td><?php echo $r['product_type_id'].$r['type_id'];; ?></td>
+                                    <td><?php echo $r['product_type_id'] ?></td>
                                     <td><?php echo $r['product_type_name']; ?></td>
                                     <td><?php echo $r['product_type_detail']; ?></td>
-                                    <td><?php echo $r['product_type_status']; ?></td>
+                                    <td>
+                                        <label class="switch">
+                                            <input 
+                                             type="checkbox" 
+                                             value="<?php echo $r['type_id'].','.$r['product_type_status']; ?>" 
+                                             <?php echo ($r['product_type_status'] == 1) ? 'checked' : ''; ?>
+                                              @change="update_status">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </td>
                                     
                                     <td>
-                                        <button class="btn btn-warning">แก้ไข</button>
-                                        <button class="btn btn-danger">ลบ</button>
+                                        <!-- <button class="btn btn-warning">แก้ไข</button> -->
+                                        <a class="btn btn-danger" href="./services/delete.php?process=product_type&id=<?php echo $r['type_id']; ?>&option=delete">ลบ</a>
                                     </td>
                                 </tr>                                
                                 <?php endwhile; ?>
@@ -101,13 +115,41 @@
             </div>
             <!-- /. PAGE INNER  -->
         </div>
-       
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        id: '',
+                        status: '',
+                        enable_status: false
+                    }
+                },methods: {
+                        update_status (){
+                        const status_point  = document.querySelector('#status_point');
+                        this.id             = event.target.value;
+                        const appdata       = new FormData()
+                        appdata.append('id',    this.id);
+                        appdata.append('status',this.status);
+                        fetch('./services/update_status_type.php', {
+                            method: 'POST',
+                            body: appdata
+                        })
+                            .then(response => response.json())
+                            .then(data => console.log(data))
+                            .catch(error => console.log(error));
+                    }
+                },mounted() {
+                
+                },
+            })
+            app.mount('#app')
+    </script>
+
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
 
    <?php include "./footer-template.php"; ?>
-
-
+   
 </body>
 </html>

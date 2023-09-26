@@ -16,6 +16,9 @@ $stmt_select->execute(array('1=1'));
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Bootstrap Advance Admin Template</title>
 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   
+
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -26,6 +29,8 @@ $stmt_select->execute(array('1=1'));
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <link href="./assets/css/switch.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="wrapper">
@@ -90,9 +95,18 @@ $stmt_select->execute(array('1=1'));
                                     <td><?php echo $r['partner_member_id']. $r['partner_id']; ?></td>
                                     <td><?php echo $r['partner_name']; ?></td>
                                     <td><?php echo $r['partner_detail']; ?></td>
-                                    <td><?php echo $r['partner_status']; ?></td>
                                     <td>
-                                        <button class="btn btn-warning">แก้ไข</button>
+                                        <label class="switch">
+                                            <input 
+                                             type="checkbox" 
+                                             value="<?php echo $r['partner_id'].','.$r['partner_status']; ?>" 
+                                             <?php echo ($r['partner_status'] == 1) ? 'checked' : ''; ?>
+                                              @change="update_status">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <!-- <button class="btn btn-warning">แก้ไข</button> -->
                                         <button class="btn btn-danger">ลบ</button>
                                     </td>
                                 </tr>                                

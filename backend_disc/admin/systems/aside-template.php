@@ -22,15 +22,14 @@
 
             <li>
                 <a href="#"><i class="fa fa-desktop "></i>ตั้งค่าเว็บ<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">d
+                    <ul class="nav nav-second-level">
                     <li>
-                        <a href="./banner-config.php">เปลี่ยน Banner</a>
+                        <a href="./banner-config-home.php">เปลี่ยน Banner</a>
                     </li>
                     <li>
                         <a href="./slide-config.php">แก้ไข Slide</a>
                     </li>
                 </ul>
-            
             <li>
                 <li>
                     <a href="#"><i class="fa fa-desktop "></i>เพิ่มข้อมูลสินค้า<span class="fa arrow"></span></a>
@@ -45,6 +44,10 @@
                             <a href="./form_products.php">สินค้า</a>
                         </li>
                     </ul>
+
+
+                    <br>
+                    <a href="./logout.php" class="btn btn-banger">ออกจากระบบ</a>
                 
                 <li>
             </li>

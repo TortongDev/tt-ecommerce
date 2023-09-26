@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 22, 2023 at 04:13 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: localhost
+-- Generation Time: Sep 22, 2023 at 09:21 PM
+-- Server version: 10.5.17-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `authen_admin` (
   `authen_user_id` int(10) NOT NULL,
-  `authen_username` varchar(225) NOT NULL,
-  `authen_password` varchar(225) NOT NULL,
-  `authen_status` varchar(10) NOT NULL DEFAULT '1',
+  `authen_username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_password` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   `authen_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -50,9 +50,9 @@ INSERT INTO `authen_admin` (`authen_user_id`, `authen_username`, `authen_passwor
 
 CREATE TABLE `authen_users` (
   `authen_user_id` int(10) NOT NULL,
-  `authen_username` varchar(225) NOT NULL,
-  `authen_password` varchar(225) NOT NULL,
-  `authen_status` varchar(10) NOT NULL DEFAULT '1',
+  `authen_username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_password` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `authen_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   `authen_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -71,10 +71,10 @@ INSERT INTO `authen_users` (`authen_user_id`, `authen_username`, `authen_passwor
 
 CREATE TABLE `kanji_banners` (
   `banner_id` int(10) NOT NULL,
-  `banner_topic` char(20) NOT NULL,
+  `banner_topic` char(20) COLLATE utf8_unicode_ci NOT NULL,
   `banner_status` int(11) NOT NULL DEFAULT 2,
   `banner_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `picture` varchar(225) NOT NULL
+  `picture` varchar(225) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -82,7 +82,7 @@ CREATE TABLE `kanji_banners` (
 --
 
 INSERT INTO `kanji_banners` (`banner_id`, `banner_topic`, `banner_status`, `banner_timestamp`, `picture`) VALUES
-(6, 'B1', 2, '2023-09-21 05:59:27', 'shopping_6775634.png');
+(6, 'B1', 2, '2023-09-21 05:59:27', 'Fresh _ Healthy.jpg');
 
 -- --------------------------------------------------------
 
@@ -92,11 +92,11 @@ INSERT INTO `kanji_banners` (`banner_id`, `banner_topic`, `banner_status`, `bann
 
 CREATE TABLE `kanji_partners` (
   `partner_id` int(10) NOT NULL,
-  `partner_member_id` varchar(10) NOT NULL,
-  `partner_name` varchar(100) NOT NULL,
-  `partner_detail` varchar(500) NOT NULL,
-  `partner_status` char(1) NOT NULL DEFAULT current_timestamp(),
-  `partner_img` varchar(255) NOT NULL,
+  `partner_member_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_status` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT current_timestamp(),
+  `partner_img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -123,24 +123,24 @@ INSERT INTO `kanji_partners` (`partner_id`, `partner_member_id`, `partner_name`,
 
 CREATE TABLE `kanji_products` (
   `product_id` int(10) NOT NULL,
-  `product_member_id` varchar(10) NOT NULL,
-  `product_name` varchar(225) NOT NULL,
-  `product_price` varchar(20) NOT NULL,
-  `product_amount` varchar(20) NOT NULL,
-  `product_type_name` varchar(80) NOT NULL,
-  `product_shop_name` varchar(80) NOT NULL,
+  `product_member_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `product_name` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
+  `product_price` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `product_amount` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `product_shop_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `product_type_id` int(10) NOT NULL,
   `product_user_id` int(10) NOT NULL,
   `product_status` int(10) NOT NULL DEFAULT 1,
   `product_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `product_img` varchar(300) NOT NULL,
-  `product_detail` text NOT NULL,
-  `product_sub_detail` varchar(500) NOT NULL,
+  `product_img` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `product_detail` text COLLATE utf8_unicode_ci NOT NULL,
+  `product_sub_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `comment_id` int(10) NOT NULL,
   `review_id` int(10) NOT NULL,
   `product_shop_id` int(10) NOT NULL,
-  `option_price` varchar(10) NOT NULL,
-  `option_amount` varchar(10) NOT NULL
+  `option_price` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `option_amount` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -167,11 +167,11 @@ INSERT INTO `kanji_products` (`product_id`, `product_member_id`, `product_name`,
 
 CREATE TABLE `kanji_product_type` (
   `type_id` int(10) NOT NULL,
-  `product_type_id` varchar(10) NOT NULL,
-  `product_type_name` varchar(100) NOT NULL,
-  `product_type_detail` varchar(500) NOT NULL,
+  `product_type_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `sys_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `product_type_status` char(10) NOT NULL DEFAULT '1'
+  `product_type_status` char(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -190,10 +190,10 @@ INSERT INTO `kanji_product_type` (`type_id`, `product_type_id`, `product_type_na
 
 CREATE TABLE `kanji_slide` (
   `slide_id` int(11) NOT NULL,
-  `slide_picture` varchar(255) NOT NULL,
-  `slide_header` varchar(100) NOT NULL,
-  `slide_content` varchar(255) NOT NULL,
-  `slide_status` varchar(10) NOT NULL DEFAULT '2',
+  `slide_picture` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slide_header` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `slide_content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slide_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '2',
   `slide_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

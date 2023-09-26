@@ -25,10 +25,68 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link href="./assets/css/switch.css" rel="stylesheet" type="text/css">
+   
     <style>
         .row {padding:20px;}
+        .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
     </style>
 </head>
 <body>
@@ -41,10 +99,10 @@
 
 
                 <div class="row">
-                    <h3>แก้ไข Slide</h3>
-                    <form action="./services/post_slide.php" enctype="multipart/form-data"  method="post">
+                    <h3>แก้ไข Banner</h3>
+                    <form action="./services/post_banner_home.php" enctype="multipart/form-data"  method="post">
                         <div class="form-group">
-                            <label for="">ชื่อสไลน์</label>
+                            <label for="">ชื่อ Banner</label>
                             <input type="text" name="slide_header" id="slide_header" class="form-control">
                         </div>
                         <!-- <div class="form-group">
@@ -52,7 +110,7 @@
                             <input type="text" name="slide_content" id="slide_content" class="form-control">
                         </div> -->
                         <div class="form-group">
-                            <label for="">รูปภาพสไลน์</label>
+                            <label for="">รูปภาพ Banner</label>
                             <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" @change="fileToUpload">
                         </div>
                         <button type="submit" class="btn btn-primary">เพิ่ม Slide</button>
@@ -74,21 +132,21 @@
                         <?php
                            $status = "";
                             $checkadmin->checkAdmin();
-                            $stmt = $db->pdo->query("SELECT `slide_id`,`slide_picture`,`slide_header`,`slide_content`,`slide_status` FROM `kanji_slide` WHERE 1");
+                            $stmt = $db->pdo->query("SELECT `banner_id`,`banner_topic`,`banner_status`,`banner_timestamp`,`picture` FROM `kanji_banners` WHERE 1");
                             $i = 0;
                             while($r = $stmt->fetch(PDO::FETCH_ASSOC)):
                         ?>
                             <tr>
                                 <td><?php echo $i=$i+1; ?></td>
-                                <td><img src="./uploads/<?php echo $r['slide_picture']; ?>" width="200" height="100"></td>
-                                <td><?php echo $r['slide_header']; ?></td>
+                                <td><img src="./uploads/<?php echo $r['picture']; ?>" width="200" height="100" > </td>
+                                <td><?php echo $r['banner_topic']; ?></td>
                                 <td>
                                 <label class="switch">
-                                <input type="checkbox" value="<?php echo $r['slide_id'].','.$r['slide_status']; ?>" <?php echo  ($r['slide_status'] == 1) ? 'checked' : ''; ?> @change="update_status()">
+                                <input type="checkbox" value="<?php echo $r['banner_id'].','.$r['banner_status']; ?>" <?php echo  ($r['banner_status'] == 1) ? 'checked' : ''; ?> @change="update_status">
                                 <span class="slider"></span>
                                 </label>
                                 </td>
-                                <td><a href="./services/delete.php?process=slide&option=delete&id=<?php echo $r['slide_id']; ?>" class="btn btn-danger">ลบ</a></td>
+                                <td><a href="./services/delete.php?process=banner&option=delete&id=<?php echo $r['banner_id']; ?>" class="btn btn-danger">ลบ</a></td>
                             </tr>
                                 
                             <?php endwhile; ?>
@@ -117,13 +175,12 @@
             }
         },methods: {
                 update_status (){
-                const status_point = document.querySelector('#status_point');
-                this.id         = event.target.value;
-                console.log( this.id);
+                const status_point  = document.querySelector('#status_point');
+                this.id             = event.target.value;
                 const appdata = new FormData()
                 appdata.append('id',this.id);
                 appdata.append('status',this.status);
-                fetch('./services/update_status_slide.php', {
+                fetch('./services/update_status_banner.php', {
                     method: 'POST',
                     body: appdata
                 })
