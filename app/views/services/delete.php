@@ -10,13 +10,9 @@
     if($option == 'delete'){
 
         if($process == 'slide'){
-            $sql = "DELETE FROM `kanji_slide` WHERE 1=1 AND  slide_id = '{$id}' ";
-            $stmt = $db->pdo->query($sql);
-            if($stmt){
-                header("Location: ../popup.php?status_post=success&pagename=slide-config&status=delete");
-            }else{
-                echo "0";
-            }
+            $slide = new Slide(Connection::$pdo);
+            $slide->setSlideID($id);
+            $slide->delete();          
         }elseif($process == 'banner'){
     
            $banner = new Banner(Connection::$pdo);
@@ -38,6 +34,11 @@
             }else{
                 echo "0";
             }
+        }elseif($process == 'partner'){
+            $partner = new Partner(Connection::$pdo);
+            $partner->setPartnerID($id);
+            $partner->delete();
+
         }
 
     }else{

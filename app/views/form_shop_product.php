@@ -1,12 +1,12 @@
 ﻿<?php
 
-require_once "../../../autoload_class.php";
+require_once "./autoload_class.php";
 $connection = new Connection(true);
 // $connection
 require_once "./checkAdmin.php";
 $checkadmin = new checkAdmin;
 $checkadmin->checkAdmin();
-$stmt_select = $connection->pdo->prepare("SELECT * FROM kanji_partners WHERE ?");
+$stmt_select = Connection::$pdo->prepare("SELECT * FROM kanji_partners WHERE ?");
 $stmt_select->execute(array('1=1'));
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $stmt_select->execute(array('1=1'));
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Bootstrap Advance Admin Template</title>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
    
 
     <!-- BOOTSTRAP STYLES-->
@@ -31,6 +31,7 @@ $stmt_select->execute(array('1=1'));
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
     <link href="./assets/css/switch.css" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -40,7 +41,7 @@ $stmt_select->execute(array('1=1'));
         <div id="page-wrapper">
             <div id="page-inner">
                 <h2>ลงชื่อร้าน Partner</h2>
-                <form role="form" action="./post_partners.php" enctype="multipart/form-data" method="post">
+                <form role="form" action="./services/post_partners.php" enctype="multipart/form-data" method="post">
                     <!-- <div class="form-group">
                         <label>รหัส Partner</label>
                         <input class="form-control" name="partner_member_id" type="text">
@@ -82,7 +83,6 @@ $stmt_select->execute(array('1=1'));
                                     <th>รายละเอียด</th>
                                     <th>สถานะการใช้งาน</th>
                                     <th>เพิ่ม / ลบ / แก้ไข</th>
-                                   
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,7 +107,7 @@ $stmt_select->execute(array('1=1'));
                                     </td>
                                     <td>
                                         <!-- <button class="btn btn-warning">แก้ไข</button> -->
-                                        <button class="btn btn-danger">ลบ</button>
+                                        <a class="btn btn-danger" href="./services/delete.php?id=<?php echo $r['partner_id']; ?>&process=partner&option=delete">ลบ</a>
                                     </td>
                                 </tr>                                
                                 <?php endwhile; ?>
@@ -119,13 +119,40 @@ $stmt_select->execute(array('1=1'));
             <!-- /. PAGE INNER  -->
             
         </div>
-       
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                id: '',
+                status: '',
+                enable_status: false
+            }
+        },methods: {
+                update_status(){
+                    console.log(1);
+                this.id             = event.target.value;
+                const appdata       = new FormData()
+                appdata.append('id',    this.id);
+                appdata.append('status',this.status);
+                fetch('./services/update_status_partner.php', {
+                    method: 'POST',
+                    body: appdata
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.log(error));
+            }
+        },mounted() {
+        
+        },
+    })
+    app.mount('#wrapper')
+</script>
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-
+    
    <?php include "./footer-template.php"; ?>
-
-
+   
 </body>
 </html>

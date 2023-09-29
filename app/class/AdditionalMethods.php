@@ -53,6 +53,10 @@ class AdditionalMethods
             }
         } 
       }
+      public function redirectSuccess(){
+          header("Location: ../popup.php?status_post=success&pagename=form_product_type&status=delete");
+          exit;
+      }
     
 }
 ?>

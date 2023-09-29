@@ -1,12 +1,12 @@
 ﻿<?php
    
-    require_once "../../../autoload_class.php";
+    require_once "./autoload_class.php";
     $connection = new Connection(true);
     require_once "./checkAdmin.php";
     $checkadmin = new checkAdmin;
     $checkadmin->checkAdmin();
     // $connection
-    $stmt_select = $connection->pdo->prepare("SELECT * FROM kanji_product_type WHERE ? ORDER BY sys_timestamp DESC");
+    $stmt_select = Connection::$pdo->prepare("SELECT * FROM kanji_product_type WHERE ? ORDER BY sys_timestamp DESC");
     $stmt_select->execute(array('1=1'));
 ?>
 <!DOCTYPE html>

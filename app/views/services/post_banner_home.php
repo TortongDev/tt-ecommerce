@@ -1,4 +1,5 @@
 <?php
+
     require_once "../autoload_class.php";
 
     $slide_header   = isset($_POST['slide_header']) ? htmlspecialchars(trim($_POST['slide_header'])) : '';
@@ -16,7 +17,8 @@
     $banner->setBannerName($slide_header);
     $banner->setBannerPicture($slide_picture);
     $banner->save();
-    exit;
 
+    $db = NULL;
+    $banner = NULL;
 
 ?>

@@ -56,7 +56,6 @@ class Banner extends AdditionalMethods
         $stmt = self::$pdo->query($sql);
             
         if($stmt){
-           
             header("Location: ../popup.php?status_post=success&pagename=banner-config-home&status=delete");
             exit;
         }else{

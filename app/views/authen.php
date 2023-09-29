@@ -1,6 +1,6 @@
 <?php
 
-require_once "./autoload_controllers.php";
+require_once "./autoload_class.php";
 require_once "./checkAdmin.php";
 
 //
@@ -14,7 +14,7 @@ if($login == 'success'):
     $username = isset($_POST['username']) ? htmlspecialchars(trim($_POST['username'])) : '';
     $password = isset($_POST['password']) ? htmlspecialchars(trim($_POST['password'])) : '';
     $sql_admin = "SELECT * FROM  authen_admin WHERE 1=1 AND authen_username = ? AND authen_password = ? ";
-    $stmt_admin = $connection->pdo->prepare($sql_admin);
+    $stmt_admin = Connection::$pdo->prepare($sql_admin);
     $stmt_admin->execute(array($username,$password));
     if($stmt_admin->rowCount() > 0):
         while($read = $stmt_admin->fetch()):

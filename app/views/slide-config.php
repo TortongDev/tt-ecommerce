@@ -1,5 +1,5 @@
 <?php
-     require_once "../../../services/class/Connection.php";
+     require_once "./autoload_class.php";
      $db = new Connection(true);
      require_once "./checkAdmin.php";
      $checkadmin = new checkAdmin;
@@ -74,7 +74,7 @@
                         <?php
                            $status = "";
                             $checkadmin->checkAdmin();
-                            $stmt = $db->pdo->query("SELECT `slide_id`,`slide_picture`,`slide_header`,`slide_content`,`slide_status` FROM `kanji_slide` WHERE 1");
+                            $stmt = Connection::$pdo->query("SELECT `slide_id`,`slide_picture`,`slide_header`,`slide_content`,`slide_status` FROM `kanji_slide` WHERE 1");
                             $i = 0;
                             while($r = $stmt->fetch(PDO::FETCH_ASSOC)):
                         ?>

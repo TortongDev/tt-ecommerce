@@ -198,7 +198,7 @@ $checkAuthen = new Connection();
             <section class="container-alliance">
             <?php  
                 $checkAuthen->openConnection();
-                $stmt_partner = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_partners` WHERE ? ORDER BY timestamp DESC LIMIT 6");
+                $stmt_partner = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_partners` WHERE ? AND partner_status = '1' ORDER BY timestamp DESC LIMIT 6");
                 $stmt_partner->execute(array('1=1'));
                 while($R_PARTNERs =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
             ?>
