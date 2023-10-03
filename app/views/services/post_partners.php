@@ -2,8 +2,6 @@
 require_once "../autoload_class.php";
 require_once "../checkAdmin.php";
 $db = new Connection(true);
-$checkAuthen = new checkAdmin;
-$conn = new Connection(true);
 $newPartner = new Partner(Connection::$pdo);
  
     $target_dir = "uploads/";
