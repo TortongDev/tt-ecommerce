@@ -3,27 +3,27 @@
             <section></section>
             <section class="flex-center">
                 <center>
-                    <h2 class="margin-block-0 main-text">Kaoyai Cafe</h2>
-                    <h4 class="margin-block-0 sub-text">Copyright © 2023 kaoyai cafe, Inc.</h4>
+                    <h2 class="margin-block-0 main-text">Kanjifarm.com</h2>
+                    <h4 class="margin-block-0 sub-text">Copyright © 2023 Kanjifarm All Rights Reserved.</h4>
                 </center>
             </section>
-           <div class="container-contact-footer">
+           <div class="container-contact-footer"><br>
                 <div class="contact-footer">
                     <div class="facebook">
-                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-facebook" style="font-size: 2rem"></i>
                     </div>
                     <div class="line">
-                        <i class="fa-brands fa-line"></i>
+                        <i class="fa-brands fa-line" style="font-size: 2rem"></i>
                     </div>
                     <div class="intragram">
-                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-instagram" style="font-size: 2rem"></i>
                     </div>
                     <div class="tiktok">
-                        <i class="fa-brands fa-tiktok"></i>
+                        <i class="fa-brands fa-tiktok" style="font-size: 2rem"></i>
                     </div>
                 </div>
-                <div class="contact-footer-address">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eligendi.
+                <div class="contact-footer-address"><br>
+                    ที่อยู่ หมู่บ้านกลางดง Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, modi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, autem?
                 </div>
            </div>
         </div>

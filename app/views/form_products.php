@@ -1,17 +1,14 @@
 ﻿<?php
   
-    require_once "../../../autoload_class.php";
+    require_once "./autoload_class.php";
     $connection = new Connection(true);
-    require_once "./checkAdmin.php";
-    $checkadmin = new checkAdmin;
-    $checkadmin->checkAdmin();
-    $stmt_ptype = $connection->pdo->prepare("SELECT * FROM kanji_product_type WHERE ?");
+    $stmt_ptype = Connection::$pdo->prepare("SELECT * FROM kanji_product_type WHERE ?");
     $stmt_ptype->execute(array('1=1'));
 
-    $stmt_partner = $connection->pdo->prepare("SELECT * FROM kanji_partners WHERE ?");
+    $stmt_partner = Connection::$pdo->prepare("SELECT * FROM kanji_partners WHERE ?");
     $stmt_partner->execute(array('1=1'));
 
-    $stmt_product = $connection->pdo->prepare('SELECT * FROM kanji_products WHERE ?');
+    $stmt_product = Connection::$pdo->prepare('SELECT * FROM kanji_products WHERE ?');
     $stmt_product->execute(array('1=1'));
 ?>
 <!DOCTYPE html>
@@ -19,7 +16,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title>Backend Management</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -58,7 +55,7 @@
         <div id="page-wrapper">
             <div id="page-inner">
                 <h2>เพิ่มสินค้า</h2>
-                <form role="form" action="./post_product.php" enctype="multipart/form-data" method="post">
+                <form role="form" action="./services/post_product.php" enctype="multipart/form-data" method="post">
                     <!-- <div class="form-group">
                         <label>หมายเลขสินค้า</label>
                         <input class="form-control" name="product_member_id" type="text" required>

@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title>Backend Management</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -121,8 +121,8 @@ input:checked + .slider:before {
                         <thead>
                             <tr>
                                 <th>ลำดับ</th>
-                                <th>ภาพที่แสดง</th>
-                                <th>ชื่อสไลน์</th>
+                                <th>Banner ที่แสดง</th>
+                                <th>ชื่อ Banner</th>
                                 <th>สถานะ</th>
                             </tr>
                         </thead>
@@ -132,7 +132,7 @@ input:checked + .slider:before {
                         <?php
                            $status = "";
                             $checkadmin->checkAdmin();
-                            $stmt = Connection::$pdo->query("SELECT `banner_id`,`banner_topic`,`banner_status`,`banner_timestamp`,`picture` FROM `kanji_banners` WHERE 1");
+                            $stmt = Connection::$pdo->query("SELECT `banner_id`,`banner_topic`,`banner_status`,`banner_timestamp`,`picture` FROM `kanji_banners` WHERE 1=1 ORDER BY banner_id DESC");
                             $i = 0;
                             while($r = $stmt->fetch(PDO::FETCH_ASSOC)):
                         ?>

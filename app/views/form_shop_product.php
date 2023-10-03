@@ -14,7 +14,7 @@ $stmt_select->execute(array('1=1'));
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title>Backend Management</title>
 
 
    
@@ -129,7 +129,6 @@ $stmt_select->execute(array('1=1'));
             }
         },methods: {
                 update_status(){
-                    console.log(1);
                 this.id             = event.target.value;
                 const appdata       = new FormData()
                 appdata.append('id',    this.id);

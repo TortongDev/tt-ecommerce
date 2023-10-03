@@ -15,7 +15,7 @@ $checkAuthen->authenPermission();
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     
-    <link rel="icon" type="image/x-icon" href="./kanji_farm.ico">
+    <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <style>
         .star-color-over {
             color: orange !important;

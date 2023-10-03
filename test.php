@@ -1,60 +1,58 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Swinging Animation</title>
+    
     <style>
-        nav {
-            width: 900px;
-            background-color: silver;
-            padding: 10px;
-        }
-        nav ul {
-            list-style: none;
-        }
-        nav ul li {
-          
-            display: inline;
-            padding: 10px;
-            
-        }
-        nav ul li a {
-            padding: 10px;            
-        }
-        li#menu-sub  {
-            position:  absolute;
-            list-style:  none;
-        }
-        ul#sub-menu {
-            position: relative;
-            display: none;
-        }
-        ul#sub-menu li {
-            display: block;
-        }
-        li#menu-sub:hover  ul#sub-menu{
-            display: block;
-        }
+     body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.swinging-bell {
+    width: 100px;
+    height: 100px;
+    background-color: #ff5733;
+    border-radius: 50%;
+    position: relative;
+    animation: swing 2s ease-in-out infinite;
+}
+
+.clapper {
+    width: 10px;
+    height: 40px;
+    background-color: #3498db;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes swing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>Menu1</li>
-            <li>Menu2</li>
-            <li>Menu3</li>
-            <li>Menu4</li>
-            <li id="menu-sub">
-                <a href="">Menu 5</a>
-                <ul id="sub-menu">
-                    <li>sssssss</li>
-                    <li>sssssss</li>
-                    <li>sssssss</li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-
+    <div class="swinging-bell">
+        <div class="clapper"></div>
+    </div>
 </body>
 </html>

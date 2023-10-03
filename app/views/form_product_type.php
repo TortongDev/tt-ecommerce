@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title>Backend Management</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -40,7 +40,7 @@
         <div id="page-wrapper">
             <div id="page-inner">
                 <h2>ข้อมูลประเภทสินค้า</h2>
-                <form role="form" action="./post_product_type.php" enctype="multipart/form-data" method="post">
+                <form role="form" action="./services/post_product_type.php" enctype="multipart/form-data" method="post">
                     <!-- <div class="form-group">
                         <label>รหัสประเภท</label>
                         <input class="form-control" name="product_type_id" type="text">
@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label>สถานะใช้งาน</label><br>
                         <input type="radio" name="product_type_status" id="product_type_status" value="1"> เปิดใช้งาน &emsp;
-                        <input type="radio" name="product_type_status" id="product_type_status" value="0"> ไม่ใช้งาน 
+                        <input type="radio" name="product_type_status" id="product_type_status" value="2"> ไม่ใช้งาน 
                     </div>
                     <div class="form-group">
                         <label>รายละเอียดเพิ่มเติม</label>
@@ -144,7 +144,6 @@
             })
             app.mount('#app')
     </script>
-
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->

@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title>Backend Management</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -74,7 +74,7 @@
                         <?php
                            $status = "";
                             $checkadmin->checkAdmin();
-                            $stmt = Connection::$pdo->query("SELECT `slide_id`,`slide_picture`,`slide_header`,`slide_content`,`slide_status` FROM `kanji_slide` WHERE 1");
+                            $stmt = Connection::$pdo->query("SELECT `slide_id`,`slide_picture`,`slide_header`,`slide_content`,`slide_status` FROM `kanji_slide` WHERE 1=1 ORDER BY slide_id DESC");
                             $i = 0;
                             while($r = $stmt->fetch(PDO::FETCH_ASSOC)):
                         ?>

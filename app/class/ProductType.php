@@ -51,8 +51,8 @@ class ProductType extends AdditionalMethods
         $this->product_type_status = $product_type_status;
     } 
 
-    public function setProductTypeDetail($product_type_status){
-        $this->product_type_status = $product_type_status;
+    public function setProductTypeDetail($product_type_detail){
+        $this->product_type_detail = $product_type_detail;
     } 
 
 
@@ -65,42 +65,43 @@ class ProductType extends AdditionalMethods
     }
     public function save(){
         $sql = "
-            INSERT INTO {$this->tableNmae} (  
+            INSERT INTO {$this->tableName} (  
                 `product_type_id`, 
                 `product_type_name`,
                 `product_type_detail`,
                 `product_type_status` 
-         
             ) 
             VALUES (?,?,?,?)
         ";
         $stmt = self::$pdo->prepare($sql);
         if($stmt->execute(array($this->product_type_id,$this->product_type_name,$this->product_type_detail,$this->product_type_status))):
-            header('Location: ../popup.php?status_post=success&pagename=slide-config&status=post');
+            header('Location: ../popup.php?status_post=success&pagename=form_product_type&status=post');
             exit;
           else:
     
         endif;
     }
     public function delete(){
-        $sql = "DELETE FROM {$this->tableName} WHERE 1=1 AND  slide_id = '".$this->slide_id."' ";
+        $sql = "DELETE FROM {$this->tableName} WHERE 1=1 AND  type_id = '".$this->type_id."' ";
         $stmt = self::$pdo->query($sql);
         if($stmt){
-            header("Location: ../popup.php?status_post=success&pagename=slide-config&status=delete");
+            header("Location: ../popup.php?status_post=success&pagename=form_product_type&status=delete");
             exit;
         }else{
-            echo "DELETE FROM `kanji_partners` WHERE 1=1 AND  partner_id = '".$this->getPartnerID()."' ";;
+            echo json(array("false"));
         }
     }
     public function updateStatus(){
-        $sid = explode(',',$this->slide_id);
+        $sid = explode(',',$this->type_id);
         $ssid = $sid[1];
+        var_dump($this->type_id);
+        echo $ssid;
         if($ssid == '1'){
             $point = "2";
         }elseif($ssid == '2'){
             $point = "1";
         }
-        $sql_insert = "UPDATE `kanji_slide` SET `slide_status`= ? WHERE slide_id = ?";
+        $sql_insert = "UPDATE {$this->tableName} SET `product_type_status`= ? WHERE type_id = ?";
         $stmt_insert = self::$pdo->prepare($sql_insert);
         if($stmt_insert->execute(array($point,$sid[0]))):
             echo json_encode(array('status'=>"success"));

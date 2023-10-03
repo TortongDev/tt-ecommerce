@@ -13,7 +13,7 @@ $checkAuthen = new Connection();
     <meta name="author" content="คุณเต้ เคนจิฟาร์ม">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Farm Korat</title>
-    <link rel="icon" type="image/x-icon" href="./kanji_farm.ico">
+    <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -77,18 +77,14 @@ $checkAuthen = new Connection();
     <div class="container">
         <!-- รู้จักกับร้าน -->
         <article class="intro" id="intro">
-            <!-- <section class="background-shop-promote header-img" style="overflow: hidden;"> -->
-                <!-- <img src="./kanji_farm.jpg" class="img-action header-img"  alt=""> -->
-            <!-- </section> -->
             <section class="header-img" style="overflow: hidden;">
                 <?php
-                // $checkAuthen
                 $checkAuthen->openConnection();
-                $stmt_product = $checkAuthen->pdo->prepare("SELECT banner_id , picture FROM `kanji_banners` WHERE ?  AND banner_status = '1' ");
+                $stmt_product = $checkAuthen->pdo->prepare("SELECT banner_id , picture FROM `kanji_banners` WHERE ?  AND banner_status = '1' ORDER BY banner_id DESC ");
                 $stmt_product->execute(array('1=1'));
                 while($PICTURE =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
                 ?>
-                <img src="./backend_disc/admin/systems/uploads/<?php echo $PICTURE['picture']; ?>" class="img-action header-img"  alt="">
+                <img src="./app/views/uploads/<?php echo $PICTURE['picture']; ?>" class="img-action header-img"  alt="">
                 <?php endwhile; ?>
             </section>
             <br>
@@ -171,13 +167,12 @@ $checkAuthen = new Connection();
                         while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
                 ?>
                 <div class="box-product">
-                    <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile">
                     <img class="img-action" src="./backend_disc/admin/systems/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
                     </div>
                     <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                     <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>
-                    <h4 class="price"><center><i class="fa-solid fa-baht-sign"></i> 
+                    <h4 class="price"><center>
                         <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
                          / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
                     </center></h4>
