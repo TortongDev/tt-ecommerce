@@ -198,7 +198,7 @@ $checkAuthen = new Connection();
                 while($R_PARTNERs =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
             ?>
                 <article class="logger-partner">
-                    <div class="partner img-action" style="background-image: url('./img-shop/<?php echo $R_PARTNERs['partner_img']; ?>');background-size: cover;">
+                    <div class="partner img-action" style="background-image: url('./app/views/uploads/<?php echo $R_PARTNERs['partner_img']; ?>');background-size: cover;">
                         <h2 class="margin-block-0"><?php echo $R_PARTNERs['partner_name']; ?> </h2>
                         <h4 class="sub-text margin-block-0"><?php echo $R_PARTNERs['partner_name']; ?></h4>
                         <h4 class="main-text margin-block-0"><?php echo $R_PARTNERs['partner_detail']; ?></h4>

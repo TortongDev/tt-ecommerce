@@ -20,7 +20,7 @@ $newPartner = new Partner(Connection::$pdo);
     $newPartner->setPartnerName($partner_name);
     $newPartner->setPartnerDetail($partner_detail);
     $newPartner->setPartnerStatus($partner_status);
-    $newPartner->setPartnerImage($target_file);
+    $newPartner->setPartnerImage($target_name);
     $newPartner->save();
     
 ?>
