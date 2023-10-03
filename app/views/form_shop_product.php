@@ -56,7 +56,7 @@ $stmt_select->execute(array('1=1'));
                     <div class="form-group">
                         <label>สถานะใช้งาน</label><br>
                         <input type="radio" name="partner_status" id="partner_status" value="1"> เปิดใช้งาน &emsp;
-                        <input type="radio" name="partner_status" id="partner_status" value="0"> ไม่ใช้งาน 
+                        <input type="radio" name="partner_status" id="partner_status" value="2"> ไม่ใช้งาน 
                     </div>
                     <div class="form-group">
                         <label>รายละเอียดเพิ่มเติม</label>
