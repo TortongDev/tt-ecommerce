@@ -500,7 +500,7 @@ width: 90%;
 height: 800px;
 margin: auto;
 display: grid;
-grid-template-columns: 100px 1fr 700px;
+grid-template-columns: 100px 1fr 1300px;
 grid-gap: 10px;
 }
 .container-shopping-product > .col-shopping-1 {
