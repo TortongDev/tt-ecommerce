@@ -29,6 +29,9 @@
                     <li>
                         <a href="./slide-config.php">แก้ไข Slide</a>
                     </li>
+                    <li>
+                            <a href="./form_shop_product.php">เพิ่มร้านค้า</a>
+                    </li>
                 </ul>
             <li>
                 <li>
@@ -37,9 +40,7 @@
                         <li>
                             <a href="./form_product_type.php">ประเภทสินค้า</a>
                         </li>
-                        <li>
-                            <a href="./form_shop_product.php">เพิ่มร้านค้า</a>
-                        </li>
+                      
                         <li>
                             <a href="./form_products.php">สินค้า</a>
                         </li>
