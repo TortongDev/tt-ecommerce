@@ -248,6 +248,11 @@ background-color: aqua;
 a:hover {
 color: red;
 }
+.grid-container-product {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    width: 100%;
+}
 .container-product {
 
     width: 90%;
@@ -260,9 +265,8 @@ color: red;
 .container-product-right {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     z-index: 9;
-    position: absolute;
     color: #49b9db;
     font-size: 3rem;
     width: 100px;
@@ -274,13 +278,11 @@ color: red;
 .container-product-left {    
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     color: #49b9db;
     font-size: 3rem;
     z-index: 9;
     left: 140px;
-    position: absolute;
-    content: ' ';
     width: 100px;
     height: 200px;
     top: 50%;

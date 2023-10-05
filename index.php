@@ -127,31 +127,31 @@ $checkAuthen = new Connection();
             <center><h3 class="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่  
             <a style="color: blue;" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h3></center>
             <br>
-            
-            <section class="container-product">
+            <div class="grid-container-product">
                 <div class="container-product-left"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-                <div class="container-product-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                <?php
-                        $checkAuthen->openConnection();
-                        $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT 6");
-                        $stmt_product->execute(array('1=1'));
-                        while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
-                ?>
-                <div class="box-product">
-                    <div class="img-profile">
-                    <img class="img-action" src="./backend_disc/admin/systems/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
+                <section class="container-product">
+                    <?php
+                            $checkAuthen->openConnection();
+                            $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT 6");
+                            $stmt_product->execute(array('1=1'));
+                            while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
+                    ?>
+                    <div class="box-product">
+                        <div class="img-profile">
+                        <img class="img-action" src="./backend_disc/admin/systems/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
+                        </div>
+                        <h3 class="short-text-1"><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
+                        <h4 class="sub-text short-text-2"><?php echo $R_PRODUCT['product_detail'] ?></h4>
+                        <h4 class="price"><center>
+                            <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
+                            / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
+                        </center></h4>
                     </div>
-                    <h3 class="short-text-1"><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
-                    <h4 class="sub-text short-text-2"><?php echo $R_PRODUCT['product_detail'] ?></h4>
-                    <h4 class="price"><center>
-                        <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
-                         / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
-                    </center></h4>
-                </div>
-                <?php endwhile; ?>
-             
-               
-            </section>
+                    <?php endwhile; ?>
+                </section>
+                <div class="container-product-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+            </div>
+            
             <br>
             <div id="intro"></div>
             <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>
