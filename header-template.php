@@ -63,10 +63,17 @@
     </div>
     <div class="menu-slide" >
         <ul class="sub-menu-slide">
+        <?php  if($checkAuthen->authenMenu() === 1): ?>
             <li>เมนูคำสั่งซื้อ</li>
             <li><a href="./list_cart.php"><i class="fa-solid fa-bag-shopping"></i> ประวัติการสั่งซื้อสินค้า</a></li>
             <li><a href="./checkout_cart.php"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</a></li>
             <li><a href="./logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+        <?php endif; ?>
+        <?php  if($checkAuthen->authenMenu() !== 1): ?>
+            <li>เมนู</li>
+            <li><a href="./login.php"><i class="fa-solid fa-bag-shopping"></i> เข้าสู่ระบบ</a></li>
+            <li><a href="./shopping_online.php"><i class="fa-solid fa-cart-shopping"></i> ไปยังร้านค้า</a></li>
+        <?php endif; ?>
         </ul>
     </div>
 

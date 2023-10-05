@@ -24,6 +24,9 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./style.css">
     <style>
+        footer {
+            position: absolute !important;
+        }
         .list-cart tr td:nth-last-child(1) {
             margin: auto;
             text-align: center;

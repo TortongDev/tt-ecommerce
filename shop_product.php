@@ -43,17 +43,6 @@ $checkAuthen->authenPermission();
             while($read =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
         ?>
         <div class="container-shopping-product">
-            
-            <div class="col-shopping-1">
-                <!-- <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div>
-                <div class="list-preview"></div> -->
-            </div>
             <div class="col-shopping-1">
                 <div class="img-preview">
                     <img src="./backend_disc/admin/systems/<?php echo $read['product_img'] ?>" alt="">
@@ -105,7 +94,6 @@ $checkAuthen->authenPermission();
             <!-- รายละเอียด desktop -->
             <section class="shopping-detail">
                 <div class="sub-shopping-detail" v-show="detailStatus1">
-                    <h3 class="main-text">รายละเอียดสินค้า</h3>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde amet sint, fugit facere nihil inventore ex nesciunt consequuntur vel distinctio eius commodi ipsam ipsum, aliquam porro soluta ea possimus recusandae ipsa pariatur delectus! Exercitationem, pariatur omnis alias reprehenderit recusandae fugit cupiditate animi id! Repellendus quod praesentium, sunt quia, pariatur eum ratione consectetur recusandae odio sint, dicta error illum repudiandae hic sequi ipsam tenetur laudantium totam sit exercitationem? Ea, adipisci enim ipsam laborum praesentium hic repellat obcaecati quia quod deleniti maiores id rerum expedita harum soluta! Maxime magni incidunt explicabo temporibus ad quis natus voluptate libero, rem molestias adipisci laudantium architecto.
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde amet sint, fugit facere nihil inventore ex nesciunt consequuntur vel distinctio eius commodi ipsam ipsum, aliquam porro soluta ea possimus recusandae ipsa pariatur delectus! Exercitationem, pariatur omnis alias reprehenderit recusandae fugit cupiditate animi id! Repellendus quod praesentium, sunt quia, pariatur eum ratione consectetur recusandae odio sint, dicta error illum repudiandae hic sequi ipsam tenetur laudantium totam sit exercitationem? Ea, adipisci enim ipsam laborum praesentium hic repellat obcaecati quia quod deleniti maiores id rerum expedita harum soluta! Maxime magni incidunt explicabo temporibus ad quis natus voluptate libero, rem molestias adipisci laudantium architecto.
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde amet sint, fugit facere nihil inventore ex nesciunt consequuntur vel distinctio eius commodi ipsam ipsum, aliquam porro soluta ea possimus recusandae ipsa pariatur delectus! Exercitationem, pariatur omnis alias reprehenderit recusandae fugit cupiditate animi id! Repellendus quod praesentium, sunt quia, pariatur eum ratione consectetur recusandae odio sint, dicta error illum repudiandae hic sequi ipsam tenetur laudantium totam sit exercitationem? Ea, adipisci enim ipsam laborum praesentium hic repellat obcaecati quia quod deleniti maiores id rerum expedita harum soluta! Maxime magni incidunt explicabo temporibus ad quis natus voluptate libero, rem molestias adipisci laudantium architecto.
@@ -114,7 +102,29 @@ $checkAuthen->authenPermission();
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptas porro nam sint ratione similique quos explicabo distinctio omnis, consectetur itaque ipsam quasi, facilis, aliquam ut consequuntur illum iste! Reprehenderit deleniti reiciendis a excepturi, voluptate veniam ab? Facere pariatur reprehenderit, iste eius unde nobis ea culpa, illo deleniti sequi rem aspernatur nostrum possimus. Earum quod aliquid non optio qui suscipit! Soluta fugit consequuntur, repellat saepe minus non assumenda, quasi rem officiis harum hic commodi? Aut nobis unde vel, quia distinctio ipsa, nulla enim explicabo perspiciatis qui mollitia autem tenetur magni consequuntur harum nisi quae obcaecati. Soluta deleniti eius voluptatem illum.
                 </div>
                 <div class="review" v-show="detailStatus3">
-                    <textarea name="" class="form-control" style="" id="" cols="30" rows="10"></textarea>
+                    <form action="" method="post">
+                        <textarea name="post_review" class="form-control" style="" id="post_review" cols="100" rows="3"></textarea>
+                        
+                        <p><button type="submit" class="btn">ส่งความคิดเห็น</button></p>
+                    </form>
+                    <table class="table" style="width:900px">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">ความคิดเห็น</th>
+                                <th style="width: 100px;">ผู้ใช้งาน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>สะดวกดี</td>
+                                <td><i class="fa fa-user-o" aria-hidden="true"></i> tortong</td>
+                            </tr>
+                            <tr>
+                                <td>สินค้าสดใหม่</td>
+                                <td><i class="fa fa-user-o" aria-hidden="true"></i> amiler</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
            

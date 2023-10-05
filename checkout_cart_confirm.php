@@ -23,7 +23,10 @@
     
     <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <link rel="stylesheet" href="./style.css">
-    <style>
+    <style>   
+        footer {
+            position: absolute !important;
+        }
         .list-cart tr td:nth-last-child(1) {
             margin: auto;
             text-align: center;
