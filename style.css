@@ -249,20 +249,50 @@ a:hover {
 color: red;
 }
 .container-product {
-width: 90%;
-/* min-height: 90vh; */
-display: grid;
-grid-gap: 30px;
-grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr;
-margin: auto;
+
+    width: 90%;
+    /* min-height: 90vh; */
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: auto;
+}
+.container-product-right {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    z-index: 9;
+    position: absolute;
+    color: #49b9db;
+    font-size: 3rem;
+    width: 100px;
+    height: 200px;
+    right: 140px;
+    top: 50%;
+    transform: rotate(0,-50%);
+}
+.container-product-left {    
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #49b9db;
+    font-size: 3rem;
+    z-index: 9;
+    left: 140px;
+    position: absolute;
+    content: ' ';
+    width: 100px;
+    height: 200px;
+    top: 50%;
+    transform: rotate(0,-50%);
 }
 .container-product-shop {
-width: 90%;
-min-height: 90vh;
-display: grid;
-grid-gap: 30px;
-grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
-margin: auto;
+    width: 90%;
+    min-height: 90vh;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
+    margin: auto;
 }
 .box-product {
 width: 100%;
@@ -486,13 +516,13 @@ article.alliance > .container-alliance {
     flex-direction: column;
 }
 .tabbar {
-padding-block: 20px;
-width: 90%;
-height: 50px;
-display: flex;
-align-items: center;
-margin: auto;
-color: gray;
+    padding-block: 20px;
+    width: 90%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    color: gray;
 }
 .container-shopping-product {
 padding-block-end: 10px;

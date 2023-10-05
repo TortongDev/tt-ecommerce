@@ -76,9 +76,10 @@ $checkAuthen = new Connection();
    <?php include ('./header-template.php'); ?>
     <div class="container">
 
-
+        <div id="product"></div>
+        <br>
         <!-- รู้จักกับร้าน -->
-        <article class="intro" id="intro">
+        <article class="intro">
           
             <br>
             <div class="swiper mySwiper">
@@ -118,8 +119,7 @@ $checkAuthen = new Connection();
             </center> -->
        
         </article>
-        <div id="product"></div>
-        <br>
+        
         <!-- แนะนำสินค้า -->
         <article class="product">
     
@@ -129,6 +129,8 @@ $checkAuthen = new Connection();
             <br>
             
             <section class="container-product">
+                <div class="container-product-left"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                <div class="container-product-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
                 <?php
                         $checkAuthen->openConnection();
                         $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT 6");
@@ -151,6 +153,7 @@ $checkAuthen = new Connection();
                
             </section>
             <br>
+            <div id="intro"></div>
             <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>
             <center><h3 class="sub-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam necessitatibus sint maxime error voluptatum eveniet fugit repellat quas possimus, cupiditate dolor rerum nobis expedita? Rerum cumque quae in, ipsum corrupti, minima impedit nisi tenetur, quaerat tempora aperiam cupiditate voluptates nostrum nobis? Porro, at id, ad ipsam aliquid expedita pariatur ullam reprehenderit itaque eligendi voluptas tempora, debitis aut totam exercitationem cum dignissimos quidem est? Alias laboriosam animi modi. Distinctio cumque quo, nemo velit, ex dicta maiores voluptatum excepturi autem amet optio. Laboriosam cupiditate dolorum expedita consequuntur totam, hic esse placeat unde blanditiis est inventore accusamus! Quos laborum optio est magnam doloremque.</h3></center>
             <center>
