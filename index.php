@@ -75,7 +75,6 @@ $checkAuthen = new Connection();
 <div id="wrapper">
    <?php include ('./header-template.php'); ?>
     <div class="container">
-
         <div id="product"></div>
         <br>
         <!-- รู้จักกับร้าน -->
@@ -87,13 +86,13 @@ $checkAuthen = new Connection();
                             $checkAuthen->openConnection();
                             $stmt_slide = $checkAuthen->pdo->prepare(
                                 "SELECT `slide_id`, `slide_picture`, `slide_header`, `slide_content`, `slide_status`, `slide_timestamp` 
-                                FROM `kanji_slide` WHERE  ? AND `slide_status` = '1'
+                                FROM `kanji_slide` WHERE  ? AND `slide_status` = '1' ORDER BY slide_timestamp DESC
                                 ");
                             $stmt_slide->execute(array('1=1'));
                             while($SPICTURE =  $stmt_slide->fetch(PDO::FETCH_ASSOC)):
                         ?>
                         <!-- Slides -->
-                    <div class="swiper-slide"><img style="width:90%;margin:auto;height:700px;object-fit: cover;" src="./backend_disc/admin/systems/uploads/<?php echo $SPICTURE['slide_picture'] ; ?>" alt=""></div>
+                    <div class="swiper-slide"><img style="" src="./app/views/uploads/<?php echo $SPICTURE['slide_picture'] ; ?>" alt=""></div>
                         <?php endwhile; ?>
                     </div>
                     <div class="swiper-button-next"></div>
@@ -137,14 +136,11 @@ $checkAuthen = new Connection();
                     ?>
                     <div class="box-product">
                         <div class="img-profile">
-                        <img class="img-action" src="./backend_disc/admin/systems/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
+                        <img class="img-action" src="./app/views/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
                         </div>
                         <h3 class="short-text-1"><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                         <h4 class="sub-text short-text-2"><?php echo $R_PRODUCT['product_detail'] ?></h4>
-                        <h4 class="price"><center>
-                            <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
-                            / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
-                        </center></h4>
+                      
                     </div>
                     <?php endwhile; ?>
                 </section>
@@ -152,7 +148,7 @@ $checkAuthen = new Connection();
             </div>
             <div id="intro"></div>
             <div class="youtube">
-                <iframe width="90%" height="600px" src="https://www.youtube.com/embed/lsvVtbm--Zw?si=RV2YQPSygOMu81-t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="90%" height="600px" src="https://www.youtube.com/embed/COrWpziiUO8?si=gEgQji8zBQVXMYsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>   
             <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>
             <div class="container-shop-highlight">
@@ -236,8 +232,6 @@ $checkAuthen = new Connection();
             }, 1000)
             
         })
-       
-
 
         const progressCircle = document.querySelector(".autoplay-progress svg");
         const progressContent = document.querySelector(".autoplay-progress span");
@@ -258,20 +252,14 @@ $checkAuthen = new Connection();
         },
         on: {
             autoplayTimeLeft(s, time, progress) {
-            progressCircle.style.setProperty("--progress", 1 - progress);
-            progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+                progressCircle.style.setProperty("--progress", 1 - progress);
+                progressContent.textContent = `${Math.ceil(time / 1000)}s`;
             }
         }
         });
 
         // const navbarFooter = document.querySelector('.navbar-footer')
         // navbarFooter.style.height = '100%'
-
-
-
-       
-
-
    })
   </script>
 <!-- นำเข้าไฟล์ Base Controller -->

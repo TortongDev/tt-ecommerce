@@ -2,10 +2,9 @@
 <header>
 <div class="container-header">
     <div class="header-title">
-        <a href="./index.php"> <img class="img-title" src="./img-shop/KaNji_8.png" alt=""></a>
-        <div class="action-icon">
-          
-        </div>
+        <a href="./index.php"> <img class="img-title" src="./img-shop/Kanji_Farm.png" alt=""></a>
+        <div class="action-icon"></div>
+        <div class="action-icon-pin"></div>
     </div>
 
     <div class="header-menu">
@@ -50,7 +49,7 @@
                     <li><a class="main-text" href="#intro"><i class="fa-solid fa-circle-info"></i> รู้จักกับร้าน</a></li>
                     <li><a href="#product"><i class="fa-brands fa-product-hunt"></i> แนะนำสินค้า</a></li>
                     <li><a href="#partner"><i class="fa-regular fa-handshake"></i> ร้าน Partner</a></li>
-                    <li  style="border-left: 1px solid silver"><a href="./login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> เข้าสู่ระบบ</a></li>
+                    <li  style="border-left: 1px solid silver;background-color: #97CF8A; border-radius: 7px;"><a href="./login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> เข้าสู่ระบบ</a></li>
                 <?php endif; ?>
             </ul>
         </div>

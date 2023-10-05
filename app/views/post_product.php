@@ -25,10 +25,7 @@ if(isset($_POST['process']) == 'insert_product'):
       $uploadOk = 0;
     }
     
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-      echo "ขนาดเกินกำหนด.";
-      $uploadOk = 0;
-    }
+    
     
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
@@ -48,18 +45,18 @@ if(isset($_POST['process']) == 'insert_product'):
 
     $product_member_id    = "PROKJ-";
     $product_name       = isset($_POST['product_name'])     ? htmlspecialchars(trim($_POST['product_name'])) : '';
-    $product_price      = isset($_POST['product_price'])     ? htmlspecialchars(trim($_POST['product_price'])) : '';
+    $product_price      = isset($_POST['product_price'])    ? htmlspecialchars(trim($_POST['product_price'])) : '';
     $product_amount     = isset($_POST['product_amount'])   ? htmlspecialchars(trim($_POST['product_amount'])) : '';
-    $option_price     = isset($_POST['option_price'])   ? htmlspecialchars(trim($_POST['option_price'])) : '';
-    $option_amount     = isset($_POST['option_amount'])   ? htmlspecialchars(trim($_POST['option_amount'])) : '';
+    $option_price     = isset($_POST['option_price'])       ? htmlspecialchars(trim($_POST['option_price'])) : '';
+    $option_amount     = isset($_POST['option_amount'])     ? htmlspecialchars(trim($_POST['option_amount'])) : '';
     $product_user_id    = $_SESSION['AUTHEN_USER_ID'];
     $product_img        = isset($_POST['product_img'])      ? htmlspecialchars(trim($_POST['product_img'])) : '';
     $product_detail     = isset($_POST['product_detail'])   ? htmlspecialchars(trim($_POST['product_detail'])) : '';
-    $product_sub_detail = isset($_POST['product_sub_detail'])    ? htmlspecialchars(trim($_POST['product_sub_detail'])) : '';
-    $product_type_name  = isset($_POST['product_type_name']) ? htmlspecialchars(trim($_POST['product_type_name'])) : '';
-    $product_shop_name  = isset($_POST['product_shop_name'])      ? htmlspecialchars(trim($_POST['partner_name'])) : '';
-    $product_type_id    = isset($_POST['product_type_id'])   ? htmlspecialchars(trim($_POST['product_type_id'])) : '';
-    $product_shop_id    = isset($_POST['product_shop_id'])    ? htmlspecialchars(trim($_POST['product_shop_id'])) : '';
+    $product_sub_detail = isset($_POST['product_sub_detail'])   ? htmlspecialchars(trim($_POST['product_sub_detail'])) : '';
+    $product_type_name  = isset($_POST['product_type_name'])    ? htmlspecialchars(trim($_POST['product_type_name'])) : '';
+    $product_shop_name  = isset($_POST['product_shop_name'])    ? htmlspecialchars(trim($_POST['partner_name'])) : '';
+    $product_type_id    = isset($_POST['product_type_id'])  ? htmlspecialchars(trim($_POST['product_type_id'])) : '';
+    $product_shop_id    = isset($_POST['product_shop_id'])  ? htmlspecialchars(trim($_POST['product_shop_id'])) : '';
    
     $insertStmtProduct = $db->pdo->prepare(
         "

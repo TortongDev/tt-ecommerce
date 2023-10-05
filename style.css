@@ -399,10 +399,10 @@ footer {
 }
 .img-title {
     /* box-shadow: 0 8px 8px -3px rgba(75, 141, 58, 0.5); */
-    width: 100px;
+    width: fit-content;
     margin-top: 10px;
     object-fit: cover;
-    height: 82px;
+    height: 60px;
     z-index: 99;
     /* border-top-left-radius: 0;
     border-top-right-radius: 0; */
@@ -479,27 +479,44 @@ object-fit: cover;
 border-radius: 50%;
 }
 .action-icon {
-    margin-inline-start: 16px;
-    width: 133px;
+    margin-inline-start: 145px;
+    width: 103px;
     animation: action_icon_title 2.4s infinite;
     background-image: url(./img-shop/shopping_6775634.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     animation-delay: 0.5s;
-    height: 113px;
+    height: 104px;
     z-index: 1;
     position: fixed;
     animation-timing-function: ease-in-out;
     -webkit-transform-origin: top;
     -moz-transform-origin: top;
     transform-origin: top;
+    top: 73px;
+}
+.action-icon-pin {
+    margin-inline-start: 165px;
+    transform: rotate(348deg);
+    width: 20px;
+    border-radius: 50%;
+    /* background-image: url(./img-shop/pin-icon_34381.png); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: green;
+    height: 20px;
+    z-index: 1;
+    position: fixed;
+    box-shadow: 2px 5px 10px 1px black;
     top: 75px;
 }
+
 @keyframes action_icon_title {
-    0% { transform: rotate(8deg); }
-    50% { transform: rotate(-8deg); }
-    100% { transform: rotate(8deg); }
+    0% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
 }
 .img-action {
     cursor: pointer;
@@ -1192,7 +1209,7 @@ section.shop-filter {
           ". a a ."; */
       }
     .img-title {
-        width: 60px;
+        width: fit-content;
         height: 60px;
         z-index: 99;
     }
