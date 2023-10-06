@@ -1,0 +1,108 @@
+<?php
+echo "Commimg Soon";
+exit;
+session_start();
+	include("../include/include.php");
+    $sql_u = db::query("SELECT * FROM USR_GROUP_SETTING WHERE GROUP_ID = 2 AND USR_ID = '".$_SESSION['WF_USER_ID']."' ");
+    $rec_u = db::fetch_array($sql_u);
+    $num_rows = db::num_rows($sql_u);
+        //echo $num_rows;
+    header("Content-Type: application/vnd.ms-excel");
+            //header( 'Content-Disposition: filename="export'..'.xls' . '"' );
+            header( 'Content-Disposition: filename="export_report01'.date('YmdHis').'.xls' . '"' );
+            header( 'Content-Description: Download Data' );
+            header( 'Pragma: no-cache' );
+            header( 'Expires: 0' );
+            
+?><html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<style type="text/css"> 
+table { 
+	font-size:16.0pt;
+	font-family:"TH SarabunPSK",serif;
+}
+td {
+	border:solid windowtext 0.5pt;
+	border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+	solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+	font-size:16.0pt;white-space: nowrap;
+}
+</style>
+<style>
+</style>
+</head>
+<body link="#0563C1" vlink="#954F72">
+<table border=1 cellpadding=0 cellspacing=0 >
+														<thead>
+															<tr>
+																<th>#</th>
+																<th>ประทับเวลา</th>
+																<th>ชื่อ (ภาษาไทย)</th>
+																<th>นามสกุล (ภาษาไทย)</th>
+																<th>เบอร์โทรศัพท์หน่วยงาน</th>
+																<th>อีเมล</th>
+																<th>ตำแหน่ง</th>
+																<th>ประเภทเจ้าหน้าที่</th>
+																<th>ระดับ</th>
+																<th>สถานะผู้ใช้งานระบบ</th>
+																<th>เจ้าหน้าที่สารบรรณ</th>
+																<th>ชื่อเลขาผู้บริหาร</th>
+																<th>สังกัดหน่วยงาน</th>
+																<th>กลุ่มงาน/ฝ่ายลำดับ 2</th>
+																<th>สังกัดหน่วยงานลำดับ 3 (ถ้ามี)</th>
+																<?php
+                                                            $sql_s = "SELECT * FROM WF_STEP_FORM where   WF_TYPE = 'W' and WF_MAIN_ID = '1557' and WFS_FIELD_NAME like 'ANS_OPTION%' ORDER BY WFS_ID ASC											
+															" ;
+                                                            $exc = db::query($sql_s);
+															while($row = db::fetch_array($exc)){													
+																?>
+                                                                <th><?php echo $row['WFS_NAME']; ?></th>
+															<?php } ?>
+															</tr>
+														</thead>
+														<tbody>
+															<?php
+
+                                            $filter = wf_search_function('1557',$_GET,'','');
+
+															$sql = "SELECT * FROM VIEW_REGISTER_SARABUN66_V1  WHERE 1=1 {$filter} ORDER BY  WFR_TIMESTAMP DESC											
+															" ;
+												
+															$m_query = db::query($sql);
+															$number = 1;
+															while($rec_m = db::fetch_array($m_query)){	
+																
+															?>
+																<tr>
+
+																	<td><?php echo ($wf_offset+$number); ?></td>
+																	
+																	<td><?php echo $rec_m['WFR_TIMESTAMP']; ?></td>
+																	<td><?php echo $rec_m['PER_PREFIX_TH'].$rec_m['PER_FISTNAME_TH']; ?></td>
+                                                                    <td><?php echo $rec_m['PER_LASTNAME_TH']; ?></td>
+                                                                    <td><?php echo $rec_m['TEL_DIVISION']; ?></td>
+                                                                    <td><?php echo $rec_m['PER_EMAIL']; ?></td>
+                                                                    <td><?php echo $rec_m['PER_POSITION1']; ?></td>
+                                                                    <td><?php echo $rec_m['TYPE_OFFICER_1']; ?></td>
+                                                                    <td><?php echo $rec_m['PER_LEVEL']; ?></td>
+																	<td><?php echo $rec_m['STATUS_USER']; ?></td>
+                                                                    <td><?php echo $rec_m['OFFICER_SARABUN']; ?></td>
+                                                                    <td><?php echo $rec_m['SECRETARY_OPTION_1']; ?></td>
+																	<td><?php echo $rec_m['DEP_NAME'];?></td>
+																	<td><?php echo $rec_m['GROUP_2'];?></td>
+																	<td><?php echo $rec_m['GROUP_3'];?></td>
+																</tr>
+																<?php $number++; 
+
+															}											?>
+														</tbody>
+													</table>
+	
+	<?php			
+	
+
+?>					

@@ -1017,6 +1017,18 @@ section.shop-filter {
 .review-show {
     display: none;
 }
+.contact-icon {
+    display: grid;
+    width: 100px;
+    height: 200px;
+    position: fixed;
+    right: -23px;
+    float: right;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    bottom: 100px;
+    z-index: 999;
+}
 .navbar-footer {
     display: none;
 }
@@ -1102,6 +1114,9 @@ section.shop-filter {
     footer {
         min-height: 200px !important;
     } 
+    .contact-icon {
+        right: -45px;
+    }
     .header-img {
         background-image: url("./kanji_farm.jpg");
         background-position: center;
