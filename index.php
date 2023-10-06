@@ -80,20 +80,13 @@ $checkAuthen = new Connection();
         <!-- รู้จักกับร้าน -->
         <article class="intro">
             <br>
-            <div class="swiper mySwiper">
+            <div class="swiper mySwiper">  
                     <div class="swiper-wrapper">
                         <?php
                             $checkAuthen->openConnection();
-                            $stmt_slide = $checkAuthen->pdo->prepare(
-                                "SELECT `slide_id`, `slide_picture`, `slide_header`, `slide_content`, `slide_status`, `slide_timestamp` 
-                                FROM `kanji_slide` WHERE  ? AND `slide_status` = '1' ORDER BY slide_timestamp DESC
-                                ");
-                            $stmt_slide->execute(array('1=1'));
-                            while($SPICTURE =  $stmt_slide->fetch(PDO::FETCH_ASSOC)):
-                        ?>
-                        <!-- Slides -->
-                    <div class="swiper-slide"><img style="" src="./app/views/uploads/<?php echo $SPICTURE['slide_picture'] ; ?>" alt=""></div>
-                        <?php endwhile; ?>
+                            require_once "./services/class/Looper.php";
+                            new Looper($checkAuthen);
+                           ?>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
