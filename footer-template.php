@@ -1,15 +1,15 @@
 <div class="contact-icon">
     <div class="facebook">
-        <i class="fa-brands fa-facebook" style="font-size: 2rem"></i>
+        <i class="fa-brands fa-facebook hover" style="font-size: 2rem"></i>
     </div>
     <div class="line">
-        <i class="fa-brands fa-line" style="font-size: 2rem"></i>
+        <i class="fa-brands fa-line hover" style="font-size: 2rem"></i>
     </div>
     <div class="intragram">
-        <i class="fa-brands fa-instagram" style="font-size: 2rem"></i>
+        <i class="fa-brands fa-instagram hover" style="font-size: 2rem"></i>
     </div>
     <div class="tiktok">
-        <i class="fa-brands fa-tiktok" style="font-size: 2rem"></i>
+        <i class="fa-brands fa-tiktok hover" style="font-size: 2rem"></i>
     </div>
 </div>
 <footer>
