@@ -1074,7 +1074,7 @@ section.shop-filter {
         display: flex;
         align-items: center;
         z-index: 10;
-    }
+    } 
     .container-shop-highlight {
         grid-template-columns: 1fr;
     }
