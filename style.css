@@ -1083,7 +1083,19 @@ section.shop-filter {
         padding: 10px;
     }
     .container-product {
-        grid-template-columns: 1fr;
+        overflow: auto;
+        /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+    }
+    .container-product-right {
+        width: unset;
+        justify-content: unset;
+    }
+    .container-product-left {
+        width: unset;
+        justify-content: unset;
+    }
+    .grid-container-product {
+        grid-template-columns: 40px 1fr 40px;
     }
     .container-product-shop {
         grid-template-columns: 1fr 1fr;
