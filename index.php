@@ -2,7 +2,9 @@
 require_once "./services/class/Connection.php";
 $checkAuthen = new Connection();
 // $checkAuthen->authenPermission();
-
+$checkAuthen->openConnection();
+require_once "./services/class/Looper.php";
+$fetch = new Looper($checkAuthen->pdo);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,9 +85,8 @@ $checkAuthen = new Connection();
             <div class="swiper mySwiper">  
                     <div class="swiper-wrapper">
                         <?php
-                            $checkAuthen->openConnection();
-                            require_once "./services/class/Looper.php";
-                            new Looper($checkAuthen);
+                          
+                           $fetch->fetch_slide();
                            ?>
                     </div>
                     <div class="swiper-button-next"></div>
