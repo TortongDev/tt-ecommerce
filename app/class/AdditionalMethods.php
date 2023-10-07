@@ -35,7 +35,7 @@ class AdditionalMethods
         
         if (file_exists($target_file)) {
           echo "มีไฟล์นี้แล้ว.";
-          $uploadOk = 0;
+          $uploadOk = 1;
         }
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
