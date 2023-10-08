@@ -1,7 +1,7 @@
 <?php
-require_once "./services/class/Connection.php";
-$checkAuthen = new Connection();
-$checkAuthen->authenPermission();
+   require_once __DIR__."/app/config/config_pach.php";
+   require_once PATCH_CONNECTION;$checkAuthen = new Connection();
+    $checkAuthen->authenPermission();
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ $checkAuthen->authenPermission();
         <?php 
             $checkAuthen->openConnection();
             $id = isset($_GET['product_id']) ? htmlspecialchars(trim($_GET['product_id'])) : '';
-            $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? AND product_id = ?");
+            $stmt_product = Connection::$pdo->prepare("SELECT * FROM `kanji_products` WHERE ? AND product_id = ?");
             $stmt_product->execute(array('1=1',$checkAuthen->id_decrypt($id)));
             while($read =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
         ?>

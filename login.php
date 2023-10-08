@@ -1,5 +1,6 @@
 <?php
-    require_once "./services/class/Connection.php";
+   require_once __DIR__."/app/config/config_pach.php";
+   require_once PATCH_CONNECTION;
     $ndb    = new Connection(true);
     
     $ndb->authenUsers();
@@ -13,7 +14,7 @@
     $user = $users['username'];
     $pass = $users['password'];
     // if(@$_SERVER['SERVER_NAME']!='localhost'){
-        $stmt   = $ndb->pdo->query("SELECT * FROM `authen_users` WHERE 1=1 AND authen_username = '{$user}' AND authen_password = '{$pass}' ");
+        $stmt   = Connection::$pdo->query("SELECT * FROM `authen_users` WHERE 1=1 AND authen_username = '{$user}' AND authen_password = '{$pass}' ");
         $countAll = $stmt->rowCount();
         $r = $stmt->fetch(PDO::FETCH_ASSOC);
         if($countAll > 0 ):

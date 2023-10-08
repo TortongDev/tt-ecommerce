@@ -1,5 +1,6 @@
 <?php
-    require_once "./services/class/Connection.php";
+    require_once __DIR__."/app/config/config_pach.php";
+    require_once PATCH_CONNECTION;
     $checkAuthen = new Connection();
     $checkAuthen->authenPermission();
 

@@ -1,6 +1,6 @@
 <?php
-session_start();
-class Connection {
+// session_start();
+class Connections {
 		public $hostname 	= 'localhost';
 		public $username 	= 'root';
 		public $password	= '';

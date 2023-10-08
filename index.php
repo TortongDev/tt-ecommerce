@@ -1,10 +1,5 @@
 <?php
-require_once "./services/class/Connection.php";
-$checkAuthen = new Connection();
-// $checkAuthen->authenPermission();
-$checkAuthen->openConnection();
-require_once "./services/class/Looper.php";
-$fetch = new Looper($checkAuthen->pdo);
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,9 +80,10 @@ $fetch = new Looper($checkAuthen->pdo);
             <div class="swiper mySwiper">  
                     <div class="swiper-wrapper">
                         <?php
-                          
-                           $fetch->fetch_slide();
-                           ?>
+                            require_once "./services/class/SlideBanner.php";
+                            $slide = new SlideBanner;
+                            $slide->selectAllStatus(1);
+                        ?> 
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -111,7 +107,6 @@ $fetch = new Looper($checkAuthen->pdo);
             </center> -->
        
         </article>
-        
         <!-- แนะนำสินค้า -->
         <article class="product">
     
@@ -123,20 +118,11 @@ $fetch = new Looper($checkAuthen->pdo);
                 <div class="container-product-left"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                 <section class="container-product">
                     <?php
-                            $checkAuthen->openConnection();
-                            $stmt_product = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT 6");
-                            $stmt_product->execute(array('1=1'));
-                            while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
+                          require_once "./services/class/ProductController.php";
+                          $product = new ProductController;
+                          $product->selectProduct();
                     ?>
-                    <div class="box-product">
-                        <div class="img-profile">
-                        <img class="img-action" src="./app/views/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
-                        </div>
-                        <h3 class="short-text-1"><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
-                        <h4 class="sub-text short-text-2"><?php echo $R_PRODUCT['product_detail'] ?></h4>
-                      
-                    </div>
-                    <?php endwhile; ?>
+               
                 </section>
                 <div class="container-product-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
             </div>
@@ -182,8 +168,7 @@ $fetch = new Looper($checkAuthen->pdo);
             <br>
             <section class="container-alliance">
             <?php  
-                $checkAuthen->openConnection();
-                $stmt_partner = $checkAuthen->pdo->prepare("SELECT * FROM `kanji_partners` WHERE ? AND partner_status = '1' ORDER BY timestamp DESC LIMIT 6");
+                $stmt_partner = Connection::$pdo->prepare("SELECT * FROM `kanji_partners` WHERE ? AND partner_status = '1' ORDER BY timestamp DESC LIMIT 6");
                 $stmt_partner->execute(array('1=1'));
                 while($R_PARTNERs =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
             ?>
@@ -196,6 +181,10 @@ $fetch = new Looper($checkAuthen->pdo);
                     </div>
                 </article>
             <?php endwhile;?>
+            <?php 
+                $stmt_partner = NULL;
+                $db = NULL; 
+            ?>
             </section>
         </article>
         

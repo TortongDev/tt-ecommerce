@@ -11,7 +11,8 @@
         <div class="menu-section1">
             <ul class="user">
             <?php 
-                require_once "./autoload_class.php";
+                require_once __DIR__."/app/config/config_pach.php";
+                require_once PATCH_CONNECTION;
                 $checkAuthen = new Connection;
             ?>
                 <?php  if($checkAuthen->authenMenu() === 1): ?>

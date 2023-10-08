@@ -1,5 +1,6 @@
 <?php
-
+require_once dirname(dirname(__DIR__))."/app/config/config_pach.php";
+require_once PATCH_ADDITIONAL_METHODE;
 
 class Product extends AdditionalMethods
 {
@@ -16,6 +17,7 @@ class Product extends AdditionalMethods
     public $product_sub_detail;
     public $option_price;
     public $option_amount;
+    public $limit;
     public $tableName = "kanji_products";
     
     public static $pdo;
@@ -117,12 +119,11 @@ class Product extends AdditionalMethods
 
 
 
-    public static function selectAll(){
-        $sql = "SELECT * FROM kanji_partners WHERE ? ";
-        $stmt = self::$pdo->prepare($sql);
-        $stmt->execute(array('1=1'));
-        $fetchArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $fetchArray;
+    public function selectLimit(){
+         
+        $stmt_product = self::$pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT ".$this->limit);
+        $stmt_product->execute(array('1=1'));
+        return $stmt_product;
     }
     public function save(){
         $sql = " INSERT INTO $this->tableName(
@@ -147,7 +148,6 @@ class Product extends AdditionalMethods
                 )
             )
         ):
-            // header("Location: ".dirname(__DIR__).'/views/popup.php?status_post=success&pagename=form_shop_product&status=post');
             header('Location: ../popup.php?status_post=success&pagename=form_products&status=post');
             exit;
           else:
@@ -161,7 +161,6 @@ class Product extends AdditionalMethods
             header("Location: ../popup.php?status_post=success&pagename=form_products&status=delete");
             exit;
         }else{
-            // echo "DELETE FROM `kanji_partners` WHERE 1=1 AND  partner_id = '".$this->getPartnerID()."' ";;
         }
     }
     public function updateStatus(){

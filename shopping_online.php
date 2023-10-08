@@ -1,5 +1,6 @@
 <?php
-    require_once "./services/class/Connection.php";
+    require_once __DIR__."/app/config/config_pach.php";
+    require_once PATCH_CONNECTION;
     $checkAuthen = new Connection();
     $checkAuthen->authenPermission();
 
@@ -41,7 +42,7 @@
                         ?>
                         <?php 
                             $checkAuthen->openConnection();
-                            $stmt_type_product = $checkAuthen->pdo->prepare("SELECT `product_type_id`,`product_type_name` FROM `kanji_product_type` WHERE ?");
+                            $stmt_type_product = Connection::$pdo->prepare("SELECT `product_type_id`,`product_type_name` FROM `kanji_product_type` WHERE ?");
                             $stmt_type_product->execute(array("1=1"));
                             while($T_PRODUCT =  $stmt_type_product->fetch(PDO::FETCH_ASSOC)):
                         ?>
@@ -61,7 +62,7 @@
                         <option value="">-- กรุณาเลือก --</option>
                         <?php 
                             $checkAuthen->openConnection();
-                            $stmt_partner = $checkAuthen->pdo->prepare("SELECT `partner_id`,`partner_member_id`,`partner_name` FROM `kanji_partners` WHERE ? ");
+                            $stmt_partner =  Connection::$pdo->prepare("SELECT `partner_id`,`partner_member_id`,`partner_name` FROM `kanji_partners` WHERE ? ");
                             $stmt_partner->execute(array("1=1"));
                             while($P_PARTNER =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
                         ?>
@@ -107,7 +108,7 @@
                         endif;
                     else:
                     endif;
-                    $stmt_product = $checkAuthen->pdo->prepare($fillter);
+                    $stmt_product =  Connection::$pdo->prepare($fillter);
                     $stmt_product->execute($value);
                     while($R_PRODUCT =  $stmt_product->fetch(PDO::FETCH_ASSOC)):
                 ?>

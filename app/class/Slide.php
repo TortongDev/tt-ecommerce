@@ -1,5 +1,6 @@
 <?php
-
+require_once dirname(dirname(__DIR__))."/app/config/config_pach.php";
+require_once PATCH_ADDITIONAL_METHODE;
 
 class Slide extends AdditionalMethods
 {
@@ -54,12 +55,25 @@ class Slide extends AdditionalMethods
     } 
 
 
-    public static function selectAll(){
-        $sql = "SELECT * FROM kanji_partners WHERE ? ";
+    public function selectAll(){
+        $sql = "SELECT * FROM kanji_slide WHERE ?  ORDER BY slide_id DESC";
         $stmt = self::$pdo->prepare($sql);
         $stmt->execute(array('1=1'));
-        $fetchArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $fetchArray;
+        return $stmt;
+      
+    }public function getAllStatus(){
+        $sql = "SELECT * FROM kanji_slide WHERE ? AND slide_status = ? ORDER BY slide_id DESC";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute(array('1=1',$this->slide_status));
+        return $stmt;
+      
+    }
+    public function selectFilterID(){
+        $sql = "SELECT * FROM kanji_slide WHERE ?  AND slide_id = ? ORDER BY Slide_id DESC";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute(array('1=1',$this->getSlideID()));
+        return $stmt;
+      
     }
     public function save(){
         $sql = "

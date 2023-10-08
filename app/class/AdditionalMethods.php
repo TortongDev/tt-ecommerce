@@ -57,6 +57,18 @@ class AdditionalMethods
           header("Location: ../popup.php?status_post=success&pagename=form_product_type&status=delete");
           exit;
       }
+      public function id_encrypt($id){
+        $privateKey = "id-123";
+        $iv = "asdfghzxcv12340k";
+        $sslID = openssl_encrypt($id,'AES-256-CBC',$privateKey,0,$iv);
+        return $sslID;
+      }
+      public function id_decrypt($id_encrypt){
+        $privateKey = "id-123";
+        $iv = "asdfghzxcv12340k";
+        $sslID = openssl_decrypt($id_encrypt,'AES-256-CBC',$privateKey,0,$iv);
+        return $sslID;
+      }
     
 }
 ?>
