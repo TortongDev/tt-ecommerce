@@ -1047,6 +1047,55 @@ section.shop-filter {
     transform: scale(1.2,1.2);
     transition: .5s;
 }
+
+.fix-banner {
+    margin: auto;
+    margin-block-end: 20px;
+    width: 300px;
+    height: auto;
+}
+.tab-heilight {
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    /* animation: swip_light 1s infinite ease-in-out; */
+    border-left: 1px;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    box-shadow: -10px 0px 20px 10px #24a323;
+    right: 0;
+    background-color: #58d719;
+}
+.tab-vegetable {
+    height: auto;
+    position: absolute;
+    animation: banner 1s infinite ease-in-out;
+    bottom: -10px;
+    right: -190px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform-origin: bottom;
+}
+@keyframes swip_light {
+    0% {background-color: #61e022;}
+    50% {background-color: #8ae85b;}
+    100% {background-color: #58d719;}
+}
+@keyframes banner {
+    0% {
+        transform: scale(1.01,1.01);   
+    }
+    50% {
+        transform: rotate(1,1);   
+    }
+    100% {
+        transform: rotate(1.01,1.01);
+    }
+
+}
+ 
 @media only screen and (max-width: 700px) {
     
     header {

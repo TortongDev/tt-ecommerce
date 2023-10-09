@@ -80,7 +80,7 @@
             <div class="swiper mySwiper">  
                     <div class="swiper-wrapper">
                         <?php
-                            require_once "./services/class/SlideBanner.php";
+                            require_once "./ViewControllers/SlideBanner.php";
                             $slide = new SlideBanner;
                             $slide->selectAllStatus(1);
                         ?> 
@@ -118,7 +118,7 @@
                 <div class="container-product-left"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                 <section class="container-product">
                     <?php
-                          require_once "./services/class/ProductController.php";
+                          require_once "./ViewControllers/ProductController.php";
                           $product = new ProductController;
                           $product->selectProduct();
                     ?>
@@ -167,23 +167,10 @@
             <center><h3 class="sub-text" style="margin-block-start: 0 !important;">ร้านค้าที่เป็น Partner กับร้านเรา</h3></center>
             <br>
             <section class="container-alliance">
-            <?php  
-                $stmt_partner = Connection::$pdo->prepare("SELECT * FROM `kanji_partners` WHERE ? AND partner_status = '1' ORDER BY timestamp DESC LIMIT 6");
-                $stmt_partner->execute(array('1=1'));
-                while($R_PARTNERs =  $stmt_partner->fetch(PDO::FETCH_ASSOC)):
-            ?>
-                <article class="logger-partner">
-                    <div class="partner img-action" style="background-image: url('./app/views/uploads/<?php echo $R_PARTNERs['partner_img']; ?>');background-size: cover;">
-                        <h2 class="margin-block-0"><?php echo $R_PARTNERs['partner_name']; ?> </h2>
-                        <h4 class="sub-text margin-block-0"><?php echo $R_PARTNERs['partner_name']; ?></h4>
-                        <h4 class="main-text margin-block-0"><?php echo $R_PARTNERs['partner_detail']; ?></h4>
-                        <h4 class="main-text margin-block-0"><?php echo $R_PARTNERs['timestamp']; ?></h4>
-                    </div>
-                </article>
-            <?php endwhile;?>
-            <?php 
-                $stmt_partner = NULL;
-                $db = NULL; 
+            <?php
+                require_once "./ViewControllers/PartnerController.php";
+                $partners = new PartnerController;
+                $partners->selectPartnerIndex(1);
             ?>
             </section>
         </article>

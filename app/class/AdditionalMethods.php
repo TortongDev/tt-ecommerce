@@ -1,5 +1,6 @@
 <?php
 
+namespace APP\CLASS;
 class AdditionalMethods 
 {
    

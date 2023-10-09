@@ -22,7 +22,7 @@
                 </center>
             </section>
            <div class="container-contact-footer"><br>
-                <div class="contact-footer">
+                <!-- <div class="contact-footer">
                     <div class="facebook">
                         <i class="fa-brands fa-facebook" style="font-size: 2rem"></i>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="tiktok">
                         <i class="fa-brands fa-tiktok" style="font-size: 2rem"></i>
                     </div>
-                </div>
+                </div> -->
                 <div class="contact-footer-address"><br>
                     ที่อยู่ หมู่บ้านกลางดง Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, modi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, autem?
                 </div>

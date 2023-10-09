@@ -1,7 +1,12 @@
 <?php
+declare(strict_types=1);
+namespace appProduct;
+
+
 require_once dirname(dirname(__DIR__))."/app/config/config_pach.php";
 require_once PATCH_ADDITIONAL_METHODE;
 
+use APP\CLASS\AdditionalMethods;
 class Product extends AdditionalMethods
 {
     public $product_id;

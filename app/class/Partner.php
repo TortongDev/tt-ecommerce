@@ -1,6 +1,6 @@
 <?php
-
-
+namespace appPartner;
+use APP\CLASS\AdditionalMethods;
 class Partner extends AdditionalMethods
 {
     public $partner_id;
