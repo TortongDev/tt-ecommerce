@@ -64,26 +64,27 @@ unset($_SESSION['STATUS_CONFIRM']);
             <!-- <img src="./img-shop/code.svg" width="200" alt=""> -->
             <div class="grid-3">
                 <ul> 
-                    <img src="./img-shop/scb.png" width="200" alt="">
+                    <img src="./img-shop/scb.png" width="200" style="padding-block: 20px" alt=""><br>
                     <li>ธนาคารไทยพาณิช</li>
                     <li>ชื่อบช sssss</li>
                     <li>เลขบช. 1234567890</li>
                     
                 </ul>
                 <ul> 
-                    <img src="./img-shop/logo-truemoneywallet-300x300-1.jpg" width="200" alt="">
+                    <img src="./img-shop/prompt_pay.png" width="200" style="padding-block: 20px" alt=""><br>
+                    <li>Prompt Pay ธนาคารไทยพาณิช</li>
+                    <li>ชื่อบช sssss</li>
+                    <li>เลขบช. 0910174918</li>
+                    
+                </ul>
+                <ul> 
+                    <img src="./img-shop/logo-truemoneywallet-300x300-1.jpg" width="200" style="padding-block: 20px" alt=""><br>
                     <li>True Monney Wallet</li>
                     <li>ชื่อบช sssss</li>
                     <li>เลขบช. 1234567890</li>
                     
                 </ul>
-                <ul> 
-                    <img src="./img-shop/scb.png" width="200" alt="">
-                    <li>ธนาคารไทยพาณิช</li>
-                    <li>ชื่อบช sssss</li>
-                    <li>เลขบช. 1234567890</li>
-                    
-                </ul>
+               
             </div>
             <br><br><br>
             <center>
@@ -117,6 +118,8 @@ unset($_SESSION['STATUS_CONFIRM']);
     if (result.isConfirmed) {
         const formData = new FormData();
         const id = document.querySelector('#ORDER_ID').value;
+        const fileToUpload = document.querySelector('#fileToUpload');
+        let file = fileToUpload.files[0];
         if(id != "<?php echo $_SESSION['ORDERID']; ?>"){
             Swal.fire(
                 'หมายเลข Order ไม่ตรงกัน!',
@@ -127,7 +130,8 @@ unset($_SESSION['STATUS_CONFIRM']);
         formData.append('PAYMENT_ORDER_ID'  , document.querySelector('#ORDER_ID').value);
         formData.append('FIST_NAME'         , document.querySelector('#FIST_NAME').value);
         formData.append('PAYMENT_PRICE'     , document.querySelector('#PAYMENT_PRICE').value);
-        formData.append('fileToUpload'     , document.querySelector('#fileToUpload').value);
+        formData.append('fileToUpload'     , file);
+        
         fetch('./ViewControllers/OrderPaymentController.php', {
             method: 'POST',
             body: formData
