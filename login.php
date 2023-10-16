@@ -140,16 +140,18 @@
 </head>
 <body>
     <div class="phone">
+    <!-- <section class="login-form-title"> <h3>Login | เข้าสู่ระบบ</h3></section> -->
     <?php
+   
         if(isset($_SESSION['LOGIN_STATUS']) !== 1):
         echo <<<PHONE
         <div id="wrapper">
         <form action="" method="get">
         <div class="container-login">
             <section class="title-img">
-                <img src="./kanji_farm.jpg" style="margin: 0 auto; border-top-right-radius: 30px; border-bottom-left-radius: 30px;" width="200px" height="auto" alt="">
+                <img src="./img-shop/Kanji_Farm.png" style="margin: 0 auto; border-top-right-radius: 30px; border-bottom-left-radius: 30px; margin-block-end: 30px" width="250px" height="auto" alt="">
             </section>
-            <section class="login-form-title"> <h3>Login | เข้าสู่ระบบ</h3></section>
+            
             <section class="login-form">
             
                 <div class="form">

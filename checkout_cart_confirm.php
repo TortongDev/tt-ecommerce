@@ -1,17 +1,4 @@
-<?php
-    require_once __DIR__."/app/config/config_pach.php";
-    require_once PATCH_CONNECTION;
-    $checkAuthen = new Connection();
-    $checkAuthen->authenPermission();
 
-
-    $product_id     = isset($_GET['product_id'])            ? htmlspecialchars(trim($_GET['product_id']))       : '';
-    $product_member_id = isset($_GET['product_member_id'])  ? htmlspecialchars(trim($_GET['product_member_id'])) : '';
-    $product_name   = isset($_GET['product_name'])          ? htmlspecialchars(trim($_GET['product_name']))     : '';
-    $product_type   = isset($_GET['product_type'])          ? htmlspecialchars(trim($_GET['product_type']))     : '';
-    $product_price  = isset($_GET['product_price'])         ? htmlspecialchars(trim($_GET['product_price']))    : '';
-    $user_id        = isset($_GET['user_id'])               ? htmlspecialchars(trim($_GET['user_id']))          : '';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +13,7 @@
     <link rel="stylesheet" href="./style.css">
     <style>   
         footer {
-            position: absolute !important;
+            position: relative !important;
         }
         .list-cart tr td:nth-last-child(1) {
             margin: auto;
@@ -58,6 +45,52 @@
     
 </head>
 <body>
+<?php
+        require_once __DIR__."/app/config/config_pach.php";
+        require_once PATCH_CONNECTION;
+        $checkAuthen = new Connection();
+        $checkAuthen->openConnection();
+   
+        $DESC = Connection::$pdo->query('SELECT `PRM_ID` FROM `kanji_orders` WHERE 1=1 ORDER BY PRM_ID DESC LIMIT 1' );
+        $DESC = $DESC->fetch(PDO::FETCH_ASSOC);
+        $DESC = $DESC['PRM_ID']+1;
+        $_SESSION['STATUS_CONFIRM'] = 1;
+        $FIST_NAME    = isset($_POST['FIST_NAME']) ? htmlspecialchars(trim($_POST['FIST_NAME']))       : '';
+        $LAST_NAME    = isset($_POST['LAST_NAME']) ? htmlspecialchars(trim($_POST['LAST_NAME']))       : '';
+        $ADDRESS_NUMBER = isset($_POST['ADDRESS_NUMBER']) ? htmlspecialchars(trim($_POST['ADDRESS_NUMBER'])) : '';
+        $ADDRESS_MOO    = isset($_POST['ADDRESS_MOO']) ? htmlspecialchars(trim($_POST['ADDRESS_MOO']))       : '';
+        $TUMBON         = isset($_POST['TUMBON']) ? htmlspecialchars(trim($_POST['TUMBON']))          : '';
+        $MOOBAN         = isset($_POST['MOOBAN']) ? htmlspecialchars(trim($_POST['MOOBAN']))          : '';
+        $AMPHOR         = isset($_POST['AMPHOR']) ? htmlspecialchars(trim($_POST['AMPHOR']))          : '';
+        $JUNGWAT        = isset($_POST['JUNGWAT']) ? htmlspecialchars(trim($_POST['JUNGWAT']))        : '';
+        $TEL            = isset($_POST['TEL']) ? htmlspecialchars(trim($_POST['TEL']))                : '';
+        $ORDER_ID       = isset($_POST['ORDER_ID']) ? htmlspecialchars(trim($_POST['ORDER_ID']))       : 'KANJI_'.$DESC;
+        $ORDER_STATUS   = isset($_POST['ORDER_STATUS']) ? htmlspecialchars(trim($_POST['ORDER_STATUS'])) : '';
+        $PROVINCE       = isset($_POST['PROVINCE']) ? htmlspecialchars(trim($_POST['PROVINCE']))      : '';
+        $TRANSPORT = 80;
+        $SUM_PRICE_ALL = $_SESSION['total'];
+        $POST = isset($_POST['post']) ? htmlspecialchars($_POST['post']) : '';
+        if($POST == '1'):
+
+            $_SESSION['CONFIRM']['FIST_NAME']   = $FIST_NAME;
+            $_SESSION['CONFIRM']['LAST_NAME']   = $LAST_NAME;
+            $_SESSION['CONFIRM']['ADDRESS_MOO'] = $ADDRESS_MOO;
+            $_SESSION['CONFIRM']['ADDRESS_NUMBER'] = $ADDRESS_NUMBER;
+            $_SESSION['CONFIRM']['JUNGWAT']     = $JUNGWAT;
+            $_SESSION['CONFIRM']['AMPHOR']      = $AMPHOR;
+            $_SESSION['CONFIRM']['TUMBON']      = $TUMBON;
+            $_SESSION['CONFIRM']['PROVINCE']    = $PROVINCE;
+            $_SESSION['CONFIRM']['TEL']         = $TEL;
+            $_SESSION['CONFIRM']['ORDER_ID']    = $ORDER_ID;
+            header("Location: ./checkout_confirm_step2.php");
+            exit;
+
+        else:
+
+        endif;
+          
+?>
+<form action="" method="post">
 <div id="wrapper">
     <?php include ('./header-template.php'); ?>
     <div class="tabbar-checkout">
@@ -65,19 +98,19 @@
     </div>
     <div class="containers">
         <article class="container-checkout-cart">
-            
+          
+          
             <section class="list-address" style="overflow: auto;">
-                <div class="fname">ชื่อ</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อจริง"></div>
-                <div class="fname">นามสกุล</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="นามสกุลจริง"></div>
-                <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="บ้านเลขที่"></div>
-                <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="หมู่ที่"></div>
-                <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อหมู่บ้าน"></div>
-                <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อตำบล"></div>
-                <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่ออำเภอ"></div>
-                <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="ชื่อจังหวัด"></div>
-                <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="รหัสไปรษณี"></div>
-                <div class="fname">เบอร์โทร</div><div class="fname-form"><input type="text" name="fname" class="form-control" placeholder="เบอร์โทรศัพท์"></div>
-
+                <div class="fname">ชื่อ</div><div class="fname-form"><input type="text" name="FIST_NAME" class="form-control" placeholder="ชื่อจริง"></div>
+                <div class="fname">นามสกุล</div><div class="fname-form"><input type="text" name="LAST_NAME" class="form-control" placeholder="นามสกุลจริง"></div>
+                <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="ADDRESS_NUMBER" class="form-control" placeholder="บ้านเลขที่"></div>
+                <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="ADDRESS_MOO" class="form-control" placeholder="หมู่ที่"></div>
+                <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="MOOBAN" class="form-control" placeholder="ชื่อหมู่บ้าน"></div>
+                <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="TUMBON" class="form-control" placeholder="ชื่อตำบล"></div>
+                <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="AMPHOR" class="form-control" placeholder="ชื่ออำเภอ"></div>
+                <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="JUNGWAT" class="form-control" placeholder="ชื่อจังหวัด"></div>
+                <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" maxlength="5" name="PROVINCE" class="form-control" placeholder="รหัสไปรษณี"></div>
+                <div class="fname">เบอร์โทร</div><div class="fname-form"><input type="text" maxlength="10" name="TEL" class="form-control" placeholder="เบอร์โทรศัพท์"></div>
             </section>
             <section class="checkout-form">
                 <table class="table" style="">
@@ -111,7 +144,7 @@
 
                         <tr>
                             <td><u style="color:red;">หัก</u> ค่าจัดส่ง</td>
-                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;">40.00 &nbsp; <i class="fa-solid fa-baht-sign"></i></td>
+                            <td style="text-align: right ;display:flex;align-items:center;justify-content: right;">80.00 &nbsp; <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                         <tr>
                             <td>รวมราคา + ค่าจัดส่ง</td>
@@ -135,22 +168,28 @@
                     </ul>
                 </div>
                 <div class="checkout-footer desktop">
+                    <center>
                     <button class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
                     <button class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button>
-                    <button class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ชำระเงิน</button>
-
+                    <!-- <a href="./checkout_confirm_step2.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันและดำเนินการต่อ</a> -->
+                    <button type="submit" class="btn btn-checkout" value="1" name="post">ยืนยันและดำเนินการต่อ</button>
+                    </center>
                 </div>
+      
             </section>
         </article>
     </div>
     
     <div class="navbar-footer">
-        <section><a href="./checkout_cart.php"><i class="fa-solid fa-arrow-left"></i></a></section>
-        <section class="main-navbar-footer cart-confirm btn-cart" id="upBTN">ชำระเงิน</section>
-        <section><a href="./checkout_cart.php"><i class="fa-regular fa-rectangle-list"></i> </a> </section>
+        
+            <section><a href="./checkout_cart.php"><i class="fa-solid fa-arrow-left"></i></a></section>
+            <section class="main-navbar-footer cart-confirm btn-cart" id="upBTN">ชำระเงิน</section>
+            <section><a href="./checkout_cart.php"><i class="fa-regular fa-rectangle-list"></i> </a> </section>
+        
     </div>
     <?php include ('./footer-template.php'); ?>
 </div>
+</form>
 </body>
 <script  src="./base_function.js"></script>
 

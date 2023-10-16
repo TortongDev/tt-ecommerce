@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="./style.css">
     <style>
         footer {
-            position: absolute !important;
+            position: relative !important;
         }
         .list-cart tr td:nth-last-child(1) {
             margin: auto;
@@ -164,13 +164,15 @@
                     
                 </div>
                 <div class="checkout-footer desktop">
+                    <center>
                     <a href="./shopping_online.php" class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </a>
                     <a href="./clear_cart.php?cls=1" class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</a>
                     <?php if(!empty($_SESSION['CART'])):?>
-                        <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
+                        <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i>ดำเนินการต่อไป</a>
                     <?php else: ?>
                         <a href="#" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
                     <?php endif; ?>
+                    </center>
                 </div>
             </section>
         </article>

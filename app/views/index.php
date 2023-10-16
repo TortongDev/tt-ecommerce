@@ -1,8 +1,10 @@
 ﻿<?php
-session_start();
+
+require_once "../class/Connection.php";
 require_once "./checkAdmin.php";
 $checkadmin = new checkAdmin;
 $checkadmin->checkAdmin();
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,66 +34,88 @@ $checkadmin->checkAdmin();
             <div class="row">
                     <div class="col-md-4">
                         <div class="main-box mb-red">
-                            <a href="#">
+                            <a href="?page=listCartwait">
                                 <!-- <i class="fa fa-bolt fa-5x"></i> -->
-                                <h2>รอจัดส่ง</h2><br>
+                                <h2>รายการสั่งซื้อที่ยังไม่ชำระ</h2><br>
                                 <h5>30 รายการ</h5>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="main-box mb-dull">
-                            <a href="#">
+                            <a href="?page=listCartSuccess">
                                 <!-- <i class="fa fa-plug fa-5x"></i> -->
                                 <!-- <h5>40 Task In Check</h5> -->
-                               
-                                <h2>ยื่นชำระเงิน</h2><br>
+                                <h2>รายการสั่งซื้อที่ชำระแล้ว</h2><br>
                                 <h5>10 รายการ</h5>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="main-box mb-pink">
-                            <a href="#">
+                            <a href="?page=transportSuccess">
                                 <!-- <i class="fa fa-dollar fa-5x"></i>
                                 <h5>200K Pending</h5> -->
-                                <h2>ยังไม่ชำระเงิน</h2><br>
+                                <h2>ส่งสินค้าแล้ว</h2><br>
                                 <h5>1 รายการ</h5>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="main-box mb-red">
-                            <a href="#">
-                                <!-- <i class="fa fa-bolt fa-5x"></i> -->
-                                <h2>จำนวนสั่งซื้อประจำเดือน</h2><br>
-                                <h5>300 รายการ</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="main-box mb-dull">
-                            <a href="#">
-                                <!-- <i class="fa fa-plug fa-5x"></i> -->
-                                <!-- <h5>40 Task In Check</h5> -->
-                               
-                                <h2>จำนวนสั่งซื้อประจำปี</h2><br>
-                                <h5>10,390 รายการ</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="main-box mb-pink">
-                            <a href="#">
-                                <!-- <i class="fa fa-dollar fa-5x"></i>
-                                <h5>200K Pending</h5> -->
-                                <h2>จำนวนสั่งซื้อทั้งหมด</h2><br>
-                                <h5>134,324 รายการ</h5>
-                            </a>
-                        </div>
+                   
+                </div>
+               
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>หมายเลขรายการสั่งซื้อ</th>
+                                    <th>ชื่อผู้สั่งซื้อ</th>
+                                    <th>ที่อยู่</th>
+                                    <th>ราคา</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <?php 
+                                    $db = new Connection(true);
+                                    $sql = "";
+                                    $stmt = "";
+                                    $page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : '';
+                                    switch ($page) {
+                                        case 'listCartwait':
+                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '2' ORDER BY ORDER_ID DESC";
+                                            $stmt = Connection::$pdo->query($sql);
+                                            break;
+                                        case 'listCartSuccess':
+                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '1' ORDER BY ORDER_ID DESC";
+                                            $stmt = Connection::$pdo->query($sql);
+                                            break;
+                                        case 'transportSuccess':
+                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '0' ORDER BY ORDER_ID DESC";
+                                            $stmt = Connection::$pdo->query($sql);
+                                            break;
+                                        default:
+                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 ORDER BY ORDER_ID DESC";
+                                            $stmt = Connection::$pdo->query($sql);
+                                            break;
+                                    }
+                                    while($R = $stmt->fetch(PDO::FETCH_ASSOC)): 
+                                ?>
+                                <tr>
+                                    <td><?php echo $R['ORDER_ID']; ?></td>
+                                    <td><?php echo $R['ORDER_ID']; ?></td>
+                                    <td><?php echo $R['ORDER_ID']; ?></td>
+                                    <td><?php echo $R['ORDER_ID']; ?></td>
+                                    <td><?php echo $R['ORDER_ID']; ?></td>
+                                </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-           
             </div>
            
             <!-- /. PAGE INNER  -->
@@ -99,9 +123,6 @@ $checkadmin->checkAdmin();
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-
    <?php include "./footer-template.php"; ?>
-
-
 </body>
 </html>

@@ -37,14 +37,14 @@
                             endif;
                         ?>
                     </span></li>
-                    <li id="menu-users" style="border-left: 1px solid silver">
+                    <li id="menu-users" style="border-left: 1px solid silver;border-left: 1px solid silver;background-color: #97CF8A; border-radius: 7px;margin-right: 10px;">
                     <i class="fa-solid fa-user"></i> <?php echo @$_SESSION['AUTHEN_USERNAME'].'AS'.@$_SESSION['AUTHEN_USER_ID']; ?>
                         <ul class="ul-list" >
                             <li><a href=""><i class="fa-solid fa-angles-right"></i> แก้ไขข้อมูลส่วนตัว</a></li>
                             <li><a href=""><i class="fa-solid fa-angles-right"></i> ข้อความส่วนตัว</a></li>
                         </ul>
                     </li>
-                    <li><a href="./logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
+                    <li style="border-left: 1px solid silver;background-color: #97CF8A; border-radius: 7px;"><a href="./logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>
                 <?php else: ?>
                     <li><a class="main-text" href="./index.php"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
                     <li><a class="main-text" href="#intro"><i class="fa-solid fa-circle-info"></i> รู้จักกับร้าน</a></li>

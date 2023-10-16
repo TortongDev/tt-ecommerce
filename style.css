@@ -678,7 +678,7 @@ article.container-checkout-cart {
     width: 90%;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr 600px;
     grid-gap: 20px;
     margin-block-end: 40px;
     padding: 10px;
@@ -908,7 +908,7 @@ ul#menu-shop-sub {
     font-size: 12pt !important;
     padding-inline: 10px;
 }
-.desktop {}
+.desktop { width: 100%; }
 .sub-menu-slide li:nth-child(1) {
     margin-block-end: 20px;
     color: rgb(4, 83, 0);
@@ -968,6 +968,10 @@ section.shop-filter {
     box-shadow: 1px 1px 10px rgb(218, 218, 218);
     width: 90%;
     margin: 30px auto;
+}
+.btn-payment {
+    color: white;
+    background-color: #00a3d4;
 }
 .btn-filter-blue {
     color: white;
@@ -1063,7 +1067,7 @@ section.shop-filter {
     border-top: 0;
     border-right: 0;
     border-bottom: 0;
-    box-shadow: -10px 0px 20px 10px #24a323;
+    box-shadow: -10px -8px 13px 2px #24a323;
     right: 0;
     background-color: #58d719;
 }
@@ -1163,6 +1167,7 @@ section.shop-filter {
         width: 90%;
         height: 500px;
         position: relative;
+
     }
         
     .container-alliance {
@@ -1418,6 +1423,7 @@ section.shop-filter {
     .btn-xs {
     }
     article.container-checkout-cart {
+        padding: 20px;
         width: 90%;
         grid-template-columns: 1fr;
         overflow: auto;
