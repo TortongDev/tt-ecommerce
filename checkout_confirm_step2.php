@@ -30,12 +30,13 @@
     $PROVINCE   = $_SESSION['CONFIRM']['PROVINCE'];
     $TEL        = $_SESSION['CONFIRM']['TEL'];
     $ORDER_ID   = $_SESSION['CONFIRM']['ORDER_ID'];
+    $USER_ID    = $_SESSION['AUTHEN_USER_ID'];
     $_SESSION['ORDERID'] = $ORDER_ID;
     if($POST_ORDER === 'POST'):
       
         $STMT_INSERT = Connection::$pdo->prepare(
             "
-                INSERT INTO `kanji_orders`(`ORDER_ID`, `FIST_NAME`, `LAST_NAME`,  `JUNGWAT`, `AMPHOR`, `TUMBON`, `PROVINCE`, `ADDRESS_NUMBER`, `ADDRESS_MOO`, `TEL`) 
+                INSERT INTO `kanji_orders`(`ORDER_ID`, `FIST_NAME`, `LAST_NAME`,  `JUNGWAT`, `AMPHOR`, `TUMBON`, `PROVINCE`, `ADDRESS_NUMBER`, `ADDRESS_MOO`, `TEL`,`USER_ID`) 
                 VALUES (?,?,?,?,?,?,?,?,?,?)
             "
         );
@@ -49,7 +50,8 @@
             $PROVINCE,
             $ADDRESS_NUMBER,
             $ADDRESS_MOO,
-            $TEL
+            $TEL,
+            $USER_ID
         ));
         $loopSql = "INSERT INTO `kanji_order_list`(`ORDER_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `PRODUCT_AMOUNT`, `PRODUCT_ID`) VALUES (?,?,?,?,?)";
         $cart = @$_SESSION['CART'];
@@ -70,7 +72,7 @@
         endif;
         
         if($STMT_INSERT){
-            header("Location: success_form.php");
+            header("Location: success_form.php?codeid=". $_SESSION['CONFIRM']['ORDER_ID']);
             exit;
         }else{
     

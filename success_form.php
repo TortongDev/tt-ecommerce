@@ -1,5 +1,7 @@
 <?php
-session_start();
+require_once __DIR__."/app/config/config_pach.php";
+require_once PATCH_CONNECTION;
+$checkAuthen = new Connection();
 
 // if(@$_SESSION['STATUS_CART_SUCCESS']===1):
 
@@ -8,6 +10,18 @@ session_start();
 //     http_response_code(404);
 //     exit;
 // endif;
+
+$checkAuthen->openConnection();
+$ORDER_ID        = isset($_GET['codeid']) ? htmlspecialchars(trim($_GET['codeid'])) : '';
+$STMT = Connection::$pdo->prepare('SELECT * FROM `kanji_orders` WHERE ? AND USER_ID = ? AND ORDER_ID = ?');
+$STMT->execute(array('1=1',$_SESSION['AUTHEN_USER_ID'],$ORDER_ID));
+$RCHECK_ORDER_ID = $STMT->fetch(PDO::FETCH_ASSOC);
+// echo (string);
+if(empty($RCHECK_ORDER_ID['ORDER_ID'])):
+    http_response_code(404);
+    exit;
+
+endif;
 unset($_SESSION['CONFIRM']);
 unset($_SESSION['CART']);
 unset($_SESSION['STATUS_CONFIRM']);
@@ -58,7 +72,7 @@ unset($_SESSION['STATUS_CONFIRM']);
         <div class="container-status">
             <center>
                 <h2 class="main-text">ชำระเงิน</h2>
-                <h2 class="sub-text">หมายเลข ORDER #<?php echo $_SESSION['ORDERID'] ?></h2>
+                <h2 class="sub-text">หมายเลข ORDER #<?php echo $ORDER_ID; ?></h2>
                 <h4 class="sub-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur consequatur laboriosam dolorum, nulla ad quasi officiis! Natus quam iure tempora!</h4>
             </center>
             <!-- <img src="./img-shop/code.svg" width="200" alt=""> -->
@@ -97,7 +111,7 @@ unset($_SESSION['STATUS_CONFIRM']);
             </div>
     </div>
 <script>
-    document.querySelector('.btn-payment').addEventListener('click',function(){
+document.querySelector('.btn-payment').addEventListener('click',function(){
         Swal.fire({
         title: '<strong style="color: black;">แจ้งโอนเงิน</strong>',
         icon: 'info',
@@ -113,44 +127,48 @@ unset($_SESSION['STATUS_CONFIRM']);
         showCloseButton: true,
         focusConfirm: false
     }).then((result) => {
-    
-
-    if (result.isConfirmed) {
-        const formData = new FormData();
-        const id = document.querySelector('#ORDER_ID').value;
-        const fileToUpload = document.querySelector('#fileToUpload');
-        let file = fileToUpload.files[0];
-        if(id != "<?php echo $_SESSION['ORDERID']; ?>"){
-            Swal.fire(
-                'หมายเลข Order ไม่ตรงกัน!',
-                // 'Your file has been deleted.',
-                'error'
-            )
-        }
-        formData.append('PAYMENT_ORDER_ID'  , document.querySelector('#ORDER_ID').value);
-        formData.append('FIST_NAME'         , document.querySelector('#FIST_NAME').value);
-        formData.append('PAYMENT_PRICE'     , document.querySelector('#PAYMENT_PRICE').value);
-        formData.append('fileToUpload'     , file);
         
-        fetch('./ViewControllers/OrderPaymentController.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then((data)=>{
+
+        if (result.isConfirmed) { // <== START IF CHECK REQUEST SUCCESS (1)
+            const formData = new FormData();
+            const id = document.querySelector('#ORDER_ID').value;
+            const fileToUpload = document.querySelector('#fileToUpload');
+            let file = fileToUpload.files[0];
+
+
+            console.log(file['name']);
+            
+            if(id != "<?php echo $_SESSION['ORDERID']; ?>"){ // <== start if check order_id (2)
                 Swal.fire(
-                'ยืนยันชำระเงินสำเร็จ!',
-                'success'
+                    'หมายเลข Order ไม่ตรงกัน!',
+                    'โปรดกรอกหมายเลข Order ใหม่อีกครั้ง.',
+                    'error'
                 )
-                location.href='./success_payment_confirm.php'
-        })
-        .catch(error => console.log(error))
+            }
+            formData.append('PAYMENT_ORDER_ID'  , document.querySelector('#ORDER_ID').value);
+            formData.append('FIST_NAME'         , document.querySelector('#FIST_NAME').value);
+            formData.append('PAYMENT_PRICE'     , document.querySelector('#PAYMENT_PRICE').value);
+            formData.append('fileToUpload'     , file['name']);
+            
+            fetch('./ViewControllers/OrderPaymentController.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then((data)=>{
+                    Swal.fire(
+                    'ยืนยันชำระเงินสำเร็จ!',
+                    'success'
+                    )
+                    location.href='./success_payment_confirm.php'
+            })
+            .catch(error => console.log(error)) // <== end if check order_id (2)
 
-       
-        }
+        
+        } // <== END IF CHECK REQUEST SUCCESS (1)
+        
     })
-
-    })
+})
 </script>
 </body>
 </html>

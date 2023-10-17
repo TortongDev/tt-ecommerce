@@ -1,10 +1,13 @@
 <?php
-    require_once "./services/class/Connection.php";
-    $checkAuthen = new Connection();
-    $checkAuthen->authenPermission();
+   require_once __DIR__."/app/config/config_pach.php";
+   require_once PATCH_CONNECTION;
+   $checkAuthen = new Connection();
+
+?>
+<?php
 
 
-    $product_id     = isset($_GET['product_id'])            ? htmlspecialchars(trim($_GET['product_id']))       : '';
+    $product_id     = isset($_GET['product_id'])            ? htmlspecialchars(trim($_GET['product_id']))       : '';   
     $product_member_id = isset($_GET['product_member_id'])  ? htmlspecialchars(trim($_GET['product_member_id'])) : '';
     $product_name   = isset($_GET['product_name'])          ? htmlspecialchars(trim($_GET['product_name']))     : '';
     $product_type   = isset($_GET['product_type'])          ? htmlspecialchars(trim($_GET['product_type']))     : '';
@@ -22,6 +25,9 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./style.css">
     <style>
+        html,body {
+            height:100%;
+        }
         .list-cart tr td:nth-last-child(1) {
             margin: auto;
             text-align: center;
@@ -44,6 +50,11 @@
         .list-cart tr td:nth-last-child(5) {
             margin: auto;
             text-align: center;
+        }
+        footer {
+            margin-top: 100vh;
+            bottom: 0;
+            position: relative;
         }
         .tabbar-checkout {
             margin-block-start: 120px;
@@ -70,18 +81,52 @@
                             <th>วันที่</th>
                             <th>รหัสรายการ</th>
                             <th>สถานะ</th>
-                            <th></th>
+                            <th style="width:180px;"></th>
+                            <th style="width:150px;"></th>
                             
                         </tr>
                     </thead>
                     <tbody style="overflow: auto;">
-                        <tr>
-                            <td>1</td>
-                            <td>2023-09-14</td>
-                            <td>ORDER10001</td>
-                            <td><font color="green">ชำระแล้ว</font></td>
-                            <td><a class="btn">รายละเอียดสินค้า</a></td>
-                        </tr>
+                    <?php 
+                        $checkAuthen->openConnection();
+                        $sql = "SELECT * FROM `kanji_orders` WHERE ? AND USER_ID = ?";
+                        $stmt = Connection::$pdo->prepare($sql);
+                        $stmt->execute(array('1=1',$_SESSION['AUTHEN_USER_ID']));
+                        // $stmt->execute(array('1=1'));
+                        while($R = $stmt->fetch(PDO::FETCH_ASSOC)):
+                            $orderID    = $R['ORDER_ID']; 
+                            $FIST_NAME  = $R['FIST_NAME']; 
+                            $ORDER_TIMESTAMP = $R['ORDER_TIMESTAMP']; 
+                            $ORDER_STATUS    = $R['ORDER_STATUS']; 
+                            $TEL        = $R['TEL'];
+                            $ORDER_STATUS_IF = 'ยังไม่ชำระเงิน';
+                            $STATUS_COLOR = "RED";
+                            $BTN_PAYMENT = "<a class='btn' href='./success_form.php?codeid=$orderID'>แจ้งโอนเงิน</a>";
+                            if($ORDER_STATUS == '0'):
+                                $STATUS_COLOR = "GREEN";
+                                $ORDER_STATUS_IF = 'ชำระเงินแล้ว';
+                                $BTN_PAYMENT = "-";
+                            endif;
+                            // $TEL = $R['TEL']; 
+                            echo <<<ORDER
+                                <tr>
+                                    <td>$ORDER_TIMESTAMP</td>
+                                    <td>$orderID</td>
+                                    <td>$FIST_NAME</td>
+                                    <td>
+                                        <font color="$STATUS_COLOR">$ORDER_STATUS_IF</font>
+                                    </td>
+                                    <td>
+                                        <a class="btn">รายละเอียดสินค้า</a>
+                                       
+                                    </td>
+                                    <td>$BTN_PAYMENT</td>
+                                </tr>
+
+                            ORDER;
+                        endwhile;
+                    ?>
+                        
                     </tbody>
                 </table>
             </section>

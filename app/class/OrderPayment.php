@@ -3,12 +3,16 @@ namespace appOrderPayment;
 require_once PATCH_ADDITIONAL_METHODE;
 use APP\CLASS\AdditionalMethods;
 class OrderPayment extends AdditionalMethods {
+    public $ORDER_ID;
     public $PAYMENT_ID ;
     public $PAYMENT_NAME;
     public $PAYMENT_IMG;
     public $PAYMENT_USERNAME;
     public $PAYMENT_PRICE;
     public $PAYMENT_ORDER_ID;
+    public function setORDER_ID($ORDER_ID){
+        $this->ORDER_ID = $ORDER_ID;
+    }
     public function setPAYMENT_ID($PAYMENT_ID){
         $this->PAYMENT_ID = $PAYMENT_ID;
     }
@@ -26,6 +30,10 @@ class OrderPayment extends AdditionalMethods {
     }
     public function setPAYMENT_ORDER_ID($PAYMENT_ORDER_ID){
         $this->PAYMENT_ORDER_ID = $PAYMENT_ORDER_ID;
+    }
+    
+    public function getORDER_ID(){
+        return $this->ORDER_ID;
     }
 
 }

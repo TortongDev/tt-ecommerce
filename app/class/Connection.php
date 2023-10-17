@@ -75,12 +75,13 @@ class Connection {
 			$privateKey = "id-123";
 			$iv = "asdfghzxcv12340k";
 			$sslID = openssl_encrypt($id,'AES-256-CBC',$privateKey,0,$iv);
-			return $sslID;
+			$base64id = base64_encode($sslID);
+			return $base64id;
 		}
 		public function id_decrypt($id_encrypt){
 			$privateKey = "id-123";
 			$iv = "asdfghzxcv12340k";
-			$sslID = openssl_decrypt($id_encrypt,'AES-256-CBC',$privateKey,0,$iv);
+			$sslID = openssl_decrypt(base64_decode($id_encrypt),'AES-256-CBC',$privateKey,0,$iv);
 			return $sslID;
 		}
 }

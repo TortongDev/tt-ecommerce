@@ -115,7 +115,7 @@
                 <div class="box-product">
                     <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile-shop">
-                        <img class="img-action" src="./backend_disc/admin/systems/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
+                        <img class="img-action" src="./app/views/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
                     </div>
                     <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                     <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>
