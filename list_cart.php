@@ -77,12 +77,13 @@
                 <table class="table" id="table">
                     <thead style="overflow: auto;">
                         <tr>
-                            <th>#</th>
-                            <th>วันที่</th>
-                            <th>รหัสรายการ</th>
-                            <th>สถานะ</th>
-                            <th style="width:180px;"></th>
-                            <th style="width:150px;"></th>
+                            <th style="width:80px;text-align: center;">#</th>
+                            <th style="width:180px;text-align: center;">วันที่</th>
+                            <th style="width:180px;text-align: center;">รหัสรายการ</th>
+                            <th style="width:180px;text-align: center;">ผู้สั่ง</th>
+                            <th style="width:80px;text-align: center;">สถานะ</th>
+                            <th style="width:150px;text-align: left;"></th>
+                            <th style="width:150px;text-align: left;"></th>
                             
                         </tr>
                     </thead>
@@ -93,7 +94,9 @@
                         $stmt = Connection::$pdo->prepare($sql);
                         $stmt->execute(array('1=1',$_SESSION['AUTHEN_USER_ID']));
                         // $stmt->execute(array('1=1'));
+                        $number = 0;
                         while($R = $stmt->fetch(PDO::FETCH_ASSOC)):
+                            $number = $number + 1;
                             $orderID    = $R['ORDER_ID']; 
                             $FIST_NAME  = $R['FIST_NAME']; 
                             $ORDER_TIMESTAMP = $R['ORDER_TIMESTAMP']; 
@@ -102,7 +105,7 @@
                             $ORDER_STATUS_IF = 'ยังไม่ชำระเงิน';
                             $STATUS_COLOR = "RED";
                             $BTN_PAYMENT = "<a class='btn' href='./success_form.php?codeid=$orderID'>แจ้งโอนเงิน</a>";
-                            if($ORDER_STATUS == '0'):
+                            if($ORDER_STATUS == '1'):
                                 $STATUS_COLOR = "GREEN";
                                 $ORDER_STATUS_IF = 'ชำระเงินแล้ว';
                                 $BTN_PAYMENT = "-";
@@ -110,15 +113,15 @@
                             // $TEL = $R['TEL']; 
                             echo <<<ORDER
                                 <tr>
-                                    <td>$ORDER_TIMESTAMP</td>
-                                    <td>$orderID</td>
-                                    <td>$FIST_NAME</td>
-                                    <td>
+                                    <td style="text-align: center;">$number</td>
+                                    <td style="text-align: center;">$ORDER_TIMESTAMP</td>
+                                    <td style="text-align: center;">$orderID</td>
+                                    <td style="text-align: center;">$FIST_NAME</td>
+                                    <td style="text-align: left;">
                                         <font color="$STATUS_COLOR">$ORDER_STATUS_IF</font>
                                     </td>
                                     <td>
                                         <a class="btn">รายละเอียดสินค้า</a>
-                                       
                                     </td>
                                     <td>$BTN_PAYMENT</td>
                                 </tr>

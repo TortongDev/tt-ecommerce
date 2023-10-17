@@ -1,23 +1,21 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
     require_once __DIR__."/app/config/config_pach.php";
     require_once PATCH_CONNECTION;
     $checkAuthen = new Connection();
     $checkAuthen->authenPermission();
     $checkAuthen->openConnection();
 
-    if(empty($_SESSION['STATUS_CONFIRM'])){
-        http_response_code(404);
-        exit;   
-    }else{
+    // if(empty($_SESSION['STATUS_CONFIRM'])){
+    //     http_response_code(404);
+    //     exit;   
+    // }else{
 
-    }
-    // $product_id     = isset($_GET['product_id'])            ? htmlspecialchars(trim($_GET['product_id']))       : '';
-    // $product_member_id = isset($_GET['product_member_id'])  ? htmlspecialchars(trim($_GET['product_member_id'])) : '';
-    // $product_name   = isset($_GET['product_name'])          ? htmlspecialchars(trim($_GET['product_name']))     : '';
-    // $product_type   = isset($_GET['product_type'])          ? htmlspecialchars(trim($_GET['product_type']))     : '';
-    // $product_price  = isset($_GET['product_price'])         ? htmlspecialchars(trim($_GET['product_price']))    : '';
-    // $user_id        = isset($_GET['user_id'])               ? htmlspecialchars(trim($_GET['user_id']))          : '';
-    
+    // }
+ 
     $POST_ORDER        = isset($_POST['POST_ORDER'])      ? htmlspecialchars(trim($_POST['POST_ORDER']))          : '';
     $_SESSION['STATUS_CART_SUCCESS'] = 1;
     $FIST_NAME  = $_SESSION['CONFIRM']['FIST_NAME'];
@@ -37,7 +35,7 @@
         $STMT_INSERT = Connection::$pdo->prepare(
             "
                 INSERT INTO `kanji_orders`(`ORDER_ID`, `FIST_NAME`, `LAST_NAME`,  `JUNGWAT`, `AMPHOR`, `TUMBON`, `PROVINCE`, `ADDRESS_NUMBER`, `ADDRESS_MOO`, `TEL`,`USER_ID`) 
-                VALUES (?,?,?,?,?,?,?,?,?,?)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)
             "
         );
         $STMT_INSERT->execute(array(
@@ -53,9 +51,12 @@
             $TEL,
             $USER_ID
         ));
-        $loopSql = "INSERT INTO `kanji_order_list`(`ORDER_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `PRODUCT_AMOUNT`, `PRODUCT_ID`) VALUES (?,?,?,?,?)";
-        $cart = @$_SESSION['CART'];
+ 
+          $cart = @$_SESSION['CART'];
+        
         if(!empty($cart)):
+             $loopSql = "INSERT INTO `kanji_order_list`(`ORDER_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `PRODUCT_AMOUNT`, `PRODUCT_ID`) VALUES (?,?,?,?,?)";
+     
             foreach($cart  as $key => $value):  
                 $insertLoop = Connection::$pdo->prepare($loopSql);
                 $insertLoop->execute(
@@ -70,14 +71,8 @@
 
             endforeach; 
         endif;
-        
-        if($STMT_INSERT){
-            header("Location: success_form.php?codeid=". $_SESSION['CONFIRM']['ORDER_ID']);
-            exit;
-        }else{
-    
-        }
-    
+        header("Location: success_form.php?codeid=". $_SESSION['CONFIRM']['ORDER_ID']);
+        exit;
        
     endif;
 ?>
@@ -160,6 +155,7 @@
                     </thead>
                     <tbody style="overflow: auto;">
                         <?php 
+                      
                             $countID = 1;
                             $cart = @$_SESSION['CART'];
                             if(!empty($cart)):

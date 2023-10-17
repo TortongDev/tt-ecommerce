@@ -134,17 +134,15 @@ document.querySelector('.btn-payment').addEventListener('click',function(){
             const id = document.querySelector('#ORDER_ID').value;
             const fileToUpload = document.querySelector('#fileToUpload');
             let file = fileToUpload.files[0];
-
-
-            console.log(file['name']);
             
-            if(id != "<?php echo $_SESSION['ORDERID']; ?>"){ // <== start if check order_id (2)
+            if(id != "<?php echo $RCHECK_ORDER_ID['ORDER_ID']; ?>"){ // <== start if check order_id (2)
                 Swal.fire(
                     'หมายเลข Order ไม่ตรงกัน!',
                     'โปรดกรอกหมายเลข Order ใหม่อีกครั้ง.',
                     'error'
                 )
-            }
+                return 0;
+            }else{
             formData.append('PAYMENT_ORDER_ID'  , document.querySelector('#ORDER_ID').value);
             formData.append('FIST_NAME'         , document.querySelector('#FIST_NAME').value);
             formData.append('PAYMENT_PRICE'     , document.querySelector('#PAYMENT_PRICE').value);
@@ -162,8 +160,9 @@ document.querySelector('.btn-payment').addEventListener('click',function(){
                     )
                     location.href='./success_payment_confirm.php'
             })
+            
             .catch(error => console.log(error)) // <== end if check order_id (2)
-
+            }
         
         } // <== END IF CHECK REQUEST SUCCESS (1)
         

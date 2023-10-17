@@ -6,6 +6,51 @@ $checkadmin = new checkAdmin;
 $checkadmin->checkAdmin();
 
 ?>
+<?php
+    $db = new Connection(true);
+    $sql = "";
+    $stmt = "";
+    $TOPIC = "";
+    $page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : '';
+    switch ($page) {
+        case 'listCartwait':
+            $TOPIC = "ยังไม่ชำระ";
+            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '2' ORDER BY ORDER_ID DESC";
+            $stmt = Connection::$pdo->query($sql);
+
+            break;
+        case 'transportSuccess':
+
+            $TOPIC = "ส่งสินค้าเรียบร้อยเเล้ว";
+            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '0' ORDER BY ORDER_ID DESC";
+            $stmt = Connection::$pdo->query($sql);
+            break;
+        case 'listCartSuccess':
+
+            $TOPIC = "ชำระเงินแล้ว";
+            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '1' ORDER BY ORDER_ID DESC";
+            $stmt = Connection::$pdo->query($sql);
+
+          
+            break;
+        default:
+        
+            $TOPIC = "ทั้งหมด";
+            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 ORDER BY ORDER_ID DESC";
+            $stmt = Connection::$pdo->query($sql);
+
+
+
+           
+
+        break;
+    }
+    $section_1 = Connection::$pdo->query("SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '0' ORDER BY ORDER_ID DESC"); // ขนส่งสำเร็จ
+    $section_2 = Connection::$pdo->query("SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '1' ORDER BY ORDER_ID DESC"); // ชำระแล้ว
+    $section_3 = Connection::$pdo->query("SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '2' ORDER BY ORDER_ID DESC"); // ยังชำระแล้ว
+    
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,7 +82,7 @@ $checkadmin->checkAdmin();
                             <a href="?page=listCartwait">
                                 <!-- <i class="fa fa-bolt fa-5x"></i> -->
                                 <h2>รายการสั่งซื้อที่ยังไม่ชำระ</h2><br>
-                                <h5>30 รายการ</h5>
+                                <h5><?php echo $section_3->rowCount(); ?> รายการ</h5>
                             </a>
                         </div>
                     </div>
@@ -47,7 +92,7 @@ $checkadmin->checkAdmin();
                                 <!-- <i class="fa fa-plug fa-5x"></i> -->
                                 <!-- <h5>40 Task In Check</h5> -->
                                 <h2>รายการสั่งซื้อที่ชำระแล้ว</h2><br>
-                                <h5>10 รายการ</h5>
+                                <h5><?php echo $section_2->rowCount(); ?> รายการ</h5>
                             </a>
                         </div>
                     </div>
@@ -57,19 +102,20 @@ $checkadmin->checkAdmin();
                                 <!-- <i class="fa fa-dollar fa-5x"></i>
                                 <h5>200K Pending</h5> -->
                                 <h2>ส่งสินค้าแล้ว</h2><br>
-                                <h5>1 รายการ</h5>
+                                <h5><?php echo $section_1->rowCount(); ?> รายการ</h5>
                             </a>
                         </div>
                     </div>
                    
                 </div>
                
-
                 <div class="row">
                     <div class="col-md-12">
+                        <h2><?php echo $TOPIC; ?></h2>
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>หมายเลขรายการสั่งซื้อ</th>
                                     <th>ชื่อผู้สั่งซื้อ</th>
                                     <th>ที่อยู่</th>
@@ -78,36 +124,16 @@ $checkadmin->checkAdmin();
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                  
                                 <?php 
-                                    $db = new Connection(true);
-                                    $sql = "";
-                                    $stmt = "";
-                                    $page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : '';
-                                    switch ($page) {
-                                        case 'listCartwait':
-                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '2' ORDER BY ORDER_ID DESC";
-                                            $stmt = Connection::$pdo->query($sql);
-                                            break;
-                                        case 'listCartSuccess':
-                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '1' ORDER BY ORDER_ID DESC";
-                                            $stmt = Connection::$pdo->query($sql);
-                                            break;
-                                        case 'transportSuccess':
-                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 AND ORDER_STATUS = '0' ORDER BY ORDER_ID DESC";
-                                            $stmt = Connection::$pdo->query($sql);
-                                            break;
-                                        default:
-                                            $sql = "SELECT * FROM `kanji_orders` WHERE 1=1 ORDER BY ORDER_ID DESC";
-                                            $stmt = Connection::$pdo->query($sql);
-                                            break;
-                                    }
+                                    $NUMBER_COUNT = 0;
                                     while($R = $stmt->fetch(PDO::FETCH_ASSOC)): 
                                 ?>
                                 <tr>
+                                    <td><?php echo $NUMBER_COUNT = $NUMBER_COUNT + 1; ?></td>
                                     <td><?php echo $R['ORDER_ID']; ?></td>
-                                    <td><?php echo $R['ORDER_ID']; ?></td>
-                                    <td><?php echo $R['ORDER_ID']; ?></td>
+                                    <td><?php echo $R['FIST_NAME']; ?></td>
+                                    <td><?php echo "บ้านเลขที่{$R['ADDRESS_NUMBER']} หมู่{$R['ADDRESS_MOO']} บ้าน{$R['ORDER_ID']} ตำบล{$R['TUMBON']} อำเภอ{$R['AMPHOR']} จังหวัด{$R['JUNGWAT']} {$R['PROVINCE']}"; ?></td>
                                     <td><?php echo $R['ORDER_ID']; ?></td>
                                     <td><?php echo $R['ORDER_ID']; ?></td>
                                 </tr>

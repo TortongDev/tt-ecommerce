@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 18, 2023 at 01:09 PM
--- Server version: 10.5.17-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: Oct 17, 2023 at 09:28 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `authen_admin` (
   `authen_user_id` int(10) NOT NULL,
-  `authen_username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `authen_password` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `authen_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `authen_username` varchar(225) NOT NULL,
+  `authen_password` varchar(225) NOT NULL,
+  `authen_status` varchar(10) NOT NULL DEFAULT '1',
   `authen_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -50,9 +50,9 @@ INSERT INTO `authen_admin` (`authen_user_id`, `authen_username`, `authen_passwor
 
 CREATE TABLE `authen_users` (
   `authen_user_id` int(10) NOT NULL,
-  `authen_username` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `authen_password` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `authen_status` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `authen_username` varchar(225) NOT NULL,
+  `authen_password` varchar(225) NOT NULL,
+  `authen_status` varchar(10) NOT NULL DEFAULT '1',
   `authen_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -66,16 +66,97 @@ INSERT INTO `authen_users` (`authen_user_id`, `authen_username`, `authen_passwor
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kanji_banners`
+--
+
+CREATE TABLE `kanji_banners` (
+  `banner_id` int(10) NOT NULL,
+  `banner_topic` char(20) NOT NULL,
+  `banner_status` int(11) NOT NULL DEFAULT 2,
+  `banner_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `picture` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kanji_banners`
+--
+
+INSERT INTO `kanji_banners` (`banner_id`, `banner_topic`, `banner_status`, `banner_timestamp`, `picture`) VALUES
+(6, 'B1', 1, '2023-09-21 05:59:27', '720.jpg'),
+(15, 'sdasdsdas', 2, '2023-09-27 06:57:50', 'shopping_6775634.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kanji_orders`
+--
+
+CREATE TABLE `kanji_orders` (
+  `PRM_ID` int(10) NOT NULL,
+  `ORDER_ID` varchar(20) NOT NULL,
+  `FIST_NAME` varchar(100) NOT NULL,
+  `LAST_NAME` varchar(100) NOT NULL,
+  `ORDER_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ORDER_STATUS` int(2) NOT NULL DEFAULT 2,
+  `JUNGWAT` varchar(100) NOT NULL,
+  `AMPHOR` varchar(100) NOT NULL,
+  `TUMBON` varchar(100) NOT NULL,
+  `PROVINCE` varchar(20) NOT NULL,
+  `ADDRESS_NUMBER` varchar(300) NOT NULL,
+  `ADDRESS_MOO` varchar(300) NOT NULL,
+  `TEL` varchar(20) NOT NULL,
+  `USER_ID` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kanji_orders`
+--
+
+INSERT INTO `kanji_orders` (`PRM_ID`, `ORDER_ID`, `FIST_NAME`, `LAST_NAME`, `ORDER_TIMESTAMP`, `ORDER_STATUS`, `JUNGWAT`, `AMPHOR`, `TUMBON`, `PROVINCE`, `ADDRESS_NUMBER`, `ADDRESS_MOO`, `TEL`, `USER_ID`) VALUES
+(17, 'KANJI_1', 'มาวิน', 'เจนดี', '2023-10-17 06:28:11', 1, 'xxx', 'xxx', 'xxx', 'xxx', '10', '10', 'xxx', 1),
+(18, 'KANJI_18', 'มิ้นนี่', 'เสลานัน', '2023-10-17 06:30:35', 2, 'ccc', 'ccc', 'ccc', 'ccc', 'ccc', 'ccc', 'ccccc', 1),
+(19, 'KANJI_19', 'วนิสรา', 'มีนโยธา', '2023-10-17 07:24:34', 2, 'vvv', 'vvv', 'vvv', 'vvv', 'vvv', 'vvv', 'vvv', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kanji_order_list`
+--
+
+CREATE TABLE `kanji_order_list` (
+  `ORDER_LIST_ID` int(20) NOT NULL,
+  `ORDER_ID` varchar(200) NOT NULL,
+  `PRODUCT_NAME` varchar(300) NOT NULL,
+  `PRODUCT_PRICE` varchar(100) NOT NULL,
+  `PRODUCT_AMOUNT` varchar(100) NOT NULL,
+  `PRODUCT_ID` int(11) NOT NULL,
+  `PRODUCT_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kanji_order_list`
+--
+
+INSERT INTO `kanji_order_list` (`ORDER_LIST_ID`, `ORDER_ID`, `PRODUCT_NAME`, `PRODUCT_PRICE`, `PRODUCT_AMOUNT`, `PRODUCT_ID`, `PRODUCT_TIMESTAMP`) VALUES
+(13, 'KANJI_1', 'Cos Lettuce or Romaine Lettuce (กรีนคอส)', '20', '1', 0, '2023-10-17 06:28:11'),
+(14, 'KANJI_1', 'Green Oak Lettuce (กรีนโอ๊ค )', '110', '1', 0, '2023-10-17 06:28:11'),
+(15, 'KANJI_18', 'MINI COS ORGANIC (มินิคอส ออร์แกนิค).', '90', '2', 0, '2023-10-17 06:30:35'),
+(16, 'KANJI_19', 'Red Oak Lettuce (เรดโอ๊ค)', '150', '1', 0, '2023-10-17 07:24:34'),
+(17, 'KANJI_19', 'Frillice Ice Berg Lettuce (ฟิลเลย์ไอซ์เบิร์ก)', '100', '1', 0, '2023-10-17 07:24:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kanji_partners`
 --
 
 CREATE TABLE `kanji_partners` (
   `partner_id` int(10) NOT NULL,
-  `partner_member_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `partner_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `partner_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `partner_status` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT current_timestamp(),
-  `partner_img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `partner_member_id` varchar(10) NOT NULL,
+  `partner_name` varchar(100) NOT NULL,
+  `partner_detail` varchar(500) NOT NULL,
+  `partner_status` char(1) NOT NULL DEFAULT current_timestamp(),
+  `partner_img` varchar(255) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -84,8 +165,33 @@ CREATE TABLE `kanji_partners` (
 --
 
 INSERT INTO `kanji_partners` (`partner_id`, `partner_member_id`, `partner_name`, `partner_detail`, `partner_status`, `partner_img`, `timestamp`) VALUES
-(3, 'JJSHOP', 'ร้านJJSHOP', 'ร้านJJSHOP ขายผัก ขายปลา อุปกรณ์ตกปลา', '1', '', '2023-09-18 13:08:36'),
-(4, 'ASHOP', 'ร้านASHOP', 'ASHOP ขายผักสด ผลไม้สด', '1', '', '2023-09-18 13:08:36');
+(3, 'JJSHOP', 'ร้านJJSHOP', 'ร้านJJSHOP ขายผัก ขายปลา อุปกรณ์ตกปลา', '1', 'green-oak-1.jpg', '2023-09-18 13:08:36'),
+(4, 'ASHOP', 'ร้านASHOP', 'ASHOP ขายผักสด ผลไม้สด', '2', 'original-1634632690275.jpg', '2023-09-18 13:08:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kanji_payment`
+--
+
+CREATE TABLE `kanji_payment` (
+  `PAYMENT_ID` int(20) NOT NULL,
+  `PAYMENT_NAME` varchar(100) NOT NULL,
+  `PAYMENT_IMG` varchar(300) NOT NULL,
+  `PAYMENT_USERNAME` varchar(100) NOT NULL,
+  `PAYMENT_TIMESTAMP` timestamp NOT NULL DEFAULT current_timestamp(),
+  `PAYMENT_PRICE` varchar(100) NOT NULL,
+  `PAYMENT_ORDER_ID` varchar(20) NOT NULL,
+  `AUTHEN_USER_ID` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kanji_payment`
+--
+
+INSERT INTO `kanji_payment` (`PAYMENT_ID`, `PAYMENT_NAME`, `PAYMENT_IMG`, `PAYMENT_USERNAME`, `PAYMENT_TIMESTAMP`, `PAYMENT_PRICE`, `PAYMENT_ORDER_ID`, `AUTHEN_USER_ID`) VALUES
+(26, 'KANJI_16', '57123.jpg', 'admin', '2023-10-17 06:26:53', 'KANJI_16', 'KANJI_16', 1),
+(27, 'มาวิน', 'Screenshot_2.png', 'admin', '2023-10-17 06:28:44', '100', 'KANJI_1', 1);
 
 -- --------------------------------------------------------
 
@@ -95,24 +201,24 @@ INSERT INTO `kanji_partners` (`partner_id`, `partner_member_id`, `partner_name`,
 
 CREATE TABLE `kanji_products` (
   `product_id` int(10) NOT NULL,
-  `product_member_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `product_name` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `product_price` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `product_amount` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `product_type_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `product_shop_name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `product_member_id` varchar(10) NOT NULL,
+  `product_name` varchar(225) NOT NULL,
+  `product_price` varchar(20) NOT NULL,
+  `product_amount` varchar(20) NOT NULL,
+  `product_type_name` varchar(80) NOT NULL,
+  `product_shop_name` varchar(80) NOT NULL,
   `product_type_id` int(10) NOT NULL,
   `product_user_id` int(10) NOT NULL,
   `product_status` int(10) NOT NULL DEFAULT 1,
   `product_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `product_img` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `product_detail` text COLLATE utf8_unicode_ci NOT NULL,
-  `product_sub_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `product_img` varchar(300) NOT NULL,
+  `product_detail` text NOT NULL,
+  `product_sub_detail` varchar(500) NOT NULL,
   `comment_id` int(10) NOT NULL,
   `review_id` int(10) NOT NULL,
   `product_shop_id` int(10) NOT NULL,
-  `option_price` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `option_amount` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `option_price` varchar(10) NOT NULL,
+  `option_amount` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -139,11 +245,11 @@ INSERT INTO `kanji_products` (`product_id`, `product_member_id`, `product_name`,
 
 CREATE TABLE `kanji_product_type` (
   `type_id` int(10) NOT NULL,
-  `product_type_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `product_type_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `product_type_detail` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `product_type_id` varchar(10) NOT NULL,
+  `product_type_name` varchar(100) NOT NULL,
+  `product_type_detail` varchar(500) NOT NULL,
   `sys_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `product_type_status` char(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
+  `product_type_status` char(10) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -152,7 +258,33 @@ CREATE TABLE `kanji_product_type` (
 
 INSERT INTO `kanji_product_type` (`type_id`, `product_type_id`, `product_type_name`, `product_type_detail`, `sys_timestamp`, `product_type_status`) VALUES
 (4, 'KANJIID-00', 'ผัก', 'ผัก พืชสวนครัว ผักสด', '2023-09-08 03:56:39', '1'),
-(5, 'KANJIID-02', 'อุปกรณ์ปลูกผัก', 'อุปกรณ์ปลูกผัก', '2023-09-08 03:57:11', '1');
+(5, 'KANJIID-02', 'อุปกรณ์ปลูกผัก', 'อุปกรณ์ปลูกผัก', '2023-09-08 03:57:11', '1'),
+(7, 'KANJIID-15', 'พืช', 'พืชชนิดอื่นๆ ที่ต่างจากผัก', '2023-10-03 04:29:23', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kanji_slide`
+--
+
+CREATE TABLE `kanji_slide` (
+  `slide_id` int(11) NOT NULL,
+  `slide_picture` varchar(255) NOT NULL,
+  `slide_header` varchar(100) NOT NULL,
+  `slide_content` varchar(255) NOT NULL,
+  `slide_status` varchar(10) NOT NULL DEFAULT '2',
+  `slide_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kanji_slide`
+--
+
+INSERT INTO `kanji_slide` (`slide_id`, `slide_picture`, `slide_header`, `slide_content`, `slide_status`, `slide_timestamp`) VALUES
+(11, 'Fresh _ Healthy.jpg', 'slid2', 'slid2', '2', '2023-09-22 05:54:03'),
+(13, 'green-oak-1.jpg', 'slide3', '', '2', '2023-09-22 06:37:59'),
+(14, 'header-pic.jpg', 'โปรโมทสถานที่', '', '2', '2023-09-22 06:59:39'),
+(20, 'Fresh _ Healthy (1400 x 300 px).jpg', 'Promote1', '', '2', '2023-10-05 06:13:43');
 
 --
 -- Indexes for dumped tables
@@ -171,10 +303,35 @@ ALTER TABLE `authen_users`
   ADD PRIMARY KEY (`authen_user_id`);
 
 --
+-- Indexes for table `kanji_banners`
+--
+ALTER TABLE `kanji_banners`
+  ADD PRIMARY KEY (`banner_id`);
+
+--
+-- Indexes for table `kanji_orders`
+--
+ALTER TABLE `kanji_orders`
+  ADD PRIMARY KEY (`PRM_ID`);
+
+--
+-- Indexes for table `kanji_order_list`
+--
+ALTER TABLE `kanji_order_list`
+  ADD PRIMARY KEY (`ORDER_LIST_ID`);
+
+--
 -- Indexes for table `kanji_partners`
 --
 ALTER TABLE `kanji_partners`
   ADD PRIMARY KEY (`partner_id`);
+
+--
+-- Indexes for table `kanji_payment`
+--
+ALTER TABLE `kanji_payment`
+  ADD PRIMARY KEY (`PAYMENT_ID`);
+ALTER TABLE `kanji_payment` ADD FULLTEXT KEY `PAYMENT_ORDER_ID` (`PAYMENT_ORDER_ID`);
 
 --
 -- Indexes for table `kanji_products`
@@ -187,6 +344,12 @@ ALTER TABLE `kanji_products`
 --
 ALTER TABLE `kanji_product_type`
   ADD PRIMARY KEY (`type_id`);
+
+--
+-- Indexes for table `kanji_slide`
+--
+ALTER TABLE `kanji_slide`
+  ADD PRIMARY KEY (`slide_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -205,10 +368,34 @@ ALTER TABLE `authen_users`
   MODIFY `authen_user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `kanji_banners`
+--
+ALTER TABLE `kanji_banners`
+  MODIFY `banner_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `kanji_orders`
+--
+ALTER TABLE `kanji_orders`
+  MODIFY `PRM_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `kanji_order_list`
+--
+ALTER TABLE `kanji_order_list`
+  MODIFY `ORDER_LIST_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `kanji_partners`
 --
 ALTER TABLE `kanji_partners`
-  MODIFY `partner_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `partner_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `kanji_payment`
+--
+ALTER TABLE `kanji_payment`
+  MODIFY `PAYMENT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `kanji_products`
@@ -220,7 +407,13 @@ ALTER TABLE `kanji_products`
 -- AUTO_INCREMENT for table `kanji_product_type`
 --
 ALTER TABLE `kanji_product_type`
-  MODIFY `type_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `type_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `kanji_slide`
+--
+ALTER TABLE `kanji_slide`
+  MODIFY `slide_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

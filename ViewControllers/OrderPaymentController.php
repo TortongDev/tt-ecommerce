@@ -1,7 +1,6 @@
 <?php
 require_once dirname(__DIR__)."/app/config/config_pach.php";
 require_once PATCH_OP;
-
 require_once PATCH_CONNECTION;
 use appOrderPayment\OrderPayment;
 class OrderPaymentController extends OrderPayment {
@@ -21,7 +20,7 @@ class OrderPaymentController extends OrderPayment {
                 `kanji_orders`
             SET
             
-                `ORDER_STATUS` = '0'
+                `ORDER_STATUS` = '1'
             WHERE
                 1=1
             AND `ORDER_ID` = ? 
@@ -32,7 +31,8 @@ class OrderPaymentController extends OrderPayment {
     }
    
 }
-$db = new Connection(true);
+$db = new Connection();
+$db->openConnection();
 $controller = new OrderPaymentController(Connection::$pdo); 
 $target_dir = "../app/views/uploads/";
 $target_file = $target_dir . basename(@$_FILES["fileToUpload"]["name"]);

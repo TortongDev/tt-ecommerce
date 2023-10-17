@@ -123,6 +123,7 @@
                 const appdata = new FormData()
                 appdata.append('id',this.id);
                 appdata.append('status',this.status);
+
                 fetch('./services/update_status_slide.php', {
                     method: 'POST',
                     body: appdata
