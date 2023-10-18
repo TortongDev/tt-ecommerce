@@ -16,7 +16,7 @@
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./style.css">
     <style>
         
@@ -110,9 +110,9 @@
         <!-- แนะนำสินค้า -->
         <article class="product">
     
-            <center><h1 class="main-text" style="margin-block-end: 0 !important;">แนะนำสินค้า</h1></center>
-            <center><h3 class="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่  
-            <a style="color: blue;" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h3></center>
+            <center><h2 class="main-text" style="margin-block-end: 0 !important;">แนะนำสินค้า</h2></center>
+            <center><h4 id="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่  
+            <a class="w3-button w3-white w3-border w3-border-blue" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h4></center>
             <br>
             <div class="grid-container-product">
                 <div class="container-product-left"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
@@ -130,29 +130,29 @@
             <div class="youtube">
                 <iframe width="90%" height="600px" src="https://www.youtube.com/embed/COrWpziiUO8?si=gEgQji8zBQVXMYsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>   
-            <center><h1 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h1></center>
+            <center><h2 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h2></center>
             <div class="container-shop-highlight">
                     <div class="shop-highlight">
                         <img src="./img-shop/istockphoto-1345971613-170667a.jpg" alt="" class="pic-highlight">
-                        <h3 class="sub-text">ผักปลอดยาฆ่าแมลง ปลอดภัยจากสารอันตราย</h4>
+                        <h4 id="sub-text">ผักปลอดยาฆ่าแมลง ปลอดภัยจากสารอันตราย</h4>
                     </div>
                     <div class="shop-highlight">
                         <img src="./img-shop/green-news.jpg" alt="" class="pic-highlight">
-                        <h3 class="sub-text">ผักสดใหม่ เก็บเกี่ยวแล้วเรานำส่งของทันที ไม่เก็บไว้นาน</h4>
+                        <h4 id="sub-text">ผักสดใหม่ เก็บเกี่ยวแล้วเรานำส่งของทันที ไม่เก็บไว้นาน</h4>
                     </div>
                     <div class="shop-highlight">
                         <img src="./img-shop/logistices.jpg" alt="" class="pic-highlight">
-                        <h3 class="sub-text">ขนส่งเร็ว เข้าถึงพื้นที่ห่างไกล แพ็คสะอาดปลอดภัย</h4>
+                        <h4 id="sub-text">ขนส่งเร็ว เข้าถึงพื้นที่ห่างไกล แพ็คสะอาดปลอดภัย</h4>
                     </div>
             </div>
             <br>
             <br>
             <br>
             <center>
-                <h3 class="sub-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam necessitatibus sint maxime error voluptatum eveniet fugit repellat quas possimus, cupiditate dolor rerum nobis expedita? Rerum cumque quae in, ipsum corrupti, minima impedit nisi tenetur, quaerat tempora aperiam cupiditate voluptates nostrum nobis? Porro, at id, ad ipsam aliquid expedita pariatur ullam reprehenderit itaque eligendi voluptas tempora, debitis aut totam exercitationem cum dignissimos quidem est? Alias laboriosam animi modi. Distinctio cumque quo, nemo velit, ex dicta maiores voluptatum excepturi autem amet optio. Laboriosam cupiditate dolorum expedita consequuntur totam, hic esse placeat unde blanditiis est inventore accusamus! Quos laborum optio est magnam doloremque.</h3>
+                <h4 id="sub-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam necessitatibus sint maxime error voluptatum eveniet fugit repellat quas possimus, cupiditate dolor rerum nobis expedita? Rerum cumque quae in, ipsum corrupti, minima impedit nisi tenetur, quaerat tempora aperiam cupiditate voluptates nostrum nobis? Porro, at id, ad ipsam aliquid expedita pariatur ullam reprehenderit itaque eligendi voluptas tempora, debitis aut totam exercitationem cum dignissimos quidem est? Alias laboriosam animi modi. Distinctio cumque quo, nemo velit, ex dicta maiores voluptatum excepturi autem amet optio. Laboriosam cupiditate dolorum expedita consequuntur totam, hic esse placeat unde blanditiis est inventore accusamus! Quos laborum optio est magnam doloremque.</h4>
             </center>
             <center>
-                <h3 class="sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita architecto distinctio praesentium minus voluptatibus dolor ad perspiciatis, provident, soluta enim dicta modi consequuntur molestiae ut iure. Quam dignissimos veritatis laboriosam vero doloremque nihil distinctio neque eius facilis, nulla doloribus, excepturi quas molestias? Similique ut, dolor sint adipisci aliquid incidunt ex beatae vero error velit, labore commodi nihil perspiciatis eligendi consequuntur nisi cum? Cum, asperiores laboriosam molestias eum earum pariatur laborum sed optio, sint itaque tempore rem! Obcaecati omnis animi unde sapiente distinctio eligendi et in neque, nobis accusamus facere explicabo assumenda voluptas ea qui delectus facilis hic? Commodi, consequatur accusantium!</h3>
+                <h4 id="sub-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita architecto distinctio praesentium minus voluptatibus dolor ad perspiciatis, provident, soluta enim dicta modi consequuntur molestiae ut iure. Quam dignissimos veritatis laboriosam vero doloremque nihil distinctio neque eius facilis, nulla doloribus, excepturi quas molestias? Similique ut, dolor sint adipisci aliquid incidunt ex beatae vero error velit, labore commodi nihil perspiciatis eligendi consequuntur nisi cum? Cum, asperiores laboriosam molestias eum earum pariatur laborum sed optio, sint itaque tempore rem! Obcaecati omnis animi unde sapiente distinctio eligendi et in neque, nobis accusamus facere explicabo assumenda voluptas ea qui delectus facilis hic? Commodi, consequatur accusantium!</h4>
             </center>
             <br>
            
@@ -163,8 +163,8 @@
         <br><br>
      
         <article class="alliance">
-            <center><h1 class="main-text" style="margin-block-end: 0 !important;">ร้านค้า Partner</h1></center>
-            <center><h3 class="sub-text" style="margin-block-start: 0 !important;">ร้านค้าที่เป็น Partner กับร้านเรา</h3></center>
+            <center><h2 class="main-text" style="margin-block-end: 0 !important;">ร้านค้า Partner</h2></center>
+            <center><h4 id="sub-text" style="margin-block-start: 0 !important;">ร้านค้าที่เป็น Partner กับร้านเรา</h4></center>
             <br>
             <section class="container-alliance">
             <?php

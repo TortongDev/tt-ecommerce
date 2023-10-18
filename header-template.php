@@ -41,7 +41,7 @@
                     <li id="menu-users" style="border-left: 1px solid silver;border-left: 1px solid silver;background-color: #97CF8A; border-radius: 7px;margin-right: 10px;">
                     <i class="fa-solid fa-user"></i> <?php echo @$_SESSION['AUTHEN_USERNAME'].'AS'.@$_SESSION['AUTHEN_USER_ID']; ?>
                         <ul class="ul-list" >
-                            <li><a href="./list_cart.php"><i class="fa-solid fa-angles-right"></i> แจ้งโอน</a></li>
+                            <li><a href="./list_cart.php"><i class="fa-solid fa-file-invoice"></i> แจ้งโอน</a></li>
                             <li><a href=""><i class="fa-solid fa-angles-right"></i> แก้ไขข้อมูลส่วนตัว</a></li>
                         </ul>
                     </li>

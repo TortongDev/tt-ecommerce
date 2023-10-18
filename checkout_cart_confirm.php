@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <link rel="stylesheet" href="./style.css">
     <style>   
@@ -93,8 +93,10 @@
 <form action="" method="post">
 <div id="wrapper">
     <?php include ('./header-template.php'); ?>
+    
     <div class="tabbar-checkout">
-        <h2 class="">ที่อยู่จัดส่ง</h2>
+        <br><br>
+        <h3 class="">ที่อยู่จัดส่ง</h3>
     </div>
     <div class="containers">
         <article class="container-checkout-cart">
@@ -158,21 +160,23 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th colspan="2">ขั้นตอนชำระเงิน</th>
+                            <th id="" colspan="2">ขั้นตอนชำระเงิน และแจ้งชำระเงิน</th>
                         </tr>
                     </thead>
                     </table>
                     <ul class="list-payment">
-                        <li style="font-size: 12pt">โอนเงินที่พร้อมเพย์ : 0887778854</li>
-                        <li style="font-size: 12pt">โอนเงินเสร็จ ทำการแจ้งโอนเงินได้ที่ <a href="">แจ้งโอนเงิน</a></li>
+                        <li id="sub-text" style="font-size: 12pt">ดำเนินการโดยการ Click ที่ปุ่ม => <a href="./list_cart.php">ชำระสินค้า</a></li>
+                        <li id="sub-text" style="font-size: 12pt">เมื่อคลิกปุ่มขั้นตอนด้านบนแล้ว ระบบจะไปหน้าหน้ารายการ Order ทั้งหมด</li>
+                        <li id="sub-text" style="font-size: 12pt">ให้ทำการ Click "แจ้งโอนเงิน" และโอนเงินตามรูปแบบที่ลูกค้าต้องการ</li>
+                        <li id="sub-text" style="font-size: 12pt">เมื่อโอนเงินเสร็จแล้วให้ Click "แจ้งโอนเงิน" และกรอกข้อมูล</li>
+                        <li id="sub-text" style="font-size: 12pt">Click "OK" เพื่อส่งข้อมูลแจ้งโอนเงิน</li>
                     </ul>
                 </div>
                 <div class="checkout-footer desktop">
                     <center>
-                    <button class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
-                    <button class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button>
+                    <button class="w3-button w3-blue"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button>
                     <!-- <a href="./checkout_confirm_step2.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันและดำเนินการต่อ</a> -->
-                    <button type="submit" class="btn btn-checkout" value="1" name="post">ยืนยันและดำเนินการต่อ</button>
+                    <button type="submit" class="w3-button w3-orange" value="1" name="post">ยืนยันและดำเนินการต่อ</button>
                     </center>
                 </div>
       

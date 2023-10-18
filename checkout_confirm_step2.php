@@ -9,12 +9,12 @@
     $checkAuthen->authenPermission();
     $checkAuthen->openConnection();
 
-    // if(empty($_SESSION['STATUS_CONFIRM'])){
-    //     http_response_code(404);
-    //     exit;   
-    // }else{
+    if(empty($_SESSION['STATUS_CONFIRM'])){
+        http_response_code(404);
+        exit;   
+    }else{
 
-    // }
+    }
  
     $POST_ORDER        = isset($_POST['POST_ORDER'])      ? htmlspecialchars(trim($_POST['POST_ORDER']))          : '';
     $_SESSION['STATUS_CART_SUCCESS'] = 1;
@@ -82,7 +82,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Farm Korat</title>
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" type="image/x-icon" href="./kanji_farm.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
@@ -138,7 +138,8 @@
 <div id="wrapper">
     <?php include ('./header-template.php'); ?>
     <div class="tabbar-checkout">
-        <h2 class="">ยืนยันซื้อสินค้า</h2>
+        <br><br>
+        <h3 class="">ยืนยันซื้อสินค้า</h3>
     </div>
     <div class="containers">
         <article class="container-payment-success">
@@ -196,7 +197,7 @@
            </section>
         </article>
         <form action="" method="post">
-            <center><button type="submit" name="POST_ORDER" value="POST" class="btn btn-checkout">ยืนยันและดำเนินการต่อ</button></center>
+            <center><button type="submit" name="POST_ORDER" value="POST" class="w3-button w3-orange">ยืนยันและดำเนินการต่อ</button></center>
         </form>
         
     </div>

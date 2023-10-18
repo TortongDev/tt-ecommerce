@@ -13,12 +13,12 @@
     </div>
 </div>
 <footer>
-        <div class="container-footer">
+        <div class="container-footer w3-blue-grey">
             <section></section>
             <section class="flex-center">
                 <center>
-                    <h2 class="margin-block-0 main-text">Kanjifarm.com</h2>
-                    <h4 class="margin-block-0 sub-text">Copyright © 2023 Kanjifarm All Rights Reserved.</h4>
+                    <h4 class="margin-block-0 main-text">Kanjifarm.com</h2>
+                    <h5 class="margin-block-0 sub-text">Copyright © 2023 Kanjifarm All Rights Reserved.</h4>
                 </center>
             </section>
            <div class="container-contact-footer"><br>

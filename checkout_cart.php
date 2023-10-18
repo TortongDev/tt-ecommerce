@@ -23,6 +23,7 @@
     
     <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./style.css">
     <style>
         footer {
@@ -69,7 +70,7 @@
             <section class="list-cart" style="overflow: auto;">
                 <table class="table" id="table">
                     <thead style="overflow: auto;">
-                        <tr>
+                        <tr class="">
                             <th>#</th>
                             <th>รหัสสินค้า</th>
                             <th >รายการสินค้า</th>
@@ -110,7 +111,6 @@
             <section class="checkout-form">
                 <table class="table" style="">
                     <thead>
-                      
                         <tr>
                             <th colspan="2">ประมาณราคา</th>
                         </tr>
@@ -118,8 +118,8 @@
                     <tbody id="app1">
                         <?php if(empty($_SESSION['CART'])): ?>
                         <tr>
-                            <td>รวมราคาสินค้า</td>
-                            <td style="text-align: right;">0.00 <i class="fa-solid fa-baht-sign"></i></td>
+                            <td><br>รวมราคาสินค้า</td>
+                            <td style="text-align: right;"><br>0.00 <i class="fa-solid fa-baht-sign"></i></td>
                         </tr>
                         <tr>
                             <td>ค่าจัดส่ง</td>
@@ -154,21 +154,21 @@
                             <tr>
                                 <th colspan="2">โค้ดส่วนลด (ถ้ามี)</th>
                             </tr>
-                           
                     </table>
                     <div class="grid-2">
                     <input type="text" name="code" id="code" min="8" max="10" class="form-control">
-                        <a href="" class="btn-xs btn-code"><i class="fa-solid fa-tag"></i>ใช้โค้ด</a>
+                        <a href="" class="w3-button w3-teal"><i class="fa-solid fa-tag"></i> ใช้โค้ด</a>
                     </div>
                 <!-- <td></td> -->
                     
                 </div>
                 <div class="checkout-footer desktop">
                     <center>
-                    <a href="./shopping_online.php" class="btn btn-back-shopping"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </a>
-                    <a href="./clear_cart.php?cls=1" class="btn btn-clear-order"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</a>
+                    <a href="./shopping_online.php">
+                        <button class="w3-button w3-blue"><i class="fa-solid fa-plus"></i> เลือกสินค้าต่อ </button></a>
+                    <a href="./clear_cart.php?cls=1"><button class="w3-button w3-light-grey"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างตะกร้าสินค้า</button></a>
                     <?php if(!empty($_SESSION['CART'])):?>
-                        <a href="./checkout_cart_confirm.php" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i>ดำเนินการต่อไป</a>
+                        <a href="./checkout_cart_confirm.php"><button  class="w3-button w3-orange"><i class="fa-solid fa-cart-shopping"></i>ดำเนินการต่อไป</button></a>
                     <?php else: ?>
                         <a href="#" class="btn btn-checkout"><i class="fa-solid fa-cart-shopping"></i> ยืนยันชำระเงิน </a>
                     <?php endif; ?>

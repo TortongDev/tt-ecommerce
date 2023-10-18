@@ -2,7 +2,6 @@
    require_once __DIR__."/app/config/config_pach.php";
    require_once PATCH_CONNECTION;
    $checkAuthen = new Connection();
-
 ?>
 <?php
 
@@ -24,6 +23,8 @@
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
     <style>
         html,body {
             height:100%;
@@ -39,9 +40,6 @@
         .list-cart tr td:nth-last-child(3) {
             margin: auto;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .list-cart tr td:nth-last-child(4) {
             margin: auto;
@@ -59,6 +57,39 @@
         .tabbar-checkout {
             margin-block-start: 120px;
         }
+        .list-cart tr td:nth-last-child(1) {
+            margin: auto;
+            text-align: unset;
+        }
+        table {width:100%;}
+        article.container-list-cart {
+            border: 0;
+        }
+        .list-cart {
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }   
+
+        /* table thead tr {background-color: var(--defualt-kanji-color) !important;} */
+        table thead tr th:nth-last-child(1) {width: 208px !important;}
+        table tbody tr td {
+
+            width: fit-content; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media only screen and (max-width: 700px)  {
+            .list-cart {
+                overflow-x: scroll;
+                overflow-y: hidden;
+            }
+            table {width:1000px;}
+            table tbody tr td {width: 210px !important;}
+            /* table thead tr {background-color: var(--defualt-kanji-color);} */
+            table thead tr th {width:350px !important}
+            table thead tr th:nth-last-child(1) {width:350px !important}
+        }
     </style>
     
 </head>
@@ -73,18 +104,16 @@
    
     <div class="containers">
         <article class="container-list-cart">
-            <section class="list-cart" style="overflow: auto;">
-                <table class="table" id="table">
-                    <thead style="overflow: auto;">
-                        <tr>
+            <section class="list-cart">
+                <table class="w3-table-all">
+                    <thead style="overflow: auto;" >
+                        <tr class="w3-teal">
                             <th style="width:80px;text-align: center;">#</th>
                             <th style="width:180px;text-align: center;">วันที่</th>
                             <th style="width:180px;text-align: center;">รหัสรายการ</th>
                             <th style="width:180px;text-align: center;">ผู้สั่ง</th>
                             <th style="width:80px;text-align: center;">สถานะ</th>
                             <th style="width:150px;text-align: left;"></th>
-                            <th style="width:150px;text-align: left;"></th>
-                            
                         </tr>
                     </thead>
                     <tbody style="overflow: auto;">
@@ -93,37 +122,35 @@
                         $sql = "SELECT * FROM `kanji_orders` WHERE ? AND USER_ID = ?";
                         $stmt = Connection::$pdo->prepare($sql);
                         $stmt->execute(array('1=1',$_SESSION['AUTHEN_USER_ID']));
-                        // $stmt->execute(array('1=1'));
                         $number = 0;
                         while($R = $stmt->fetch(PDO::FETCH_ASSOC)):
-                            $number = $number + 1;
-                            $orderID    = $R['ORDER_ID']; 
-                            $FIST_NAME  = $R['FIST_NAME']; 
-                            $ORDER_TIMESTAMP = $R['ORDER_TIMESTAMP']; 
-                            $ORDER_STATUS    = $R['ORDER_STATUS']; 
-                            $TEL        = $R['TEL'];
-                            $ORDER_STATUS_IF = 'ยังไม่ชำระเงิน';
-                            $STATUS_COLOR = "RED";
-                            $BTN_PAYMENT = "<a class='btn' href='./success_form.php?codeid=$orderID'>แจ้งโอนเงิน</a>";
+                            $number     = $number + 1;
+                            $orderID    = isset($R['ORDER_ID']) ? $R['ORDER_ID'] : '-'; 
+                            $FIST_NAME  = isset($R['FIST_NAME']) ? $R['FIST_NAME'] : '-'; 
+                            $ORDER_TIMESTAMP = isset($R['ORDER_TIMESTAMP']) ? $R['ORDER_TIMESTAMP'] : '-'; 
+                            $ORDER_STATUS    =  isset($R['ORDER_STATUS']) ? $R['ORDER_STATUS'] : '-'; 
+                            $TEL             = isset($R['TEL']) ? $R['TEL'] : '-';
+                            $ORDER_STATUS_IF = '<i class="fa-solid fa-circle-xmark" ></i> ยังไม่ชำระเงิน';
+                            $STATUS_COLOR    = "RED";
+                            $BTN_PAYMENT     = "<a class='w3-button w3-yellow w3-border' href='./success_form.php?codeid=$orderID'><i class='fa-solid fa-file-invoice'></i> แจ้งโอนเงิน</a>";
                             if($ORDER_STATUS == '1'):
                                 $STATUS_COLOR = "GREEN";
-                                $ORDER_STATUS_IF = 'ชำระเงินแล้ว';
-                                $BTN_PAYMENT = "-";
+                                $ORDER_STATUS_IF = '<i class="fa-solid fa-circle-check"></i> ชำระเงินแล้ว';
+                                $BTN_PAYMENT = "";
                             endif;
-                            // $TEL = $R['TEL']; 
                             echo <<<ORDER
                                 <tr>
                                     <td style="text-align: center;">$number</td>
                                     <td style="text-align: center;">$ORDER_TIMESTAMP</td>
                                     <td style="text-align: center;">$orderID</td>
                                     <td style="text-align: center;">$FIST_NAME</td>
-                                    <td style="text-align: left;">
+                                    <td style="">
                                         <font color="$STATUS_COLOR">$ORDER_STATUS_IF</font>
                                     </td>
                                     <td>
-                                        <a class="btn">รายละเอียดสินค้า</a>
+                                        <a class="w3-button w3-cyan"><i class="fa-solid fa-circle-info"></i> รายละเอียด</a>
+                                        $BTN_PAYMENT
                                     </td>
-                                    <td>$BTN_PAYMENT</td>
                                 </tr>
 
                             ORDER;

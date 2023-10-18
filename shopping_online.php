@@ -21,7 +21,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        .form-group {
+            margin-right: 0;
+            margin-block-start: 23px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -76,15 +86,15 @@
                 <div class="form-group desktop"></div>
                 <div class="form-group desktop"></div>
                 <div class="form-group filter">
-                    <button type="submit" value="key_search" name="filter_search" class="btn btn-filter-skyblue float-right margin-right-60"> <i class="fa-solid fa-arrow-up-wide-short"></i> ค้นหา</button>
+                    <button type="submit" value="key_search" name="filter_search" class="w3-button  w3-teal"><i class="fa-solid fa-arrow-up-wide-short"></i> ค้นหา</button>
                     <!-- <button class="btn btn-filter-orange"> <i class="fa-solid fa-arrow-down-wide-short"></i> เก่าสุด</button> -->
                 </div>
             </section>
         </form>
         <!-- แนะนำสินค้า -->
         <article class="product">
-            <div class="center"><h1 class="main-text" style="margin-block-end: 0 !important;">สินค้าออนไลน์</h1></div>
-            <div class="center"><h3 class="sub-text" style="margin-block-start: 0 !important;">สินค้าออนไลน์จากทาง Kanji Farm Online. </h3></div>
+            <div class="center"><h3 id="main-text" style="margin-block-end: 0 !important;">สินค้าออนไลน์</h3></div>
+            <div class="center"><h4 id="sub-text" style="margin-block-start: 0 !important;">สินค้าออนไลน์จากทาง Kanji Farm Online. </h4></div>
             <br>
           
             <section class="container-product-shop">
@@ -116,7 +126,7 @@
                     <!-- <div class="shadow-box"></div> -->
                     <div class="img-profile-shop">
                         <img class="img-action" src="./app/views/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
-                    </div>
+                    </div><br>
                     <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                     <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>
                     <div class="detail-option">

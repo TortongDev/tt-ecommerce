@@ -35,15 +35,14 @@ $db = new Connection();
 $db->openConnection();
 $controller = new OrderPaymentController(Connection::$pdo); 
 $target_dir = "../app/views/uploads/";
+
 $target_file = $target_dir . basename(@$_FILES["fileToUpload"]["name"]);
-// Handle the file upload (you need to validate and move the file)
 move_uploaded_file(@$_FILES["fileToUpload"]["tmp_name"], $target_file);
-// $controller->uploadPicture($target_dir,$target_file,$target_name);
 $controller->setPAYMENT_NAME($_POST['FIST_NAME']);
 $controller->setPAYMENT_PRICE($_POST['PAYMENT_PRICE']);
 $controller->setPAYMENT_ORDER_ID($_POST['PAYMENT_ORDER_ID']);
 $controller->setPAYMENT_IMG($_POST['fileToUpload']);
-
+$_SESSION['ORDERID'] = $_POST['PAYMENT_ORDER_ID'];
 
 $controller->insert();
 sleep(1);

@@ -35,7 +35,10 @@ unset($_SESSION['STATUS_CONFIRM']);
     <link rel="stylesheet" href="./style.css">
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
     <style>
         html,body{
             margin: 0;
@@ -71,28 +74,29 @@ unset($_SESSION['STATUS_CONFIRM']);
     
         <div class="container-status">
             <center>
-                <h2 class="main-text">ชำระเงิน</h2>
-                <h2 class="sub-text">หมายเลข ORDER #<?php echo $ORDER_ID; ?></h2>
-                <h4 class="sub-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur consequatur laboriosam dolorum, nulla ad quasi officiis! Natus quam iure tempora!</h4>
+                <h3 id="main-text">ชำระเงิน</h3>
+                <h3 id="sub-text">หมายเลข ORDER <font color="orange"><?php echo $ORDER_ID; ?></font></h3>
+                <h4 id="sub-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur consequatur laboriosam dolorum, nulla ad quasi officiis! Natus quam iure tempora!</h4>
             </center>
+            <br />
             <!-- <img src="./img-shop/code.svg" width="200" alt=""> -->
             <div class="grid-3">
                 <ul> 
-                    <img src="./img-shop/scb.png" width="200" style="padding-block: 20px" alt=""><br>
+                    <img src="./img-shop/scb.png" width="150" style="padding-block: 20px" alt=""><br><br>
                     <li>ธนาคารไทยพาณิช</li>
                     <li>ชื่อบช sssss</li>
                     <li>เลขบช. 1234567890</li>
                     
                 </ul>
                 <ul> 
-                    <img src="./img-shop/prompt_pay.png" width="200" style="padding-block: 20px" alt=""><br>
+                    <img src="./img-shop/prompt_pay.png" width="150" style="padding-block: 20px" alt=""><br><br>
                     <li>Prompt Pay ธนาคารไทยพาณิช</li>
                     <li>ชื่อบช sssss</li>
                     <li>เลขบช. 0910174918</li>
                     
                 </ul>
                 <ul> 
-                    <img src="./img-shop/logo-truemoneywallet-300x300-1.jpg" width="200" style="padding-block: 20px" alt=""><br>
+                    <img src="./img-shop/logo-truemoneywallet-300x300-1.jpg" width="150" style="padding-block: 20px" alt=""><br><br>
                     <li>True Monney Wallet</li>
                     <li>ชื่อบช sssss</li>
                     <li>เลขบช. 1234567890</li>
@@ -103,11 +107,10 @@ unset($_SESSION['STATUS_CONFIRM']);
             <br><br><br>
             <center>
             <a href="#" class="btn btn-payment">
-                แจ้งชำระเงิน
+                <i class="fa-solid fa-paper-plane"></i> แจ้งชำระเงิน
             </a>
             </center>
-
-          
+            <br />
             </div>
     </div>
 <script>
