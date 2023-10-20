@@ -102,17 +102,30 @@
         <article class="container-checkout-cart">
           
           
-            <section class="list-address" style="overflow: auto;">
-                <div class="fname">ชื่อ</div><div class="fname-form"><input type="text" name="FIST_NAME" class="form-control" placeholder="ชื่อจริง"></div>
-                <div class="fname">นามสกุล</div><div class="fname-form"><input type="text" name="LAST_NAME" class="form-control" placeholder="นามสกุลจริง"></div>
-                <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="ADDRESS_NUMBER" class="form-control" placeholder="บ้านเลขที่"></div>
-                <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="ADDRESS_MOO" class="form-control" placeholder="หมู่ที่"></div>
-                <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="MOOBAN" class="form-control" placeholder="ชื่อหมู่บ้าน"></div>
-                <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="TUMBON" class="form-control" placeholder="ชื่อตำบล"></div>
-                <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="AMPHOR" class="form-control" placeholder="ชื่ออำเภอ"></div>
-                <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="JUNGWAT" class="form-control" placeholder="ชื่อจังหวัด"></div>
-                <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" maxlength="5" name="PROVINCE" class="form-control" placeholder="รหัสไปรษณี"></div>
-                <div class="fname">เบอร์โทร</div><div class="fname-form"><input type="text" maxlength="10" name="TEL" class="form-control" placeholder="เบอร์โทรศัพท์"></div>
+            <section class="list-address-main" style="overflow: auto;">
+                <div class="fname-form">
+                    <label for="">ชื่อ</label>
+                    <input type="text" name="FIST_NAME" class="w3-input" placeholder="">
+                </div>
+                <div class="fname-form">
+                    <label for="">นามสกุล</label>
+                    <input type="text" name="LAST_NAME" class="w3-input" placeholder="">
+                </div>
+
+
+
+
+
+
+                    <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="ADDRESS_NUMBER" class="w3-input" placeholder="">
+                    <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="ADDRESS_MOO" class="w3-input" placeholder="">
+                    <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="MOOBAN" class="w3-input" placeholder="">
+                    <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="TUMBON" class="w3-input" placeholder="">
+                    <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="AMPHOR" class="w3-input" placeholder="">
+                    <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="JUNGWAT" class="w3-input" placeholder="">
+                    <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" maxlength="5" name="PROVINCE" class="w3-input" placeholder="">
+                    <div class="fname">เบอร์โทร</div><div class="fname-form"><input type="text" maxlength="10" name="TEL" class="w3-input" placeholder="">
+                 
             </section>
             <section class="checkout-form">
                 <table class="table" style="">

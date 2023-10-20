@@ -45,6 +45,7 @@ unset($_SESSION['STATUS_CONFIRM']);
             padding: 0px;
             width: 100%;
             height: 100%;
+            background-color: var(--background);
         }
         .container {
             display: flex;
@@ -52,7 +53,7 @@ unset($_SESSION['STATUS_CONFIRM']);
             align-items: center;
             width: 100%;
             min-height: 100vh;
-            background-color: silver;
+            background-color: var(--background);
         }
         .container-status {
             border-radius: 5px;
@@ -67,9 +68,11 @@ unset($_SESSION['STATUS_CONFIRM']);
         .form-control {
             width: 100%;
         }
+        
     </style>
 </head>
 <body>
+    <?php include ('./header-template.php'); ?>
     <div class="container">
     
         <div class="container-status">

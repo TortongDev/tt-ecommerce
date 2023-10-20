@@ -10,6 +10,7 @@
     $users['username']      = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
     $users['password']      = isset($_GET['password']) ? htmlspecialchars($_GET['password']) : '';
     $check                  = isset($_GET['act']) ? htmlspecialchars($_GET['act']) : '';
+
     $user = $users['username'];
     $pass = $users['password'];
     // if(@$_SERVER['SERVER_NAME']!='localhost'){
@@ -30,8 +31,7 @@
                     header("Location: index.php");
                     exit;
                 else:
-                    header("Location: alert_process.php?STATUS_LOGIN=1");
-                    exit;
+                    echo "ไม่สำเร็จ";
                 endif;
             else:
 
@@ -52,7 +52,7 @@
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .login-form {
             width: 90%;
@@ -77,6 +77,9 @@
             width: 300px;
             padding: 5px;
         }
+     .btn {
+        background-color: #aedbaf;
+     }
      .title-img {
         display: flex;
         justify-content: center;
@@ -98,7 +101,7 @@
         width: 100%;
         height: 100%;
      }
-     .col:nth-child(1){  
+     .col:nth-child(1){
         position: relative;
         background-image: url('./img-shop/hydroponics-4447705_1280.jpg');
         background-attachment: fixed;
@@ -111,7 +114,6 @@
         justify-content: center;
         align-items: center;
      }
-     
      .phone {
         display: none;
      }
@@ -136,7 +138,6 @@
      }
 
     </style>
-   
 </head>
 <body>
     <div class="phone">
@@ -195,9 +196,9 @@
                         
                             <div class="form">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control" required>
+                                <input type="text" name="username" id="username" class="form-control">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control"required>
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
                                 <button class="w3-button w3-teal w3-block" type="submit" name="act" value="login"><i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ</button>
@@ -205,7 +206,6 @@
                             </div>
                             <div class="form-group">
                                 <div><a href="#"><i class="fa-brands fa-google"></i> Login for Google Account</a></div>
-                               
                             </div>
                         </section>
                     </div>

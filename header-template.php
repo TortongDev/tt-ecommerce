@@ -22,11 +22,11 @@
                     <li><a href="#partner"><i class="fa-regular fa-handshake"></i> ร้าน Partner</a></li>
                     <li id="menu-shop">
                         <i  class="fa-solid fa-shop"></i> ร้านค้า
-                        <ul id="menu-shop-sub" >
-                            <li><a href="./shopping_online.php"><i class="fa-solid fa-angles-right"></i> ไปที่ร้านค้า</a></li>
-                            <li><a href=""><i class="fa-solid fa-angles-right"></i> รายการสั่งซื้อสินค้า</a></li>
-                            <li><a href=""><i class="fa-solid fa-angles-right"></i> ประวัติการสั่งซื้อสินค้า</a></li>
-                        </ul>
+                        <!-- <ul id="menu-shop-sub" >
+                            <li><a href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></li>
+                            <li><a href="./list_cart.php"><i class="fa-solid fa-list"></i> ข้อมูลสั่งซื้อสินค้า</a></li>     
+                            <li><a href="./list_cart.php"><i class="fa-solid fa-truck-arrow-right"></i> ติดตามสินค้า</a></li>
+                        </ul> -->
                     </li>
                     <li><a href="./checkout_cart.php"><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า </a> <span class="count-product">
                         <?php 
@@ -42,7 +42,9 @@
                     <i class="fa-solid fa-user"></i> <?php echo @$_SESSION['AUTHEN_USERNAME'].'AS'.@$_SESSION['AUTHEN_USER_ID']; ?>
                         <ul class="ul-list" >
                             <li><a href="./list_cart.php"><i class="fa-solid fa-file-invoice"></i> แจ้งโอน</a></li>
-                            <li><a href=""><i class="fa-solid fa-angles-right"></i> แก้ไขข้อมูลส่วนตัว</a></li>
+                            <li><a href="./list_cart.php"><i class="fa-solid fa-list"></i> ข้อมูลสั่งซื้อสินค้า</a></li>     
+                            <li><a href="./list_cart.php"><i class="fa-solid fa-truck-arrow-right"></i> ติดตามสินค้า</a></li>
+                     
                         </ul>
                     </li>
                     <li style="border-left: 1px solid silver;background-color: #97CF8A; border-radius: 7px;"><a href="./logout.php"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a></li>

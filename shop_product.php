@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 
     <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <style>
         .star-color-over {
@@ -23,6 +24,8 @@
         .star {
             display: inline;
         }
+        html,body {min-height:100vh;}
+        footer {margin-top: 136px !important;}
     </style>
 </head>
 <body>

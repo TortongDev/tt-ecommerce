@@ -1,6 +1,6 @@
 <?php
 
-$COUNT = '250';
+    $COUNT = '250';
 
 
 ?>
@@ -13,21 +13,21 @@ $COUNT = '250';
     <title>การสั่งสื้อสำเร็จ</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
-  
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         html,body {
-            height: 50%;
-            background-color: silver;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
         }
         .container-shopping-success {
-            background-color: silver;
             padding: 30px;
+            width: 1071px;
             border-radius: 5px;
             background-color: white;
+            margin-top: 100px;
+            margin: auto;
         }
         .bar-load {
             width: 1000px;
@@ -77,6 +77,7 @@ $COUNT = '250';
     </style>
 </head>
 <body>
+    <?php include ('./header-template.php'); ?>
     <?php
     $STATUS_TITLE = 's';
     if($COUNT == '250'):
@@ -91,6 +92,7 @@ $COUNT = '250';
 
     
     ?>
+    <br><br><br><br><br>
     <div class="container-shopping-success"> <!-- <== START DIV (1) -->
         <center><h2><?php echo $STATUS_TITLE; ?></h2></center>
         <div class="grid-5"> <!-- <== START DIV (2) -->
@@ -123,6 +125,6 @@ $COUNT = '250';
 
     </div> <!-- <== END DIV (1) -->
     <br>
-    <center><a href="./index.php" class="btn">กลับไปที่หน้าหลัก</a></center>
+    <center><a href="./index.php" class="w3-button w3-black"><i class="fa-solid fa-house"></i> กลับไปที่หน้าหลัก</a></center>
 </body>
 </html>
