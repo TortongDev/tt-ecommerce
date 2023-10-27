@@ -1,7 +1,9 @@
 <?php
 
-    require_once "../autoload_class.php";
+    require_once "../../class/Connection.php";
+    require_once "../../class/ProductType.php";
 
+    use appType\ProductType;
     
     $product_type_id       = 'KANJIID-'.rand(100,1000);
     $product_type_name     = isset($_POST['product_type_name'])     ? htmlspecialchars(trim($_POST['product_type_name'])) : '';

@@ -1,6 +1,8 @@
 <?php
-
-
+namespace appType;
+require_once dirname(dirname(__DIR__))."/app/config/config_pach.php";
+require_once PATCH_ADDITIONAL_METHODE;
+use APP\CLASS\AdditionalMethods;
 class ProductType extends AdditionalMethods
 {
     public $type_id ;

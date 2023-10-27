@@ -21,6 +21,8 @@ class Product extends AdditionalMethods
     public $option_price;
     public $option_amount;
     public $limit;
+    public $product_star;
+    public $statusSeller;
     public $tableName = "kanji_products";
     
     public static $pdo;
@@ -75,8 +77,12 @@ class Product extends AdditionalMethods
         return $this->option_amount;
     } 
 
-
-
+    public function getProductStar(){
+        return $this->product_star;
+    } 
+    public function geStatusSeller(){
+        return $this->statusSeller;
+    } 
 
     public function setProductID($product_id){
         $this->product_id = $product_id;
@@ -120,8 +126,13 @@ class Product extends AdditionalMethods
         $this->option_amount = $option_amount;
     } 
 
-
-
+    public function setProductStar($product_star){
+        $this->product_star = $product_star;
+    }
+    
+    public function setStatusSeller($statusSeller){
+        $this->statusSeller = $statusSeller;
+    }
     public function selectLimit(){
          
         $stmt_product = self::$pdo->prepare("SELECT * FROM `kanji_products` WHERE ? ORDER BY product_timestamp DESC LIMIT ".$this->limit);
@@ -136,18 +147,33 @@ class Product extends AdditionalMethods
             `product_amount`, 
             `product_type_name`, 
             `product_shop_name`, 
+            product_type_id,
             product_user_id,
             product_img,
             `product_detail`, 
             `product_sub_detail`,
             option_price,
-            option_amount
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            option_amount,
+            STATUS_SELLER,
+            product_star
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = self::$pdo->prepare($sql);
         if($stmt->execute(array(
-                $this->product_member_id,$this->product_name,$this->product_price,$this->product_amount,$this->product_type_name,
-                $this->product_shop_name,$this->product_user_id,$this->product_img,$this->product_detail,$this->product_sub_detail,
-                $this->option_price,$this->option_amount
+                $this->product_member_id,
+                $this->product_name,
+                $this->product_price,
+                $this->product_amount,
+                $this->product_type_name,
+                $this->product_shop_name,
+                0,
+                $this->product_user_id,
+                $this->product_img,
+                $this->product_detail,
+                $this->product_sub_detail,
+                $this->option_price,
+                $this->option_amount,
+                $this->statusSeller,
+                $this->product_star
                 )
             )
         ):

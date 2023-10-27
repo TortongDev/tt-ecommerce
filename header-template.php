@@ -21,7 +21,7 @@
                     <li><a href="#product"><i class="fa-brands fa-product-hunt"></i> แนะนำสินค้า</a></li>
                     <li><a href="#partner"><i class="fa-regular fa-handshake"></i> ร้าน Partner</a></li>
                     <li id="menu-shop">
-                        <i  class="fa-solid fa-shop"></i> ร้านค้า
+                        <a href="./shopping_online.php"><i  class="fa-solid fa-shop"></i> ร้านค้า</a>
                         <!-- <ul id="menu-shop-sub" >
                             <li><a href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></li>
                             <li><a href="./list_cart.php"><i class="fa-solid fa-list"></i> ข้อมูลสั่งซื้อสินค้า</a></li>     

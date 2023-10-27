@@ -1,45 +1,6 @@
 <?php
-   require_once __DIR__."/app/config/config_pach.php";
-   require_once PATCH_CONNECTION;
-    $ndb    = new Connection(true);
-    
-    $ndb->authenUsers();
+   
 
-    $users = array();
-    
-    $users['username']      = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
-    $users['password']      = isset($_GET['password']) ? htmlspecialchars($_GET['password']) : '';
-    $check                  = isset($_GET['act']) ? htmlspecialchars($_GET['act']) : '';
-
-    $user = $users['username'];
-    $pass = $users['password'];
-    // if(@$_SERVER['SERVER_NAME']!='localhost'){
-        $stmt   = Connection::$pdo->query("SELECT * FROM `authen_users` WHERE 1=1 AND authen_username = '{$user}' AND authen_password = '{$pass}' ");
-        $countAll = $stmt->rowCount();
-        $r = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($countAll > 0 ):
-            $_SESSION['AUTHEN_USER_ID'] = $r['authen_user_id'];
-            $_SESSION['AUTHEN_USERNAME'] = $r['authen_username'];
-            $_SESSION['AUTHEN_PASSWORD'] = $r['authen_password'];
-            $_SESSION['LOGIN_STATUS'] = 1;
-        endif;
-        
-    if($check == 'login'):
-        if(isset($countAll) > 0 ):
-            if(!empty( $user ) && !empty($pass )):
-                if($user  == @$_SESSION['AUTHEN_USERNAME'] && $pass == @$_SESSION['AUTHEN_PASSWORD'] ):
-                    header("Location: index.php");
-                    exit;
-                else:
-                    echo "ไม่สำเร็จ";
-                endif;
-            else:
-
-            endif;
-        endif;
-    else:
-
-    endif;
 // }
 ?>
 
@@ -156,10 +117,18 @@
             <section class="login-form">
             
                 <div class="form">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" class="form-control">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control">
+                    <label for="PER_USERNAME">Username</label>
+                    <input type="text" name="PER_USERNAME" id="PER_USERNAME" class="form-control">
+                    <label for="PER_PASSWORD">Password</label>
+                    <input type="password" name="PER_PASSWORD" id="PER_PASSWORD" class="form-control">
+                    <label for="PER_FIRSTNAME">FIRSTNAME</label>
+                    <input type="text" name="PER_FIRSTNAME" id="PER_FIRSTNAME" class="form-control">
+                    <label for="PER_LASTNAME">LASTNAME</label>
+                    <input type="password" name="PER_LASTNAME" id="PER_LASTNAME" class="form-control">
+                    <label for="PER_TEL">TEL</label>
+                    <input type="text" name="PER_TEL" id="PER_TEL" class="form-control">
+                    <label for="PER_EMAIL">EMAIL</label>
+                    <input type="password" name="PER_EMAIL" id="PER_EMAIL" class="form-control">
                 </div>
                 <div class="form-group">
                     <button class="btn" type="submit" name="act" value="login">เข้าสู่ระบบ</button>
@@ -195,14 +164,23 @@
                         <section class="login-form">
                         
                             <div class="form">
-                                <label for="username">Username</label>
-                                <input type="text" name="username" id="username" class="form-control">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control">
+                            <label for="PER_USERNAME">Username</label>
+                            <input type="text" name="PER_USERNAME" id="PER_USERNAME" class="form-control"><br>
+                            <label for="PER_PASSWORD">Password</label>
+                            <input type="text" name="PER_PASSWORD" id="PER_PASSWORD" class="form-control"><br>
+                            <label for="PER_FIRSTNAME">FIRSTNAME</label>
+                            <input type="text" name="PER_FIRSTNAME" id="PER_FIRSTNAME" class="form-control"><br>
+                            <label for="PER_LASTNAME">LASTNAME</label>
+                            <input type="text" name="PER_LASTNAME" id="PER_LASTNAME" class="form-control"><br>
+                            <label for="PER_TEL">TEL</label>
+                            <input type="text" name="PER_TEL" id="PER_TEL" class="form-control"><br>
+                            <label for="PER_EMAIL">EMAIL</label>
+                            <input type="text" name="PER_EMAIL" id="PER_EMAIL" class="form-control">
+                         
                             </div>
                             <div class="form-group">
-                                <button class="w3-button w3-teal w3-block" type="submit" name="act" value="login"><i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ</button>
-                                <button class="w3-button w3-blue w3-block" type="submit" name="act" value="login"><i class="fa-solid fa-user-plus"></i> สมัครสมาชิก</button>
+                                <button ID="registerPost" class="w3-button w3-teal w3-block" name="STATUS_POST" value="1" id="STATUS_POST"><i class="fa-solid fa-right-to-bracket"></i> สมัครสมาชิก</button>
+                                <a class="w3-button w3-blue w3-block" href="./login.php"><i class="fa-solid fa-user-plus"></i> เข้าสู่ระบบ</a>
                             </div>
                             <div class="form-group">
                                 <div><a href="#"><i class="fa-brands fa-google"></i> Login for Google Account</a></div>
@@ -217,3 +195,31 @@
   
 </body>
 </html>
+<script>
+   document.addEventListener('DOMContentLoaded',()=>{
+    const registerPost = document.querySelector('#registerPost');
+    registerPost.addEventListener('click',(e)=>{
+
+        e.preventDefault();
+        console.log('registerPost');
+        const objForm = new FormData();
+        objForm.append('PER_USERNAME',document.querySelector('#PER_USERNAME').value);
+        objForm.append('PER_PASSWORD',document.querySelector('#PER_PASSWORD').value);
+        objForm.append('PER_FIRSTNAME',document.querySelector('#PER_FIRSTNAME').value);
+        objForm.append('PER_LASTNAME',document.querySelector('#PER_LASTNAME').value);
+        objForm.append('PER_TEL',document.querySelector('#PER_TEL').value);
+        objForm.append('PER_EMAIL',document.querySelector('#PER_EMAIL').value);
+        objForm.append('STATUS_POST', '1');
+        fetch('./ViewControllers/RegisterController.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: objForm
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
+    });
+   })
+</script>

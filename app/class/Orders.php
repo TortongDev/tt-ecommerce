@@ -1,4 +1,10 @@
 <?php
+namespace appOrder;
+
+require_once dirname(dirname(__DIR__))."/app/config/config_pach.php";
+require_once PATCH_ADDITIONAL_METHODE;
+
+use APP\CLASS\AdditionalMethods;
 
 class Orders extends AdditionalMethods {
 public $PRM_ID ;

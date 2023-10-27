@@ -1,9 +1,15 @@
 <?php
-require_once "../autoload_class.php";
-require_once "../checkAdmin.php";
-$db = new Connection(true);
-$newPartner = new Partner(Connection::$pdo);
- 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+    require_once "../../class/Connection.php";
+    require_once "../../class/Partner.php";
+    use appPartner\Partner;
+    $db = new Connection(true);
+
+    $newPartner = new Partner(Connection::$pdo);
+   
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]); 
     $target_name = basename($_FILES["fileToUpload"]["name"]);

@@ -36,6 +36,7 @@ class ProductController extends Product {
                         </div>
                         <h3 class="short-text-1"><a href="./shop_product.php?product_id=$id">$product_name</a></h3>
                         <h4 class="sub-text short-text-2">$product_detail</h4>
+                        <h4><a class="w3-btn w3-white  w3-block w3-border w3-border-red" href="./shop_product.php?product_id=$id"><i class="fa-solid fa-cart-shopping"></i> เพิ่มลงตะกร้า</a></h4>
                     </div>
                 PRODT;
         }

@@ -24,7 +24,7 @@
         .star {
             display: inline;
         }
-        html,body {min-height:100vh;}
+        html,body {min-height:100vh;background-color: white !important}
         footer {margin-top: 136px !important;}
     </style>
 </head>

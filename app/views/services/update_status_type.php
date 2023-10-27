@@ -1,7 +1,7 @@
 <?php
 // INSERT INTO `kanji_banners`(`banner_id`, `banner_topic`, `banner_status`, `banner_timestamp`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
 // header("Access-Control-Allow-Origin: atsamart.com");
-require_once "../autoload_class.php";
+
 // require_once "../checkAdmin.php";
 // $chkAdmin = new checkAdmin;
 // $chkAdmin->checkAdmin();
@@ -23,7 +23,9 @@ require_once "../autoload_class.php";
     //     else:
 
     //     endif;
-
+        require_once "../../class/Connection.php";
+        require_once "../../class/ProductType.php";
+        use appType\ProductType;
         $db = new Connection(true);
         $updateStatus = new ProductType(Connection::$pdo);
         $updateStatus->setTypeID($id);

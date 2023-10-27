@@ -131,6 +131,9 @@
         .list-payment  {
             list-style: auto;
         }
+        html,body {
+            background-color: white !important;
+        }
     </style>
     
 </head>

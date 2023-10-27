@@ -8,7 +8,7 @@
     $stmt_partner = Connection::$pdo->prepare("SELECT * FROM kanji_partners WHERE ?");
     $stmt_partner->execute(array('1=1'));
 
-    $stmt_product = Connection::$pdo->prepare('SELECT * FROM kanji_products WHERE ?');
+    $stmt_product = Connection::$pdo->prepare('SELECT * FROM kanji_products WHERE ? ORDER BY product_id DESC');
     $stmt_product->execute(array('1=1'));
 ?>
 <!DOCTYPE html>
@@ -112,14 +112,34 @@
                             <option value="<?php echo $ptype['product_type_name']; ?>"><?php echo $ptype['product_type_name']; ?></option>
                             <?php endwhile; ?>
                         </select>
-                    <p class="help-block">เลือกประเภทของสินค้า</p>
+                    
                     </div>
                     <div class="form-group">
-                        <select class="form-control" name="partner_name" required>
+                    <label class="help-block">เลือก Partner</label>
+                        <select class="form-control" name="product_shop_name" required>
                             <option value="">--เลือกข้อมูล--</option>
                             <?php while($partner = $stmt_partner->fetch(PDO::FETCH_ASSOC)): ?>
                             <option value="<?php echo $partner['partner_name']; ?>"><?php echo $partner['partner_name']; ?></option>
                             <?php endwhile; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                    <label class="help-block">ระดับสินค้า</label>
+                        <select class="form-control" name="product_star" required>
+                            <option value="">--เลือกข้อมูล--</option>
+                            <option value="1">1 ดาว</option>
+                            <option value="2">2 ดาว</option>
+                            <option value="3">3 ดาว</option>
+                            <option value="4">4 ดาว</option>
+                            <option value="5">5 ดาว</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                    <label class="help-block">ป้าย Tag</label>
+                        <select class="form-control" name="STATUS_SELLER" required>
+                            <option value="">--เลือกข้อมูล--</option>
+                            <option value="1">สินค้าขายดี</option>
+                            <option value="2">สินค้าแนะนำ</option>
                         </select>
                     </div>
                    <div class="form-group">

@@ -19,17 +19,14 @@ class OrderPaymentController extends OrderPayment {
             UPDATE
                 `kanji_orders`
             SET
-            
-                `ORDER_STATUS` = '1'
+                `ORDER_STATUS` = '2'
             WHERE
                 1=1
             AND `ORDER_ID` = ? 
         ";
         $stmtInsert = self::$pdo->prepare($sql);
         $stmtInsert->execute(array($this->ORDER_ID));
-        
     }
-   
 }
 $db = new Connection();
 $db->openConnection();

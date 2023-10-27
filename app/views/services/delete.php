@@ -1,5 +1,15 @@
-<?php
-    require_once "../autoload_class.php";
+<?php 
+    require_once "../../class/Connection.php";
+    require_once "../../class/Slide.php";
+    require_once "../../class/Partner.php";
+    require_once "../../class/ProductType.php";
+
+    use appType\ProductType;
+    use appPartner\Partner;
+    use appSlide\Slide;
+
+
+
     $db = new Connection(true);
         
     $process    = isset($_GET['process']) ? htmlspecialchars(trim($_GET['process'])) : '';
@@ -24,7 +34,7 @@
             $product_type->delete();
         }elseif($process == 'add_product'){
             $sql = "DELETE FROM `kanji_products` WHERE 1=1 AND  product_id = '{$id}' ";
-            $stmt = $db->pdo->query($sql);
+            $stmt = Connection::$pdo->query($sql);
             if($stmt){
                 header("Location: ../popup.php?status_post=success&pagename=form_products&status=delete");
             }else{

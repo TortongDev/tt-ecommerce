@@ -13,25 +13,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Farm Korat</title>
-    
     <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <script  src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./style.css">
+    
     <style>
+        .right {
+            float: right;
+            margin-inline-end: 80px;
+        }
         .form-group {
             margin-right: 0;
             margin-block-start: 23px;
-            display: flex;
-            justify-content: end;
-            align-items: center;
+          
         }
+        .grid-2 {
+            grid-template-columns: 1fr 1fr !important;
+            grid-gap: 0px !important;
+        }
+       
     </style>
+
 </head>
 <body>
 <div id="wrapper">
@@ -39,13 +48,13 @@
     <div class="container">
         <form action="#" method="get">
             <section class="shop-filter">
-                <div class="form-group filter">
+                <div class="form-group filter w3-container">
                     <label for="">ชื่อสินค้า</label>
-                    <input type="text" name="product_name" value="<?php echo $product_name; ?>" class="form-control" style="width: 90%">
+                    <input type="text" name="product_name" value="<?php echo $product_name; ?>" class="w3-input" style="width: 90%">
                 </div>
-                <div class="form-group filter">
+                <div class="form-group filter w3-container">
                     <label for="">ประเภทสินค้า</label>
-                    <select  name="product_type" class="form-control" style="width: 90%">
+                    <select  name="product_type" class="w3-input" style="width: 90%">
                         <option value="">-- กรุณาเลือก --</option>
                         <?php
                             $session_search_type_name   = isset($_GET['product_type']) ? htmlspecialchars(trim($_GET['product_type'])) : '';
@@ -63,9 +72,9 @@
                         ?>
                     </select>
                 </div>
-                <div class="form-group filter">
+                <div class="form-group filter w3-container">
                     <label for="">สินค้าจากร้าน Partner</label>
-                    <select name="product_partner" class="form-control" style="width: 90%">
+                    <select name="product_partner" class="w3-input" style="width: 90%">
                         <?php
                             $session_search_partner   = isset($_GET['product_partner']) ? htmlspecialchars(trim($_GET['product_partner'])) : '';
                         ?>
@@ -85,8 +94,9 @@
                 </div>
                 <div class="form-group desktop"></div>
                 <div class="form-group desktop"></div>
-                <div class="form-group filter">
-                    <button type="submit" value="key_search" name="filter_search" class="w3-button  w3-teal"><i class="fa-solid fa-arrow-up-wide-short"></i> ค้นหา</button>
+                <div class="form-group filter grid-2">
+                    <button type="submit" value="key_search" name="filter_search" class="w3-btn  w3-teal btn-block"><i class="fa-solid fa-arrow-up-wide-short"></i> ค้นหา</button>
+                    <button type="reset" value="key_search" name="filter_search" class="w3-btn  w3-red btn-block"><i class="fa-solid fa-arrow-up-wide-short"></i> ล้างแบบฟอร์ม</button>
                     <!-- <button class="btn btn-filter-orange"> <i class="fa-solid fa-arrow-down-wide-short"></i> เก่าสุด</button> -->
                 </div>
             </section>
@@ -124,26 +134,83 @@
                 ?>
                 <div class="box-product">
                     <!-- <div class="shadow-box"></div> -->
+                    
+                    <?php 
+                        if($R_PRODUCT['STATUS_SELLER'] == 1 ):
+                            echo '<img src="./img-shop/best-tag.7581d996.png" class="tag-best-seller" alt="">';
+                            elseif($R_PRODUCT['STATUS_SELLER'] == 2 ):
+                                echo '<img src="./img-shop/439464980_1_orig.gif" class="tag-best-seller" alt="">';
+                            else:
+
+                            endif;
+                        
+                     ?>
                     <div class="img-profile-shop">
                         <img class="img-action" src="./app/views/<?php echo $R_PRODUCT['product_img'] ?>" alt="">
                     </div><br>
-                    <h3><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
+                    <h3 class="main-short-text"><a href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><?php echo $R_PRODUCT['product_name'] ?></a></h3>
                     <h4 class="sub-text short-text"><?php echo $R_PRODUCT['product_detail'] ?></h4>
                     <div class="detail-option">
-                        <div class="stock">มีในสต๊อก 100 กรัม</div>
+                        <!-- <div class="stock w3-btn w3-block">มีในสต๊อก 100 กรัม</div> -->
                         <div class="option-review">
-                        <i class="fa-solid fa-star orange"></i>
-                        <i class="fa-solid fa-star orange"></i>
-                        <i class="fa-solid fa-star orange"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
+                               <!-- <i class="fa-solid fa-star orange"></i> -->
+                        <!-- <i class="fa-solid fa-star orange"></i> -->
+                        <!-- <i class="fa-solid fa-star orange"></i> -->
+                        <!-- <i class="fa-regular fa-star"></i> -->
+                        <!-- <i class="fa-regular fa-star"></i> -->
+                        <?php
+                            $OPTION_STAR = '';
+                            switch ($R_PRODUCT['product_star']) {
+                                case '1':
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                break;
+                                case '2':
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                break;
+                                case '3':
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                break;
+                                case '4':
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-regular fa-star"></i>';
+                                break;
+                                case '5':
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                    $OPTION_STAR .= '<i class="fa-solid fa-star orange"></i>';
+                                break;
+                                                                        
+                            default:
+                            break;
+                            }
+                        echo $OPTION_STAR;
+                        ?>
+                     
                         </div>
                     </div>
-                    <h4 class="price">
-                        <?php echo $R_PRODUCT['product_price']; ?><i class="fa-solid fa-baht-sign"></i>
+                    <h3 class="price" id="price">
+                        <?php echo $R_PRODUCT['product_price']; ?> <i class="fa-solid fa-baht-sign"></i>
                          / <?php echo '1 '.$R_PRODUCT['option_price'] ?>
                     
-                    </h4>
+                    </h3>
+                    <h4><a class="w3-btn w3-white  w3-block w3-border w3-border-red"  href="./shop_product.php?product_id=<?php echo $checkAuthen->id_encrypt($R_PRODUCT['product_id']); ?>"><i class="fa-solid fa-cart-shopping"></i> เพิ่มลงตะกร้า</a></h4>
                 </div>
                 <?php 
                     endwhile; 
@@ -170,6 +237,8 @@
                 </span>
         </section>
     </div>
+    <br>
+    <br>
     <?php include('./footer-template.php') ?>
     
 </div>

@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./style.css">
     <style>
+        html,body {
+            background-color: white !important;
+        }
         footer {
             position: relative !important;
         }

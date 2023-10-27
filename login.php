@@ -201,7 +201,7 @@
                             </div>
                             <div class="form-group">
                                 <button class="w3-button w3-teal w3-block" type="submit" name="act" value="login"><i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ</button>
-                                <button class="w3-button w3-blue w3-block" type="submit" name="act" value="login"><i class="fa-solid fa-user-plus"></i> สมัครสมาชิก</button>
+                                <a href="./register-form.php" class="w3-button w3-blue w3-block" type="submit" name="act" value="login"><i class="fa-solid fa-user-plus"></i> สมัครสมาชิก</a>
                             </div>
                             <div class="form-group">
                                 <div><a href="#"><i class="fa-brands fa-google"></i> Login for Google Account</a></div>

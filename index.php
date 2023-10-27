@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./style.css">
     <style>
-        
+        html,body {
+            background-color: white !important;
+        }
         .swiper {
             width: 100%;
             height: 340px;
@@ -112,7 +114,7 @@
     
             <center><h2 class="main-text" style="margin-block-end: 0 !important;">แนะนำสินค้า</h2></center>
             <center><h4 id="sub-text" style="margin-block-start: 0 !important;">สินค้าแนะนำจากทางร้าน หากต้องการเลือกซื้อสินค้าเพิ่มเติมได้ที่  
-            <a class="w3-button w3-white w3-border w3-border-blue" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h4></center>
+            <a class="w3-btn w3-teal" href="./shopping_online.php"><i class="fa-solid fa-shop"></i> ไปที่ร้านค้า</a></h4></center>
             <br>
             <div class="grid-container-product">
                 <div class="container-product-left"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
@@ -133,15 +135,15 @@
             <center><h2 class="main-text">Kanji Farm ( คันจิ ฟาร์ม )</h2></center>
             <div class="container-shop-highlight">
                     <div class="shop-highlight">
-                        <img src="./img-shop/istockphoto-1345971613-170667a.jpg" alt="" class="pic-highlight">
+                        <img src="./img-shop/no-pesticides_0.png" alt="" class="pic-highlight img-action">
                         <h4 id="sub-text">ผักปลอดยาฆ่าแมลง ปลอดภัยจากสารอันตราย</h4>
                     </div>
                     <div class="shop-highlight">
-                        <img src="./img-shop/green-news.jpg" alt="" class="pic-highlight">
+                        <img src="./img-shop/vegetables_0.png" alt="" class="pic-highlight img-action">
                         <h4 id="sub-text">ผักสดใหม่ เก็บเกี่ยวแล้วเรานำส่งของทันที ไม่เก็บไว้นาน</h4>
                     </div>
                     <div class="shop-highlight">
-                        <img src="./img-shop/logistices.jpg" alt="" class="pic-highlight">
+                        <img src="./img-shop/delivery-truck_0.png" alt="" class="pic-highlight img-action">
                         <h4 id="sub-text">ขนส่งเร็ว เข้าถึงพื้นที่ห่างไกล แพ็คสะอาดปลอดภัย</h4>
                     </div>
             </div>

@@ -1,5 +1,9 @@
 <?php
 
+namespace appBanner;
+
+require_once PATCH_ADDITIONAL_METHODE;
+use APP\CLASS\AdditionalMethods;
 
 class Banner extends AdditionalMethods
 {

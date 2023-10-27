@@ -1,7 +1,10 @@
 <?php
 // INSERT INTO `kanji_banners`(`banner_id`, `banner_topic`, `banner_status`, `banner_timestamp`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
-require_once "../autoload_class.php";
+    require_once "../../class/Connection.php";
+    require_once "../../class/Slide.php";
 
+    use appSlide\Slide;
+    
     $slide_header   = isset($_POST['slide_header']) ? htmlspecialchars(trim($_POST['slide_header'])) : '';
     $slide_content  = isset($_POST['slide_content']) ? htmlspecialchars(trim($_POST['slide_content'])) : '';
 

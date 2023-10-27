@@ -54,10 +54,11 @@ if(isset($_POST['process']) == 'insert_product'):
     $product_detail     = isset($_POST['product_detail'])   ? htmlspecialchars(trim($_POST['product_detail'])) : '';
     $product_sub_detail = isset($_POST['product_sub_detail'])   ? htmlspecialchars(trim($_POST['product_sub_detail'])) : '';
     $product_type_name  = isset($_POST['product_type_name'])    ? htmlspecialchars(trim($_POST['product_type_name'])) : '';
-    $product_shop_name  = isset($_POST['product_shop_name'])    ? htmlspecialchars(trim($_POST['partner_name'])) : '';
+    $product_shop_name  = isset($_POST['product_shop_name'])    ? htmlspecialchars(trim($_POST['product_shop_name'])) : '';
     $product_type_id    = isset($_POST['product_type_id'])  ? htmlspecialchars(trim($_POST['product_type_id'])) : '';
     $product_shop_id    = isset($_POST['product_shop_id'])  ? htmlspecialchars(trim($_POST['product_shop_id'])) : '';
-   
+   echo $product_shop_nameecho;
+    exit;
     $insertStmtProduct = $db->pdo->prepare(
         "
         INSERT INTO `kanji_products`(

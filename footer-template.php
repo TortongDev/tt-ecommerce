@@ -1,9 +1,10 @@
 <div class="contact-icon">
     <div class="facebook">
-        <i class="fa-brands fa-facebook hover" style="font-size: 2rem"></i>
+        <a href="https://www.facebook.com/profile.php?id=100063893866746"><i class="fa-brands fa-facebook hover" style="font-size: 2rem"></i></a>
     </div>
+    
     <div class="line">
-        <i class="fa-brands fa-line hover" style="font-size: 2rem"></i>
+       <a href="https://lin.ee/kgfhf3U"><i class="fa-brands fa-line hover" style="font-size: 2rem"></i></a>
     </div>
     <div class="intragram">
         <i class="fa-brands fa-instagram hover" style="font-size: 2rem"></i>

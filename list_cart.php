@@ -37,6 +37,14 @@
             margin: auto;
             text-align: center;
         }
+        .containers {
+            width: 90%;
+            margin:auto;
+            background-color: white;
+            border-radius: 5px;
+            padding: 10px;
+            margin-block-start: 120px
+        }
         .list-cart tr td:nth-last-child(3) {
             margin: auto;
             text-align: center;
@@ -55,7 +63,7 @@
             position: relative;
         }
         .tabbar-checkout {
-            margin-block-start: 120px;
+            margin-block-start: 20px;
         }
         .list-cart tr td:nth-last-child(1) {
             margin: auto;
@@ -98,11 +106,12 @@
 <div id="wrapper">
     <?php include ('./header-template.php'); ?>
 
+ 
+   
+    <div class="containers">
     <div class="tabbar-checkout">
         <h2 class="">รายการสั่งซื้อทั้งหมด</h2>
     </div>
-   
-    <div class="containers">
         <article class="container-list-cart">
             <section class="list-cart">
                 <table class="w3-table-all">
@@ -133,10 +142,14 @@
                             $ORDER_STATUS_IF = '<i class="fa-solid fa-circle-xmark" ></i> ยังไม่ชำระเงิน';
                             $STATUS_COLOR    = "RED";
                             $BTN_PAYMENT     = "<a class='w3-button w3-yellow w3-border' href='./success_form.php?codeid=$orderID'><i class='fa-solid fa-file-invoice'></i> แจ้งโอนเงิน</a>";
-                            if($ORDER_STATUS == '1'):
-                                $STATUS_COLOR = "GREEN";
-                                $ORDER_STATUS_IF = '<i class="fa-solid fa-circle-check"></i> ชำระเงินแล้ว';
+                            if($ORDER_STATUS == '2'):
+                                $STATUS_COLOR = "ORANGE";
+                                $ORDER_STATUS_IF = '<i class="fa-solid fa-circle-check"></i> รอ admin ตรวจสอบการโอน';
                                 $BTN_PAYMENT = "";
+                                elseif($ORDER_STATUS == '1'):
+                                    $STATUS_COLOR = "GREEN";
+                                    $ORDER_STATUS_IF = '<i class="fa-solid fa-circle-check"></i> ชำระเงินเรียบร้อย';
+                                    $BTN_PAYMENT = "";
                             endif;
                             echo <<<ORDER
                                 <tr>

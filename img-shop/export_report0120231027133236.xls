@@ -1,0 +1,300 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<style type="text/css"> 
+table { 
+	font-size:16.0pt;
+	font-family:"TH SarabunPSK",serif;
+}
+td {
+	border:solid windowtext 0.5pt;
+	border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+	solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+	font-size:16.0pt;white-space: nowrap;
+}
+</style>
+<style>
+</style>
+</head>
+<body link="#0563C1" vlink="#954F72">
+<table border=1 cellpadding=0 cellspacing=0 >
+														<thead>
+															<tr>
+																<th>#</th>
+																<th>วันที่บันทึก</th>
+																<!--<th>ประทับเวลา</th>-->
+																<th>ชื่อ </th>
+																<th>นามสกุล</th>
+																<th>เบอร์โทรศัพท์</th>
+																<th>อีเมล</th>
+																<th>หน่วยงาน</th>
+																<th>โรงพยาบาลให้บริการคลีนิคอะไรบ้าง เช่น คลีนิคแม่และเด็ก OPD IPD PP เป็นต้น</th>
+																<th>Software สถานบริการสุขภาพคือระบบอะไร</th>
+																<th>Version ปัจจุบันของ Software</th>
+																<th>มีการ MA Software หรือไม่</th>
+																<th>Spec เครื่องพิวเตอร์แม่ข่ายที่ติดตั้ง Software โรงพยาบาล </th>
+																<th>CPU (Core)</th>
+																<th>RAM (GB)</th>
+																<th>Harddisk (GB)</th>
+																<th>บริการ Internet ที่สามารถ Plugin กับระบบได้)</th>
+																<th>จำนวนบริการ Internet (เส้น))</th>
+																<th>ความเร็ว Internet (Upload/Download)</th>
+																<th>จำนวน Public IP ที่สามารถนำมาใช้งานได้</th>
+																<th>IP Public ของท่าน</th>
+																<th>ท่านมีอุปกรณ์สำหรับอ่านบัตรประชาชน ให้บริการในการลงทะเบียนผู้ป่วย หรือไม่</th>
+																<th>จำนวน อุปกรณ์เครื่ออ่านบัตร</th>
+																<th>ความเห็น/ข้อแนะนำ : อุปสรรค/ปัญหาในการเชื่อมโยงข้อมูลของท่าน เช่นอายุการใช้งานของอุปกรณ์ เป็นต้น</th>
+																<th>ใช้ข้อมูลผู้ตอบแบบสอบถาม</th>
+																															</tr>
+														</thead>
+														<tbody>
+																															<tr>
+
+																	<td>1</td>
+																	<td>2023-10-27</td>
+																	<td>นายเอกพจน์</td>
+																	<td>ผดุงศักดิ์</td>
+																	<td>064-979-5559</td>
+																	<td>eakmasline.p@gmail.com</td>
+																	<td>ศูนย์อนามัยที่ 4 สระบุรี</td>
+																	<td>OPD</td>
+																	<td>hosxp</td>
+																	<td>Version 3</td>
+																	<td>ไม่มี</td>
+																	<td>Acer Altos T350 F2</td>
+																	<td>Intel Xeon E5-2600 2.0Ghz</td>
+																	<td>8 Gb</td>
+																	<td>300Gb</td>
+																	<td>ไม่มี</td>
+																	<td>MPLS 1 วงจรของกรมอนามัย</td>
+																	<td>500 MB</td>
+																	<td>2</td>
+																	<td>192.168.3.201</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>2</td>
+																	<td>ระบบ hosxp เป็นVersion 3.55.5.8 ไม่สามารถอัพเดทอะไรได้เลยเพราะทางบริษัทไม่ขาย Lisence ให้ต้องซื้อและขึ้นระบบใหม่อย่างเดียวเท่านั้น</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>2</td>
+																	<td>2023-10-27</td>
+																	<td>นายเอกมล</td>
+																	<td>อ่อนทอง</td>
+																	<td>084-688-2113</td>
+																	<td>Untimate1th@gmail.com</td>
+																	<td>ศูนย์อนามัยที่ 2 พิษณุโลก</td>
+																	<td>ตรวจโรคทั่วไป Dpac คลินิกความจำ กายภาพ LAB ทันตกรรม ตรวจสุขภาพประจำปีั X-ray</td>
+																	<td>HOSxP</td>
+																	<td>V.3</td>
+																	<td>มี</td>
+																	<td>Dell</td>
+																	<td>8</td>
+																	<td>16</td>
+																	<td>600</td>
+																	<td></td>
+																	<td>2</td>
+																	<td>1000/1000</td>
+																	<td>1</td>
+																	<td>203.157.71.170</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>5</td>
+																	<td>ไม่มีการตรวจสอบโครงสร้างของแฟ้มข้อมูล โครงสร้างของระบบต่างๆ และเวอร์ชั่นของ HIS โดยภาพรวม</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>3</td>
+																	<td>2023-10-27</td>
+																	<td>นายเอกลักษณ์</td>
+																	<td>ชินคำ</td>
+																	<td>086-448-3614</td>
+																	<td>mrekaluk@gmail.com</td>
+																	<td>ศูนย์อนามัยที่ 3 นครสวรรค์</td>
+																	<td>IPD OPD คลินิกแม่และเด็ก ทันตกรรม ตรวจโรคเด็ก คลินิกตรวจสุขภาพเด็กดี แผนไทย แผนจีน กายภาพ</td>
+																	<td>HosXp XE</td>
+																	<td>4.0</td>
+																	<td>มี</td>
+																	<td>Cpu xeon</td>
+																	<td>12</td>
+																	<td>32</td>
+																	<td>350</td>
+																	<td>MPLS กรมอนามัย</td>
+																	<td>1</td>
+																	<td>80</td>
+																	<td>2</td>
+																	<td>203.157.71.162,203.157.71.163</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> -  มีตู้ Kiosk</td>
+																	<td>10</td>
+																	<td>เครื่องแม่ข่ายมีอายุการใช้งานประมาณ5ปี มีความต้องการเพิ่มขนาดของพื้นที่ (storage ชนิด SSD) เพื่อเก็บข้อมูการรักษาพยาบาล และmemoryเพิ่มขึ้นอีก 32GB</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>4</td>
+																	<td>2023-10-27</td>
+																	<td>นายสาธิต</td>
+																	<td>อยู่ศรี</td>
+																	<td>087-497-5708</td>
+																	<td>sathit.y@anamai.mail.go.th</td>
+																	<td>ศูนย์อนามัยที่ 1 เชียงใหม่</td>
+																	<td>ตรวจโรคทั่วไป ฝากครรภ์ นมแม่ เด็กดี กิจกรรมบำบัด ทันตกรรม ส่งเสริมสุขภาพ วัยรุ่น ให้คำปรึกษา นรีเวชกรรม ห้องคลอด ผ่าตัด หลังคลอด อภิบาลทารกแรกเกิด กายภาพบำบัด นวดแผนไทย สปาร์นมแม่</td>
+																	<td>MRCORD</td>
+																	<td>4</td>
+																	<td>ไม่มี</td>
+																	<td>Virtual Server</td>
+																	<td>15</td>
+																	<td>32</td>
+																	<td>1000</td>
+																	<td>CAT,TOT</td>
+																	<td>6</td>
+																	<td>Lease line 2 เส้น เส้นละ 60/15 FTTx 3 เส้น เส้นละ 1000/500 MPLS anamai 1 เส้น</td>
+																	<td>6</td>
+																	<td>61.19.198.xxx,1.179.145.xxx</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>20</td>
+																	<td>ระบบเลิก support วางแผนเปลี่ยนเป็น HOSxP XE</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>5</td>
+																	<td>2023-10-25</td>
+																	<td>นายศุภศิษฏ์</td>
+																	<td>พลศักดิ์ขวา</td>
+																	<td>084-393-0390</td>
+																	<td>supasis.p@anamai.mail.go.th</td>
+																	<td>ศูนย์อนามัยที่ 7 ขอนแก่น</td>
+																	<td>OPD IPD PP</td>
+																	<td>Hosxp</td>
+																	<td>3.66.9.26</td>
+																	<td>มี</td>
+																	<td>Dell poweredge r440</td>
+																	<td>48 x Intel(R) Xeon(R) Silver 4214R CPU @ 2.40GHz (2 Sockets)</td>
+																	<td>94.02 GB</td>
+																	<td>1.60 TB</td>
+																	<td>NT by CAT&amp;TOT</td>
+																	<td>2 เส้น</td>
+																	<td>1000/500 2 เส้น</td>
+																	<td>164.115.226.51-53</td>
+																	<td>61.7.165.190</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> -  มีตู้ Kiosk</td>
+																	<td>6</td>
+																	<td>อุปกรณ์ในการทำงานมีไม่เพียงพอ</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>6</td>
+																	<td>2023-10-25</td>
+																	<td>นายคอบอรี</td>
+																	<td>ตีมุง</td>
+																	<td>089-296-4575</td>
+																	<td>koboree@gmail.com</td>
+																	<td>ศูนย์อนามัยที่ 12 ยะลา</td>
+																	<td>OPD มี คลินิกฝากครรภ์ , ส่งเสริมสุขภาพ(วัยทำงาน) , ผู้สูงอายุ , นรีเวช , เวชศาสตร์วิถี , สุขภาพเด็กดี , เด็กป่วย , นมแม่ ,ทันตกรรม ,วัยรุ่น  ส่วน IPD มีห้องคลอด (LR) กับ แผนกหลังคลอด (PP)</td>
+																	<td>HOSxP</td>
+																	<td>V.3</td>
+																	<td>มี</td>
+																	<td>Dell รุ่น PowerEdge R540 (คอมพิวเตอร์แม่ข่าย แบบที่ 1)</td>
+																	<td>Intel? Xeon?  รุ่น Bronze 3106 1.7GHz  จำนวน 8 Core</td>
+																	<td>16G</td>
+																	<td>1TB จำนวน2ลูก</td>
+																	<td>CAT</td>
+																	<td>จำนวน 1 เส้น</td>
+																	<td>1000/700</td>
+																	<td>0</td>
+																	<td>0</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>10</td>
+																	<td>เวอร์ชั่น3  เป็นเวอร์ชั่น ที่ดาวน์โหลดมาติดตั้งเอง และซื้อลายเซ็น software(activate) จากบริษัท เพื่อที่จะได้สามารถอัปเกรดเวอร์ชั่นให้เป็นปัจจุบัน สามารถใช้งานฟังกชั่นต่าง ๆ ได้ แต่ก็ยังมีปัญหาการเชื่อมโยงข้อมูลภายในของหน่วยบริการเอง  ที่ยังไม่ครอบคลุมในการทำงาน ถ้าสามารถเปลียนเป็นเวอร์ชั่น4 ได้ น่าจะสามารถเชื่อมโยงข้อมูลภายในและภายนอกหน่วยบริการ ให้มีความส</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>7</td>
+																	<td>2023-10-25</td>
+																	<td>นางสาวลัลน์ณภัทร</td>
+																	<td>ดีดาษ</td>
+																	<td>099-547-4742</td>
+																	<td>ohm.stitch@gmail.com</td>
+																	<td>ศูนย์อนามัยที่ 11 นครศรีธรรมราช</td>
+																	<td>OPD , DMHI ,IPD ,ER ,Fitness , TB ,HIV</td>
+																	<td>Hosxp</td>
+																	<td>3</td>
+																	<td>มี</td>
+																	<td>Inter(R) xeon(R) CPU E5-2640 v4  2.4 GHz</td>
+																	<td>10</td>
+																	<td>32</td>
+																	<td>1.5T</td>
+																	<td>ไม่</td>
+																	<td>1</td>
+																	<td>250/250</td>
+																	<td>-</td>
+																	<td>-</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>10</td>
+																	<td>-</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>8</td>
+																	<td>2023-10-25</td>
+																	<td>นายสุทัศน์</td>
+																	<td>บุราณ</td>
+																	<td>098-623-4174</td>
+																	<td>suthat.b@anamai.mail.go.th</td>
+																	<td>ศูนย์อนามัยที่ 8 อุดรธานี</td>
+																	<td>คลินิกวัยรุ่น, ตรวจสุขภาพวัยทำงาน</td>
+																	<td>HOSxP PCU XE</td>
+																	<td>4</td>
+																	<td>มี</td>
+																	<td></td>
+																	<td>8</td>
+																	<td>8</td>
+																	<td>500</td>
+																	<td>2</td>
+																	<td>2</td>
+																	<td>1000/1000</td>
+																	<td>3</td>
+																	<td>203.157.71.216/29</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>5</td>
+																	<td>bandwidth ในการรับส่งข้อมูล</td>
+																	<td>ใช่</td>
+																</tr>
+																																<tr>
+
+																	<td>9</td>
+																	<td>2023-10-25</td>
+																	<td>นายเอกภพ</td>
+																	<td>ทะวาเงิน</td>
+																	<td>087-450-6508</td>
+																	<td>eakaphop.t@gmail.com</td>
+																	<td>ศูนย์อนามัยที่ 10 อุบลราชธานี</td>
+																	<td>OPD , ER ,XRAY ,LAB,ANC ,ทันตะ , แผนไทย , คลินิกวัยรุ่น , Sleep lab</td>
+																	<td>Hosxp</td>
+																	<td>V3.66.x</td>
+																	<td>มี</td>
+																	<td></td>
+																	<td>10</td>
+																	<td>16GB</td>
+																	<td>300x4</td>
+																	<td></td>
+																	<td>1</td>
+																	<td>50/50 Mbps</td>
+																	<td>1</td>
+																	<td>203.157.71.154</td>
+																	<td>-  มีเครื่องอ่านบัตร Smart card reader <br> - </td>
+																	<td>5</td>
+																	<td>อายุการใช้งานของเครื่อง , จำนวน</td>
+																	<td>ใช่</td>
+																</tr>
+																														</tbody>
+													</table>
+	
+						

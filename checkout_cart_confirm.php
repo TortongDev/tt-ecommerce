@@ -41,6 +41,9 @@
         .list-payment  {
             list-style: auto;
         }
+        html,body {
+            background-color: white !important;
+        }
     </style>
     
 </head>
@@ -105,27 +108,48 @@
             <section class="list-address-main" style="overflow: auto;">
                 <div class="fname-form">
                     <label for="">ชื่อ</label>
-                    <input type="text" name="FIST_NAME" class="w3-input" placeholder="">
+                    <input type="text" name="FIST_NAME" class="w3-input" placeholder="" required>
                 </div>
                 <div class="fname-form">
                     <label for="">นามสกุล</label>
-                    <input type="text" name="LAST_NAME" class="w3-input" placeholder="">
+                    <input type="text" name="LAST_NAME" class="w3-input" placeholder="" required>
                 </div>
 
+                    <div class="fname-form">
+                        <label for="">บ้านเลขที่</label>
+                        <input type="text" name="ADDRESS_NUMBER" class="w3-input" placeholder="" required>
+                    </div>
+                    
+                    <div class="fname-form">
+                        <label for="">หมู่ที่</label>
+                        <input type="text" name="ADDRESS_MOO" class="w3-input" placeholder="" required>
+                    </div>
+                    <div class="fname-form">
+                        <label for="">บ้าน</label>
+                        <input type="text" name="MOOBAN" class="w3-input" placeholder="" required>
+                    </div>
+                    <div class="fname-form">
+                        <label for="">ตำบล</label>
+                        <input type="text" name="TUMBON" class="w3-input" placeholder="" required>
+                    </div>
+                    <div class="fname-form">
+                        <label for="">อำเภอ</label>
+                        <input type="text" name="AMPHOR" class="w3-input" placeholder="" required>
+                    </div>
 
-
-
-
-
-                    <div class="fname">บ้านเลขที่</div><div class="fname-form"><input type="text" name="ADDRESS_NUMBER" class="w3-input" placeholder="">
-                    <div class="fname">หมู่ที่</div><div class="fname-form"><input type="text" name="ADDRESS_MOO" class="w3-input" placeholder="">
-                    <div class="fname">บ้าน</div><div class="fname-form"><input type="text" name="MOOBAN" class="w3-input" placeholder="">
-                    <div class="fname">ตำบล</div><div class="fname-form"><input type="text" name="TUMBON" class="w3-input" placeholder="">
-                    <div class="fname">อำเภอ</div><div class="fname-form"><input type="text" name="AMPHOR" class="w3-input" placeholder="">
-                    <div class="fname">จังหวัด</div><div class="fname-form"><input type="text" name="JUNGWAT" class="w3-input" placeholder="">
-                    <div class="fname">ไปรษณี</div><div class="fname-form"><input type="text" maxlength="5" name="PROVINCE" class="w3-input" placeholder="">
-                    <div class="fname">เบอร์โทร</div><div class="fname-form"><input type="text" maxlength="10" name="TEL" class="w3-input" placeholder="">
-                 
+                    <div class="fname-form">
+                        <label for="">จังหวัด</label>
+                        <input type="text" name="JUNGWAT" class="w3-input" placeholder="" required>
+                    </div>
+                    
+                    <div class="fname-form">
+                        <label for="">ไปรษณี</label>
+                        <input type="text" maxlength="5" name="PROVINCE" class="w3-input" placeholder="" required>
+                    </div>
+                    <div class="fname-form">
+                        <label for="">เบอร์โทร ( ขนส่งใช้ติดต่อตอนส่งสินค้า )</label>
+                        <input type="text" maxlength="10" name="TEL" class="w3-input" placeholder="" required>
+                    </div>
             </section>
             <section class="checkout-form">
                 <table class="table" style="">
