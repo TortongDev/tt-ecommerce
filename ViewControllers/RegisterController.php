@@ -3,7 +3,6 @@ require_once "../app/class/Connection.php";
  
 $ndb    = new Connection(true); 
 
- $OBJ_DATA = array();
  $per_username      = isset($_POST['PER_USERNAME'])   ? htmlspecialchars($_POST['PER_USERNAME'])   : '';
  $per_password      = isset($_POST['PER_PASSWORD'])   ? htmlspecialchars($_POST['PER_PASSWORD'])   : '';
  $per_firstname     = isset($_POST['PER_FIRSTNAME'])  ? htmlspecialchars($_POST['PER_FIRSTNAME'])  : '';
@@ -19,6 +18,6 @@ $ndb    = new Connection(true);
  $OBJ_DATA['DATA']  = $per_tel;
  $OBJ_DATA['DATA']  = $per_email;
  
-    echo json_encode($OBJ_DATA);
+echo json_encode(array('username' => $per_username));
 
 ?>

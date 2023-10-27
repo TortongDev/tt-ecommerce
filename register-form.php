@@ -202,7 +202,8 @@
 
         e.preventDefault();
         console.log('registerPost');
-        const objForm = new FormData();
+        let objForm = new FormData();
+        // formData.append("username", "Chris");
         objForm.append('PER_USERNAME',document.querySelector('#PER_USERNAME').value);
         objForm.append('PER_PASSWORD',document.querySelector('#PER_PASSWORD').value);
         objForm.append('PER_FIRSTNAME',document.querySelector('#PER_FIRSTNAME').value);
@@ -210,12 +211,14 @@
         objForm.append('PER_TEL',document.querySelector('#PER_TEL').value);
         objForm.append('PER_EMAIL',document.querySelector('#PER_EMAIL').value);
         objForm.append('STATUS_POST', '1');
+
         fetch('./ViewControllers/RegisterController.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: objForm
+            body: JSON.stringify(objForm)
         })
             .then(response => response.json())
             .then(data => console.log(data))
