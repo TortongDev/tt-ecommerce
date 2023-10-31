@@ -4,7 +4,6 @@
     $ndb    = new Connection(true);
     
     $ndb->authenUsers();
-
     $users = array();
     
     $users['username']      = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
@@ -12,14 +11,15 @@
     $check                  = isset($_GET['act']) ? htmlspecialchars($_GET['act']) : '';
     $user = $users['username'];
     $pass = $users['password'];
-    // if(@$_SERVER['SERVER_NAME']!='localhost'){
-        $stmt   = Connection::$pdo->query("SELECT * FROM `authen_users` WHERE 1=1 AND authen_username = '{$user}' AND authen_password = '{$pass}' ");
+    $pass_descrypt = $ndb->id_encrypt($pass);
+    if(!empty($user) && !empty($pass)){
+        $stmt   = Connection::$pdo->query("SELECT * FROM `authen_users` WHERE 1=1 AND authen_username = '{$user}' AND authen_password = '{$pass_descrypt}' ");
         $countAll = $stmt->rowCount();
         $r = $stmt->fetch(PDO::FETCH_ASSOC);
         if($countAll > 0 ):
             $_SESSION['AUTHEN_USER_ID'] = $r['authen_user_id'];
             $_SESSION['AUTHEN_USERNAME'] = $r['authen_username'];
-            $_SESSION['AUTHEN_PASSWORD'] = $r['authen_password'];
+            $_SESSION['AUTHEN_PASSWORD'] = $ndb->id_decrypt($r['authen_password']);
             $_SESSION['LOGIN_STATUS'] = 1;
         endif;
         
@@ -40,7 +40,7 @@
     else:
 
     endif;
-// }
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,8 @@
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
+   
     <style>
         .login-form {
             width: 90%;
@@ -61,6 +62,7 @@
         html , body {
             height: 100%;
             width: 100%;
+            background-color: white !important;
         }
         .container-login {
             width: 300px;
@@ -194,9 +196,9 @@
                         <section class="login-form">
                         
                             <div class="form">
-                                <label for="username">Username</label>
+                                <label for="username">ชื่อผู้ใช้งาน</label>
                                 <input type="text" name="username" id="username" class="form-control" required>
-                                <label for="password">Password</label>
+                                <label for="password">รหัสผ่าน</label>
                                 <input type="password" name="password" id="password" class="form-control"required>
                             </div>
                             <div class="form-group">

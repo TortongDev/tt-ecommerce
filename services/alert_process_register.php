@@ -10,25 +10,25 @@
 <body>
     <?php 
         session_start();
-        $STATUS_LOGIN = isset($_GET['STATUS_LOGIN']) ? htmlspecialchars($_GET['STATUS_LOGIN']) : '';
+        $STATUS_REGISTER = isset($_GET['STATUS_REGISTER']) ? htmlspecialchars($_GET['STATUS_REGISTER']) : '';
     ?>
     <script>
         document.addEventListener('DOMContentLoaded',function(){
-            const STATUS_LOGIN = <?php echo $STATUS_LOGIN;?>;
+            const STATUS_REGISTER = <?php echo $STATUS_REGISTER;?>;
             const SESSIONID = "<?php echo @$_SESSION['LOGIN_STATUS'];?>";
             console.log(SESSIONID);
-            if(STATUS_LOGIN == 1 && SESSIONID != 1){
+            if(STATUS_REGISTER == 1 && SESSIONID != 1){
                 Swal.fire({
-                    title: 'เข้าสู่ระบบล้มเหลว',
-                    text: "โปรดลองเข้าสู่ระบบอีกครั้ง!",
-                    icon: 'warning',
+                    title: 'สมัครเรียบร้อย',
+                    text: "สามารถนำข้อมูลของท่านไปเข้าสู่ระบบเพื่อซื้อสินค้าได้เลย",
+                    icon: 'success',
                     // showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     // cancelButtonColor: '#d33',
                     confirmButtonText: 'กลับไปเข้าสู่ระบบ'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    location.href = "login.php";
+                    location.href = "../login.php";
                 }
                 })
                 

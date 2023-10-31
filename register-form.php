@@ -12,14 +12,17 @@
     <title>Login Shopping Kanji Farm</title>
     <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="./img-shop/icon/title.ico">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <style>
         .login-form {
             width: 90%;
             margin: auto;
         }
         html , body {
+            background-color: white !important;
             height: 100%;
             width: 100%;
         }
@@ -156,34 +159,36 @@
                     </div>
                 </div>
                 <div class="col">
-                    <form action="" method="get">
+                    <form action="" method="post" id="">
                     <div class="container-login">
                         <section class="title-img">
                             <img src="./img-shop/Kanji_Farm.png" class="fix-banner" alt="">
                         </section>
                         <section class="login-form">
                         
-                            <div class="form">
-                            <label for="PER_USERNAME">Username</label>
-                            <input type="text" name="PER_USERNAME" id="PER_USERNAME" class="form-control"><br>
-                            <label for="PER_PASSWORD">Password</label>
-                            <input type="text" name="PER_PASSWORD" id="PER_PASSWORD" class="form-control"><br>
-                            <label for="PER_FIRSTNAME">FIRSTNAME</label>
-                            <input type="text" name="PER_FIRSTNAME" id="PER_FIRSTNAME" class="form-control"><br>
-                            <label for="PER_LASTNAME">LASTNAME</label>
-                            <input type="text" name="PER_LASTNAME" id="PER_LASTNAME" class="form-control"><br>
-                            <label for="PER_TEL">TEL</label>
-                            <input type="text" name="PER_TEL" id="PER_TEL" class="form-control"><br>
-                            <label for="PER_EMAIL">EMAIL</label>
-                            <input type="text" name="PER_EMAIL" id="PER_EMAIL" class="form-control">
+                            <div class="form" id="">
+                            <label for="PER_USERNAME">ชื่อผู้ใช้งาน</label>
+                            <input type="text" name="PC_USERNAME" id="PC_USERNAME"  class="form-control" required><br>
+                            <label for="PER_PASSWORD">รหัสผ่าน</label>
+                            <input type="password" name="PER_PASSWORD" id="PER_PASSWORD" class="form-control" required><br>
+                            <label for="PER_FIRSTNAME">ชื่อจริง</label>
+                            <input type="text" name="PER_FIRSTNAME" id="PER_FIRSTNAME" class="form-control" required><br>
+                            <label for="PER_LASTNAME">นาสกุล</label>
+                            <input type="text" name="PER_LASTNAME" id="PER_LASTNAME" class="form-control" required><br>
+                            <label for="PER_TEL">เบอร์มือถือ</label>
+                            <input type="number" name="PER_TEL" id="PC_PER_TEL" maxlength="10" class="form-control" required><br>
+                            <label for="PER_EMAIL">อีเมล</label>
+                            <input type="text" name="PER_EMAIL" id="PER_EMAIL" class="form-control" required>
+                            <input type="hidden" name="STATUS_POST" value="1">
+                            <input type="hidden" name="STATUS_REGISTER" value="1">
                          
                             </div>
                             <div class="form-group">
-                                <button ID="registerPost" class="w3-button w3-teal w3-block" name="STATUS_POST" value="1" id="STATUS_POST"><i class="fa-solid fa-right-to-bracket"></i> สมัครสมาชิก</button>
-                                <a class="w3-button w3-blue w3-block" href="./login.php"><i class="fa-solid fa-user-plus"></i> เข้าสู่ระบบ</a>
+                                <button id="registerPost" class="w3-btn w3-teal w3-block" style="margin-block: 5px;"><i class="fa-solid fa-right-to-bracket"></i> บันทึก</button>
+                                <button id="reset" type="reset" class="w3-btn w3-khaki w3-block"><i class="fa-solid fa-trash-can-arrow-up"></i> ล้างแบบฟอร์ม</button>
                             </div>
                             <div class="form-group">
-                                <div><a href="#"><i class="fa-brands fa-google"></i> Login for Google Account</a></div>
+                                <!-- <div><a href="#"><i class="fa-brands fa-google"></i> Login for Google Account</a></div> -->
                             </div>
                         </section>
                     </div>
@@ -192,37 +197,46 @@
             </div>
         </div>
     </div>
-  
+    
+    <script>
+            $(document).ready(()=>{
+                $('#PC_USERNAME').on('keyup',function(){
+                    if($(this).val().toUpperCase() == 'ADMIN'){
+                        alert('ไม่อนุญาตให้ใช้ Username นี้');
+                        $(this).val("");
+                    }
+                })
+                // $('#PC_PER_TEL').on('keyup',function(){
+                //     if($(this).val().length > '10'){
+                //         alert('กำลังพิมพ์เกิน 10 ตัวอักษร');
+                //         $(this).val("");
+                //     }
+                // });
+            })
+            let form = $('form');
+            form.on('submit',(e)=>{
+                e.preventDefault();
+                function request_register (){
+                    e.preventDefault();
+                    $.ajax({
+                        url: './ViewControllers/RegisterController.php',
+                        type: 'post',
+                        dataType: 'json',
+                        data: $('form').serialize(),
+                        success: function(data){
+                            location.href = "./services/alert_process_register.php?STATUS_REGISTER=1";
+                        },
+                        error: function(err){
+
+                        }
+                    })
+                    
+                }
+               
+                request_register();
+                
+            })
+       
+    </script>  
 </body>
 </html>
-<script>
-   document.addEventListener('DOMContentLoaded',()=>{
-    const registerPost = document.querySelector('#registerPost');
-    registerPost.addEventListener('click',(e)=>{
-
-        e.preventDefault();
-        console.log('registerPost');
-        let objForm = new FormData();
-        // formData.append("username", "Chris");
-        objForm.append('PER_USERNAME',document.querySelector('#PER_USERNAME').value);
-        objForm.append('PER_PASSWORD',document.querySelector('#PER_PASSWORD').value);
-        objForm.append('PER_FIRSTNAME',document.querySelector('#PER_FIRSTNAME').value);
-        objForm.append('PER_LASTNAME',document.querySelector('#PER_LASTNAME').value);
-        objForm.append('PER_TEL',document.querySelector('#PER_TEL').value);
-        objForm.append('PER_EMAIL',document.querySelector('#PER_EMAIL').value);
-        objForm.append('STATUS_POST', '1');
-
-        fetch('./ViewControllers/RegisterController.php', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify(objForm)
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
-    });
-   })
-</script>

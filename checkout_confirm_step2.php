@@ -34,8 +34,8 @@
       
         $STMT_INSERT = Connection::$pdo->prepare(
             "
-                INSERT INTO `kanji_orders`(`ORDER_ID`, `FIST_NAME`, `LAST_NAME`,  `JUNGWAT`, `AMPHOR`, `TUMBON`, `PROVINCE`, `ADDRESS_NUMBER`, `ADDRESS_MOO`, `TEL`,`USER_ID`) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?)
+                INSERT INTO `kanji_orders`(`ORDER_ID`, `FIST_NAME`, `LAST_NAME`,  `JUNGWAT`, `AMPHOR`, `TUMBON`, `PROVINCE`, `ADDRESS_NUMBER`, `ADDRESS_MOO`, `TEL`,`USER_ID`,PRICE_ALL) 
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
             "
         );
         $STMT_INSERT->execute(array(
@@ -49,7 +49,8 @@
             $ADDRESS_NUMBER,
             $ADDRESS_MOO,
             $TEL,
-            $USER_ID
+            $USER_ID,
+            $_SESSION['total']
         ));
  
           $cart = @$_SESSION['CART'];
