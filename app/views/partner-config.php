@@ -22,8 +22,8 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
-            <div class="row">
-              
+                <div class="row">
+                        
                 </div>
             </div>
             <!-- /. PAGE INNER  -->

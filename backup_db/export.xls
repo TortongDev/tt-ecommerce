@@ -1,0 +1,77 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><style type="text/css">
+	
+			.text_head {
+				font-family: TH SarabunPSK;
+				font-size: 24px; 
+				font-style: normal; 
+				line-height: normal;
+				font-weight: bold;
+				font-variant: normal;
+				text-transform: none;
+				color: #000000; 
+				text-decoration: none;
+				border:0px;
+			}
+			.text_head_sub {
+				font-family: TH SarabunPSK;
+				font-size: 24px; 
+				font-style: normal; 
+				line-height: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				color: #000000; 
+				text-decoration: none;
+				border:0px;
+			}
+			.text_subhead {
+				font-family: TH SarabunPSK;
+				font-size: 21px;
+				font-style: normal; 
+				line-height: normal;
+				font-weight: bold;
+				font-variant: normal;
+				text-transform: none;
+				color: #000000; 
+				background-color: #D8D8D8;
+				text-decoration: none;
+				border: .5pt solid;
+				mso-number-format:'\@';
+			}
+			h1,h2,h3,h4,h5,h6 {
+			font-family: TH SarabunPSK;
+			}
+			.text_body {
+				font-family: TH SarabunPSK;
+				font-size: 21px;
+				font-style: normal; 
+				line-height: normal;
+				font-variant: normal;
+				text-transform: none;
+				color: #000000; 
+				text-decoration: none;
+				border: .5pt solid;
+				vertical-align:top; 
+			}
+			.class_number { mso-number-format:Standard; }
+			.class_text_no { mso-number-format:'\@';}
+			table{ 
+font-size:12.0pt;
+font-family:"TH SarabunPSK",serif;}
+td{
+	width:100px;border:solid windowtext 0.5pt;
+border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+font-size:16.0pt;
+}
+			</style> 
+	 
+											<div class="showborder"> 
+													<table id="WF_TB1576"  cellspacing="0" id="tech-companies-1" class="table table-bordered sorted_table"><thead class="bg-primary"><tr><th>ประทับเวลา</th><th>(ก) (หัวข้อ1-8) ชื่อสถานประกอบการ</th><th>(ก) (หัวข้อ1-8)  ประเภทสถานศึกษา</th><th>(ก) (หัวข้อ1-8) สังกัด</th><th>(ก) (หัวข้อ1-8) หน่วยงาน</th><th>(ก) (หัวข้อ1-8) ครูและบุคลากรทางการศึกษา</th><th>(ก) (หัวข้อ1-8) นักเรียน</th><th>(ก) (หัวข้อ1-8) รวมครูนักเรียน</th><th>(ก) (หัวข้อ1-8) ที่อยู่</th><th>(ก) (หัวข้อ1-8) ตำบล</th><th>(ก) (หัวข้อ1-8) อำเภอ</th><th>(ก) (หัวข้อ1-8) จังหวัด</th><th>(ก) (หัวข้อ1-8) รหัสไปรษณี</th><th>(ก) (หัวข้อ1-8) สถานบริการสุขภาพ </th><th>(ก) (หัวข้อ1-8) ชื่อโรงพยาบาล </th><th>(ก) (หัวข้อ1-8) ชื่อหน่วยบริการสาธารณสุข</th><th>(ก) (หัวข้อ1-8) อื่นๆ</th><th>(ข) (หัวข้อ11) ป.1-.ป.6  ร้อยละ</th><th>(ข) (หัวข้อ11) ม.1-.ม.3  ร้อยละ</th><th>(ข) (หัวข้อ11) ม.4-.ม.6  ร้อยละ</th><th>(ข) (หัวข้อ11) ปวช.1-3  ร้อยละ</th><th>(ข) (หัวข้อ11) ปวส.1-2 ร้อยละ</th><th>(ข) (หัวข้อ11) อุดมศึกษา ปี 1-4 ร้อยละ</th><th>(ข) (หัวข้อ12) สถานศึกษาของท่าน เข้าร่วมโครงการหนึ่งโรงเรียนหนึ่งครูอนามัย</th><th>(ข) (หัวข้อ13)   ป. 1-6 </th><th>(ข) (หัวข้อ13)  ม 1-3 </th><th>(ข) (หัวข้อ13)  ม 4-6 </th><th>(ข) (หัวข้อ13) ปวช. 1-3 </th><th>(ข) (หัวข้อ13)  ปวส. 1-2</th><th>(ข) (หัวข้อ13)  อุดมศึกษา. 1-4 </th><th>(ข) (หัวข้อ14)  ม 4-6 </th><th>(ข) (หัวข้อ14)  ปวช. 1-3 </th><th>(ข) (หัวข้อ14)   ปวส. 1-2 </th><th>(ข) (หัวข้อ15) นักเรียนหญิง ม.4 - ม.6 เข้าร่วมกิจกรรมการตรวจคัดกรองเต้านม</th><th>(ข) (หัวข้อ16) สถานศึกษาของท่าน ปัจจุบันได้รับการประเมินเป็นโรงเรียนส่งเสริมสุขภาพ</th><th>(ข) (หัวข้อ17)  สถานศึกษาของทาน ไดรับการประเมินเปนโรงเรียนสงเสริมสุขภาพมาตรฐานสากล</th><th>(ข) (หัวข้อ18) สถานศึกษาของทาน เขารวมกิจกรรมผานแพลตฟอรม “กาวทาใจ”</th><th>(ข) (หัวข้อ19) เข้าร่วมเครือข่ายโรงเรียนเด็กไทยฟันดี</th><th>(ข) (หัวข้อ19) เข้าร่วมโรงเรียนผู้พิทักษ์ฟันดี</th><th>(ข) (หัวข้อ19) ไม่ได้เข้าร่วมทั้ง 2 กิจกรรม</th><th>ข้อที่ 1</th><th>ข้อที่ 2</th><th>ข้อที่ 3</th><th>ข้อที่ 4</th><th>ข้อที่ 6</th><th>ข้อที่ 5</th><th>ข้อที่ 7</th><th>ข้อที่ 8</th><th>ข้อที่ 9</th><th>ข้อที่ 10</th><th>ข้อที่ 11</th><th>ข้อที่ 12</th><th>ข้อที่ 13</th><th>ข้อที่ 14</th><th>ข้อที่ 15</th><th>ข้อที่ 16</th><th>ข้อที่ 17</th><th>ข้อที่ 18</th><th>ข้อที่ 19</th><th>ข้อที่ 20</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้รับ</th><th>ผลการประเมิน</th><th>สถานะสี</th></tr></thead><tbody><tr><td align='center' width='min-width: 704px !important;' >2023-11-01</td><td align='left' width='min-width: 704px ' >Test School</td><td align='left' >โรงเรียน</td><td align='left' >สำนักงานคณะกรรมการการศึกษาขั้นพื้นฐาน (สพฐ.)</td><td align='left' >สำนักเขตพื้นที่การศึกษามัธยมศึกษา (สพม.)</td><td align='center' >10</td><td align='center' >10</td><td align='center' >20</td><td align='left' >32 หมู่2 ถนน1 ซอย2</td><td align='left' >หน้าเขา</td><td align='left' >เขาพนม</td><td align='left' >กระบี่</td><td align='left' >81140</td><td align='left' >ภาครัฐ</td><td align='left' >1sadasd</td><td align='left' >sdasd</td><td align='left' >asd</td><td align='right' >10.00</td><td align='right' >20.00</td><td align='right' >30.00</td><td align='right' >40.00</td><td align='right' >0.00</td><td align='right' >0.00</td><td align='center' >เข้าร่วม</td><td align='right' >10</td><td align='right' >20</td><td align='right' >30</td><td align='right' >40</td><td align='right' >50</td><td align='right' >0</td><td align='right' >20</td><td align='right' >20</td><td align='right' >20</td><td align='right' >110</td><td align='center' >พ้นสภาพการรับรองโรงเรียนส่งเสริมสุขภาพ</td><td align='left' >เป็นโรงเรียนส่งเสริมสุขภาพมาตรฐานสากล</td><td align='left' >ยังไม่เข้าร่วม</td><td align='left' >&nbsp;<i class="fa fa-check-square text-primary"></i> เข้าร่วมเครือข่ายโรงเรียนเด็กไทยฟันดี</td><td align='left' >&nbsp;<i class="fa fa-square-o text-muted"></i> เข้าร่วมโรงเรียนผู้พิทักษ์ฟันดี</td><td align='left' >&nbsp;<i class="fa fa-check-square text-primary"></i> ไม่ได้เข้าร่วมทั้ง 2 กิจกรรม</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='left' >ปฏิบัติทุกครั้ง</td><td align='center' >40</td><td align='center' >40</td><td align='center' >ผ่าน</td><td align='center' >เขียว</td></tr></tbody></table>											</div>
+									 
+															</div>
+						</div>
+					</div>
+				</div>
+			<!-- Workflow Row end -->
+			

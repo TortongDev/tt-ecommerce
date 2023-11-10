@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Debug Code</title>
+    <script src="https://kit.fontawesome.com/833cbfbd69.js" crossorigin="anonymous"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
 
@@ -27,12 +29,54 @@
             display: flex;
             justify-content: center;
         }
+        .circle {
+            border-radius: 50%;
+        }
         .align-center {
             display: flex;
-            align-items: center;
+            /* align-items: center; */
         }
         #intro {
-            background-image: url('./img-shop/profiles.jpg');
+            background-image: url('./img-shop/great_waterton_bg_in_hotr_intro_style_by_charlieaat_dg6ovbd-pre.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-inline: 40px;
+            padding-block: 10px;
+        }
+        #intro section.wrapper-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+            flex-direction: row;
+        }
+        .intro-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            width: fit-content;
+        }
+        .photos {
+            /* background-image: url('./img-shop/profiles.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; */
+            /* min-height: 50vh; */
+            border-radius: 50%;
+        }
+        h2#text-container {
+            z-index: 2;
+            margin-block-start: 0 !important;
+            margin-block-end: 0 !important;
+        }
+        .text-sub-container {
+            margin: 0;
+            padding: 0;
+        }
+        #skill {
+            background-image: url('./img-shop/maxresdefault.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -41,58 +85,184 @@
             align-items: center;
             padding: 40px;
         }
-        #intro section.block-content {
+        .tab-menu {
+            display: block;
+            position: fixed;
+            font-size: 3rem;
+            z-index: 10;
+            top: 50%;
+            left: 97%;
             display: grid;
-            grid-template-columns: 800px 1fr;
-            width: 100%;
-            flex-direction: row;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            justify-items: center;
+            transform: translate(-50%,-50%);
+            min-height: 400px;
+            width: 100px;
+           
         }
-        .photos {
-            /* background-image: url('./img-shop/profiles.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover; */
-            min-height: 50vh;
-            border-radius: 50%;
+        .btn-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
         }
-        .text-container {
-            z-index: 2;
+        .btn-icon:hover {
+            transform: scale(1.1,1.1);
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+        .sub-text-icon {
+            color: blue;
+            font-size: 1.2rem;
+        }
+        .position {
+            color: white;
+            font-size: 3rem;
+            
+        }
+        .sub-position {
+            color: white;
+            font-size: 1.5rem;
+            padding-block-end: 50px;
+        }
+        .address {
+            height: 200px;
+            margin-block-start: 100px;
+            font-size: 1.5rem;
         }
     </style>
 </head>
 <body>
+    
     <div class="container">
+        <div class="tab-menu">
+            <div class="btn-icon">
+                <i class="fa-solid fa-user"></i>
+                <p class="sub-text-icon">แนะนำตัว</p>
+            </div>
+            <div class="btn-icon">
+                <i class="fa-brands fa-sitrox"></i>
+                <p class="sub-text-icon">ทักษะ</p>
+            </div>
+            <div class="btn-icon">
+                <i class="fa-brands fa-sitrox"></i>
+                <p class="sub-text-icon">ผลงาน</p>
+            </div>
+            <div class="btn-icon">
+                <i class="fa-brands fa-sitrox"></i>
+                <p class="sub-text-icon">การทำงาน</p>
+            </div>
+            <div class="btn-icon">
+                <i class="fa-brands fa-sitrox"></i>
+                <p class="sub-text-icon">อัลบัม</p>
+            </div>
+        </div>
         <div id="intro">
-            <section class="block-content">
-                <div class="title ">
-                    <div id="text-container">Hello </div>
-                    <h5>Designer, Developer, Freelancer, Photographer</h5>
+           
+            <section class="wrapper-content">
+                <div class="position">Web Developer</div><br>
+                <div class="sub-position">Portfolio รวบรวมข้อมูล ผลงาน ประวัติการทำงาน ประวัติการศึกษา</div><br>
+                <div class="intro-content">
+                    <img src="./img-shop//profiles.jpg" width="200px" height="200px" class="circle" alt="">
+                    <div class="title ">
+                        <div id="text-container">Hello </div>
+                        <p class="text-sub-container"></p>
+                        <div class="text-contact-email">Email : </div>
+                        <div class="text-contact-tel">Tel : </div>
+                        <div class="text-contact-line">Line : </div>
+                    </div>
+                    <div class="photos"></div>
+                   
                 </div>
-                <div class="photos"></div>
+                <div class="address">ที่อยู่ : ประชาอุทิศ 22 เขตห้วยขวาง แขวงห้วยขวาง กรุงเทพมหานคร 10310.</div>
             </section>
-
+        </div>
+        <div id="skill">
+            <section class="wrapper-content">ssssssssss</section>
+            
         </div>
     </div>
 
     <script>
-       const textContainer = document.getElementById("text-container");
-        const textToType = " i'm Kittithat  Charoenkhet";
+        const textContainer      = document.getElementById("text-container");
+        const textContactEmail   = document.querySelector('.text-contact-email');
+        const textContactTel     = document.querySelector('.text-contact-tel');
+        const textContactLine    = document.querySelector('.text-contact-line');
+        let textToType         = " i'm Kittithat  Charoenkhet";
+        const textToEmail        = " Kittithat.charoenkhet101@gmail.com";
+        const textToTel          = " 0910174918";
+        const textToLine         = " @tortong101";
         let currentIndex = 0;
-
+        let currentIndex1 = 0;
+        let currentIndex2 = 0;
+        let currentIndex3 = 0;
         function typeCharacter() {
-        if (currentIndex < textToType.length) {
-            const char = textToType.charAt(currentIndex);
-            textContainer.textContent += char;
-            currentIndex++;
+            if (currentIndex < textToType.length) {
+                const char = textToType.charAt(currentIndex);
+                textContainer.textContent += char;
+                currentIndex++;
+            }
         }
+        setTimeout(() => {
+            const typingInterval = setInterval(typeCharacter, 10);
+            if (currentIndex === textToType.length) {
+            clearInterval(typingInterval);
+            textContainer.classList.remove("typing-text"); // ลบ class ที่ใช้ใน CSS animation
         }
+            
+        }, 1000);
 
-        const typingInterval = setInterval(typeCharacter, 100);
 
-        if (currentIndex === textToType.length) {
-        clearInterval(typingInterval);
-        textContainer.classList.remove("typing-text"); // ลบ class ที่ใช้ใน CSS animation
+        function typeCharacterEmail() {
+            if (currentIndex1 < textToEmail.length) {
+                const char = textToEmail.charAt(currentIndex1);
+                textContactEmail.textContent += char;
+                currentIndex1++;
+            }
         }
+        setTimeout(() => {
+            const typeCharacterEmail1 = setInterval(typeCharacterEmail, 10);
+            if (currentIndex1 === textContactEmail.length) {
+                clearInterval(typeCharacterEmail1);
+                textContactEmail.classList.remove("typing-text"); // ลบ class ที่ใช้ใน CSS animation
+            }
+            
+        }, 1500);
+
+
+        function typeCharacterTel() {
+            if (currentIndex2 < textToTel.length) {
+                const char = textToTel.charAt(currentIndex2);
+                textContactTel.textContent += char;
+                currentIndex2++;
+            }
+        }
+        setTimeout(() => {
+            const typeCharacterTel1 = setInterval(typeCharacterTel, 10);
+            if (currentIndex2 === typeCharacterTel1.length) {
+                clearInterval(typeCharacterTel);
+                textContactTel.classList.remove("typing-text"); // ลบ class ที่ใช้ใน CSS animation
+            }
+            
+        }, 2000);
+
+        function typeCharacterLine() {
+            if (currentIndex3 < textToLine.length) {
+                const char = textToLine.charAt(currentIndex3);
+                textContactLine.textContent += char;
+                currentIndex3++;
+            }
+        }
+        setTimeout(() => {
+            const typeCharacterLine1 = setInterval(typeCharacterLine, 10);
+            if (currentIndex3 === typeCharacterLine1.length) {
+                clearInterval(typeCharacterTel);
+                textContactLine.classList.remove("typing-text"); // ลบ class ที่ใช้ใน CSS animation
+            }
+            
+        }, 2500);
 
     </script>
 </body>

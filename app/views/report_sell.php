@@ -45,9 +45,27 @@ $checkadmin->checkAdmin();
                
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>รายงานขายสินค้า</h2>
-                        <div class="export_all">
-                            <div class="btn-excel"><a href="./services/export/export_report_sell.php" class="btn btn-primary">Export Excel</a></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>รายงานขายสินค้า</h2>
+                                <div class="export_all">
+                                    <div class="btn-excel"><a href="./services/export/export_report_sell.php" class="btn btn-primary">Export Excel</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-10 mt-3">
+                                <div class="row mt-3">
+                                    <div class="col-md-5">
+                                    <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-5">
+                                    <input type="text" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
                         </div>
                         <table class="table">
                             <thead>

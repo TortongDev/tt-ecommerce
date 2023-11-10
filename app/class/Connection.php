@@ -32,7 +32,12 @@ class Connection {
 				return self::$pdo = $conn;
 				
 			}catch(PDOException $err){
-				echo $err->getMessage();
+				echo "<br /><br />";
+				echo<<<ERR
+					<h2 style="margin-top: 10px"><center>ไม่สามารถเชื่อมต่อฐานข้อมูลได้ โปรดติดต่อผู้ดูแลระบบหรือนักพัฒนาระบบ</center></h2>
+				ERR;
+				exit;
+
 			}
 		}
 		public function closeConnection(){
